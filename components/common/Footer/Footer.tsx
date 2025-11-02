@@ -13,7 +13,7 @@ type Props = {
 /**
  *
  */
-function getNavItems(bookId: string, pageNumber: number): TFooterNavItemProps[] {
+function getNavItems(bookId: string, pageNumber?: number): TFooterNavItemProps[] {
   return [
     {
       activeIcon: 'icon-books-bold',

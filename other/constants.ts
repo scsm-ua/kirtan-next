@@ -7,6 +7,7 @@ export const PREFERENCES = {
 export const PATH = {
   IMG: {
     COVER: 'images/cover/',
+    FAV: 'images/fav/',
     LOGO: 'images/svg/kirtan-site.svg',
     SVG: 'images/svg/',
   },
