@@ -1,0 +1,126 @@
+@use 'sass:map';
+@use 'sass:string';
+
+@mixin tablet-up {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+//@mixin tablet-up($bp: #{var(--bp-768)}) {
+//  @media (min-width: $bp) {
+//    @content;
+//  }
+//}
+
+/*
+Breakpoints mixin
+@param {String} $point - name of breakpoint
+add '-up' if you want (min-width: $point) and leave with no suffix for (max-width: $point - 1px)
+*/
+@mixin breakpoint_obsolete($point) {
+  $query-direction: '';
+  $query-point: '';
+  $query-size: '';
+
+  @if string.index($point, '-up') {
+    $query-direction: 'min-width';
+    $query-point: string.slice(
+      $point,
+      0,
+      string.length($point) - string.length('-up')
+    );
+    $query-size: map.get($breakpoints, $query-point);
+  } @else {
+    @if string.index($point, '-down') {
+      $query-point: string.slice(
+        $point,
+        0,
+        string.length($point) - string.length('-down')
+      );
+    } @else {
+      $query-point: $point;
+    }
+
+    $query-direction: 'max-width';
+    $query-size: map.get($breakpoints, $query-point) - 1px;
+  }
+
+  @media screen and (#{$query-direction}: #{$query-size}) {
+    @content;
+  }
+}
+
+/**
+ *
+ */
+$breakpoints: (
+  /* Extra small screen middle / phone */ 'xs': 480px,
+  /* Small screen / phone */ 'sm': 576px,
+  /* Medium screen / tablet */ 'md': 768px,
+  /* Large screen / desktop */ 'lg': 992px,
+  /* Large / Extra large screen */ 'xl': 1024px,
+  /* Extra large screen / wide desktop */ 'xxl': 1200px
+) !default;
+
+/**
+ *
+ */
+@mixin icomoon($iconCode) {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &:before {
+    content: $iconCode;
+  }
+}
+
+/**
+ *
+ */
+/**/
+@mixin breakpoint($min: 0, $max: 0) {
+  $query: 'all' !default;
+
+  @if $min != 0 and $max != 0 {
+    $query: '(min-width: #{$min}px) and (max-width: #{$max}px)';
+  } @else if $min != 0 and $max == 0 {
+    $query: '(min-width: #{$min}px)';
+  } @else if $min == 0 and $max != 0 {
+    $query: '(max-width: #{$max}px)';
+  }
+  @media #{$query} {
+    @content;
+  }
+}
+
+/**
+ *
+ */
+@mixin placeholder {
+  &.placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}

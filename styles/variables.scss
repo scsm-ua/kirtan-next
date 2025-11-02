@@ -1,0 +1,63 @@
+//@use '@/styles/mixins';
+
+/**
+ * CSS breakpoint values.
+ */
+$bp992: 992;
+$bp840: 840;
+$bp768: 768;
+$bp576: 576;
+
+/**
+ *
+ */
+:root {
+  --font-main: 'Helvetica', system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-mono: 'Helvetica', SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  --font-size: 16px;
+
+  /**/
+  --content-max-width: 568px;
+  --header-height: 52px;
+  --footer-height: 72px;
+  --page-max-width: 768px;
+  --side-padding: 20px;
+
+  /**/
+  --transition-duration-m: 0.4s;
+
+  /**/
+  --bp-992: 992px;
+  --bp-840: 840px;
+  --bp-768: 768px;
+  --bp-576: 576px;
+
+  @media (min-width: 768px) {
+    --footer-height: 82px;
+  }
+
+  /**/
+  --accent-color: var(--orange);
+  --border-color: var(--grey);
+  --header-bg-color: var(--dark);
+  --footer-bg-color: var(--dark);
+  --main-bg-color: var(--beige);
+  --song-bg-color: #fff;
+  --text-color: var(--dark-grey);
+  --title-color: var(--dark);
+  --shadow-color: rgba(56, 55, 142, 0.15);
+
+  /**/
+  --beige: #fffaed;
+  //--brown-light: #7e5700;
+  //--brown-medium: #4e463b;
+  //--brown-dark: #432c00;
+  --brown: #26231b;
+  --dark: #0b0800;
+  --dark-grey: #6c6c6c;
+  --grey: #c0c0c0;
+  --orange: #f5c149;
+}

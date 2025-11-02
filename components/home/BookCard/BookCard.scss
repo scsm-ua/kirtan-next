@@ -1,0 +1,53 @@
+//@use '@/styles/mixins' as *;
+//@import '@/styles/mixins';
+
+.BookCard {
+  &__container {
+    margin: 0 auto;
+    max-width: 390px;
+  }
+
+  &__link {
+    display: block;
+    height: 100%;
+  }
+
+  &__ratio {
+    border-radius: 24px;
+    box-shadow: 0 4px 20px 0 var(--shadow-color);
+    overflow: hidden;
+    background-color: #FFF;
+
+    &:before {
+      padding-top: 92.18%;
+    }
+  }
+
+  &__box {
+    height: 64.3%;
+    overflow: hidden;
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  &__info {
+    padding: 12px;
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    color: var(--text-color);
+  }
+
+  &__count {
+    font-size: 12px;
+    font-weight: 300;
+    margin-top: 4px;
+    color: var(--grey);
+  }
+}

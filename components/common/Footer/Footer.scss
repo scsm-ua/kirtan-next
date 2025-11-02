@@ -1,0 +1,27 @@
+.Footer {
+  background-color: var(--footer-bg-color);
+  height: var(--footer-height);
+  max-height: var(--footer-height);
+  overflow: hidden;
+
+  &__container {
+    height: 100%;
+    margin: 0 auto;
+    max-width: var(--page-max-width);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__item {
+
+
+    //&--disabled {
+    //    color: var(--dark-grey);
+    //    cursor: not-allowed;
+    //}
+  }
+}

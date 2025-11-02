@@ -1,0 +1,45 @@
+@use '@/styles/mixins' as m;
+@use '@/styles/variables' as v;
+//@import '@/styles/mixins';
+//@import '@/styles/variables';
+
+.Header {
+  background-color: var(--header-bg-color);
+  height: var(--header-height);
+
+  //@include tablet-up {
+  //@include mixins.tablet-up {
+  @include m.tablet-up {
+  //@include mixins.breakpoint(variables.$bp576) {
+  //@include m.breakpoint(v.$bp576) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
+
+  &__container {
+    height: 100%;
+    margin: 0 auto;
+    max-width: var(--page-max-width);
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--side-padding);
+    height: 100%;
+  }
+
+  &__home {
+    height: 27px;
+    width: 98px;
+    overflow: hidden;
+  }
+
+  &__logo {
+    max-width: 100%;
+  }
+}
