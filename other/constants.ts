@@ -7,7 +7,7 @@ export const PREFERENCES = {
 export const PATH = {
   IMG: {
     COVER: 'images/cover/',
-    FAV: 'images/fav/',
+    FAV: 'images/favicon/',
     LOGO: 'images/svg/kirtan-site.svg',
     SVG: 'images/svg/',
   },
@@ -17,4 +17,10 @@ export const PATH = {
     CONTENTS: '/contents',
     SEARCH: '/search'
   }
+};
+
+/**/
+export const SITE = {
+  NAME: 'Kirtan Site',
+  ORIGIN: 'https://kirtan.site' // process.env.PUBLIC_ORIGIN
 };

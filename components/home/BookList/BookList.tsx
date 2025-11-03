@@ -10,14 +10,6 @@ type Props = {
   booksMap: TBooksMap;
 };
 
-// To be done:
-// const headParts = createHeadParts({
-//   songbook_id,
-//   i18n_page: 'BOOK_LIST_PAGE',
-//   path: getNavigationPaths(songbook_id).BOOK_LIST,
-//   page_by_songbook_generator: PAGES.getBookList
-// });
-
 /**
  *
  */

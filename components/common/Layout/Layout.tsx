@@ -9,23 +9,20 @@ import { PATH } from '@/other/constants';
 function Layout({
   bookId,
   children,
-  className,
   pageNumber
 }: Readonly<{
   bookId: string;
   children: React.ReactNode;
-  className?: string;
   pageNumber?: number;
 }>) {
-  const cls = className ? 'Main ' + className : 'Main';
   const path = PATH.IMG.FAV;
 
   return (
     <html lang="en">
       <head>
-        <title>Kirtan Site</title>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/*These two are Next default*/}
+        {/*  <meta charSet="UTF-8" />*/}
+        {/*  <meta name="viewport" content="width=device-width, initial-scale=1" />*/}
 
         <link rel="apple-touch-icon" sizes="57x57" href={`${path}apple-icon-57x57.png`} />
         <link rel="apple-touch-icon" sizes="60x60" href={`${path}apple-icon-60x60.png`} />

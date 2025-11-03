@@ -2,7 +2,6 @@
 // import styles from "./page.module.css";
 import { getBookIdList } from '@/lib/books';
 import PrefRedirect from '@/components/home/PrefRedirect';
-import Loader from '@/components/common/Loader/Loader';
 
 /**
  *

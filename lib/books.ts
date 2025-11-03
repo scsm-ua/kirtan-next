@@ -1,4 +1,4 @@
-import { TBookDescription, TBooksMap } from '@/types/book';
+import type { TBookDescription, TBooksMap } from '@/types/book';
 
 /**
  *
