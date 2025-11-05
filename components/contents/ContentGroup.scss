@@ -1,0 +1,45 @@
+.ContentGroup {
+  scroll-margin-top: calc(24px + var(--header-height));
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: 0;
+      right: 0;
+      border-bottom: 0.5px solid var(--border-color);
+    }
+
+    &--empty {
+      margin-top: 24px;
+
+      &::after {
+        z-index: 1;
+      }
+    }
+  }
+
+  &__title {
+    position: relative;
+    z-index: 1;
+    font-weight: 300;
+    line-height: 28px;
+    max-width: 80%;
+    margin-bottom: 16px;
+    padding: 0 16px;
+    text-transform: uppercase;
+    background-color: var(--main-bg-color);
+  }
+
+  &__list {
+    list-style-type: none;
+    margin: 0 0 24px 0;
+    padding: 0;
+    width: 100%;
+  }
+}

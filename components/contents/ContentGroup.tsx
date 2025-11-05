@@ -1,0 +1,37 @@
+import './ContentGroup.scss';
+import ContentItem from '@/components/contents/ContentItem';
+import type { TContentItem, TContentGroup } from '@/types/song';
+
+/**/
+type Props = {
+  bookId: string;
+  group: TContentGroup;
+};
+
+/**
+ *
+ */
+function ContentGroup({ bookId, group }: Props) {
+  const id = `section-${group.name}`;
+
+  return (
+    <li className="ContentGroup" id={id}>
+      {group.name ? (
+        <header className="ContentGroup__header">
+          <h6 className="ContentGroup__title">{group.name}</h6>
+        </header>
+      ) : (
+        <header className="ContentGroup__header--empty" />
+      )}
+
+      <ul className="ContentGroup__list">
+        {group.items.map((item: TContentItem) => (
+          <ContentItem bookId={bookId} item={item} key={item.id} />
+        ))}
+      </ul>
+    </li>
+  );
+}
+
+/**/
+export default ContentGroup;

@@ -1,4 +1,3 @@
-import BookContextProvider from '@/components/common/BookContextProvider';
 import BookList from '@/components/home/BookList/BookList';
 import { getBookIdParamList, getBooksMap } from '@/lib/books';
 import { getBookListMeta } from '@/other/metadata/getBookListMeta';
@@ -14,7 +13,7 @@ export const generateStaticParams = getBookIdParamList;
 /**
  *
  */
-export default async function BookListPage({ params }: BookListPageProps) {
+async function BookListPage({ params }: BookListPageProps) {
   const { bookId } = await params;
   const booksMap = await getBooksMap();
 
@@ -22,16 +21,17 @@ export default async function BookListPage({ params }: BookListPageProps) {
   const context = { bookId, booksMap };
 
   return (
-    <BookContextProvider {...context}>
-      <Layout bookId={bookId}>
-        <LdJson
-          bookId={bookId}
-          description={book.subtitle}
-          title={book.title}
-        />
+    <Layout bookId={bookId}>
+      <LdJson
+        bookId={bookId}
+        description={book.subtitle}
+        title={book.title}
+      />
 
-        <BookList bookId={bookId} booksMap={booksMap} />
-      </Layout>
-    </BookContextProvider>
+      <BookList bookId={bookId} booksMap={booksMap} />
+    </Layout>
   );
 }
+
+/**/
+export default BookListPage;

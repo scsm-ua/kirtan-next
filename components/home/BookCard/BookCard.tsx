@@ -1,5 +1,4 @@
 'use client';
-
 import './BookCard.scss';
 import { displayVersionInfo } from '@/other/displayVersion';
 import { PATH } from '@/other/constants';
@@ -22,7 +21,7 @@ function BookCard({ bookDescription }: Props) {
   const { slug, songsCount, subtitle, title } = bookDescription;
 
   const handleClick = () => saveBookChoice(slug);
-  const href = '/' + slug + PATH.PAGE.CONTENTS;
+  const href = '/' + slug + PATH.PAGE.A_Z;
 
   const src = PATH.IMG.COVER + 'banner-' + slug + '.jpg';
   const srcSet =

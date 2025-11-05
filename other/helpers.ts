@@ -4,7 +4,7 @@ import { PATH, SITE } from '@/other/constants';
  *
  */
 export function getBannerUrlBase(bookId: string): string {
-  return SITE.ORIGIN + '/' + PATH.IMG.COVER + 'banner-' + bookId;
+  return PATH.IMG.COVER + 'banner-' + bookId;
 }
 
 /**

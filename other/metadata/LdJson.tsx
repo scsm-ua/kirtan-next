@@ -40,7 +40,7 @@ function LdJson(props: Props) {
     sourceOrganization: 'https://scsmath.com/',
     teaches: 'Bhakti yoga',
     thumbnailUrl: imgSrc,
-    url: SITE.ORIGIN + '/' + bookId
+    url: SITE.ORIGIN + bookId
   };
 
   return (
