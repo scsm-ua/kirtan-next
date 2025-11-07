@@ -1,4 +1,4 @@
-import './Contents.scss';
+import './AZ.scss';
 import '@/styles/index-page.scss';
 
 import AuthorsLink from '@/components/common/AuthorsLink/AuthorsLink';
@@ -14,7 +14,7 @@ type Props = {
 /**
  *
  */
-function Contents({ bookId, contents }: Props) {
+function AZ({ bookId, contents }: Props) {
   return (
     <ul className="IndexPage__list">
       {contents.map((group: TContentGroup) => (
@@ -26,4 +26,4 @@ function Contents({ bookId, contents }: Props) {
 }
 
 /**/
-export default Contents;
+export default AZ;

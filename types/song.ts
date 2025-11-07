@@ -17,3 +17,6 @@ export type TContentGroup = {
   items: Array<TContentItem>;
   name?: string;
 };
+
+/**/
+export type TIndexList = Record<string, string>;

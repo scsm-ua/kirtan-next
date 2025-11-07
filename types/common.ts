@@ -7,3 +7,11 @@ export type TTranslation = {
 
 /**/
 export type GetTranslation = (key: string) => string;
+
+/**/
+export type TPill = {
+  // page: string;
+  // path: string;
+  title: string;
+  // type?: string;
+};
