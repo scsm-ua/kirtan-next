@@ -20,6 +20,7 @@ function Contents({ bookId, contents }: Props) {
       {contents.map((group: TContentGroup) => (
         <ContentGroup bookId={bookId} group={group} key={group.name} />
       ))}
+
       <AuthorsLink bookId={bookId} />
     </ul>
   );

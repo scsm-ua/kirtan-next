@@ -13,3 +13,12 @@ export function getBannerUrlBase(bookId: string): string {
 export function getBannerUrl(bookId: string): string {
   return getBannerUrlBase(bookId) + '.jpg';
 }
+
+/**
+ *
+ */
+export function scrollToSection(id: string): void {
+  document.getElementById('section-' + id)?.scrollIntoView({
+    behavior: 'smooth'
+  });
+}

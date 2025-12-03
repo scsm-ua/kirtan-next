@@ -1,0 +1,27 @@
+.AuthorBadges {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -8px 0 0;
+  padding: 12px 0 24px;
+  list-style-type: none;
+
+  &__item {
+    display: flex;
+    padding: 0 8px 8px 0;
+  }
+
+  &__button {
+    height: 32px;
+    padding: 8px;
+    border-radius: 6px;
+    border: solid 1px var(--grey);
+    color: var(--dark-grey);
+    background-color: var(--song-bg-color);
+    transition: color 0.25s;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--accent-color);
+    }
+  }
+}

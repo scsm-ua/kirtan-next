@@ -19,7 +19,8 @@
         "NAME": "Vaišnavu dziesmu krājums – Autori",
         "DESCRIPTION": "Atklājiet vāišnavu bhadžanu un kīrtanu autorus."
       },
-      "LINK_FULL_TITLE": "Autoru saraksts"
+      "LINK_FULL_TITLE": "Autoru saraksts",
+      "NO_AUTHOR": "Bez autora"
     },
     "BOOK_LIST_PAGE": {
       "HEAD": {
@@ -113,7 +114,8 @@
         "NAME": "Vaishnava Songbook – Authors",
         "DESCRIPTION": "Discover authors of Vaishnava bhajans and kirtans."
       },
-      "LINK_FULL_TITLE": "Songs by author"
+      "LINK_FULL_TITLE": "Songs by author",
+      "NO_AUTHOR": "No author"
     },
     "BOOK_LIST_PAGE": {
       "HEAD": {
@@ -207,7 +209,8 @@
         "NAME": "Cancionero Vaishnava – Autores",
         "DESCRIPTION": "Descubra a los autores de bhajans y kirtans vaisnavas."
       },
-      "LINK_FULL_TITLE": "Lista de autores"
+      "LINK_FULL_TITLE": "Lista de autores",
+      "NO_AUTHOR": "Sin autor"
     },
     "BOOK_LIST_PAGE": {
       "HEAD": {
@@ -301,7 +304,8 @@
         "NAME": "Вайшнавский песенник – Авторы",
         "DESCRIPTION": "Узнайте об авторах вайшнавских бхаджанов и киртанов."
       },
-      "LINK_FULL_TITLE": "Песни по авторам"
+      "LINK_FULL_TITLE": "Песни по авторам",
+      "NO_AUTHOR": "Без автора"
     },
     "BOOK_LIST_PAGE": {
       "HEAD": {
@@ -408,7 +412,8 @@
         "NAME": "Вайшнавський пісенник – Автори",
         "DESCRIPTION": "Дізнайтеся про авторів вайшнавських бхаджанів та кіртанів."
       },
-      "LINK_FULL_TITLE": "Пісні по авторам"
+      "LINK_FULL_TITLE": "Пісні по авторам",
+      "NO_AUTHOR": "Без автора"
     },
     "BOOK_LIST_PAGE": {
       "HEAD": {
@@ -515,7 +520,8 @@
         "NAME": "Cancioneiro Vaishnava – Autores",
         "DESCRIPTION": "Descubra os autores dos bhajans e kirtans vaisnavas."
       },
-      "LINK_FULL_TITLE": "Canções por autor"
+      "LINK_FULL_TITLE": "Canções por autor",
+      "NO_AUTHOR": "Sem autor"
     },
     "BOOK_LIST_PAGE": {
       "HEAD": {

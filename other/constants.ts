@@ -5,6 +5,13 @@ export const SITE = {
 };
 
 /**/
+export const FILES = {
+  A_Z: 'a-z.json',
+  AUTHORS: 'authors.json',
+  CONTENTS: 'contents.json'
+};
+
+/**/
 export const PATH = {
   DIR: {
     SOURCE: 'source'

@@ -1,7 +1,5 @@
-import './AZ.scss';
 import '@/styles/index-page.scss';
 
-import AuthorsLink from '@/components/common/AuthorsLink/AuthorsLink';
 import ContentGroup from '@/components/contents/ContentGroup';
 import type { TContentGroup } from '@/types/song';
 
@@ -14,17 +12,15 @@ type Props = {
 /**
  *
  */
-function AZ({ bookId, contents }: Props) {
+function Authors({ bookId, contents }: Props) {
   return (
     <ul className="IndexPage__list">
       {contents.map((group: TContentGroup) => (
         <ContentGroup bookId={bookId} group={group} key={group.name} />
       ))}
-
-      <AuthorsLink bookId={bookId} />
     </ul>
   );
 }
 
 /**/
-export default AZ;
+export default Authors;

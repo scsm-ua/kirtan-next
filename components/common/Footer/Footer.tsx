@@ -28,7 +28,7 @@ function getNavItems(bookId: string, pageNumber?: number): TFooterNavItemProps[]
       label: translate(bookId, 'FOOTER.CONTENTS'),
     },
     {
-      activeIcon: 'icon-arrow-up-a-z-bold',
+      activeIcon: 'icon-arrow-up-a-z-old',
       href: '/' + bookId + PATH.PAGE.A_Z,
       inactiveIcon: 'icon-arrow-up-a-z',
       label: translate(bookId, 'FOOTER.INDEX'),
