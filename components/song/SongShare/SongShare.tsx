@@ -1,33 +1,31 @@
 'use client';
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import { Modal } from 'react-responsive-modal';
 
-import './OtherTranslations.scss';
+import './SongShare.scss';
 import { MODAL_CLASS_NAMES } from '@/other/constants';
+import SongShareForm from '@/components/song/SongShare/SongShareForm';
 import { translate } from '@/other/i18n';
 
 /**/
 type Props = {
   bookId: string;
-  children: ReactNode;
-  disabled: boolean;
 };
 
 /**
  *
  */
-function OtherTranslations({ bookId, children, disabled }: Props) {
+function SongShare({ bookId }: Props) {
   const [isOpen, setOpen] = useState(false);
 
   return (
     <>
       <button
-        className="NoBorderButton OtherTranslations__button"
-        disabled={disabled}
+        className="NoBorderButton SongShare__button"
         onClick={() => setOpen(true)}
-        title={translate(bookId, 'SONG_PAGE.OTHER_TRANSLATIONS')}
+        title={translate(bookId, 'SONG_PAGE.SHARE_SONG')}
       >
-        <span className="OtherTranslations__label">{bookId.toUpperCase()}</span>
+        <span className="icon-arrow-up-from-bracket" />
       </button>
 
       <Modal
@@ -36,11 +34,13 @@ function OtherTranslations({ bookId, children, disabled }: Props) {
         onClose={() => setOpen(false)}
         open={isOpen}
       >
-        <div className="AppModal__content">{children}</div>
+        <div className="AppModal__content">
+          <SongShareForm bookId={bookId} onClose={() => setOpen(false)} />
+        </div>
       </Modal>
     </>
   );
 }
 
 /**/
-export default OtherTranslations;
+export default SongShare;

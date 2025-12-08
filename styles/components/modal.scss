@@ -47,4 +47,8 @@
   &__icon {
     display: none;
   }
+
+  &__content {
+    padding-top: var(--side-padding);
+  }
 }

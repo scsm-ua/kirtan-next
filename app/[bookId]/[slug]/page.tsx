@@ -14,6 +14,7 @@ import LdJson from '@/other/metadata/LdJson';
 import OtherTranslations from '@/components/song/OtherTranslations/OtherTranslations';
 import PageNumber from '@/components/song/PageNumber/PageNumber';
 import SongbookList from '@/components/song/OtherTranslations/SongbookList';
+import SongShare from '@/components/song/SongShare/SongShare';
 import { translate } from '@/other/i18n';
 
 import type { BookListPageProps } from '@/other/metadata/getBookListMeta';
@@ -35,14 +36,16 @@ async function SongPage({ params }: BookListPageProps) {
   const song = await getSongBySlug(slug, bookId);
   const descriptions = (await getBookDescriptionsByBook(
     slug,
-    /*booksMap*/ { 'en-pe': {
-        "title": "Kirtan Guide",
-        "subtitle": "Pocket Edition, 2013",
-        "slug": "en-pe",
-        "language": "en",
-        "sort_order": 40,
-        "path": "/Users/kostya/kostya/projects/scsm-ua/kirtan-mate/node_modules/kirtan-guide-pocket-edition"
-      } as any }
+    /*booksMap*/ {
+      'en-pe': {
+        title: 'Kirtan Guide',
+        subtitle: 'Pocket Edition, 2013',
+        slug: 'en-pe',
+        language: 'en',
+        sort_order: 40,
+        path: '/Users/kostya/kostya/projects/scsm-ua/kirtan-mate/node_modules/kirtan-guide-pocket-edition'
+      } as any
+    }
   )) as TBookDescription[];
 
   // const context = { bookId, booksMap };
@@ -65,7 +68,10 @@ async function SongPage({ params }: BookListPageProps) {
               </div>
 
               <div className="SongPage__controls">
-                <OtherTranslations bookId={bookId}>
+                <OtherTranslations
+                  bookId={bookId}
+                  disabled={descriptions.length === 0}
+                >
                   <SongbookList
                     bookId={bookId}
                     bookDescriptions={descriptions}
@@ -73,13 +79,7 @@ async function SongPage({ params }: BookListPageProps) {
                   />
                 </OtherTranslations>
 
-                <button
-                  className=" NoBorderButton SclassNameNamesNameder__button"
-                  id=" share-button"
-                  title=" Поделиться песней"
-                >
-                  <span className=" icon-arrow-up-frclassNameNamesNamecket"></span>
-                </button>
+                <SongShare bookId={bookId} />
               </div>
             </div>
           </header>
@@ -98,14 +98,6 @@ async function SongPage({ params }: BookListPageProps) {
       {/*<BookList bookId={bookId} booksMap={booksMap} />*/}
     </Layout>
   );
-}
-
-/**
- *
- */
-function getPageLabel(bookId: string, arrt: TSong['attributes']): string {
-  // const label = translate(bookId, 'SONG_PAGE.PAGE') + '' + Array.isArray(page);
-  return '';
 }
 
 /**/

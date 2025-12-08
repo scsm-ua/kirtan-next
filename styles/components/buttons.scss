@@ -13,3 +13,42 @@
   border: none;
   background-color: transparent;
 }
+
+/**/
+.RoundButton {
+  border-radius: 50%;
+  border: none;
+  transition: color 0.25s;
+
+  /**/
+  &--L {
+    height: 40px;
+    min-width: 40px;
+    width: 40px;
+    padding: 8px;
+    font-size: 16px;
+  }
+
+  /**/
+  &--dark {
+    color: white;
+    background: var(--brown);
+
+    &:hover {
+      color: var(--accent-color);
+    }
+
+    &:active {
+      filter: brightness(2);
+    }
+  }
+
+  /**/
+  &--green {
+    background-color: #008353;
+
+    &:hover {
+      background-color: rgba(#008353, 0.8);
+    }
+  }
+}
