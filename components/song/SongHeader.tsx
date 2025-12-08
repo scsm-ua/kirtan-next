@@ -1,0 +1,87 @@
+import './SongHeader.scss';
+
+/**/
+type Props = {
+
+};
+
+/**
+ *
+ */
+class SongHeader extends React.PureComponent<Props> {
+  /**/
+  render() {
+    return (
+      <header class="SongHeader">
+        <div class="SongHeader__container">
+          <div class="SongHeader__top">
+            <div class="SongHeader__left">
+              <h6 class="SongHeader__book">
+                <%= currentSongbook.title %>
+              </h6>
+              <% if (page) { %>
+              <div class="SongHeader__page">
+              <a
+                class="SongHeader__book page-number-search"
+                href="<%= paths.toPages.SEARCH %><% if (page_number) { %>?p=<%= page_number %><% } %>"><%= i18n('SONG_PAGE.PAGE') %> <%= Array.isArray(page) ? page.join(', ') : page %></a>
+              </div>
+              <% } %>
+            </div>
+
+            <div class="SongHeader__controls">
+              <button
+                class="NoBorderButton SongHeader__button"
+              <% if (!hasOtherTranslations) { %>
+              disabled
+              <% } %>
+                 id="variants-button"
+                 title="<%= currentSongbook.i18n('SONG_PAGE.OTHER_TRANSLATIONS') %>"
+            >
+              <span class="SongHeader__button--text"><%= currentSongbook.slug.toUpperCase() %></span>
+            </button>
+
+            <button
+              class="NoBorderButton SongHeader__button"
+              id="share-button"
+              title="<%= currentSongbook.i18n('SONG_PAGE.SHARE_SONG') %>"
+            >
+              <span class="icon-arrow-up-from-bracket"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="SongHeader__info">
+          <% if (song.getTitles().length) { %>
+          <h1 class="SongHeader__title">
+          <% song.getTitles().map((item) => { %>
+          <div><%= item %></div>
+          <% }) %>
+          </h1>
+          <% } %>
+
+          <% song.getTitleWordByWordForWeb().forEach((item, idx) => { %>
+          <div class="SongHeader__wordbyword">
+          <%- item %>
+          </div>
+          <% }) %>
+
+          <% song.getSubtitles().map((item) => { %>
+          <div class="SongHeader__subtitle">
+          <%= item %>
+          </div>
+          <% }) %>
+
+          <% song.getAuthors().forEach((item, idx) => { %>
+          <div class="SongHeader__author">
+          <a href="<%= paths.toPages.AUTHORS %><% if (song.getUnifiedAurhor()) { %>#section-<%= song.getUnifiedAurhor() %><% } %>"><%= item %></a>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+  </header>
+    );
+  }
+}
+
+/**/
+export default SongHeader;

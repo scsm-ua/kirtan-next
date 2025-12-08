@@ -1,5 +1,5 @@
 import BookList from '@/components/home/BookList/BookList';
-import { getBookIdParamList, getBooksMap } from '@/lib/books';
+import { getBooksMap } from '@/lib/books';
 import { getBookListMeta } from '@/other/metadata/getBookListMeta';
 import Layout from '@/components/common/Layout/Layout';
 import LdJson from '@/other/metadata/LdJson';
@@ -8,7 +8,8 @@ import type { BookListPageProps } from '@/other/metadata/getBookListMeta';
 
 /**/
 export const generateMetadata = getBookListMeta;
-export const generateStaticParams = getBookIdParamList;
+/* See the comments in the `layout.tsx` file. */
+// export const generateStaticParams = getBookIdParamList;
 
 /**
  *

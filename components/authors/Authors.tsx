@@ -1,7 +1,7 @@
 import '@/styles/index-page.scss';
 
 import ContentGroup from '@/components/contents/ContentGroup';
-import type { TContentGroup } from '@/types/song';
+import { TContentGroup } from '@/types/common';
 
 /**/
 type Props = {

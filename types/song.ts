@@ -1,35 +1,42 @@
 /**/
-export type TContentItem_obsolete = {
-  aliasName: string;            // aliasName ?== id
-  duplicates: Array<any>;
-  embeds: Array<string>;
-  fileName: string;             // id + .html
-  id: string;                   // slug
-  idx?: number;                 // Build-time field. To be removed.
-  name?: string;                // name ?== title
-  page: number | Array<number>;
-  page_number?: number;         // Build-time field. To be discussed.
-  title: string;                // Human-readable title.
+export type TSong = {
+  attributes: {
+    page: string;
+  };
+  author: Array<string>;
+  embeds: Array<TAudio>;
+  meta: {
+    author?: string;
+  };
+  subTitle: Array<string>;
+  title: Array<string>;
+  verses: Array<TVerse>;
 };
 
 /**/
-export type TContentGroup = {
-  items: Array<TContentItem>;
-  name?: string;
+export type TAudio = {
+  embed_url: string;
+  title: string;
 };
 
 /**/
-export type TIndexList = Record<string, string>;
+export type TVerse = {
+  number?: string;
+  text: Array<string>;
+  translation: Array<string>;
+};
 
 /**/
-export type TContentItem = {
-  aliasName: string;    // The first line of the first verse.
-  author?: string;      // not used at the moment
-  id: string;           // Slug of the song.
-  page: number;
-  pages: Array<number>; // Contains more than one item if page has duplicates.
-  title: string;        // Human-readable title.
-  has: {
-    audio: boolean;
-  }
+export type TNavItem = {
+  path: string;
+  title: string;
 };
+
+/**/
+export type TNavItems = {
+  prev: TNavItem | void;
+  next: TNavItem | void;
+};
+
+/**/
+export type TNavItemsMap = { [page: string]: TNavItems };

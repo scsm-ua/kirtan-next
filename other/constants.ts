@@ -8,13 +8,18 @@ export const SITE = {
 export const FILES = {
   A_Z: 'a-z.json',
   AUTHORS: 'authors.json',
+  BOOK_LIST: 'book-list.json',
   CONTENTS: 'contents.json'
 };
 
 /**/
 export const PATH = {
   DIR: {
+    SONGS: 'songs',
     SOURCE: 'source'
+  },
+  FILE: {
+    BOOK_LIST: '@/source/book-list.json'
   },
   IMG: {
     COVER: SITE.ORIGIN + 'images/cover/',
@@ -35,4 +40,12 @@ export const PATH = {
 /**/
 export const PREFERENCES = {
   PREFERRED_BOOK_ID: 'CURRENT_BOOK_ID'
+};
+
+/**/
+export const MODAL_CLASS_NAMES = {
+  modal: 'AppModal__container',
+  overlay: 'AppModal__mask',
+  closeButton: 'AppModal__button',
+  closeIcon: 'AppModal__icon'
 };

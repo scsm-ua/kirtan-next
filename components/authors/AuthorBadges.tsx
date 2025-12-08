@@ -2,7 +2,7 @@
 
 import './AuthorBadges.scss';
 import { scrollToSection } from '@/other/helpers';
-import type { TContentGroup } from '@/types/song';
+import { TContentGroup } from '@/types/common';
 
 /**/
 type Props = {

@@ -1,6 +1,6 @@
 // import BookContextProvider from '@/components/common/BookContextProvider';
 import AZ from '@/components/a-z/AZ';
-import BookThumbnail from '@/components/common/BookThumbnail/BookThumbnail';
+import BookDescription from '@/components/common/BookDescription/BookDescription';
 import Contents from '@/components/contents/Contents';
 import { getBookIdParamList, getBooksMap } from '@/lib/books';
 // import { getBookListMeta } from '@/other/metadata/getBookListMeta';
@@ -10,7 +10,7 @@ import Pills from '@/components/common/Pills/Pills';
 // import LdJson from '@/other/metadata/LdJson';
 
 import type { BookListPageProps } from '@/other/metadata/getBookListMeta';
-import { TContentGroup } from '@/types/song';
+import { TContentGroup } from '@/types/common';
 
 /**/
 // export const generateMetadata = getBookListMeta;
@@ -47,7 +47,7 @@ async function AZPage({ params }: BookListPageProps) {
       <Layout bookId={bookId}>
         <div className="Main__container AZ">
           <div className="IndexPage__title">
-            <BookThumbnail bookDescription={book} />
+            <BookDescription bookDescription={book} />
           </div>
 
           <div className="Main__content">

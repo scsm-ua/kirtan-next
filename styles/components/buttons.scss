@@ -1,0 +1,15 @@
+/**/
+.AppButton, .NoBorderButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  cursor: pointer;
+  font-family: var(--font-main);
+}
+
+/**/
+.NoBorderButton {
+  border: none;
+  background-color: transparent;
+}

@@ -1,5 +1,5 @@
 // import BookContextProvider from '@/components/common/BookContextProvider';
-import BookThumbnail from '@/components/common/BookThumbnail/BookThumbnail';
+import BookDescription from '@/components/common/BookDescription/BookDescription';
 import Contents from '@/components/contents/Contents';
 import { getBookIdParamList, getBooksMap } from '@/lib/books';
 // import { getBookListMeta } from '@/other/metadata/getBookListMeta';
@@ -30,7 +30,7 @@ async function ContentsPage({ params }: BookListPageProps) {
       <Layout bookId={bookId}>
         <div className="Main__container Contents">
           <div className="IndexPage__title">
-            <BookThumbnail bookDescription={book} />
+            <BookDescription bookDescription={book} />
           </div>
 
           <div className="Main__content">

@@ -1,0 +1,50 @@
+@use '../mixins' as m;
+
+.AppModal {
+  &__mask {
+    background: rgba(0, 0, 0, .4);
+    overflow: auto;
+    backdrop-filter: blur(12px);
+  }
+
+  &__container {
+    &.react-responsive-modal-modal {
+      min-height: calc(100% - 40px);
+      max-width: 90%;
+      min-width: 80%;
+
+      margin-top: 30px;
+      margin-bottom: 30px;
+      border-radius: 24px;
+      padding: var(--side-padding);
+      background-color: var(--song-bg-color) !important;
+
+      @include m.tablet-up {
+        max-width: 500px;
+        min-width: 500px;
+        min-height: unset;
+      }
+    }
+  }
+
+  &__button.react-responsive-modal-closeButton {
+    @include m.icomoon('\e910');
+    font-weight: 700;
+    font-size: 16px;
+    padding: 8px;
+    height: 36px;
+    width: 36px;
+    top: 14px;
+    right: 8px;
+    color: var(--dark);
+    transition: color 0.25s;
+
+    &:hover {
+      color: var(--accent-color);
+    }
+  }
+
+  &__icon {
+    display: none;
+  }
+}

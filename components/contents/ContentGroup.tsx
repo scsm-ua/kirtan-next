@@ -1,6 +1,6 @@
 import './ContentGroup.scss';
 import ContentItem from '@/components/contents/ContentItem';
-import type { TContentItem, TContentGroup } from '@/types/song';
+import { TContentGroup, TContentItem } from '@/types/common';
 
 /**/
 type Props = {

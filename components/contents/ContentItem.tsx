@@ -1,5 +1,5 @@
 import './ContentItem.scss';
-import type { TContentItem } from '@/types/song';
+import { TContentItem } from '@/types/common';
 
 /**/
 type Props = {

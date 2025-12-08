@@ -1,0 +1,11 @@
+.PageNumber {
+  padding-left: 10px;
+
+  &__anchor {
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 28px;
+    color: var(--dark-grey);
+    text-decoration: underline !important;
+  }
+}
