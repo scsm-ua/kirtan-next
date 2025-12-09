@@ -14,6 +14,7 @@ import LdJson from '@/other/metadata/LdJson';
 import OtherTranslations from '@/components/song/OtherTranslations/OtherTranslations';
 import PageNumber from '@/components/song/PageNumber/PageNumber';
 import SongbookList from '@/components/song/OtherTranslations/SongbookList';
+import SongHeader from '@/components/song/SongHeader';
 import SongShare from '@/components/song/SongShare/SongShare';
 import { translate } from '@/other/i18n';
 
@@ -50,7 +51,7 @@ async function SongPage({ params }: BookListPageProps) {
 
   // const context = { bookId, booksMap };
   const nav = await getNavItems(slug, bookId);
-  console.log(nav);
+  console.log(nav, song);
 
   return (
     <Layout bookId={bookId}>
@@ -62,6 +63,7 @@ async function SongPage({ params }: BookListPageProps) {
                 <h6 className="SongPage__book">{book.title}</h6>
 
                 <PageNumber
+                  bookId={bookId}
                   label={translate(bookId, 'SONG_PAGE.PAGE')}
                   page={song.attributes?.page}
                 />
@@ -82,6 +84,8 @@ async function SongPage({ params }: BookListPageProps) {
                 <SongShare bookId={bookId} />
               </div>
             </div>
+
+            <SongHeader bookId={bookId} song={song} />
           </header>
         </div>
       </div>

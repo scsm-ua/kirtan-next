@@ -1,3 +1,39 @@
-.SongHeader {
+@use '@/styles/mixins' as m;
 
+.SongHeader {
+  &__title {
+    font-size: 20px;
+    line-height: 140%;
+    color: var(--title-color);
+    margin-bottom: 10px;
+
+    @include m.tablet-up {
+      font-size: 28px;
+    }
+  }
+
+  &__subtitle {
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  &__author {
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: 300;
+    margin-bottom: 10px;
+
+    a {
+      color: inherit;
+    }
+  }
+
+  &__wbw {
+    color: var(--text-color);
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
 }

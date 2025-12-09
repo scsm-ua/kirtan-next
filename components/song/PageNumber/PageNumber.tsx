@@ -6,6 +6,7 @@ import { PATH } from '@/other/constants';
 
 /**/
 type Props = {
+  bookId: string;
   label: string;
   page?: string | string[];
 };
@@ -13,7 +14,7 @@ type Props = {
 /**
  *
  */
-function PageNumber({ label, page }: Props) {
+function PageNumber({ bookId, label, page }: Props) {
   const [pageQuery, setPage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -23,7 +24,9 @@ function PageNumber({ label, page }: Props) {
 
   if (!page || typeof pageQuery !== 'string') return null;
 
-  const href = PATH.PAGE.SEARCH + (pageQuery ? `?p=${pageQuery}` : '');
+  const href =
+    `/${bookId}` + PATH.PAGE.SEARCH + (pageQuery ? `?p=${pageQuery}` : '');
+
   const text = Array.isArray(page) ? page.join(', ') : page;
 
   return (

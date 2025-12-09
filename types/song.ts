@@ -11,6 +11,7 @@ export type TSong = {
   subTitle: Array<string>;
   title: Array<string>;
   verses: Array<TVerse>;
+  word_by_word: Array<string>;
 };
 
 /**/

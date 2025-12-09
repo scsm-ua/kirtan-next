@@ -6,8 +6,8 @@ import { getContentsByBookId } from '@/lib/contents';
 
 import type { TBookDescription, TBooksMap } from '@/types/book';
 import type { TContentGroup, TContentItem } from '@/types/common';
+import type { TNavItems } from '@/types/song';
 import type { TNavItemsMap, TSong } from '@/types/song';
-import { TNavItems } from '@/types/song';
 
 /**
  *
