@@ -16,7 +16,7 @@ function SongHeader({ bookId, song }: Props) {
   const { author, meta, subTitle, title, word_by_word } = song;
 
   return (
-    <header className="SongHeader">
+    <section className="SongHeader">
       {title.length > 0 && (
         <h1 className="SongHeader__title">
           {title.map((item: string) => (
@@ -46,7 +46,7 @@ function SongHeader({ bookId, song }: Props) {
           </div>
         );
       })}
-    </header>
+    </section>
   );
 }
 

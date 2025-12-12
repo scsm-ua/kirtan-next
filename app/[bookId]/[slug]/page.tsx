@@ -16,11 +16,13 @@ import PageNumber from '@/components/song/PageNumber/PageNumber';
 import SongbookList from '@/components/song/OtherTranslations/SongbookList';
 import SongHeader from '@/components/song/SongHeader';
 import SongShare from '@/components/song/SongShare/SongShare';
+import ThreeModeSwitch from '@/components/common/ThreeModeSwitch/ThreeModeSwitch';
 import { translate } from '@/other/i18n';
 
 import type { BookListPageProps } from '@/other/metadata/getBookListMeta';
 import type { TBookDescription } from '@/types/book';
 import type { TSong } from '@/types/song';
+import TranslationToggle from '@/components/song/TranslationToggle';
 
 /**/
 export const generateMetadata = getBookListMeta;
@@ -58,7 +60,7 @@ async function SongPage({ params }: BookListPageProps) {
       <div className="Main__container SongPage__container">
         <div className="SongPage__content">
           <header className="SongPage__header">
-            <div className="SongPage__top">
+            <section className="SongPage__top">
               <div className="SongPage__info">
                 <h6 className="SongPage__book">{book.title}</h6>
 
@@ -83,23 +85,24 @@ async function SongPage({ params }: BookListPageProps) {
 
                 <SongShare bookId={bookId} />
               </div>
-            </div>
+            </section>
 
             <SongHeader bookId={bookId} song={song} />
           </header>
+
+          <main className="SongPage__main">
+            <TranslationToggle
+              label={translate(bookId, 'SONG_PAGE.SHOW_TRANSLATION')}
+            />
+          </main>
         </div>
       </div>
 
-      <h2>
-        {bookId} / {slug}
-      </h2>
       {/*<LdJson*/}
       {/*  bookId={bookId}*/}
       {/*  description={book.subtitle}*/}
       {/*  title={book.title}*/}
       {/*/>*/}
-
-      {/*<BookList bookId={bookId} booksMap={booksMap} />*/}
     </Layout>
   );
 }
