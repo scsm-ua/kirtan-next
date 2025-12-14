@@ -14,7 +14,7 @@ type Props = { label: string };
  *
  */
 function TranslationToggle({ label }: Props) {
-  const [mode, setMode] = useState<string | null>(null);
+  const [mode, setMode] = useState<string>(null);
 
   useEffect(() => {
     setMode(getSongDisplayMode());

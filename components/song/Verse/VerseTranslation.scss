@@ -1,0 +1,23 @@
+.VerseTranslation {
+  list-style-type: none;
+  margin: 4px 0 0 0;
+  padding: 0;
+
+  &__paragraph {
+    color: var(--text-color);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 24px;
+    margin-bottom: 16px;
+
+    &--dark {
+      color: var(--dark);
+    }
+
+    &--wide {
+      line-height: 2;
+      font-size: clamp(18px, 3.14cqw, 22px);
+      font-weight: 400;
+    }
+  }
+}

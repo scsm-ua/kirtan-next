@@ -46,3 +46,5 @@ export type TContentItem = {
     audio: boolean;
   }
 };
+/**/
+export type TTranslationMode = '1' | '2' | '3';

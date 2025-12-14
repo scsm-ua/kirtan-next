@@ -1,4 +1,5 @@
 import { PREFERENCES } from '@/other/constants';
+import type { TTranslationMode } from '@/types/common';
 
 /**
  * Preserve user choice of the Book ID in the Local storage.
@@ -20,12 +21,12 @@ export function saveBookChoice(bookId: string): void {
 const SONG_DISPLAY_MODE = 'SONG_DISPLAY_MODE'
 
 /**/
-export function getSongDisplayMode(): string {
+export function getSongDisplayMode(): TTranslationMode {
   const val = localStorage.getItem(SONG_DISPLAY_MODE);
-  return val || '3';
+  return (val || '3') as TTranslationMode;
 }
 
 /**/
-export function setSongDisplayMode(value: string) {
+export function setSongDisplayMode(value: TTranslationMode) {
   localStorage.setItem(SONG_DISPLAY_MODE, value);
 }

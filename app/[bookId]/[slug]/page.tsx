@@ -16,13 +16,12 @@ import PageNumber from '@/components/song/PageNumber/PageNumber';
 import SongbookList from '@/components/song/OtherTranslations/SongbookList';
 import SongHeader from '@/components/song/SongHeader';
 import SongShare from '@/components/song/SongShare/SongShare';
-import ThreeModeSwitch from '@/components/common/ThreeModeSwitch/ThreeModeSwitch';
+import SongText from '@/components/song/SongText/SongText';
 import { translate } from '@/other/i18n';
 
 import type { BookListPageProps } from '@/other/metadata/getBookListMeta';
 import type { TBookDescription } from '@/types/book';
-import type { TSong } from '@/types/song';
-import TranslationToggle from '@/components/song/TranslationToggle';
+import type { TSong, TVerse } from '@/types/song';
 
 /**/
 export const generateMetadata = getBookListMeta;
@@ -90,11 +89,10 @@ async function SongPage({ params }: BookListPageProps) {
             <SongHeader bookId={bookId} song={song} />
           </header>
 
-          <main className="SongPage__main">
-            <TranslationToggle
-              label={translate(bookId, 'SONG_PAGE.SHOW_TRANSLATION')}
-            />
-          </main>
+          <SongText
+            label={translate(bookId, 'SONG_PAGE.SHOW_TRANSLATION')}
+            song={song}
+          />
         </div>
       </div>
 

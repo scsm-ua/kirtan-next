@@ -1,17 +1,15 @@
 'use client';
 import React from 'react';
 import './ThreeModeSwitch.scss';
-
-/**/
-type Mode = '1' | '2' | '3';
+import type { TTranslationMode } from '@/types/common';
 
 type Props = {
   label: string;
-  onChange: (value: Mode) => void;
-  value: Mode;
+  onChange: (value: TTranslationMode) => void;
+  value: TTranslationMode;
 };
 
-type State = { mode: Mode };
+type State = { mode: TTranslationMode };
 
 /**
  *
@@ -80,7 +78,7 @@ class ThreeModeSwitch extends React.PureComponent<Props, State> {
   };
 
   /**/
-  emitChange(mode: Mode): void {
+  emitChange(mode: TTranslationMode): void {
     this.setState({ mode });
     this.props.onChange(mode);
   }

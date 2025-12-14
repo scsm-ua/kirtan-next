@@ -56,7 +56,7 @@ function SongHeader({ bookId, song }: Props) {
 function getWBW(wbw?: string[]) {
   if (!wbw || wbw.length === 0) return null;
 
-  const items = processWBW(wbw).map((item: string) => (
+  const items = processWBW(wbw, 'SongHeader').map((item: string) => (
     <div
       className="SongHeader__wbw"
       dangerouslySetInnerHTML={{ __html: item }}

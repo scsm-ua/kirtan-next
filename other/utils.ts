@@ -12,7 +12,7 @@ export function isObject(x: any): boolean {
 /**
  *
  */
-export function processWBW(lines: string[]): string[] {
+export function processWBW(lines: string[], cssPrefix: string): string[] {
   if (!lines) {
     return [];
   }
@@ -20,8 +20,8 @@ export function processWBW(lines: string[]): string[] {
     .join('\n')
     // Cleanup tags for safety.
     .replace(TAG_REGEX, '')
-    .replace(NOTE_MD_REGEX, '<i class="SongVerse__note">$1</i>\n')
-    .replace(TERM_MD_REGEX, '<i class="SongVerse__term">$1</i>')
-    .replaceAll('\\\n', '<br class="SongVerse__break" />')
+    .replace(NOTE_MD_REGEX, `<i class="${cssPrefix}__note">$1</i>\n`)
+    .replace(TERM_MD_REGEX, `<i class="${cssPrefix}__term">$1</i>`)
+    .replaceAll('\\\n', '<br />')
     .split(/\n/);
 }

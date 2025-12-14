@@ -1,7 +1,9 @@
 /**/
 export type TSong = {
   attributes: {
+    'inline verse'?: 'non bold';
     page: string;
+    'verse parentheses'?: 'non bold';
   };
   author: Array<string>;
   embeds: Array<TAudio>;
@@ -23,8 +25,10 @@ export type TAudio = {
 /**/
 export type TVerse = {
   number?: string;
+  subtitle?: Array<string>;
   text: Array<string>;
   translation: Array<string>;
+  word_by_word: Array<string>;
 };
 
 /**/
