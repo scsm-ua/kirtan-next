@@ -1,19 +1,24 @@
+'use client';
+
 import './Footer.scss';
+
 import FooterItem from './FooterItem';
 import { PATH } from '@/other/constants';
+import { usePageQuery } from '@/other/hooks/usePageQuery';
 import { translate } from '@/other/i18n';
+
 import type { TFooterNavItemProps } from './FooterItem';
 
 /**/
 type Props = {
   bookId: string;
-  pageNumber?: number;
+  page?: string | string[];
 };
 
 /**
  *
  */
-function getNavItems(bookId: string, pageNumber?: number): TFooterNavItemProps[] {
+function getNavItems(bookId: string, page?: string): TFooterNavItemProps[] {
   return [
     {
       activeIcon: 'icon-books-bold',
@@ -35,7 +40,7 @@ function getNavItems(bookId: string, pageNumber?: number): TFooterNavItemProps[]
     },
     {
       activeIcon: 'icon-search-bold',
-      href: '/' + bookId + PATH.PAGE.SEARCH + (pageNumber ? `?p=${pageNumber}` : ''),
+      href: '/' + bookId + PATH.PAGE.SEARCH + (page ? `?p=${page}` : ''),
       inactiveIcon: 'icon-search',
       label: translate(bookId, 'FOOTER.SEARCH'),
     }
@@ -45,12 +50,24 @@ function getNavItems(bookId: string, pageNumber?: number): TFooterNavItemProps[]
 /**
  *
  */
-function Footer({ bookId, pageNumber }: Props) {
+function getPage(page: string | string[]): string {
+  const pageQuery = usePageQuery();
+  if (pageQuery) return pageQuery;
+
+  return Array.isArray(page) ? page[0] : page;
+}
+
+/**
+ *
+ */
+function Footer({ bookId, page }: Props) {
+  const items = getNavItems(bookId, getPage(page));
+
   return (
     <footer className="Footer">
       <div className="Footer__container">
         <div className="Footer__content">
-          {getNavItems(bookId, pageNumber).map((item: TFooterNavItemProps) => (
+          {items.map((item: TFooterNavItemProps) => (
             <FooterItem key={item.label} {...item} />
           ))}
         </div>

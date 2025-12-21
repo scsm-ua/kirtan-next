@@ -1,3 +1,5 @@
+import Script from 'next/script';
+
 import 'react-responsive-modal/styles.css';
 import './SongPage.scss';
 
@@ -13,6 +15,7 @@ import Layout from '@/components/common/Layout/Layout';
 import LdJson from '@/other/metadata/LdJson';
 import OtherTranslations from '@/components/song/OtherTranslations/OtherTranslations';
 import PageNumber from '@/components/song/PageNumber/PageNumber';
+import PrevNextNav from '@/components/song/PrevNextNav/PrevNextNav';
 import SongbookList from '@/components/song/OtherTranslations/SongbookList';
 import SongHeader from '@/components/song/SongHeader';
 import SongShare from '@/components/song/SongShare/SongShare';
@@ -21,7 +24,6 @@ import { translate } from '@/other/i18n';
 
 import type { BookListPageProps } from '@/other/metadata/getBookListMeta';
 import type { TBookDescription } from '@/types/book';
-import type { TSong, TVerse } from '@/types/song';
 
 /**/
 export const generateMetadata = getBookListMeta;
@@ -55,7 +57,7 @@ async function SongPage({ params }: BookListPageProps) {
   console.log(nav, song);
 
   return (
-    <Layout bookId={bookId}>
+    <Layout bookId={bookId} className="SongPage" page={song.attributes?.page}>
       <div className="Main__container SongPage__container">
         <div className="SongPage__content">
           <header className="SongPage__header">
@@ -95,6 +97,12 @@ async function SongPage({ params }: BookListPageProps) {
           />
         </div>
       </div>
+
+      <PrevNextNav navMap={nav} page={song.attributes?.page} />
+
+      {song?.embeds.length > 0 && (
+        <Script src="https://w.soundcloud.com/player/api.js" />
+      )}
 
       {/*<LdJson*/}
       {/*  bookId={bookId}*/}

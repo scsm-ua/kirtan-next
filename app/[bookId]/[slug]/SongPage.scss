@@ -1,4 +1,6 @@
 .SongPage {
+  position: relative;
+
   &__container {
     margin: 0 auto;
     max-width: var(--extra-max-width);

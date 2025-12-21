@@ -1,8 +1,8 @@
 'use client';
-import { useEffect, useState } from 'react';
 
 import './PageNumber.scss';
 import { PATH } from '@/other/constants';
+import { usePageQuery } from '@/other/hooks/usePageQuery';
 
 /**/
 type Props = {
@@ -15,12 +15,7 @@ type Props = {
  *
  */
 function PageNumber({ bookId, label, page }: Props) {
-  const [pageQuery, setPage] = useState<string | null>(null);
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    setPage(urlParams.get('p') || '');
-  }, []);
+  const pageQuery = usePageQuery();
 
   if (!page || typeof pageQuery !== 'string') return null;
 

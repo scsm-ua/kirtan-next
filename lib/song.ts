@@ -159,11 +159,11 @@ function getNavItemsBySlug(
 
     return {
       prev: prev && {
-        path: bookId + '/' + prev.id,
+        path: '/' + bookId + '/' + prev.id,
         title: prev.title
       },
       next: next && {
-        path: bookId + '/' + next.id,
+        path: '/' + bookId + '/' + next.id,
         title: next.title
       }
     };

@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import './Layout.scss';
 import Footer from '@/components/common/Footer/Footer';
 import Header from '@/components/common/Header/Header';
@@ -9,13 +11,16 @@ import { PATH } from '@/other/constants';
 function Layout({
   bookId,
   children,
-  pageNumber
+  className,
+  page
 }: Readonly<{
   bookId: string;
   children: React.ReactNode;
-  pageNumber?: number;
+  className: string;
+  page?: string | string[];
 }>) {
   const path = PATH.IMG.FAV;
+  const cls = classNames('Main', className);
 
   return (
     <html lang="en">
@@ -39,7 +44,10 @@ function Layout({
         <link rel="icon" type="image/png" sizes="16x16" href={`${path}favicon-16x16.png`} />
         <link rel="manifest" href={`${path}manifest.json`} />
         <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="msapplication-TileImage" content={`${path}ms-icon-144x144.png`} />
+        <meta
+          name="msapplication-TileImage"
+          content={`${path}ms-icon-144x144.png`}
+        />
         <meta name="theme-color" content="#ffffff" />
       </head>
 
@@ -47,10 +55,10 @@ function Layout({
         <div className="Layout">
           <div className="Layout__content">
             <Header />
-            <main className="Main">{children}</main>
+            <main className={cls}>{children}</main>
           </div>
 
-          <Footer bookId={bookId} pageNumber={pageNumber} />
+          <Footer bookId={bookId} page={page} />
         </div>
       </body>
     </html>
