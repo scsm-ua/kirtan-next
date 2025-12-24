@@ -1,8 +1,7 @@
-import Script from 'next/script';
-
 import 'react-responsive-modal/styles.css';
 import './SongPage.scss';
 
+import AudioList from '@/components/song/AudioList/AudioList';
 import { getBookIdParamList, getBooksMap } from '@/lib/books';
 import { getBookListMeta } from '@/other/metadata/getBookListMeta';
 import {
@@ -95,14 +94,16 @@ async function SongPage({ params }: BookListPageProps) {
             label={translate(bookId, 'SONG_PAGE.SHOW_TRANSLATION')}
             song={song}
           />
+
+          {song.embeds?.length > 0 && (
+            <AudioList audios={song.embeds} />
+          )}
         </div>
       </div>
 
-      <PrevNextNav navMap={nav} page={song.attributes?.page} />
 
-      {song?.embeds.length > 0 && (
-        <Script src="https://w.soundcloud.com/player/api.js" />
-      )}
+
+      <PrevNextNav navMap={nav} page={song.attributes?.page} />
 
       {/*<LdJson*/}
       {/*  bookId={bookId}*/}

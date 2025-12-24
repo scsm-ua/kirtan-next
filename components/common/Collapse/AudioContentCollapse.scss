@@ -1,0 +1,30 @@
+.AudioContentCollapse {
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 12px 0;
+  }
+
+  &__icon {
+    color: var(--border-color);
+    transition: all var(--transition-duration) ease-in;
+
+    &--rotate {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__title {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 28px;
+    margin: 0 0 0 16px;
+    color: var(--title-color);
+  }
+
+  &__content {
+    padding: 12px 0 20px;
+  }
+}

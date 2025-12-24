@@ -5,7 +5,7 @@ import type { CollapsibleProps } from '@radix-ui/react-collapsible';
 import './Collapse.scss';
 
 /**/
-type Props = CollapsibleProps & {
+export type CollapseProps = CollapsibleProps & {
   children: ReactNode | ReactNode[];
   trigger?: ReactNode;
 };
@@ -13,11 +13,11 @@ type Props = CollapsibleProps & {
 /**
  *
  */
-function Collapse({ children, trigger, ...rest }: Props) {
+function Collapse({ children, trigger, ...rest }: CollapseProps) {
   return (
     <Collapsible.Root className="Collapse" {...rest}>
       {trigger && (
-        <Collapsible.Trigger>{trigger}</Collapsible.Trigger>
+        <Collapsible.Trigger asChild>{trigger}</Collapsible.Trigger>
       )}
 
       <Collapsible.Content className="Collapse__content">
