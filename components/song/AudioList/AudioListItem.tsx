@@ -49,6 +49,7 @@ class AudioListItem extends PureComponent<Props, State> {
             url={audio.embed_url}
           />
         )}
+
         {hasIframeLoaded || (
           <div className="AudioListItem__loader">
             <div className="AudioListItem__skeleton">

@@ -1,0 +1,28 @@
+.SearchModule {
+  &__header {
+    padding: 0 var(--side-padding);
+  }
+
+  &__content {
+    padding: 0 var(--side-padding) var(--side-padding);
+  }
+
+  &__nothing {
+    display: none;
+    padding: var(--side-padding) 0;
+    border-bottom: solid 1px var(--grey);
+  }
+
+  &__more {
+    text-align: center;
+    padding: var(--side-padding) 0;
+
+    button {
+      height: 40px;
+      border-radius: 20px;
+      font-size: 16px;
+      padding: 0 16px;
+      letter-spacing: 0.8px;
+    }
+  }
+}

@@ -2,9 +2,8 @@
 import { PureComponent } from 'react';
 
 import './AudioList.scss';
-import AudioContentCollapse from '@/components/common/Collapse/AudioContentCollapse';
-import type { TAudio } from '@/types/song';
 import AudioListItem from '@/components/song/AudioList/AudioListItem';
+import type { TAudio } from '@/types/song';
 
 /**/
 type Props = {
@@ -52,13 +51,6 @@ class AudioList extends PureComponent<Props, State> {
               onOpenChange={this.handleOpen}
             />
           ))}
-
-          {/*<AudioContentCollapse*/}
-          {/*  */}
-          {/*  title="Here the sound!"*/}
-          {/*>*/}
-          {/*  Music track*/}
-          {/*</AudioContentCollapse>*/}
         </ul>
       </div>
     );

@@ -3,15 +3,10 @@ import Skeleton  from 'react-loading-skeleton';
 
 import './SongLoader.scss';
 
-/**/
-type Props = {
-
-};
-
 /**
  *
  */
-function SongLoader({}: Props) {
+function SongLoader() {
   return (
     <div className="SongLoader">
       <header className="SongLoader__header">

@@ -16,7 +16,7 @@ function Layout({
 }: Readonly<{
   bookId: string;
   children: React.ReactNode;
-  className: string;
+  className?: string;
   page?: string | string[];
 }>) {
   const path = PATH.IMG.FAV;

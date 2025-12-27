@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'path';
 
 import { FILES, PATH } from '@/other/constants';
-import { TContentGroup } from '@/types/common';
+import type { TContentGroup } from '@/types/common';
 
 /**/
 export function getAuthorsByBookId(bookId: string): Promise<Array<TContentGroup>> {

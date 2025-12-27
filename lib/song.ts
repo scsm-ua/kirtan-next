@@ -85,16 +85,6 @@ export async function getNavItems(
   ) as TContentItem[];
 
   return getNavItemsBySlug(songSlug, bookId, songs);
-  // console.log('++++', navs);
-  //
-  // const theSong = songs.find((item: TContentItem) => item.id === songSlug);
-  //
-  // const nav: Array<[string, TNavItems]> = theSong.pages.map((p: string) => [
-  //   p,
-  //   getNavItemsByPage(p, bookId, songs)
-  // ]);
-  //
-  // return Object.fromEntries(nav);
 }
 
 /**

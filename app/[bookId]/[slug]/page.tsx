@@ -51,9 +51,7 @@ async function SongPage({ params }: BookListPageProps) {
     }
   )) as TBookDescription[];
 
-  // const context = { bookId, booksMap };
   const nav = await getNavItems(slug, bookId);
-  console.log(nav, song);
 
   return (
     <Layout bookId={bookId} className="SongPage" page={song.attributes?.page}>
