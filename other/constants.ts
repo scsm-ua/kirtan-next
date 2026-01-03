@@ -9,7 +9,8 @@ export const FILES = {
   A_Z: 'a-z.json',
   AUTHORS: 'authors.json',
   BOOK_LIST: 'book-list.json',
-  CONTENTS: 'contents.json'
+  CONTENTS: 'contents.json',
+  SITEMAP: 'sitemap.xml'
 };
 
 /**/
