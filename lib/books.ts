@@ -28,6 +28,8 @@ export async function getBookIdParamList(): Promise<Array<{ bookId: string }>> {
  *
  */
 export async function getBookIdList(): Promise<Array<string>> {
+  // return Promise.resolve(['en-pe']);
+
   const books = await getBooksMap();
   return Object.keys(books);
 }

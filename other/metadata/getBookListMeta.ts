@@ -142,7 +142,7 @@ function getTwitter(args: Args) {
  */
 
 type Props = {
-  params: Promise<{ id: string }>;
+  params: Promise<{ bookId: string; id: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
@@ -157,7 +157,7 @@ export async function generateMetadata({
   const product = await fetch(`https://.../${id}`).then((res) => res.json());
 
   // optionally access and extend (rather than replace) parent metadata
-  const previousImages = (await parent).openGraph?.images || [];
+  const previousImages = (await parent as any).openGraph?.images || [];
 
   return {
     title: product.title,

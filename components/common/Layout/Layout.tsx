@@ -51,10 +51,10 @@ function Layout({
         <meta name="theme-color" content="#ffffff" />
       </head>
 
-      <body>
+      <body className="Body">
         <div className="Layout">
           <div className="Layout__content">
-            <Header />
+            <Header bookId={bookId} />
             <main className={cls}>{children}</main>
           </div>
 

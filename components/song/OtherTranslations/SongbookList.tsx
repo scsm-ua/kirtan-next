@@ -1,7 +1,5 @@
-import classNames from 'classnames';
-
 import './SongbookList.scss';
-import BookThumbnail from '@/components/common/BookThumnail/BookThumbnail';
+import SongBookItem from '@/components/song/OtherTranslations/SongBookItem';
 import type { TBookDescription } from '@/types/book';
 
 /**/
@@ -20,27 +18,15 @@ function SongbookList({ bookId, bookDescriptions, slug }: Props) {
       {bookDescriptions.map((description: TBookDescription) => {
         const href = `/${description.slug}/${slug}`;
 
-        const cls = (classNames as any)(
-          'SongbookList__title',
-          description.slug === bookId && 'SongbookList__title--active'
-        );
-
         return (
-          <li className="SongbookList__item" key={description.slug}>
-            <a href={href}>
-              <div className="SongbookList__container">
-                <BookThumbnail bookId={description.slug} />
-
-                <div className="SongbookList__info">
-                  <h5 className={cls}>{description.title}</h5>
-
-                  <div className="ellipsis SongbookList__subtitle">
-                    {description.subtitle}
-                  </div>
-                </div>
-              </div>
-            </a>
-          </li>
+          <SongBookItem
+            bookId={description.slug}
+            href={href}
+            isActive={description.slug === bookId}
+            key={description.slug}
+            subtitle={description.subtitle}
+            title={description.title}
+          />
         );
       })}
     </ul>

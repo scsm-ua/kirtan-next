@@ -48,3 +48,12 @@ export type TContentItem = {
 };
 /**/
 export type TTranslationMode = '1' | '2' | '3';
+
+/**/
+declare global {
+  interface Window {
+    SC: {
+      Widget: any;
+    };
+  }
+}

@@ -19,7 +19,7 @@ function SearchControls({ bookId, value, onClear, onInput, onSubmit }: Props) {
   const handleChange = (e: SyntheticEvent) => onInput(e.target['value']);
 
   const handleKeyDown = (e: SyntheticEvent) => {
-    (e.key === 'Enter' || e.keyCode === 13) && onSubmit();
+    (e['key'] === 'Enter' || e['keyCode'] === 13) && onSubmit();
   };
 
   return (

@@ -3,6 +3,9 @@
 import { getBookIdList } from '@/lib/books';
 import PrefRedirect from '@/components/home/PrefRedirect';
 
+/**/
+// export const dynamicParams = false;
+
 /**
  *
  */

@@ -2,7 +2,7 @@ import { isObject } from './utils';
 import translations from '../source/translations.json';
 
 /**/
-const DEFAULT_LANGUAGE = 'en';
+export const DEFAULT_LANGUAGE = 'en';
 
 /**
  *
@@ -15,6 +15,13 @@ function getLanguageSet(language = '') {
 function getLanguageSetNotDefault(language) {
   const lang = language.slice(0, 2);
   return translations[lang];
+}
+
+/**
+ *
+ */
+export function isValidBookId(id: string): boolean {
+  return !!translations[id];
 }
 
 /**

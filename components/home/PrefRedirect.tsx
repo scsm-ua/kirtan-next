@@ -30,7 +30,7 @@ function handleBookId(preservedBookId: string, bookIdList: string[]) {
     makeRedirectTo(preservedBookId);
   } else {
     const lang = (
-      navigator.language || Intl.DateTimeFormat().resolvedOptions()
+      navigator.language || Intl.DateTimeFormat().resolvedOptions().locale
     ).slice(0, 2);
 
     makeRedirectTo(bookIdList.includes(lang) ? lang : 'en');
@@ -41,7 +41,7 @@ function handleBookId(preservedBookId: string, bookIdList: string[]) {
  *
  */
 function makeRedirectTo(bookId) {
-  window.location = '/' + bookId + '/';
+  window.location.href = '/' + bookId + '/';
 }
 
 /**/

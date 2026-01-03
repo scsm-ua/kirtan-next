@@ -7,6 +7,7 @@ import LdJson from '@/other/metadata/LdJson';
 import type { BookListPageProps } from '@/other/metadata/getBookListMeta';
 
 /**/
+export const dynamicParams = false;
 export const generateMetadata = getBookListMeta;
 /* See the comments in the `layout.tsx` file. */
 // export const generateStaticParams = getBookIdParamList;

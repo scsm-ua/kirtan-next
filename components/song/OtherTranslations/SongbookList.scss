@@ -2,35 +2,4 @@
   margin: 0;
   padding: 0;
   list-style-type: none;
-
-  &__item {
-    padding: var(--side-padding) 0;
-
-    &:not(:last-child) {
-      border-bottom: solid 1px var(--grey);
-    }
-  }
-
-  &__container {
-    display: flex;
-    align-items: center;
-  }
-
-  &__info {
-    margin: 0 0 0 20px;
-    width: calc(100% - 72px);
-  }
-
-  &__title {
-    &--active {
-      color: var(--accent-color);
-    }
-  }
-
-  &__subtitle {
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 20px;
-    color: var(--text-color);
-  }
 }

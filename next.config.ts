@@ -16,6 +16,9 @@ const nextConfig: NextConfig = {
   output: 'export',
   // trailingSlash: true,
   images: { unoptimized: true },
+  experimental: {
+    globalNotFound: true
+  },
   webpack(config) {
     config.plugins.push(
       new (require('webpack').DefinePlugin)({

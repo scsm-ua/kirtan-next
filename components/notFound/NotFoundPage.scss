@@ -1,0 +1,25 @@
+.NotFoundPage {
+  &__header {
+    padding: var(--side-padding) 0;
+  }
+
+  &__title {}
+
+  &__text {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    color: var(--text-color);
+  }
+
+  &__main {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+}

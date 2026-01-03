@@ -16,16 +16,39 @@ export async function getSongSlugParam({
   params
 }: {
   params: { bookId: string };
-}): Promise<Array<{ slug: string }>> {
+}): Promise<Array<{ bookId: string; slug: string }>> {
+  // console.log('^^^^^^^^^^^^^^^^^');
+  //
+  // if (!params?.bookId) {
+  //   return [{ bookId: 'en-pe', slug: '' }];
+  // }
+
+  // console.log(
+  //   '++++++++++++++',
+  //   process.cwd(),
+  //   PATH.DIR.SOURCE,
+  //   params.bookId,
+  //   FILES.CONTENTS
+  // );
   const p = path.join(
     process.cwd(),
     PATH.DIR.SOURCE,
-    params.bookId,
+    params.bookId || '',
     FILES.CONTENTS
   );
 
-  const str = await fs.readFile(p, 'utf8');
-  return contents2slugs(JSON.parse(str) as TContentGroup[]);
+  try {
+    const str = await fs.readFile(p, 'utf8');
+    const resp = contents2slugs(JSON.parse(str) as TContentGroup[])
+      .map((x) => ({ ...x, bookId: params.bookId}));
+    // console.log(JSON.stringify(resp, null,2));
+
+    return resp;
+
+  } catch (e) {
+    console.error(e);
+    return [{ bookId: params.bookId, slug: '' }];
+  }
 }
 
 /**
@@ -58,6 +81,15 @@ export async function getSongBySlug(
   songSlug: string,
   bookId: string
 ): Promise<TSong> {
+  // console.log(
+  //   '++++++++++++++',
+  //   process.cwd(),
+  //   PATH.DIR.SOURCE,
+  //   bookId,
+  //   PATH.DIR.SONGS,
+  //   songSlug + '.json'
+  // );
+
   const p = path.join(
     process.cwd(),
     PATH.DIR.SOURCE,
@@ -66,8 +98,15 @@ export async function getSongBySlug(
     songSlug + '.json'
   );
 
-  const str = await fs.readFile(p, 'utf8');
-  return JSON.parse(str) as TSong;
+  try {
+    const str = await fs.readFile(p, 'utf8');
+    return JSON.parse(str) as TSong;
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
+
+
 }
 
 /**
