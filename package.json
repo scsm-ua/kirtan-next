@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack -p 3333",
-    "build:prod": "next build --webpack",
-    "build:test": "NODE_ENV=development next build --webpack",
+    "build": "next build --webpack",
+    "build:prod": "env-cmd -f env/.env.prod npm run build",
+    "build:test": "env-cmd -f env/.env.dev npm run build",
     "start": "serve out -p 3334",
     "lint": "eslint"
   },
@@ -25,6 +26,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "env-cmd": "^11.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.0",
     "prettier": "^2.8.8",

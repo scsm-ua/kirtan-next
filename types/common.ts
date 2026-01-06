@@ -1,14 +1,4 @@
 /**/
-export type TTranslation = {
-  [key: string]:
-    | string
-    | { [key: string]: string | { [key: string]: string } };
-};
-
-/**/
-export type GetTranslation = (key: string) => string;
-
-/**/
 export type TPill = {
   // page: string;
   // path: string;
@@ -17,23 +7,11 @@ export type TPill = {
 };
 
 /**/
-export type TContentItem_obsolete = {
-  aliasName: string;            // aliasName ?== id
-  duplicates: Array<any>;
-  embeds: Array<string>;
-  fileName: string;             // id + .html
-  id: string;                   // slug
-  idx?: number;                 // Build-time field. To be removed.
-  name?: string;                // name ?== title
-  page: number | Array<number>;
-  page_number?: number;         // Build-time field. To be discussed.
-  title: string;                // Human-readable title.
-};
-/**/
 export type TContentGroup = {
   items: Array<TContentItem>;
   name?: string;
 };
+
 /**/
 export type TContentItem = {
   aliasName: string;    // The first line of the first verse.

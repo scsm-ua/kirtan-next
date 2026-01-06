@@ -1,6 +1,9 @@
 import type { MetadataRoute } from 'next';
 import { FILES, SITE } from '@/other/constants';
 
+/**/
+export const dynamic = 'force-static';
+
 /**
  *
  */

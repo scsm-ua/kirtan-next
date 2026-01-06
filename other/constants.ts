@@ -1,7 +1,7 @@
 /**/
 export const SITE = {
   NAME: 'Kirtan Site',
-  ORIGIN: process.env.PUBLIC_ORIGIN || 'http://localhost:3333/'
+  ORIGIN: process.env.NEXT_PUBLIC_ORIGIN || 'http://localhost:3333/'
 };
 
 /**/
