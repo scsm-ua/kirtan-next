@@ -23,10 +23,6 @@ export function lookFor(
     headers: { 'Content-Type': 'application/json' }
   })
     .then((r) => r.json())
-    // .then((r) => {
-    //   console.log(r);
-    //   return r;
-    // })
     .then(({ items, searchInformation }: TSearchResponse) => ({
       items: items as Array<TSearchResultItem>,
       itemsTotal: parseInt(searchInformation.totalResults)

@@ -1,35 +1,19 @@
-// import BookContextProvider from '@/components/common/BookContextProvider';
 import Authors from '@/components/authors/Authors';
 import AuthorBadges from '@/components/authors/AuthorBadges';
 import BookDescription from '@/components/common/BookDescription/BookDescription';
+import { getAuthorsPageMeta } from '@/other/metadata/getAuthorsPageMeta';
 import { getBookIdParamList, getBooksMap } from '@/lib/books';
-// import { getBookListMeta } from '@/other/metadata/getBookListMeta';
 import { getAuthorsByBookId } from '@/lib/contents';
 import Layout from '@/components/common/Layout/Layout';
 import { translate } from '@/other/i18n';
 // import LdJson from '@/other/metadata/LdJson';
 
-import type { BookListPageProps } from '@/other/metadata/getBookListMeta';
-import { TContentGroup } from '@/types/common';
+import type { BookListPageProps } from '@/types/book';
+import type { TContentGroup } from '@/types/common';
 
 /**/
-// export const generateMetadata = getBookListMeta;
-// export const generateStaticParams = getBookIdParamList;
-export const generateStaticParams = () => [{ bookId: 'en-pe' }];
-
-// const items = [
-//   { title: 'A' },
-//   { title: 'b' },
-//   { title: 'C' },
-//   { title: 'D' },
-//   { title: 'Dw' },
-//   { title: 'E' },
-//   { title: 'F' },
-//   { title: 'F45' },
-//   { title: 'F23' },
-//   { title: 'FSD' },
-//   { title: '54R' },
-// ];
+export const generateMetadata = getAuthorsPageMeta;
+export const generateStaticParams = getBookIdParamList;
 
 /**
  *
@@ -56,7 +40,6 @@ async function AuthorsPage({ params }: BookListPageProps) {
   }
 
   return (
-    // <BookContextProvider {...context}>
     <Layout bookId={bookId}>
       <div className="Main__container Authors">
         <div className="IndexPage__title">
@@ -75,7 +58,6 @@ async function AuthorsPage({ params }: BookListPageProps) {
         {/*/>*/}
       </div>
     </Layout>
-    // </BookContextProvider>
   );
 }
 

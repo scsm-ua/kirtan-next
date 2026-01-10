@@ -1,14 +1,14 @@
 import BookList from '@/components/home/BookList/BookList';
 import { getBooksMap } from '@/lib/books';
-import { getBookListMeta } from '@/other/metadata/getBookListMeta';
+import { getBookListPageMeta } from '@/other/metadata/getBookListPageMeta';
 import Layout from '@/components/common/Layout/Layout';
 import LdJson from '@/other/metadata/LdJson';
 
-import type { BookListPageProps } from '@/other/metadata/getBookListMeta';
+import type { BookListPageProps } from '@/types/book';
 
 /**/
 export const dynamicParams = false;
-export const generateMetadata = getBookListMeta;
+export const generateMetadata = getBookListPageMeta;
 /* See the comments in the `layout.tsx` file. */
 // export const generateStaticParams = getBookIdParamList;
 
@@ -18,9 +18,7 @@ export const generateMetadata = getBookListMeta;
 async function BookListPage({ params }: BookListPageProps) {
   const { bookId } = await params;
   const booksMap = await getBooksMap();
-
   const book = booksMap[bookId];
-  const context = { bookId, booksMap };
 
   return (
     <Layout bookId={bookId}>

@@ -3,18 +3,17 @@ import './SearchPage.scss';
 import BookDescription from '@/components/common/BookDescription/BookDescription';
 import { getBookIdParamList, getBooksMap } from '@/lib/books';
 import { getPagesList } from '@/lib/search';
-// import { getBookListMeta } from '@/other/metadata/getBookListMeta';
+import { getSearchPageMeta } from '@/other/metadata/getSearchPageMeta';
 import Layout from '@/components/common/Layout/Layout';
 import PageList from '@/components/search/PageList/PageList';
 import SearchModule from '@/components/search/SearchModule/SearchModule';
 // import LdJson from '@/other/metadata/LdJson';
 
-import type { BookListPageProps } from '@/other/metadata/getBookListMeta';
+import type { BookListPageProps } from '@/types/book';
 
 /**/
-// export const generateMetadata = getBookListMeta;
-// export const generateStaticParams = getBookIdParamList;
-export const generateStaticParams = () => [{ bookId: 'en-pe' }];
+export const generateMetadata = getSearchPageMeta;
+export const generateStaticParams = getBookIdParamList;
 
 /**
  *

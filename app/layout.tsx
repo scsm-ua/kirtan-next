@@ -9,7 +9,6 @@ import { getBookIdParamList } from '@/lib/books';
  * receive the expected `bookId` param.
  */
 export const generateStaticParams = getBookIdParamList;
-// export const dynamicParams = false;
 // export const generateStaticParams = Promise.resolve([{ bookId: 'en-pe' }]);
 
 /**/

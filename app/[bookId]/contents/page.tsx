@@ -1,18 +1,16 @@
-// import BookContextProvider from '@/components/common/BookContextProvider';
 import BookDescription from '@/components/common/BookDescription/BookDescription';
 import Contents from '@/components/contents/Contents';
 import { getBookIdParamList, getBooksMap } from '@/lib/books';
-// import { getBookListMeta } from '@/other/metadata/getBookListMeta';
 import { getContentsByBookId } from '@/lib/contents';
+import { getContentsPageMeta } from '@/other/metadata/getContentsPageMeta';
 import Layout from '@/components/common/Layout/Layout';
 // import LdJson from '@/other/metadata/LdJson';
 
-import type { BookListPageProps } from '@/other/metadata/getBookListMeta';
+import type { BookListPageProps } from '@/types/book';
 
 /**/
-// export const generateMetadata = getBookListMeta;
-// export const generateStaticParams = getBookIdParamList;
-export const generateStaticParams = () => [{ bookId: 'en-pe' }];
+export const generateMetadata = getContentsPageMeta;
+export const generateStaticParams = getBookIdParamList;
 
 /**
  *
@@ -26,25 +24,23 @@ async function ContentsPage({ params }: BookListPageProps) {
   const book = booksMap[bookId];
 
   return (
-    // <BookContextProvider {...context}>
-      <Layout bookId={bookId}>
-        <div className="Main__container Contents">
-          <div className="IndexPage__title">
-            <BookDescription bookDescription={book} />
-          </div>
+    <Layout bookId={bookId}>
+      <div className="Main__container Contents">
+        <div className="IndexPage__title">
+          <BookDescription bookDescription={book} />
+        </div>
 
-          <div className="Main__content">
-            <Contents bookId={bookId} contents={contents} />
-          </div>
+        <div className="Main__content">
+          <Contents bookId={bookId} contents={contents} />
+        </div>
 
         {/*<LdJson*/}
         {/*  bookId={bookId}*/}
         {/*  description={book.subtitle}*/}
         {/*  title={book.title}*/}
         {/*/>*/}
-        </div>
-      </Layout>
-    // </BookContextProvider>
+      </div>
+    </Layout>
   );
 }
 

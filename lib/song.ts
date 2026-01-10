@@ -56,9 +56,9 @@ export async function getSongSlugParam({
  */
 export async function getBookDescriptionsByBook(
   songSlug: string,
-  bookMap: TBooksMap
+  booksMap: TBooksMap
 ): Promise<Array<TBookDescription> | void> {
-  const bookIds = Object.keys(bookMap);
+  const bookIds = Object.keys(booksMap);
 
   return Promise.all(bookIds.map(getContentsByBookId))
     .then((arrOfContents: Array<TContentGroup[]>) => {
@@ -69,7 +69,7 @@ export async function getBookDescriptionsByBook(
           return slug && bookIds[idx];
         })
         .filter(Boolean)
-        .map((bookId: string) => bookMap[bookId]);
+        .map((bookId: string) => booksMap[bookId]);
     })
     .catch(console.error);
 }

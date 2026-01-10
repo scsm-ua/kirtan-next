@@ -35,7 +35,7 @@ async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const bookIds = ['en-pe']; // await getBookIdList();
 
   return Promise.all(
-    bookIds.map((bookId) => getContentsByBookId(bookId), bookIds)
+    bookIds.map((bookId) => getContentsByBookId(bookId))
   )
     .then((contentsArr: Array<TContentGroup[]>) =>
       contentsArr.flatMap((groups: TContentGroup[], idx: number) =>

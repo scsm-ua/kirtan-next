@@ -16,3 +16,16 @@ export type TBookContext = {
   bookId: string;
   booksMap: TBooksMap;
 };
+
+/**/
+export type BookListPageProps = {
+  params: Promise<{ bookId: string }>;
+};
+
+/**/
+export type SongPageProps = {
+  params: Promise<{
+    bookId: string;
+    slug: string;
+  }>;
+};

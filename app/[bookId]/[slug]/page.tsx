@@ -4,14 +4,14 @@ import 'react-responsive-modal/styles.css';
 import './SongPage.scss';
 
 import AudioList from '@/components/song/AudioList/AudioList';
-import { getBookIdParamList, getBooksMap } from '@/lib/books';
-import { getBookListMeta } from '@/other/metadata/getBookListMeta';
 import {
   getBookDescriptionsByBook,
   getNavItems,
   getSongBySlug,
   getSongSlugParam
 } from '@/lib/song';
+import { getBooksMap } from '@/lib/books';
+import { getSongPageMeta } from '@/other/metadata/getSongPageMeta';
 import Layout from '@/components/common/Layout/Layout';
 import LdJson from '@/other/metadata/LdJson';
 import OtherTranslations from '@/components/song/OtherTranslations/OtherTranslations';
@@ -23,25 +23,17 @@ import SongShare from '@/components/song/SongShare/SongShare';
 import SongText from '@/components/song/SongText/SongText';
 import { translate } from '@/other/i18n';
 
-import type { TBookDescription } from '@/types/book';
-
-/**/
-type Props = {
-  params: Promise<{
-    bookId: string;
-    slug: string;
-  }>;
-};
+import type { SongPageProps, TBookDescription } from '@/types/book';
 
 /**/
 export const dynamicParams = false;
-// export const generateMetadata = getBookListMeta;
+export const generateMetadata = getSongPageMeta;
 export const generateStaticParams = getSongSlugParam;
 
 /**
  *
  */
-async function SongPage({ params }: Props) {
+async function SongPage({ params }: SongPageProps) {
   const { bookId, slug } = await params;
   if (!bookId || !slug) return notFound();
 
@@ -51,6 +43,7 @@ async function SongPage({ params }: Props) {
   const song = await getSongBySlug(slug, bookId);
   if (!song) return notFound();
 
+  console.warn('>>>>>>>>> Check this place!');
   const descriptions = (await getBookDescriptionsByBook(
     slug,
     /*booksMap*/ {
@@ -112,8 +105,6 @@ async function SongPage({ params }: Props) {
           )}
         </div>
       </div>
-
-
 
       <PrevNextNav navMap={nav} />
 

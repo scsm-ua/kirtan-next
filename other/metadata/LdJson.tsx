@@ -1,6 +1,6 @@
 import type { Book, WithContext } from 'schema-dts';
 
-import { CREATOR, KEYWORDS, PUBLISHER } from '@/other/metadata/getCommonMeta';
+import { CREATOR, KEYWORDS, PUBLISHER } from '@/other/metadata/helpers/getCommonMeta';
 import { getBannerUrl } from '@/other/helpers';
 import { SITE } from '@/other/constants';
 
