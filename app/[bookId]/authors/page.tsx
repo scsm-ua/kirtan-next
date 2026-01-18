@@ -5,8 +5,9 @@ import { getAuthorsPageMeta } from '@/other/metadata/getAuthorsPageMeta';
 import { getBookIdParamList, getBooksMap } from '@/lib/books';
 import { getAuthorsByBookId } from '@/lib/contents';
 import Layout from '@/components/common/Layout/Layout';
+import LdJson from '@/other/metadata/LdJson';
+import { PATH } from '@/other/constants';
 import { translate } from '@/other/i18n';
-// import LdJson from '@/other/metadata/LdJson';
 
 import type { BookListPageProps } from '@/types/book';
 import type { TContentGroup } from '@/types/common';
@@ -26,8 +27,8 @@ async function AuthorsPage({ params }: BookListPageProps) {
   const book = booksMap[bookId];
 
   const label = translate(bookId, 'AUTHORS_PAGE.NO_AUTHOR');
-
   const items = contents.filter((g: TContentGroup) => g.name);
+
   const noAuthor = contents.find(
     (g: TContentGroup) => !g.name && g.items.length > 0
   );
@@ -51,11 +52,7 @@ async function AuthorsPage({ params }: BookListPageProps) {
           <Authors bookId={bookId} contents={items} />
         </div>
 
-        {/*<LdJson*/}
-        {/*  bookId={bookId}*/}
-        {/*  description={book.subtitle}*/}
-        {/*  title={book.title}*/}
-        {/*/>*/}
+        <LdJson bookId={bookId} pageKey="AUTHORS_PAGE" pagePath={PATH.PAGE.AUTHORS} />
       </div>
     </Layout>
   );

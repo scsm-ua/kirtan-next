@@ -3,13 +3,14 @@ import { getBooksMap } from '@/lib/books';
 import { getBookListPageMeta } from '@/other/metadata/getBookListPageMeta';
 import Layout from '@/components/common/Layout/Layout';
 import LdJson from '@/other/metadata/LdJson';
+import { PATH } from '@/other/constants';
 
 import type { BookListPageProps } from '@/types/book';
 
 /**/
 export const dynamicParams = false;
 export const generateMetadata = getBookListPageMeta;
-/* See the comments in the `layout.tsx` file. */
+/* See the comments in the `app/layout.tsx` file. */
 // export const generateStaticParams = getBookIdParamList;
 
 /**
@@ -18,17 +19,16 @@ export const generateMetadata = getBookListPageMeta;
 async function BookListPage({ params }: BookListPageProps) {
   const { bookId } = await params;
   const booksMap = await getBooksMap();
-  const book = booksMap[bookId];
 
   return (
     <Layout bookId={bookId}>
+      <BookList bookId={bookId} booksMap={booksMap} />
+
       <LdJson
         bookId={bookId}
-        description={book.subtitle}
-        title={book.title}
+        pageKey="BOOK_LIST_PAGE"
+        pagePath={PATH.PAGE.BOOK_LIST}
       />
-
-      <BookList bookId={bookId} booksMap={booksMap} />
     </Layout>
   );
 }

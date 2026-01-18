@@ -4,6 +4,7 @@ import { getBooksMap } from '@/lib/books';
 import { getBookDescriptionsByBook, getSongBySlug } from '@/lib/song';
 import { getCommonMeta } from '@/other/metadata/helpers/getCommonMeta';
 import { getOG } from '@/other/metadata/helpers/getOG';
+import { getSongPageTitle } from '@/other/metadata/helpers/getSongPageTitle';
 import { getTwitter } from '@/other/metadata/helpers/getTwitter';
 import { KEYWORDS, ROBOTS } from '@/other/metadata/helpers/constants';
 
@@ -25,7 +26,7 @@ export async function getSongPageMeta({
 
   console.warn('>>>>>>>>> Missing song description (1st line)!');
   const description = null;
-  const title = getPageTitle(song);
+  const title = getSongPageTitle(song);
 
   const booksMap = await getBooksMap();
   const languages = await getLanguages(slug, booksMap);
@@ -49,23 +50,6 @@ export async function getSongPageMeta({
     title: title,
     twitter: getTwitter(bookId, description, title)
   } as Metadata;
-}
-
-/**
- *
- */
-function getPageTitle(song: TSong): string {
-  let title = song.title.join(' ');
-
-  if (song.author?.length > 0) {
-    title += '. ' + song.author[0];
-  }
-
-  if (song.subTitle?.length > 0) {
-    title += '. ' + song.subTitle.join(' ');
-  }
-
-  return title;
 }
 
 /**

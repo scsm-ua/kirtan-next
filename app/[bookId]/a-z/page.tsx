@@ -4,16 +4,16 @@ import { getAzPageMeta } from '@/other/metadata/getAzPageMeta';
 import { getBookIdParamList, getBooksMap } from '@/lib/books';
 import { getIndexesByBookId } from '@/lib/contents';
 import Layout from '@/components/common/Layout/Layout';
+import LdJson from '@/other/metadata/LdJson';
+import { PATH } from '@/other/constants';
 import Pills from '@/components/common/Pills/Pills';
-// import LdJson from '@/other/metadata/LdJson';
 
 import type { BookListPageProps } from '@/types/book';
 import type { TContentGroup } from '@/types/common';
 
 /**/
 export const generateMetadata = getAzPageMeta;
-// export const generateStaticParams = getBookIdParamList;
-export const generateStaticParams = () => [{ bookId: 'en-pe' }];
+export const generateStaticParams = getBookIdParamList;
 
 /**
  *
@@ -41,11 +41,7 @@ async function AZPage({ params }: BookListPageProps) {
           <AZ bookId={bookId} contents={contents} />
         </div>
 
-        {/*<LdJson*/}
-        {/*  bookId={bookId}*/}
-        {/*  description={book.subtitle}*/}
-        {/*  title={book.title}*/}
-        {/*/>*/}
+        <LdJson bookId={bookId} pageKey="A_Z_PAGE" pagePath={PATH.PAGE.A_Z} />
       </div>
     </Layout>
   );

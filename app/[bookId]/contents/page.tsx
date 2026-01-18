@@ -4,7 +4,8 @@ import { getBookIdParamList, getBooksMap } from '@/lib/books';
 import { getContentsByBookId } from '@/lib/contents';
 import { getContentsPageMeta } from '@/other/metadata/getContentsPageMeta';
 import Layout from '@/components/common/Layout/Layout';
-// import LdJson from '@/other/metadata/LdJson';
+import LdJson from '@/other/metadata/LdJson';
+import { PATH } from '@/other/constants';
 
 import type { BookListPageProps } from '@/types/book';
 
@@ -34,11 +35,7 @@ async function ContentsPage({ params }: BookListPageProps) {
           <Contents bookId={bookId} contents={contents} />
         </div>
 
-        {/*<LdJson*/}
-        {/*  bookId={bookId}*/}
-        {/*  description={book.subtitle}*/}
-        {/*  title={book.title}*/}
-        {/*/>*/}
+        <LdJson bookId={bookId} pageKey="CONTENTS_PAGE" pagePath={PATH.PAGE.CONTENTS} />
       </div>
     </Layout>
   );

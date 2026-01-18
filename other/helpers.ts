@@ -22,3 +22,10 @@ export function scrollToSection(id: string): void {
     behavior: 'smooth'
   });
 }
+
+/**
+ *
+ */
+export function getIFrameUrl(audioUrl: string): string {
+  return 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(audioUrl);
+}

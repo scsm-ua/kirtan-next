@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect } from 'react';
+import { getIFrameUrl } from '@/other/helpers';
 
 /**/
 type Props = {
@@ -12,7 +13,7 @@ type Props = {
  */
 function AudioLoader({ isOpen, onPlayStart, url }: Props) {
   let player;
-  const src = 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(url);
+  const src = getIFrameUrl(url);
 
   useLayoutEffect(() => {
     player = window.SC.Widget(src);

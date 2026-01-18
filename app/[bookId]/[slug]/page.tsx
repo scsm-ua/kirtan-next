@@ -13,7 +13,7 @@ import {
 import { getBooksMap } from '@/lib/books';
 import { getSongPageMeta } from '@/other/metadata/getSongPageMeta';
 import Layout from '@/components/common/Layout/Layout';
-import LdJson from '@/other/metadata/LdJson';
+import LdJsonSong from '@/other/metadata/LdJsonSong';
 import OtherTranslations from '@/components/song/OtherTranslations/OtherTranslations';
 import PageNumber from '@/components/song/PageNumber/PageNumber';
 import PrevNextNav from '@/components/song/PrevNextNav/PrevNextNav';
@@ -100,19 +100,12 @@ async function SongPage({ params }: SongPageProps) {
             song={song}
           />
 
-          {song.embeds?.length > 0 && (
-            <AudioList audios={song.embeds} />
-          )}
+          {song.embeds?.length > 0 && <AudioList audios={song.embeds} />}
         </div>
       </div>
 
       <PrevNextNav navMap={nav} />
-
-      {/*<LdJson*/}
-      {/*  bookId={bookId}*/}
-      {/*  description={book.subtitle}*/}
-      {/*  title={book.title}*/}
-      {/*/>*/}
+      <LdJsonSong bookId={bookId} slug={slug} song={song} />
     </Layout>
   );
 }

@@ -1,46 +1,55 @@
-import type { Book, WithContext } from 'schema-dts';
-
-import { CREATOR, KEYWORDS, PUBLISHER } from '@/other/metadata/helpers/getCommonMeta';
-import { getBannerUrl } from '@/other/helpers';
 import { SITE } from '@/other/constants';
+import { translate } from '@/other/i18n';
 
 /**/
 type Props = {
   bookId: string;
-  description: string;
-  title: string;
+  pageKey: string;
+  pagePath: string;
 };
 
 /**
  *
  */
-function LdJson(props: Props) {
-  const { bookId, description, title } = props;
-  const imgSrc = getBannerUrl(bookId);
+function LdJson({ bookId, pageKey, pagePath }: Props) {
+  const language = bookId.slice(0, 2);
+  const url = SITE.ORIGIN + bookId + pagePath;
 
-  // Todo: check and revise
-  const jsonLd: WithContext<Book> = {
+  const title = translate(bookId, pageKey + '.SCHEMA.NAME');
+  const description = translate(bookId, pageKey + '.SCHEMA.DESCRIPTION');
+
+  const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Book',
-    /*
-     audience
-     author
-     genre
-      maintainer
-      sourceOrganization
-      teaches
-    */
-    creator: CREATOR,
-    description: description,
-    image: imgSrc,
-    inLanguage: bookId.slice(0, 2),
-    keywords: KEYWORDS,
-    name: title,
-    publisher: PUBLISHER,
-    sourceOrganization: 'https://scsmath.com/',
-    teaches: 'Bhakti yoga',
-    thumbnailUrl: imgSrc,
-    url: SITE.ORIGIN + bookId
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': 'https://scsmath.com/#organization',
+        name: 'Sri Chaitanya Saraswat Math',
+        url: 'https://scsmath.com/'
+      },
+      {
+        '@type': 'WebSite',
+        '@id': SITE.ORIGIN + '#website',
+        url: SITE.ORIGIN,
+        name: 'Kirtan Site',
+        description:
+          'A digital Vaishnava songbook with lyrics, translations, and audio recordings.',
+        publisher: {
+          '@id': 'https://scsmath.com/#organization'
+        }
+      },
+      {
+        '@type': 'CollectionPage',
+        '@id': url,
+        url: url,
+        name: title,
+        description: description,
+        inLanguage: language,
+        isPartOf: {
+          '@id': SITE.ORIGIN + '#website'
+        }
+      }
+    ]
   };
 
   return (
@@ -55,3 +64,70 @@ function LdJson(props: Props) {
 
 /**/
 export default LdJson;
+
+/*
+* if (i18n_page && i18n) {
+            title = i18n(i18n_page + '.SCHEMA.NAME');
+            description = i18n(i18n_page + '.SCHEMA.DESCRIPTION');
+        }
+
+        const content = {
+            '@context': 'https://schema.org',
+            '@graph': [
+                {
+                    "@type": "Organization",
+                    "@id": "https://scsmath.com/#organization",
+                    "name": "Sri Chaitanya Saraswat Math",
+                    "url": "https://scsmath.com/"
+                },
+                {
+                    '@type': 'WebSite',
+                    '@id': ORIGIN + '/#website',
+                    'url': ORIGIN + '/',
+                    'name': 'Kirtan Site',
+                    "description": "A digital Vaishnava songbook with lyrics, translations, and audio recordings.",
+                    "publisher": {
+                        "@id": "https://scsmath.com/#organization",
+                    }
+                },
+                {
+                    '@type': 'CollectionPage',
+                    '@id': url,
+                    'url': url,
+                    'name': title,
+                    'description': description,
+                    'inLanguage': language || 'en',
+                    'isPartOf': {
+                        '@id': ORIGIN + '/#website'
+                    }
+                }
+            ]
+        };
+*
+* */
+
+/*
+*   const jsonLd: WithContext<Book> = {
+    '@context': 'https://schema.org',
+    '@type': 'Book',
+
+     //audience
+     //author
+     //genre
+     // maintainer
+     // sourceOrganization
+     // teaches
+
+creator: CREATOR,
+  description: description,
+  image: imgSrc,
+  inLanguage: bookId.slice(0, 2),
+  keywords: KEYWORDS,
+  name: title,
+  publisher: PUBLISHER,
+  sourceOrganization: 'https://scsmath.com/',
+  teaches: 'Bhakti yoga',
+  thumbnailUrl: imgSrc,
+  url: SITE.ORIGIN + bookId
+};
+* */
