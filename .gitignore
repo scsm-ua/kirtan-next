@@ -22,6 +22,7 @@
 # production
 /build
 /source/**/songs
+/source/books/
 
 # misc
 .DS_Store
