@@ -30,7 +30,7 @@ function Item({ item }: { item: TContentGroup }) {
 
   return (
     <li className="AuthorBadges__item">
-      <button className="AuthorBadges__button" onClick={handleClick}>
+      <button className="AuthorBadges__button ellipsis" onClick={handleClick}>
         {item.name} ({item.items.length})
       </button>
     </li>

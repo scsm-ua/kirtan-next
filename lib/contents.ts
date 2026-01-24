@@ -26,7 +26,7 @@ async function getListDataByBookId(
   bookId: string,
   fileName: string
 ): Promise<Array<TContentGroup>> {
-  const p = path.join(process.cwd(), PATH.DIR.SOURCE, bookId, fileName);
+  const p = path.join(process.cwd(), PATH.DIR.SOURCE_BOOKS, bookId, fileName);
   const str = await fs.readFile(p, 'utf8');
   return JSON.parse(str);
 }

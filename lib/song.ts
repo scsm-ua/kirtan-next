@@ -32,7 +32,7 @@ export async function getSongSlugParam({
   // );
   const p = path.join(
     process.cwd(),
-    PATH.DIR.SOURCE,
+    PATH.DIR.SOURCE_BOOKS,
     params.bookId || '',
     FILES.CONTENTS
   );
@@ -92,7 +92,7 @@ export async function getSongBySlug(
 
   const p = path.join(
     process.cwd(),
-    PATH.DIR.SOURCE,
+    PATH.DIR.SOURCE_BOOKS,
     bookId,
     PATH.DIR.SONGS,
     songSlug + '.json'
@@ -116,7 +116,7 @@ export async function getNavItems(
   songSlug: string,
   bookId: string
 ): Promise<TNavItemsMap> {
-  const p = path.join(process.cwd(), PATH.DIR.SOURCE, bookId, FILES.CONTENTS);
+  const p = path.join(process.cwd(), PATH.DIR.SOURCE_BOOKS, bookId, FILES.CONTENTS);
   const str = await fs.readFile(p, 'utf8');
 
   const songs = (JSON.parse(str) as TContentGroup[]).flatMap(

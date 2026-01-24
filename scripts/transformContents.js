@@ -65,8 +65,6 @@ function getPages(meta) {
 function mapItem(item) {
 	/** @type {RawSong} */
 	const song = readFile(`${this}/songs`, `${item.id}.json`);
-	// console.log(songInfo);
-	// return item;
 	
 	return {
 		aliasName: song.meta.first_line,

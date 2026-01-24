@@ -8,7 +8,7 @@ export const SITE = {
 export const FILES = {
   A_Z: 'a-z.json',
   AUTHORS: 'authors.json',
-  BOOK_LIST: 'book-list.json',
+  SONGBOOKS: 'songbooks.json',
   CONTENTS: 'contents.json',
   SITEMAP: 'sitemap.xml'
 };
@@ -17,11 +17,12 @@ export const FILES = {
 export const PATH = {
   DIR: {
     SONGS: 'songs',
-    SOURCE: 'source'
+    SOURCE_BOOKS: 'source/books',
+    SOURCE_ROOT: 'source'
   },
-  FILE: {
-    BOOK_LIST: '@/source/book-list.json'
-  },
+  // FILE: {
+  //   BOOK_LIST: '@/source/book-list.json'
+  // },
   IMG: {
     COVER: SITE.ORIGIN + 'images/cover/',
     FAV: SITE.ORIGIN + 'images/favicon/',

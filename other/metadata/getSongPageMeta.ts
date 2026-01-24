@@ -74,20 +74,21 @@ function getKeywords(song: TSong, authors?: [{ name: string }]): Array<string> {
  */
 async function getLanguages(songSlug: string, booksMap: TBooksMap) {
   const languages = {};
-  console.warn('>>>>>>>>> Check this place!');
+  // console.warn('>>>>>>>>> Check this place!');
 
   const descriptions = (await getBookDescriptionsByBook(
     songSlug,
-    /*booksMap*/ {
-      'en-pe': {
-        title: 'Kirtan Guide',
-        subtitle: 'Pocket Edition, 2013',
-        slug: 'en-pe',
-        language: 'en',
-        sort_order: 40,
-        path: '/Users/kostya/kostya/projects/scsm-ua/kirtan-mate/node_modules/kirtan-guide-pocket-edition'
-      } as any
-    }
+    booksMap
+    // {
+    //   'en-pe': {
+    //     title: 'Kirtan Guide',
+    //     subtitle: 'Pocket Edition, 2013',
+    //     slug: 'en-pe',
+    //     language: 'en',
+    //     sort_order: 40,
+    //     path: '/Users/kostya/kostya/projects/scsm-ua/kirtan-mate/node_modules/kirtan-guide-pocket-edition'
+    //   } as any
+    // }
   )) as TBookDescription[];
 
   descriptions.forEach((d: TBookDescription) => {

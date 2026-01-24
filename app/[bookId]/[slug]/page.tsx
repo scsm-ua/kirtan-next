@@ -43,19 +43,20 @@ async function SongPage({ params }: SongPageProps) {
   const song = await getSongBySlug(slug, bookId);
   if (!song) return notFound();
 
-  console.warn('>>>>>>>>> Check this place!');
+  // console.warn('>>>>>>>>> Check this place!');
   const descriptions = (await getBookDescriptionsByBook(
     slug,
-    /*booksMap*/ {
-      'en-pe': {
-        title: 'Kirtan Guide',
-        subtitle: 'Pocket Edition, 2013',
-        slug: 'en-pe',
-        language: 'en',
-        sort_order: 40,
-        path: '/Users/kostya/kostya/projects/scsm-ua/kirtan-mate/node_modules/kirtan-guide-pocket-edition'
-      } as any
-    }
+    booksMap
+    // {
+    //   'en-pe': {
+    //     title: 'Kirtan Guide',
+    //     subtitle: 'Pocket Edition, 2013',
+    //     slug: 'en-pe',
+    //     language: 'en',
+    //     sort_order: 40,
+    //     path: '/Users/kostya/kostya/projects/scsm-ua/kirtan-mate/node_modules/kirtan-guide-pocket-edition'
+    //   } as any
+    // }
   )) as TBookDescription[];
 
   const nav = await getNavItems(slug, bookId);

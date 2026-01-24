@@ -1,4 +1,3 @@
-// const chalk = require('chalk');
 const fs = require('node:fs');
 const path = require('node:path');
 
@@ -31,27 +30,8 @@ function writeFile(dir, fileName, content) {
 	}
 }
 
-//
-// /**
-//  *
-//  */
-// function logErr(message) {
-//   console.error(chalk.yellowBright.bgRedBright.bold(message));
-// }
-//
-// /**
-//  *
-//  */
-// function logWarn(message) {
-//   console.warn(chalk.black.bgYellow.bold(message));
-// }
-
-
-
 /**/
 module.exports = {
-  // logErr,
-  // logWarn,
   readFile,
 	writeFile
 };
