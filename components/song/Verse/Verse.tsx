@@ -11,8 +11,8 @@ import type { TTranslationMode } from '@/types/common';
 
 /**/
 type Props = {
-  attributes: TSong['attributes'];
   length: number;
+  meta: TSong['meta'];
   mode: TTranslationMode;
   verse: TVerse;
 };
@@ -20,7 +20,7 @@ type Props = {
 /**
  *
  */
-function Verse({ attributes, length, mode, verse }: Props) {
+function Verse({ length, meta, mode, verse }: Props) {
   const { number, subtitle, text, translation, word_by_word } = verse;
   const isWBW = word_by_word?.length > 0;
   const isWide = mode === '2';
@@ -47,7 +47,7 @@ function Verse({ attributes, length, mode, verse }: Props) {
 
       {text.length > 0 && (
         <Collapse defaultOpen={showVerse} open={showVerse}>
-          <VerseText attributes={attributes} hasNumber={!!number} text={text} />
+          <VerseText hasNumber={!!number} meta={meta} text={text} />
         </Collapse>
       )}
 

@@ -25,13 +25,13 @@ const PARANTHESES_END_RE = /^(\s*)([^\)]+\))/gi; // ( Start in prev line.
  */
 export function getLineContent(
   aLine: string,
-  attributes: TSong['attributes'],
+  meta: TSong['meta'],
   hasNumber: boolean
 ): string {
   // Cleanup tags for safety.
   let line = aLine.replace(TAG_RE, '');
 
-  if (attributes && attributes['verse parentheses'] === 'non bold') {
+  if (meta && meta['verse parentheses'] === 'non bold') {
     line = line.replace(
       PARANTHESES_RE,
       '<span class="SongVerse__light">$1</span>'
@@ -45,8 +45,8 @@ export function getLineContent(
       '$1<span class="SongVerse__light">$2</span>'
     );
   } else if (
-    attributes &&
-    attributes['inline verse'] === 'non bold' &&
+    meta &&
+    meta['inline verse'] === 'non bold' &&
     !hasNumber
   ) {
     line = `<span class="SongVerse__light">${line}</span>`;

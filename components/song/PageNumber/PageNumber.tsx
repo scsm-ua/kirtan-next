@@ -14,14 +14,22 @@ type Props = {
 /**
  *
  */
+function getQuery(pageQuery: string, page?: string | string[]): string {
+  if (pageQuery) return `?p=${pageQuery}`;
+  if (Array.isArray(page)) return `?p=${page[0]}`;
+
+  return page ? `?p=${page}` : '';
+}
+
+/**
+ *
+ */
 function PageNumber({ bookId, label, page }: Props) {
   const pageQuery = usePageQuery();
 
   if (!page || typeof pageQuery !== 'string') return null;
 
-  const href =
-    `/${bookId}` + PATH.PAGE.SEARCH + (pageQuery ? `?p=${pageQuery}` : '');
-
+  const href = `/${bookId}` + PATH.PAGE.SEARCH + getQuery(pageQuery, page);
   const text = Array.isArray(page) ? page.join(', ') : page;
 
   return (

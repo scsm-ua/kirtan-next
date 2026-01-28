@@ -17,8 +17,6 @@ export async function getBooksMap(): Promise<TBooksMap> {
  *
  */
 export async function getBookIdParamList(): Promise<Array<{ bookId: string }>> {
-  // return Promise.resolve([{ bookId: 'en-pe' }]);
-
   const books = await getBooksMap();
   return Object.keys(books)
     .map((bookId: string) => ({ bookId }));
@@ -28,8 +26,6 @@ export async function getBookIdParamList(): Promise<Array<{ bookId: string }>> {
  *
  */
 export async function getBookIdList(): Promise<Array<string>> {
-  // return Promise.resolve(['en-pe']);
-
   const books = await getBooksMap();
   return Object.keys(books);
 }

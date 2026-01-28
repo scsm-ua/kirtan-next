@@ -17,7 +17,7 @@ function PrefRedirect({ bookIdList }: { bookIdList: string[] }) {
     } catch (e) {
       console.error(e);
     }
-  }, []);
+  }, [bookIdList]);
 
   return <Loader />;
 }

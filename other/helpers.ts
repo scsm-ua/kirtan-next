@@ -1,4 +1,4 @@
-import { PATH, SITE } from '@/other/constants';
+import { PATH } from '@/other/constants';
 
 /**
  *

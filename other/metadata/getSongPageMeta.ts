@@ -24,8 +24,7 @@ export async function getSongPageMeta({
   const song = await getSongBySlug(slug, bookId);
   if (!song) return null;
 
-  console.warn('>>>>>>>>> Missing song description (1st line)!');
-  const description = null;
+  const description = song.meta?.first_line;
   const title = getSongPageTitle(song);
 
   const booksMap = await getBooksMap();
@@ -55,14 +54,14 @@ export async function getSongPageMeta({
 /**
  *
  */
-function getKeywords(song: TSong, authors?: [{ name: string }]): Array<string> {
+function getKeywords(song: TSong, authors?: Array<{ name: string }>): Array<string> {
   const keywords = KEYWORDS;
 
-  if (authors.length > 0) {
+  if (authors?.length > 0) {
     keywords.push(authors[0].name);
   }
 
-  if (song.title.length > 0) {
+  if (song.title?.length > 0) {
     keywords.push(song.title[0]);
   }
 
@@ -74,21 +73,10 @@ function getKeywords(song: TSong, authors?: [{ name: string }]): Array<string> {
  */
 async function getLanguages(songSlug: string, booksMap: TBooksMap) {
   const languages = {};
-  // console.warn('>>>>>>>>> Check this place!');
 
   const descriptions = (await getBookDescriptionsByBook(
     songSlug,
     booksMap
-    // {
-    //   'en-pe': {
-    //     title: 'Kirtan Guide',
-    //     subtitle: 'Pocket Edition, 2013',
-    //     slug: 'en-pe',
-    //     language: 'en',
-    //     sort_order: 40,
-    //     path: '/Users/kostya/kostya/projects/scsm-ua/kirtan-mate/node_modules/kirtan-guide-pocket-edition'
-    //   } as any
-    // }
   )) as TBookDescription[];
 
   descriptions.forEach((d: TBookDescription) => {

@@ -6,7 +6,6 @@ import { getContentsByBookId } from '@/lib/contents';
 
 import type { TBookDescription, TBooksMap } from '@/types/book';
 import type { TContentGroup, TContentItem } from '@/types/common';
-import type { TNavItems } from '@/types/song';
 import type { TNavItemsMap, TSong } from '@/types/song';
 
 /**
@@ -17,19 +16,6 @@ export async function getSongSlugParam({
 }: {
   params: { bookId: string };
 }): Promise<Array<{ bookId: string; slug: string }>> {
-  // console.log('^^^^^^^^^^^^^^^^^');
-  //
-  // if (!params?.bookId) {
-  //   return [{ bookId: 'en-pe', slug: '' }];
-  // }
-
-  // console.log(
-  //   '++++++++++++++',
-  //   process.cwd(),
-  //   PATH.DIR.SOURCE,
-  //   params.bookId,
-  //   FILES.CONTENTS
-  // );
   const p = path.join(
     process.cwd(),
     PATH.DIR.SOURCE_BOOKS,
@@ -39,11 +25,8 @@ export async function getSongSlugParam({
 
   try {
     const str = await fs.readFile(p, 'utf8');
-    const resp = contents2slugs(JSON.parse(str) as TContentGroup[])
+    return contents2slugs(JSON.parse(str) as TContentGroup[])
       .map((x) => ({ ...x, bookId: params.bookId}));
-    // console.log(JSON.stringify(resp, null,2));
-
-    return resp;
 
   } catch (e) {
     console.error(e);
@@ -81,15 +64,6 @@ export async function getSongBySlug(
   songSlug: string,
   bookId: string
 ): Promise<TSong> {
-  // console.log(
-  //   '++++++++++++++',
-  //   process.cwd(),
-  //   PATH.DIR.SOURCE,
-  //   bookId,
-  //   PATH.DIR.SONGS,
-  //   songSlug + '.json'
-  // );
-
   const p = path.join(
     process.cwd(),
     PATH.DIR.SOURCE_BOOKS,
@@ -105,8 +79,6 @@ export async function getSongBySlug(
     console.error(e);
     return null;
   }
-
-
 }
 
 /**
@@ -133,33 +105,6 @@ function contents2slugs(contents: TContentGroup[]): Array<{ slug: string }> {
   return contents
     .flatMap((group: TContentGroup) => group.items)
     .map((item: TContentItem) => ({ slug: item.id }));
-}
-
-/**
- *
- */
-function getNavItemsByPage(
-  page: string,
-  bookId: string,
-  songs: TContentItem[]
-): TNavItems {
-  const prev = songs.find(
-    (item: TContentItem) => item.page === parseInt(page) - 1 + ''
-  );
-  const next = songs.find(
-    (item: TContentItem) => item.page === parseInt(page) + 1 + ''
-  );
-
-  return {
-    prev: prev && {
-      path: bookId + '/' + prev.id,
-      title: prev.title
-    },
-    next: next && {
-      path: bookId + '/' + next.id,
-      title: next.title
-    }
-  };
 }
 
 /**

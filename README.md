@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kirtan Next
 
-## Getting Started
+Генератор статического контента сайта песенника [Kirtan Site](https://kirtan.site), версии `^2.0.0`. Выполнен на основе SSG [Next.js](https://nextjs.org).
 
-First, run the development server:
+## Цель проекта
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Предоставить лучший и более перспективный пользовательский опыт с использованием современного front-end стека. Перейти на современный способ создания front-end проектов, облегчив тем самым процесс работы над проектом, отладку и поддержку.  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Структура проекта
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+типична для фреймворка Next.js, использующего _App Router_ подход. Дополнениями являются:
+- папка `./source`, содержащая исходные `json` файлы, из которых генерируются страницы сайта. В папке имеются два стационарных файла:
+  - `dependencies.json`, где в формате _ключ-значение_ приведены `git`-адреса репозиториев с исходными данными;
+  - `translations.json` -- файл интернационализации сайта.
+- папка `./scripts` -- скрипты для установки и обработки исходных данных, валидации интернационализации.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+В папку `./source/books` устанавливаются упомянутые исходные данные (см. Скрипты), т.е. тексты песенников, туда же генерируются некоторые дополнительные `json` файлы для каждого песенника:
+- `a-z.json` -- файл с индексами песен;
+- `authors.json` -- файл с компоновкой песен по авторам;
+- `contents.json` -- файл с компоновкой песен по разделам.
 
-## Learn More
+Файл `./source/books/songbooks.json` содержит краткую сводную информацию о песенниках.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Скрипты
+- `dev` -- запуск `dev` сервера.
+- `build:prod` -- сборка проекта в продакшен.
+- `build:test` -- сборка проекта для тестирования.
+- `start` -- локальный просмотр собранного проекта.
+- `test:translations` -- валидация интернационализации.
+- `install:src` -- важный скрипт, выполняемый перед началом работы с проектом (но после `npm i`). Устанавливает исходные данные (тексты песенников в формате `json`) в `./source/books/<song-book-slug>/...` и генерирует вспомогательные файлы (см. выше).
+- `build` -- чисто вспомогательный.  
+- `lint`, `type-check` -- вспомогательные, но полезно запускать перед сборкой или время от времени при разработке.

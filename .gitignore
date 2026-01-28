@@ -21,7 +21,6 @@
 
 # production
 /build
-/source/**/songs
 /source/books/
 
 # misc

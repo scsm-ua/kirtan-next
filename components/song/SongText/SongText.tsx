@@ -59,9 +59,9 @@ function SongText({ label, song }: Props) {
           <ul className="SongText__list">
             {song.verses.map((verse: TVerse, idx: number, arr: TVerse[]) => (
               <Verse
-                attributes={song.attributes}
                 key={idx}
                 length={arr.length}
+                meta={song.meta}
                 mode={mode}
                 verse={verse}
               />

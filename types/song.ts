@@ -1,14 +1,13 @@
 /**/
 export type TSong = {
-  attributes: {
-    'inline verse'?: 'non bold';
-    page: string;
-    'verse parentheses'?: 'non bold';
-  };
   author: Array<string>;
   embeds: Array<TAudio>;
   meta: {
     author?: string;
+    first_line?: string;
+    'inline verse'?: 'non bold';
+    page?: string | string[];
+    'verse parentheses'?: 'non bold';
   };
   subTitle: Array<string>;
   title: Array<string>;

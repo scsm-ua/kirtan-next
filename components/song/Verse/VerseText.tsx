@@ -6,7 +6,7 @@ import type { TSong } from '@/types/song';
 
 /**/
 type Props = {
-  attributes: TSong['attributes'];
+  meta: TSong['meta'];
   hasNumber: boolean; // Whether the verse has number or it's the sole verse in a song.
   text: Array<string>;
 };
@@ -14,11 +14,11 @@ type Props = {
 /**
  *
  */
-function VerseText({ attributes, hasNumber, text }: Props) {
+function VerseText({ hasNumber, meta, text }: Props) {
   return (
     <ul className="VerseText">
       {text.map((line) => {
-        const content = getLineContent(line, attributes, hasNumber);
+        const content = getLineContent(line, meta, hasNumber);
 
         if (!content) {
           return (

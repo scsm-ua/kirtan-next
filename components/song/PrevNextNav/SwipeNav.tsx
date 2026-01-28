@@ -26,7 +26,7 @@ export function SwipeNav({ prevNext }: Props) {
     document.addEventListener('swipe', goAway);
 
     return () => document.removeEventListener('swipe', goAway);
-  }, []);
+  }, [prevNext]);
 
   return null;
 }

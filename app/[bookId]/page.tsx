@@ -1,5 +1,5 @@
 import BookList from '@/components/home/BookList/BookList';
-import { getBooksMap } from '@/lib/books';
+import { getBookIdParamList, getBooksMap } from '@/lib/books';
 import { getBookListPageMeta } from '@/other/metadata/getBookListPageMeta';
 import Layout from '@/components/common/Layout/Layout';
 import LdJson from '@/other/metadata/LdJson';
@@ -11,7 +11,7 @@ import type { BookListPageProps } from '@/types/book';
 export const dynamicParams = false;
 export const generateMetadata = getBookListPageMeta;
 /* See the comments in the `app/layout.tsx` file. */
-// export const generateStaticParams = getBookIdParamList;
+export const generateStaticParams = getBookIdParamList;
 
 /**
  *

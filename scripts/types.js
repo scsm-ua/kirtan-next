@@ -22,7 +22,9 @@
  * @typedef {Object} RawSongMeta
  * @property {string} [author]
  * @property {string} first_line
+ * @property {'non bold'} ['inline verse']
  * @property {number | string | Array<number>} page
+ * @property {'non bold'} ['verse parentheses']
  */
 
 /**

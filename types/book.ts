@@ -1,8 +1,6 @@
 /**/
 export type TBookDescription = {
-  // path: string; // Relative path to the file nearby.
   slug: string;
-  // sort_order: number;
   songsCount: number;
   subtitle: string;
   title: string;

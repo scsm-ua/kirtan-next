@@ -19,10 +19,10 @@ function BookList({ bookId, booksMap }: Props) {
       <div className="Main__content BookList__content">
         <ul className="BookList__list">
           {Object.entries(booksMap)
-            .sort(([bid, book]: [string, TBookDescription]) =>
+            .sort(([bid]: [string, TBookDescription]) =>
               bid === bookId ? -1 : 1
             )
-            .map(([bid, book]: [string, TBookDescription]) => (
+            .map(([_, book]: [string, TBookDescription]) => (
               <li className="BookList__tem" key={book.slug}>
                 <BookCard bookDescription={book} />
               </li>

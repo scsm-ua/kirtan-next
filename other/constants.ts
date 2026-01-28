@@ -20,9 +20,6 @@ export const PATH = {
     SOURCE_BOOKS: 'source/books',
     SOURCE_ROOT: 'source'
   },
-  // FILE: {
-  //   BOOK_LIST: '@/source/book-list.json'
-  // },
   IMG: {
     COVER: SITE.ORIGIN + 'images/cover/',
     FAV: SITE.ORIGIN + 'images/favicon/',

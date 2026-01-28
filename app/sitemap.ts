@@ -1,6 +1,5 @@
 import type { MetadataRoute } from 'next';
 
-import { getBookIdList } from '@/lib/books';
 import { PATH, SITE } from '@/other/constants';
 import { getContentsByBookId } from '@/lib/contents';
 import type { TContentGroup, TContentItem } from '@/types/common';

@@ -4,13 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack -p 3333",
-    "build": "next build --webpack",
+    "build": "npm run test:translations && npm run install:src && next build --webpack",
     "build:prod": "env-cmd -f env/.env.prod npm run build",
     "build:test": "env-cmd -f env/.env.dev npm run build",
     "start": "serve out -p 3334",
     "lint": "eslint",
     "install:src": "node scripts/processSrc.js",
-    "test:translations": "node scripts/validateTranslations.js"
+    "test:translations": "node scripts/validateTranslations.js",
+    "type-check": "tsc --noEmit --pretty true"
   },
   "dependencies": {
     "@radix-ui/react-collapsible": "^1.1.12",

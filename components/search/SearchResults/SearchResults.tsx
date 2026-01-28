@@ -15,7 +15,7 @@ function SearchResults({ results }: Props) {
   return (
     <ul className="SearchResults">
       {results.map((item) => (
-        <li className="SearchResults__item">
+        <li className="SearchResults__item" key={item.link}>
           <a href={item.link}>
             <h5
               className="SearchResults__title"

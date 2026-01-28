@@ -28,8 +28,8 @@ function handleGroup(group: TContentGroup, bookId: string): void {
   group.items.forEach((item: TContentItem) =>
     item.pages.forEach((page: string) =>
       pagesMap.set(page, {
-        page: page,
-        path: `${bookId}/${item.id}?p=${page}`,
+        page: page + '',
+        path: `/${bookId}/${item.id}?p=${page}`,
         title: item.title
       })
     )

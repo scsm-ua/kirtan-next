@@ -9,7 +9,7 @@ type Props = { bookId: string };
  *
  */
 function AuthorsLink({ bookId }: Props) {
-  let href = '/' + bookId + PATH.PAGE.AUTHORS;
+  const href = '/' + bookId + PATH.PAGE.AUTHORS;
 
   return (
     <li className="AuthorsLink">

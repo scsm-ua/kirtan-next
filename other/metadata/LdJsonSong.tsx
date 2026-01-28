@@ -20,14 +20,12 @@ function LdJsonSong({ bookId, slug, song }: Props) {
   const author = song.meta?.author;
   const pageName = getSongPageTitle(song);
 
-  console.warn('>>>>>>>>> Missing "alternateName" (1st line)!');
-
   const composition = {
     '@type': 'MusicComposition',
     '@id': url + '#composition',
-    url: url,
+    alternateName: [song.meta?.first_line],
     name: pageName,
-    // "alternateName": [song.first_line],
+    url: url,
     ...(author && {
       composer: {
         '@type': 'Person',

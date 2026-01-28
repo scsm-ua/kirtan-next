@@ -17,7 +17,7 @@ function SongHeader({ bookId, song }: Props) {
 
   return (
     <section className="SongHeader">
-      {title.length > 0 && (
+      {title?.length > 0 && (
         <h1 className="SongHeader__title">
           {title.map((item: string) => (
             <div key={item}>{item}</div>
@@ -34,7 +34,7 @@ function SongHeader({ bookId, song }: Props) {
         </div>
       ))}
 
-      {author.map((item) => {
+      {author?.map((item) => {
         const href =
           `/${bookId}` +
           PATH.PAGE.AUTHORS +
