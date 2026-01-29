@@ -390,5 +390,23 @@ const TRANSLATION_VALIDATION_SCHEMA = {
   }
 };
 
+/**
+ *
+ */
+const SONGBOOKS_VALIDATION_SCHEMA = {
+	type: 'object',
+	additionalProperties: true,
+	required: ['slug', 'songsCount', 'subtitle', 'title'],
+	properties: {
+		slug: { type: 'string' },
+		songsCount: { type: 'number' },
+		subtitle: { type: 'string' },
+		title: { type: 'string' },
+	}
+};
+
 /**/
-module.exports = { TRANSLATION_VALIDATION_SCHEMA };
+module.exports = {
+	SONGBOOKS_VALIDATION_SCHEMA,
+	TRANSLATION_VALIDATION_SCHEMA
+};

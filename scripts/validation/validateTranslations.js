@@ -1,27 +1,13 @@
 const Ajv = require('ajv');
 const chalk = require('chalk');
-const path = require('path');
-
-const { CONST } = require('./constants');
-const { readFile } = require('./ioHelpers');
 const { TRANSLATION_VALIDATION_SCHEMA } = require('./validationSchema');
 
 /**
- *
+ * @param slugs {Array<string>}
+ * @param translations {Object}
  */
-function validateTranslations() {
-	const dependencies = readFile(
-		path.resolve(__dirname, '..', CONST.FOLDER.SRC_ROOT),
-		CONST.FILES.DEPENDENCIES
-	);
-	
-	const translations = readFile(
-		path.resolve(__dirname, '..', CONST.FOLDER.SRC_ROOT),
-		CONST.FILES.TRANSLATIONS
-	);
-	
-	const slugs = Object.keys(dependencies);
-	validateBookSlugs(translations, slugs);
+function validateTranslations(slugs, translations) {
+	validateBookSlugs(slugs, translations);
 	
 	const ajv = new Ajv();
 	const validate = ajv.compile(TRANSLATION_VALIDATION_SCHEMA);
@@ -40,8 +26,10 @@ function validateTranslations() {
 
 /**
  * Check that translation for each book is available.
+ * @param slugs {Array<string>}
+ * @param translations {Object}
  */
-function validateBookSlugs(translations, slugs) {
+function validateBookSlugs(slugs, translations) {
 	const ajv = new Ajv();
 	const langSet = new Set();
 	
@@ -66,12 +54,12 @@ function validateBookSlugs(translations, slugs) {
 	const valid = validate(translations);
 	
 	if (!valid) {
-		console.error(chalk.bgRedBright.bold('Validation error: Missing or extra language in the translations!'));
+		console.error(chalk.bgRedBright.bold('Validation error: Missing or extra language in the translations.json!'));
 		console.error(validate.errors);
-		console.error(chalk.bgRedBright('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'));
+		console.error(chalk.bgRedBright('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^'));
 		process.exit(1);
 	}
 }
 
 /**/
-validateTranslations();
+module.exports = { validateTranslations };
