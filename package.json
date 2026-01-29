@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack -p 3333",
-    "build": "npm run test:translations && npm run install:src && next build --webpack",
+    "build": "npm run validation && npm run install:src && next build --webpack",
     "build:prod": "env-cmd -f env/.env.prod npm run build",
     "build:test": "env-cmd -f env/.env.dev npm run build",
     "start": "serve out -p 3334",
