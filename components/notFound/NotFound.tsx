@@ -31,19 +31,44 @@ function getBookId(): string {
 }
 
 /**
+ * Check if user is attempting to open the old site href (they'd end with `.html`).
+ * If we have the new version of the page (`.html` free), redirect them. If no -- just
+ * display the 404 page.
+ */
+async function checkOldPath(): Promise<true | void> {
+  if (!window.location.pathname.endsWith('.html')) return;
+
+  const newPath = window.location.pathname.split('.')[0];
+  const href = window.location.host + newPath;
+
+  const url = href.startsWith('localhost')
+    ? 'http://' + href // Local debug case
+    : href;
+
+  const resp = await fetch(url, { method: 'HEAD' });
+
+  if (resp.ok) {
+    window.location.href = url;
+    return true;
+  }
+}
+
+/**
  *
  */
 function NotFound({ booksMap }: Props) {
   const [bookId, setBookId] = useState<string | null>(null);
 
   useEffect(() => {
-    setBookId(getBookId());
+    checkOldPath().then((hasOldPath) =>
+      hasOldPath || setBookId(getBookId())
+    );
   }, []);
 
   if (bookId === null) return null;
 
   const bookList = Object.entries(booksMap)
-    .sort((a) => a[0] === bookId ? -1 : 1)
+    .sort((a) => (a[0] === bookId ? -1 : 1))
     .map((ent: [string, TBookDescription]) => ent[1]);
 
   return (
