@@ -1,5 +1,7 @@
 import classNames from 'classnames';
+
 import './VerseTranslation.scss';
+import { processTranslationLines } from '@/other/utils';
 
 /**/
 type Props = {
@@ -20,9 +22,9 @@ function VerseTranslation({ isWide, isWBW, translation }: Props) {
 
   return (
     <ul className="VerseTranslation">
-      {translation.map((item) => (
+      {processTranslationLines(translation, 'VerseWbw').map((item) => (
         <li key={item}>
-          <p className={cls}>{item}</p>
+          <p className={cls} dangerouslySetInnerHTML={{ __html: item }} />
         </li>
       ))}
     </ul>

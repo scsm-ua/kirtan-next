@@ -1,6 +1,6 @@
 import './SongHeader.scss';
 import { PATH } from '@/other/constants';
-import { processWBW } from '@/other/utils';
+import { processTranslationLines } from '@/other/utils';
 import type { TSong } from '@/types/song';
 
 /**/
@@ -56,7 +56,7 @@ function SongHeader({ bookId, song }: Props) {
 function getWBW(wbw?: string[]) {
   if (!wbw || wbw.length === 0) return null;
 
-  const items = processWBW(wbw, 'SongHeader').map((item: string) => (
+  const items = processTranslationLines(wbw, 'SongHeader').map((item: string) => (
     <div
       className="SongHeader__wbw"
       dangerouslySetInnerHTML={{ __html: item }}

@@ -1,5 +1,5 @@
 import './VerseWbw.scss';
-import { processWBW } from '@/other/utils';
+import { processTranslationLines } from '@/other/utils';
 
 /**/
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 function VerseWbw({ lines }: Props) {
   return (
     <ul className="VerseWbw">
-      {processWBW(lines, 'VerseWbw').map((item, idx) => (
+      {processTranslationLines(lines, 'VerseWbw').map((item, idx) => (
         <li key={idx}>
           <p
             className="VerseWbw__paragraph"

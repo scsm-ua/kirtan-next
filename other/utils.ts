@@ -12,7 +12,7 @@ export function isObject(x: any): boolean {
 /**
  *
  */
-export function processWBW(lines: string[], cssPrefix: string): string[] {
+export function processTranslationLines(lines: string[], cssPrefix: string): string[] {
   if (!lines) {
     return [];
   }
