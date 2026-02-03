@@ -14,7 +14,7 @@ const buildInfo = JSON.stringify({
 /**/
 const nextConfig: NextConfig = {
   output: 'export',
-  // trailingSlash: true,
+  trailingSlash: true,
   images: { unoptimized: true },
   experimental: {
     globalNotFound: true
