@@ -9,6 +9,7 @@ const CONST = {
 		TRANSLATIONS: 'translations.json'
 	},
 	FOLDER: {
+		BUILD: 'out',
 		SONGS: 'songs',
 		SRC_INPUT: 'json',
 		SRC_OUTPUT: 'source/books',

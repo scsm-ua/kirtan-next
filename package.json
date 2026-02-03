@@ -9,6 +9,7 @@
     "build:test": "env-cmd -f env/.env.dev npm run build",
     "start": "serve out -p 3334",
     "lint": "eslint",
+    "postbuild": "node scripts/postbuild.js",
     "install:src": "node scripts/processSrc.js",
     "validation": "node scripts/validate.js",
     "type-check": "tsc --noEmit --pretty true"
