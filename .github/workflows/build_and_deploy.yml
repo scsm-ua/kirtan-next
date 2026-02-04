@@ -21,9 +21,6 @@ jobs:
 
             - name: Build 🔧
               run: npm run build:test
-            
-            - name: Postbuild
-              run: npm run postbuild
 
             - name: Deploy 🚀
               uses: JamesIves/github-pages-deploy-action@v4
