@@ -1,24 +1,21 @@
+import type { TResource } from '@/types/resources';
+
 /**/
 export type TSong = {
   author: Array<string>;
-  embeds: Array<TAudio>;
   meta: {
     author?: string;
     first_line?: string;
     'inline verse'?: 'non bold';
     page?: string | string[];
+    translation?: 'no';
     'verse parentheses'?: 'non bold';
   };
+  resources: TResource;
   subTitle: Array<string>;
   title: Array<string>;
   verses: Array<TVerse>;
   word_by_word: Array<string>;
-};
-
-/**/
-export type TAudio = {
-  embed_url: string;
-  title: string;
 };
 
 /**/

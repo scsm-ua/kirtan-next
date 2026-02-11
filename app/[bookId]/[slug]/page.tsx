@@ -90,7 +90,9 @@ async function SongPage({ params }: SongPageProps) {
             song={song}
           />
 
-          {song.embeds?.length > 0 && <AudioList audios={song.embeds} />}
+          {song.resources.audio?.length > 0 && (
+            <AudioList audio={song.resources.audio} language={bookId.slice(0, 2)} />
+          )}
         </div>
       </div>
 

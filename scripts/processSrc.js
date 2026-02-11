@@ -7,6 +7,7 @@ const { CONST } = require('./constants');
 const { createAuthors } = require('./createAuthors');
 const { createAZ } = require('./createAZ');
 const dependencies = require('../source/dependencies.json');
+const { fetchSharedResources } = require('./fetchSharedResources');
 const { installPackage } = require('./installPackage');
 const { transformContents } = require('./transformContents');
 const { writeFile } = require('./ioHelpers');
@@ -30,7 +31,8 @@ Object.entries(dependencies).forEach(([bookSlug, npmSrc]) => {
 	installPackage(npmSrc, targetDir, bookSlug, booksMap);
 	addSongsCount(booksMap, bookSlug);
 	
-	transformContents(targetDir);
+	const resourceMap = fetchSharedResources();
+	transformContents(targetDir, resourceMap);
 	createAZ(targetDir);
 	createAuthors(targetDir);
 });

@@ -3,11 +3,12 @@ import { PureComponent } from 'react';
 
 import './AudioList.scss';
 import AudioListItem from '@/components/song/AudioList/AudioListItem';
-import type { TAudio } from '@/types/song';
+import type { TAudio } from '@/types/resources';
 
 /**/
 type Props = {
-  audios: Array<TAudio>;
+  audio: Array<TAudio>;
+  language: string;
 };
 
 type State = {
@@ -33,24 +34,28 @@ class AudioList extends PureComponent<Props, State> {
   };
 
   /**/
-  onLibLoad = (e) => {
-    console.log(e);
-    this.setState({ hasLibLoaded: true });
-  };
+  onLibLoad = (e) => this.setState({ hasLibLoaded: true });
 
   /**/
   render() {
+    const { audio, language } = this.props;
+
     return (
       <div className="AudioList">
         <ul className="AudioList__list">
-          {this.props.audios.map((audio: TAudio) => (
-            <AudioListItem
-              audio={audio}
-              hasLibLoaded={this.state.hasLibLoaded}
-              key={audio.embed_url}
-              onOpenChange={this.handleOpen}
-            />
-          ))}
+          {audio.map((a: TAudio) => {
+            const title = a.title[language] || a.title.en;
+
+            return (
+              <AudioListItem
+                hasLibLoaded={this.state.hasLibLoaded}
+                key={a.embed_url}
+                onOpenChange={this.handleOpen}
+                title={title}
+                url={a.embed_url}
+              />
+            );
+          })}
         </ul>
       </div>
     );

@@ -15,7 +15,13 @@
  * @typedef {Object} RawSong
  * @property {Array<string>} [author]
  * @property {RawSongMeta} meta
- * @property {Array<RawEmbed>} embeds
+ */
+
+/**
+ * @typedef {Object} Song
+ * @property {Array<string>} [author]
+ * @property {RawSongMeta} meta
+ * @property {ResourceObj} resources
  */
 
 /**
@@ -24,6 +30,7 @@
  * @property {string} first_line
  * @property {'non bold'} ['inline verse']
  * @property {number | string | Array<number>} page
+ * @property {'no'} [translation]
  * @property {'non bold'} ['verse parentheses']
  */
 
@@ -51,4 +58,48 @@
  * @property {string} title
  * @property {Object} has
  * @property {boolean} has.audio
+ */
+
+/**
+ * @typedef {Object} ResourceRaw
+ * @property {Array<AudioRaw>} audio
+ */
+
+/**
+ * @typedef {Object} ResourceObj
+ * @property {Array<AudioObj>} audio
+ */
+
+/**
+ * @typedef {Object} AudioRaw
+ * @property {string} embed_url
+ * @property {string} iframe_url
+ * @property {string} title
+ */
+
+/**
+ * @typedef {Object} AudioObj
+ * @property {string} embed_url
+ * @property {string} iframe_url
+ * @property {I18n} title
+ */
+
+/**
+ * @typedef {Object} I18n
+ * @property {string} en
+ * @property {string} [es]
+ * @property {string} [lv]
+ * @property {string} [pt]
+ * @property {string} [ru]
+ * @property {string} [ua]
+ */
+
+/**
+ * @typedef {Object} Person
+ * @property {string} id
+ * @property {I18n} i18n
+ */
+
+/**
+ * @typedef {{ [songSlug: string]: ResourceObj }} ResourceMap
  */

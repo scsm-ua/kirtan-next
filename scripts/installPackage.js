@@ -26,7 +26,7 @@ function installPackage(npmSrc, targetDir, bookSlug, booksMap) {
 	
 	// Copying the jsons to the project.
 	mkdirSync(targetDir, { recursive: true });
-	execSync(`cp -a ${path.resolve(absPathToPackage, CONST.FOLDER.SRC_INPUT)}/. ${targetDir}`)
+	execSync(`cp -a ${path.resolve(absPathToPackage, CONST.FOLDER.SRC_INPUT)}/. ${targetDir}`);
 	
 	// Inserting the book info into the variable.
 	booksMap[bookSlug] = require(path.resolve(absPathToPackage, CONST.FILES.BOOK_INFO));

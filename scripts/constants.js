@@ -5,6 +5,8 @@ const CONST = {
 		BOOK_INFO: 'songbook.json',
 		CONTENTS: 'contents.json',
 		DEPENDENCIES: 'dependencies.json',
+		PERSONS: 'persons.json',
+		RESOURCES: 'resources.json',
 		SONGBOOKS: 'songbooks.json',
 		TRANSLATIONS: 'translations.json'
 	},

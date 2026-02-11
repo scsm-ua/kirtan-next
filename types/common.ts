@@ -22,6 +22,7 @@ export type TContentItem = {
   title: string;        // Human-readable title.
   has: {
     audio: boolean;
+    translation: boolean;
   }
 };
 /**/

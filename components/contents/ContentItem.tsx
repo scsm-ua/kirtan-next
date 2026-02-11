@@ -1,5 +1,7 @@
+import classnames from 'classnames';
+
 import './ContentItem.scss';
-import { TContentItem } from '@/types/common';
+import type { TContentItem } from '@/types/common';
 
 /**/
 type Props = {
@@ -12,8 +14,12 @@ type Props = {
  */
 function ContentItem({ bookId, item }: Props) {
   const { aliasName, has, id, page, pages, title } = item;
-  const _pages = Array.isArray(page) ? page.join(', ') : page;
+  const cls = (classnames as any)(
+    'ContentItem__title',
+    has.translation || 'ContentItem__title--normal'
+  );
 
+  const _pages = Array.isArray(page) ? page.join(', ') : page;
   let href = '/' + bookId + '/' + id;
 
   if (pages?.length > 1) {
@@ -24,7 +30,7 @@ function ContentItem({ bookId, item }: Props) {
     <li className="ContentItem">
       <a href={href} className="ContentItem__link">
         <h6 className="ContentItem__name" title={aliasName}>
-          <span className="">{title}</span>
+          <span className={cls}>{title}</span>
 
           {_pages && (
             <span className="ContentItem__page" title="Page in paper songbook">{_pages}</span>
@@ -34,10 +40,6 @@ function ContentItem({ bookId, item }: Props) {
             <span className="ContentItem__embed" title="Audio">♪</span>
           )}
         </h6>
-
-        {/*<div className="ContentItem__views">*/}
-        {/*  <span>('telegraph_views' in song) ? song.telegraph_views : ''</span>*/}
-        {/*</div>*/}
 
         <div className="ContentItem__suffix">
           <div className="ContentItem__icon icon-chevron-right" />

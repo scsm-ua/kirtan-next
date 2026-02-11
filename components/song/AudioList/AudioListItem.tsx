@@ -4,13 +4,13 @@ import Skeleton  from 'react-loading-skeleton';
 import './AudioListItem.scss';
 import AudioContentCollapse from '@/components/common/Collapse/AudioContentCollapse';
 import AudioLoader from '@/components/song/AudioList/AudioLoader';
-import type { TAudio } from '@/types/song';
 
 /**/
 type Props = {
-  audio: TAudio;
   hasLibLoaded: boolean;
   onOpenChange: (isOpen: boolean) => void;
+  title: string;
+  url: string;
 };
 
 type State = {
@@ -35,7 +35,7 @@ class AudioListItem extends PureComponent<Props, State> {
 
   /**/
   renderContent() {
-    const { audio, hasLibLoaded } = this.props;
+    const { hasLibLoaded, title, url } = this.props;
     const { hasIframeLoaded, isOpen } = this.state;
 
     if (!isOpen && !hasLibLoaded) return null;
@@ -46,7 +46,7 @@ class AudioListItem extends PureComponent<Props, State> {
           <AudioLoader
             isOpen={isOpen}
             onPlayStart={this.handlePlayStart}
-            url={audio.embed_url}
+            url={url}
           />
         )}
 
@@ -81,7 +81,7 @@ class AudioListItem extends PureComponent<Props, State> {
   /**/
   render() {
     const { isOpen } = this.state;
-    const { audio, onOpenChange } = this.props;
+    const { onOpenChange, title } = this.props;
 
     return (
       <div className="AudioListItem">
@@ -89,7 +89,7 @@ class AudioListItem extends PureComponent<Props, State> {
           onClick={this.handleOpen}
           onOpenChange={onOpenChange}
           open={isOpen}
-          title={audio.title}
+          title={title}
         >
           {this.renderContent()}
         </AudioContentCollapse>

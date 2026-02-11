@@ -16,6 +16,11 @@
     color: var(--title-color);
   }
 
+  &__title--normal {
+    font-weight: normal;
+    color: var(--dark-grey);
+  }
+
   &__page {
     display: inline-block;
     font-weight: 400;

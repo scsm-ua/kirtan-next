@@ -1,7 +1,9 @@
 import { getIFrameUrl } from '@/other/helpers';
 import { getSongPageTitle } from '@/other/metadata/helpers/getSongPageTitle';
 import { SITE } from '@/other/constants';
-import type { TAudio, TSong } from '@/types/song';
+
+import type { TAudio } from '@/types/resources';
+import type { TSong } from '@/types/song';
 
 /**/
 type Props = {
@@ -64,8 +66,8 @@ function LdJsonSong({ bookId, slug, song }: Props) {
     ]
   };
 
-  if (song.embeds?.length > 0) {
-    composition['audio'] = song.embeds.map((audio: TAudio) => ({
+  if (song.resources?.audio?.length > 0) {
+    composition['audio'] = song.resources.audio.map((audio: TAudio) => ({
       '@type': 'MusicRecording',
       name: pageName,
       url: audio.embed_url,

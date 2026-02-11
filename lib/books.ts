@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
+import path from 'path';
 
 import { FILES, PATH } from '@/other/constants';
-import path from 'path';
 import type { TBookDescription, TBooksMap } from '@/types/book';
 
 /**

@@ -8,9 +8,11 @@ export const SITE = {
 export const FILES = {
   A_Z: 'a-z.json',
   AUTHORS: 'authors.json',
-  SONGBOOKS: 'songbooks.json',
   CONTENTS: 'contents.json',
-  SITEMAP: 'sitemap.xml'
+  PERSONS: 'persons.json',
+  RESOURCES: 'resources.json',
+  SITEMAP: 'sitemap.xml',
+  SONGBOOKS: 'songbooks.json'
 };
 
 /**/
