@@ -1,9 +1,10 @@
 name: CI
 
 on:
-  push:
-    branches: ["main"]
-  pull_request:
+  workflow_dispatch:
+  # push:
+  #   branches: ["main"]
+  # pull_request:
 
 jobs:
   build:
@@ -27,3 +28,5 @@ jobs:
 
       - name: Build
         run: npm run build:test
+
+
