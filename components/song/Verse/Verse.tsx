@@ -45,7 +45,7 @@ function Verse({ length, meta, mode, verse }: Props) {
         </header>
       )}
 
-      {text.length > 0 && (
+      {text?.length > 0 && (
         <Collapse defaultOpen={showVerse} open={showVerse}>
           <VerseText hasNumber={!!number} meta={meta} text={text} />
         </Collapse>
