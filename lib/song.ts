@@ -6,7 +6,7 @@ import { getContentsByBookId } from '@/lib/contents';
 
 import type { TBookDescription, TBooksMap } from '@/types/book';
 import type { TContentGroup, TContentItem } from '@/types/common';
-import type { TNavItemsMap, TSong } from '@/types/song';
+import type { TNavItems, TNavItemsMap, TSong } from '@/types/song';
 
 /**
  *
@@ -25,9 +25,10 @@ export async function getSongSlugParam({
 
   try {
     const str = await fs.readFile(p, 'utf8');
-    return contents2slugs(JSON.parse(str) as TContentGroup[])
-      .map((x) => ({ ...x, bookId: params.bookId}));
-
+    return contents2slugs(JSON.parse(str) as TContentGroup[]).map((x) => ({
+      ...x,
+      bookId: params.bookId
+    }));
   } catch (e) {
     console.error(e);
     return [{ bookId: params.bookId, slug: '' }];
@@ -88,7 +89,12 @@ export async function getNavItems(
   songSlug: string,
   bookId: string
 ): Promise<TNavItemsMap> {
-  const p = path.join(process.cwd(), PATH.DIR.SOURCE_BOOKS, bookId, FILES.CONTENTS);
+  const p = path.join(
+    process.cwd(),
+    PATH.DIR.SOURCE_BOOKS,
+    bookId,
+    FILES.CONTENTS
+  );
   const str = await fs.readFile(p, 'utf8');
 
   const songs = (JSON.parse(str) as TContentGroup[]).flatMap(
@@ -125,25 +131,35 @@ function getNavItemsBySlug(
 
   const pages = indexes.map((idx: number) => songs[idx].page).filter(Boolean);
 
-  if (pages.length === 0) return {};
+  if (pages.length === 0) return {
+    '_': getPrevNextNav(songs[indexes[0] - 1], songs[indexes[0] + 1], bookId)
+  };
 
-  const navs = indexes.map((idx: number) => {
-    const prev = songs[idx - 1];
-    const next = songs[idx + 1];
-
-    return {
-      prev: prev && {
-        path: '/' + bookId + '/' + prev.id,
-        title: prev.title
-      },
-      next: next && {
-        path: '/' + bookId + '/' + next.id,
-        title: next.title
-      }
-    };
-  });
+  const navs = indexes.map((idx: number) =>
+    getPrevNextNav(songs[idx - 1], songs[idx + 1], bookId)
+  );
 
   return Object.fromEntries(
     pages.map((p: string, idx: number) => [p, navs[idx]])
   );
+}
+
+/**
+ *
+ */
+function getPrevNextNav(
+  prevSong: TContentItem,
+  nextSong: TContentItem,
+  bookId: string
+): TNavItems {
+  return {
+    prev: prevSong && {
+      path: '/' + bookId + '/' + prevSong.id,
+      title: prevSong.title
+    },
+    next: nextSong && {
+      path: '/' + bookId + '/' + nextSong.id,
+      title: nextSong.title
+    }
+  };
 }

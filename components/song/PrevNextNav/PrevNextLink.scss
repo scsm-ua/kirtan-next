@@ -3,9 +3,12 @@
   align-items: center;
   max-width: 50%;
 
+  // For some reason `--disabled` className doesn't apply.
+  // Workaround: custom [data-disabled] attribute.
+  &[data-disabled],
   &--disabled {
     opacity: 0.5;
-    cursor: none;
+    cursor: not-allowed;
   }
 
   &--prev {
@@ -16,7 +19,8 @@
     padding-left: 12px;
   }
 
-  &:not(&--disabled):hover {
+  &:not(&--disabled):hover,
+  &:not([data-disabled]):hover {
     .PrevNextLink__icon {
       color: var(--dark-grey);
     }
