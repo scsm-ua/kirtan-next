@@ -12,7 +12,7 @@ export type TSong = {
     'verse parentheses'?: 'non bold';
   };
   resources: TResource;
-  subTitle: Array<string>;
+  subtitle: Array<string>;
   title: Array<string>;
   verses: Array<TVerse>;
   word_by_word: Array<string>;

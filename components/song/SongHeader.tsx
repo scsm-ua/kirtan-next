@@ -13,7 +13,7 @@ type Props = {
  *
  */
 function SongHeader({ bookId, song }: Props) {
-  const { author, meta, subTitle, title, word_by_word } = song;
+  const { author, meta, subtitle, title, word_by_word } = song;
 
   return (
     <section className="SongHeader">
@@ -26,9 +26,8 @@ function SongHeader({ bookId, song }: Props) {
       )}
 
       {getWBW(word_by_word)}
-      {/*{getWBW(["**avatāra** — encarnación; **sāra** — la mejor; **gorā** — Gaurāṅga; **avatāra** — encarnación; **keno** — ¿por qué?; **nā** — no; **bhajili** — adorado; **tā̐re** — a él; **kori** — hacer; **nīre** — en el agua; **bāsa** — obligado; **gelo** — ir; **nā** — no; **piyāsa** — beber; **āpana** — propia; **karama** — acitividad fruitiva; **phere** — deambular."])}*/}
 
-      {(subTitle || []).map((item) => (
+      {(subtitle || []).map((item) => (
         <div className="SongHeader__subtitle" key={item}>
           {item}
         </div>

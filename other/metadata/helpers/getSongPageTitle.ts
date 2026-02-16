@@ -10,8 +10,8 @@ export function getSongPageTitle(song: TSong): string {
     title += '. ' + song.author[0];
   }
 
-  if (song.subTitle?.length > 0) {
-    title += '. ' + song.subTitle.join(' ');
+  if (song.subtitle?.length > 0) {
+    title += '. ' + song.subtitle.join(' ');
   }
 
   return title;
