@@ -4,5 +4,5 @@
 :HL["/_next/static/css/a0517f20e93498b9.css","style"]
 :HL["/_next/static/css/63c03ed0c6920fa4.css","style"]
 :HL["/_next/static/css/9d3da8b57aef51c2.css","style"]
-:HL["/_next/static/css/7bce8c6055c05f92.css","style"]
-0:{"buildId":"l_fvl8f8JROO6d0ETQwWM","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"bookId","paramType":"d","paramKey":"en","hasRuntimePrefetch":false,"slots":{"children":{"name":"slug","paramType":"d","paramKey":"jaya-yashoda-nandana-krishna-gopala-govinda","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+:HL["/_next/static/css/507333fe9f8526e0.css","style"]
+0:{"buildId":"ID65Xa27yLxg40tCVYdn5","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"bookId","paramType":"d","paramKey":"en","hasRuntimePrefetch":false,"slots":{"children":{"name":"slug","paramType":"d","paramKey":"jaya-yashoda-nandana-krishna-gopala-govinda","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
