@@ -154,12 +154,22 @@ function getPrevNextNav(
 ): TNavItems {
   return {
     prev: prevSong && {
-      path: '/' + bookId + '/' + prevSong.id,
+      path: '/' + bookId + '/' + getSongPath(prevSong),
       title: prevSong.title
     },
     next: nextSong && {
-      path: '/' + bookId + '/' + nextSong.id,
+      path: '/' + bookId + '/' + getSongPath(nextSong),
       title: nextSong.title
     }
   };
+}
+
+/**
+ *
+ */
+function getSongPath(song: TContentItem): string {
+  let path = song.id;
+  if (song.page) path += `?p=${song.page}`;
+
+  return path;
 }
