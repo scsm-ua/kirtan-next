@@ -34,22 +34,22 @@ export function getLineContent(
   if (meta && meta['verse parentheses'] === 'non bold') {
     line = line.replace(
       PARANTHESES_RE,
-      '<span class="SongVerse__light">$1</span>'
+      '<span class="Verse__light">$1</span>'
     );
     line = line.replace(
       PARANTHESES_START_RE,
-      '<span class="SongVerse__light">$1</span>'
+      '<span class="Verse__light">$1</span>'
     );
     line = line.replace(
       PARANTHESES_END_RE,
-      '$1<span class="SongVerse__light">$2</span>'
+      '$1<span class="Verse__light">$2</span>'
     );
   } else if (
     meta &&
     meta['inline verse'] === 'non bold' &&
     !hasNumber
   ) {
-    line = `<span class="SongVerse__light">${line}</span>`;
+    line = `<span class="Verse__light">${line}</span>`;
   }
 
   // Try fix with indents.
@@ -58,7 +58,7 @@ export function getLineContent(
   // Replace inner tabs.
   line = line.replace(
     /\s{4}/gi,
-    '<span class="SongVerse__space">&nbsp;&nbsp;&nbsp;&nbsp;</span>'
+    '<span class="Verse__space">&nbsp;&nbsp;&nbsp;&nbsp;</span>'
   );
 
   return line;

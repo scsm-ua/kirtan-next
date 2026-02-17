@@ -40,14 +40,10 @@
       .word-by-word-mode .SongVerse__translation & {
         color: var(--dark);
       }
-
-      //.word-by-word-mode .SongVerse__wordbyword & {
-      //  font-size: 12px;
-      //}
     }
+  }
 
-    //a {
-    //  color: var(--text-color);
-    //}
+  &__light {
+    font-weight: initial;
   }
 }
