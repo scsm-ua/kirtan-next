@@ -3,12 +3,14 @@ import type { TContentGroup, TContentItem } from '@/types/common';
 import type { TPage } from '@/types/search';
 
 /**/
-const pagesMap = new Map<string, TPage>();
+let pagesMap: Map<string, TPage>;
 
 /**
  *
  */
 export function getPagesList(bookId: string): Promise<Array<TPage>> {
+  pagesMap = new Map();
+
   return getContentsByBookId(bookId).then((groups: Array<TContentGroup>) => {
     groups.forEach((g: TContentGroup) => handleGroup(g, bookId));
 
