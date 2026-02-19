@@ -39,11 +39,9 @@ async function checkOldPath(): Promise<true | void> {
   if (!window.location.pathname.endsWith('.html')) return;
 
   const newPath = window.location.pathname.split('.')[0];
-  const href = window.location.host + newPath;
-
-  const url = href.startsWith('localhost')
-    ? 'http://' + href // Local debug case
-    : href;
+  const url = window.location.host.startsWith('localhost')
+    ? window.location.host + newPath // Local debug case
+    : newPath;
 
   const resp = await fetch(url, { method: 'HEAD' });
 
