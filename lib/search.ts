@@ -2,17 +2,24 @@ import { getContentsByBookId } from '@/lib/contents';
 import type { TContentGroup, TContentItem } from '@/types/common';
 import type { TPage } from '@/types/search';
 
-/**/
-let pagesMap: Map<string, TPage>;
-
 /**
  *
  */
 export function getPagesList(bookId: string): Promise<Array<TPage>> {
-  pagesMap = new Map();
+  const pagesMap = new Map<string, TPage>();
 
   return getContentsByBookId(bookId).then((groups: Array<TContentGroup>) => {
-    groups.forEach((g: TContentGroup) => handleGroup(g, bookId));
+    groups.forEach((group: TContentGroup) =>
+      group.items.forEach((item: TContentItem) =>
+        item.pages.forEach((page: string) =>
+          pagesMap.set(page, {
+            page: page + '',
+            path: `/${bookId}/${item.id}?p=${page}`,
+            title: item.title
+          })
+        )
+      )
+    );
 
     return Array.from(pagesMap)
       .sort(
@@ -21,19 +28,4 @@ export function getPagesList(bookId: string): Promise<Array<TPage>> {
       )
       .map((item: [string, TPage]) => item[1]);
   });
-}
-
-/**
- *
- */
-function handleGroup(group: TContentGroup, bookId: string): void {
-  group.items.forEach((item: TContentItem) =>
-    item.pages.forEach((page: string) =>
-      pagesMap.set(page, {
-        page: page + '',
-        path: `/${bookId}/${item.id}?p=${page}`,
-        title: item.title
-      })
-    )
-  );
 }

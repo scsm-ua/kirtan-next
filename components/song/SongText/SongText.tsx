@@ -27,7 +27,9 @@ type Props = {
 function SongText({ label, song }: Props) {
   const [mode, setMode] = useState<TTranslationMode>(null);
   const [updateCount, setCounter] = useState<number>(0);
+
   const hasTranslation = !('translation' in song.meta) || song.meta.translation !== 'no';
+  const isWBW = !!song.verses.find((v: TVerse) => v.word_by_word?.length > 0);
 
   const contentCls = classNames(
     'SongText',
@@ -62,6 +64,7 @@ function SongText({ label, song }: Props) {
           <ul className="SongText__list">
             {song.verses.map((verse: TVerse, idx: number, arr: TVerse[]) => (
               <Verse
+                isWBW={isWBW}
                 key={idx}
                 length={arr.length}
                 meta={song.meta}

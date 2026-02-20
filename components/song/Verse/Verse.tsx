@@ -11,6 +11,7 @@ import type { TTranslationMode } from '@/types/common';
 
 /**/
 type Props = {
+  isWBW: boolean;
   length: number;
   meta: TSong['meta'];
   mode: TTranslationMode;
@@ -20,9 +21,8 @@ type Props = {
 /**
  *
  */
-function Verse({ length, meta, mode, verse }: Props) {
+function Verse({ isWBW, length, meta, mode, verse }: Props) {
   const { number, subtitle, text, translation, word_by_word } = verse;
-  const isWBW = word_by_word?.length > 0;
   const isWide = mode === '2';
 
   const showVerse = mode === '1' || mode === '3';
