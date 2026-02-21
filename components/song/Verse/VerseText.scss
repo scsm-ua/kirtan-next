@@ -6,28 +6,29 @@
   &__line {
     font-weight: 700;
     line-height: 24px;
+    text-indent: -1em;
     color: var(--title-color);
   }
 
   &__indent {
     &--0 {
-      margin-left: 0;
-    }
-
-    &--1 {
       margin-left: 1em;
     }
 
-    &--2 {
+    &--1 {
       margin-left: 2em;
     }
 
-    &--3 {
+    &--2 {
       margin-left: 3em;
     }
 
-    &--4 {
+    &--3 {
       margin-left: 4em;
+    }
+
+    &--4 {
+      margin-left: 5em;
     }
   }
 
