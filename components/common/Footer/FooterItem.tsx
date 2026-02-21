@@ -25,7 +25,7 @@ function FooterItem({
     setPath(window.location.pathname);
   }, []);
 
-  const isActive = pathname === href;
+  const isActive = pathname === href || pathname === href + '/';
   const cls = 'FooterItem ' + (isActive ? 'FooterItem--active' : '');
 
   const iconCls = 'FooterItem__icon ' + (
