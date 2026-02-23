@@ -14,6 +14,7 @@ const { writeFile } = require('./ioHelpers');
 
 /**/
 const booksMap = {};
+const resourceMap = fetchSharedResources();
 
 /**
  *
@@ -31,7 +32,6 @@ Object.entries(dependencies).forEach(([bookSlug, npmSrc]) => {
 	installPackage(npmSrc, targetDir, bookSlug, booksMap);
 	addSongsCount(booksMap, bookSlug);
 	
-	const resourceMap = fetchSharedResources();
 	transformContents(targetDir, resourceMap);
 	createAZ(targetDir);
 	createAuthors(targetDir);
