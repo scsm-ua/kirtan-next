@@ -5,5 +5,6 @@
   "en": "git+https://github.com/scsm-ua/kirtan-guide-en.git",
   "pt": "git+https://github.com/scsm-ua/kirtan-guide-pt.git",
   "es": "git+https://github.com/scsm-ua/kirtan-guide-es.git",
-  "en-pe": "git+https://github.com/scsm-ua/kirtan-guide-pocket-edition.git"
+  "en-pe": "git+https://github.com/scsm-ua/kirtan-guide-pocket-edition.git",
+  "ru-kdm": "git+https://github.com/scsm-ua/gaudiya-gitanjali-ru-kd-morning.git#morning-short"
 }

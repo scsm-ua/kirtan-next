@@ -2,7 +2,7 @@
 import './BookCard.scss';
 import { displayVersionInfo } from '@/other/displayVersion';
 import { PATH } from '@/other/constants';
-import { saveBookChoice } from '@/other/userPreferrences';
+import { saveBookChoice, shouldShowHiddenBooks } from '@/other/userPreferrences';
 import { translate } from '@/other/i18n';
 import type { TBookDescription } from '@/types/book';
 
@@ -18,7 +18,8 @@ displayVersionInfo();
  *
  */
 function BookCard({ bookDescription }: Props) {
-  const { slug, songsCount, subtitle, title } = bookDescription;
+  const { hidden, slug, songsCount, subtitle, title } = bookDescription;
+  if (!shouldShowHiddenBooks() && hidden) return null;
 
   const handleClick = () => saveBookChoice(slug);
   const href = '/' + slug + PATH.PAGE.A_Z;
@@ -35,7 +36,7 @@ function BookCard({ bookDescription }: Props) {
     '@2.jpg 2x';
 
   return (
-    <div className="BookCard" onClick={handleClick}>
+    <li className="BookCard" onClick={handleClick}>
       <div className="BookCard__container">
         <div className="BookCard__ratio app-fixed-ratio-container">
           <div className="app-fixed-ratio-content">
@@ -61,7 +62,7 @@ function BookCard({ bookDescription }: Props) {
           </div>
         </div>
       </div>
-    </div>
+    </li>
   );
 }
 

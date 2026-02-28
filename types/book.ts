@@ -1,7 +1,9 @@
 /**/
 export type TBookDescription = {
+  hidden: boolean;
   slug: string;
   songsCount: number;
+  sort_order: number;
   subtitle: string;
   title: string;
 };

@@ -17,5 +17,9 @@
 
   &__term {
     font-weight: 400;
+
+    [data-mode="2"] & {
+      font-weight: 700;
+    }
   }
 }

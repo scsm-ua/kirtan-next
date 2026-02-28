@@ -28,13 +28,19 @@ Object.entries(dependencies).forEach(([bookSlug, npmSrc]) => {
 	
 	const targetDir = path.resolve(__dirname, '..', `${CONST.FOLDER.SRC_OUTPUT}/${bookSlug}`);
 	
-	// Order matters.
-	installPackage(npmSrc, targetDir, bookSlug, booksMap);
-	addSongsCount(booksMap, bookSlug);
-	
-	transformContents(targetDir, resourceMap);
-	createAZ(targetDir);
-	createAuthors(targetDir);
+	try {
+		// Order matters.
+		installPackage(npmSrc, targetDir, bookSlug, booksMap);
+		addSongsCount(booksMap, bookSlug);
+		
+		transformContents(targetDir, resourceMap);
+		createAZ(targetDir);
+		createAuthors(targetDir);
+		
+	} catch (e) {
+		console.error(chalk.bgRedBright.bold(bookSlug));
+		console.error(chalk.bgRedBright(e));
+	}
 });
 
 /**/

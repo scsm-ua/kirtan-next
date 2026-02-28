@@ -1,6 +1,10 @@
 .Verse {
   &__subtitles {
     margin: 16px 0;
+
+    &--large {
+      font-size: 24px;
+    }
   }
 
   &__header {

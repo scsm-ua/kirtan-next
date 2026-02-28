@@ -1,4 +1,5 @@
 'use client';
+import classnames from 'classnames';
 
 import './Verse.scss';
 import Collapse from '@/components/common/Collapse/Collapse';
@@ -29,10 +30,15 @@ function Verse({ isWBW, length, meta, mode, verse }: Props) {
   const showWbw = mode === '3';
   const showTranslation = mode === '2' || mode === '3';
 
+  const stCls = (classnames as any)(
+    'Verse__subtitles',
+    mode === '2' && 'Verse__subtitles--large'
+  );
+
   return (
-    <li className="Verse">
-      {subtitle?.length > 0 && (
-        <div className="Verse__subtitles">
+    <li className="Verse" data-mode={mode}>
+      {subtitle?.length > 0 && showTranslation && (
+        <div className={stCls}>
           {subtitle.map((s: string) => (
             <div key={s}>{s}</div>
           ))}
@@ -59,7 +65,11 @@ function Verse({ isWBW, length, meta, mode, verse }: Props) {
 
       {translation?.length > 0 && (
         <Collapse defaultOpen={showTranslation} open={showTranslation}>
-          <VerseTranslation isWide={isWide} isWBW={isWBW} translation={translation} />
+          <VerseTranslation
+            isWide={isWide}
+            isWBW={isWBW}
+            translation={translation}
+          />
         </Collapse>
       )}
     </li>

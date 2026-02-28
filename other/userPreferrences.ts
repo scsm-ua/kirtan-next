@@ -18,7 +18,10 @@ export function saveBookChoice(bookId: string): void {
  * 				'2' - show only translation,
  * 				'3' - show both (default).
  */
-const SONG_DISPLAY_MODE = 'SONG_DISPLAY_MODE'
+const SONG_DISPLAY_MODE = 'SONG_DISPLAY_MODE';
+
+/**/
+const SHOW_HIDDEN_BOOKS = 'SHOW_HIDDEN_BOOKS';
 
 /**/
 export function getSongDisplayMode(): TTranslationMode {
@@ -29,4 +32,9 @@ export function getSongDisplayMode(): TTranslationMode {
 /**/
 export function setSongDisplayMode(value: TTranslationMode) {
   localStorage.setItem(SONG_DISPLAY_MODE, value);
+}
+
+/**/
+export function shouldShowHiddenBooks(): boolean {
+  return !!localStorage.getItem(SHOW_HIDDEN_BOOKS);
 }

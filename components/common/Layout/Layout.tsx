@@ -4,6 +4,7 @@ import './Layout.scss';
 import Footer from '@/components/common/Footer/Footer';
 import Header from '@/components/common/Header/Header';
 import { PATH } from '@/other/constants';
+import { GoogleAnalytics } from '@/components/common/GoogleAnalytics';
 
 /**
  *
@@ -12,12 +13,14 @@ function Layout({
   bookId,
   children,
   className,
-  page
+  page,
+  songId
 }: Readonly<{
   bookId: string;
   children: React.ReactNode;
   className?: string;
   page?: string | string[];
+  songId?: string;
 }>) {
   const path = PATH.IMG.FAV;
   const cls = classNames('Main', className);
@@ -60,6 +63,8 @@ function Layout({
 
           <Footer bookId={bookId} page={page} />
         </div>
+
+        <GoogleAnalytics bookId={bookId} songId={songId} />
       </body>
     </html>
   );

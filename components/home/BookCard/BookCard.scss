@@ -2,6 +2,8 @@
 //@import '@/styles/mixins';
 
 .BookCard {
+  animation: fadeIn var(--transition-duration);
+
   &__container {
     margin: 0 auto;
     max-width: 390px;

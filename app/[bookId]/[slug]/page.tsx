@@ -51,7 +51,12 @@ async function SongPage({ params }: SongPageProps) {
   const nav = await getNavItems(slug, bookId);
 
   return (
-    <Layout bookId={bookId} className="SongPage" page={song.meta?.page}>
+    <Layout
+      bookId={bookId}
+      className="SongPage"
+      page={song.meta?.page}
+      songId={slug}
+    >
       <div className="Main__container SongPage__container">
         <div className="SongPage__content">
           <header className="SongPage__header">
@@ -91,7 +96,10 @@ async function SongPage({ params }: SongPageProps) {
           />
 
           {song.resources.audio?.length > 0 && (
-            <AudioList audio={song.resources.audio} language={bookId.slice(0, 2)} />
+            <AudioList
+              audio={song.resources.audio}
+              language={bookId.slice(0, 2)}
+            />
           )}
         </div>
       </div>
