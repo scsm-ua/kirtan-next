@@ -1,7 +1,7 @@
 .AudioContentCollapse {
   &__button {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: flex-start;
     padding: 12px 0;
   }
@@ -22,6 +22,7 @@
     line-height: 28px;
     margin: 0 0 0 16px;
     color: var(--title-color);
+    text-align: start;
   }
 
   &__content {
