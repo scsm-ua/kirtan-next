@@ -29,17 +29,21 @@ function ContentItem({ bookId, item }: Props) {
   return (
     <li className="ContentItem">
       <a href={href} className="ContentItem__link">
-        <h6 className="ContentItem__name" title={aliasName}>
-          <span className={cls}>{title}</span>
+        <div className="ContentItem__box">
+          <h6 className={cls} title={aliasName}>
+            {title}
+          </h6>
 
-          {_pages && (
-            <span className="ContentItem__page" title="Page in paper songbook">{_pages}</span>
-          )}
+          <div className="ContentItem__info">
+            {_pages && (
+              <span className="ContentItem__page" title="Page in paper songbook">{_pages}</span>
+            )}
 
-          {has.audio && (
-            <span className="ContentItem__embed" title="Audio">♪</span>
-          )}
-        </h6>
+            {has.audio && (
+              <span className="ContentItem__embed" title="Audio">♪</span>
+            )}
+          </div>
+        </div>
 
         <div className="ContentItem__suffix">
           <div className="ContentItem__icon icon-chevron-right" />

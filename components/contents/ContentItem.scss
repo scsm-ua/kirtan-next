@@ -8,17 +8,26 @@
     width: 100%;
   }
 
-  &__name {
+  &__box {
     flex: 1;
-    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__info {
+    line-height: 28px;
+  }
+
+  &__title {
+    flex: 1;
     line-height: 28px;
     margin: 0;
     color: var(--title-color);
-  }
 
-  &__title--normal {
-    font-weight: normal;
-    color: var(--dark-grey);
+    &--normal {
+      font-weight: normal;
+      color: var(--dark-grey);
+    }
   }
 
   &__page {
