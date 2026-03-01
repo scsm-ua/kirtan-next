@@ -2,9 +2,9 @@ import classNames from 'classnames';
 
 import './Layout.scss';
 import Footer from '@/components/common/Footer/Footer';
+import { GoogleAnalytics } from '@/components/common/GoogleAnalytics';
 import Header from '@/components/common/Header/Header';
 import { PATH } from '@/other/constants';
-import { GoogleAnalytics } from '@/components/common/GoogleAnalytics';
 
 /**
  *
