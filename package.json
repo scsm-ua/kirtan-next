@@ -7,6 +7,7 @@
     "build": "npm run validation && npm run install:src && next build --webpack",
     "build:prod": "env-cmd -f env/.env.prod npm run build",
     "build:test": "env-cmd -f env/.env.dev npm run build",
+    "build:action": "npm run build",
     "start": "serve out -p 3334",
     "lint": "eslint",
     "postbuild": "node scripts/postbuild.js",
