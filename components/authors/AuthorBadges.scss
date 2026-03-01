@@ -19,6 +19,9 @@
     background-color: var(--song-bg-color);
     transition: color 0.25s;
     cursor: pointer;
+    white-space: normal;
+    min-height: fit-content;
+    text-align: left;
 
     &:hover {
       color: var(--accent-color);

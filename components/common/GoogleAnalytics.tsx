@@ -27,8 +27,8 @@ export function GoogleAnalytics({ bookId = null, songId = null }: Props) {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', '${GA_ID}', {
-            songbook: ${bookId},
-            song: ${songId}
+            songbook: '${bookId}',
+            song: '${songId}'
           });
         `}
       </Script>
