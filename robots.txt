@@ -1,4 +1,4 @@
 User-Agent: *
-Disallow: /
+Allow: /
 
 Sitemap: https://next.kirtan.site//sitemap.xml

@@ -1,4 +1,4 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[1],{34:()=>{},784:(a,n,i)=>{"use strict";i.d(n,{GoogleAnalytics:()=>o});var E=i(5155),e=i(5596),s=i(1463);function o({bookId:a=null,songId:n=null}){let i=s.env.NEXT_PUBLIC_G_ID;return i?(0,E.jsxs)(E.Fragment,{children:[(0,E.jsx)(e.default,{src:`https://www.googletagmanager.com/gtag/js?id=${i}`,strategy:"afterInteractive"}),(0,E.jsx)(e.default,{id:"gtag-init",strategy:"afterInteractive",children:`
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[1],{34:()=>{},784:(a,n,i)=>{"use strict";i.d(n,{GoogleAnalytics:()=>s});var E=i(5155),e=i(5596);function s({bookId:a=null,songId:n=null}){let i="G-7NCXTS1JYM";return i?(0,E.jsxs)(E.Fragment,{children:[(0,E.jsx)(e.default,{src:`https://www.googletagmanager.com/gtag/js?id=${i}`,strategy:"afterInteractive"}),(0,E.jsx)(e.default,{id:"gtag-init",strategy:"afterInteractive",children:`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
