@@ -1,5 +1,7 @@
 import './ContentGroup.scss';
 import ContentItem from '@/components/contents/ContentItem';
+import GroupTitle from '@/components/contents/GroupTitle';
+
 import { TContentGroup, TContentItem } from '@/types/common';
 
 /**/
@@ -18,7 +20,9 @@ function ContentGroup({ bookId, group }: Props) {
     <li className="ContentGroup" id={id}>
       {group.name ? (
         <header className="ContentGroup__header">
-          <h6 className="ContentGroup__title">{group.name}</h6>
+          <h6 className="ContentGroup__title">
+            <GroupTitle title={group.name} />
+          </h6>
         </header>
       ) : (
         <header className="ContentGroup__header--empty" />
