@@ -1,0 +1,21 @@
+.FileDropzone {
+  height: auto;
+
+  &__input {
+    display: none;
+  }
+
+  &__label {
+    display: block;
+    cursor: pointer;
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--mid-gray);
+    padding: 24px 16px;
+  }
+}

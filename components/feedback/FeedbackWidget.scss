@@ -1,0 +1,56 @@
+.FeedbackWidget {
+  position: fixed;
+  right: 14px;
+  bottom: calc(var(--footer-height) + 12px);
+  //bottom: 14px;
+
+  &__container {
+    height: fit-content;
+  }
+
+  &__button {
+    height: 40px;
+    width: 40px;
+    font-size: 20px;
+    padding: 4px;
+    margin-left: 12px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__field {
+    display: grid;
+    margin-bottom: 12px;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  &__footer {
+    padding-top: 8px;
+  }
+
+  &__submit {
+    height: 44px;
+    width: 100%;
+    border: none;
+    border-radius: 24px;
+    background: var(--brown);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+
+    &:hover {
+      color: var(--accent-color);
+    }
+
+    &:active {
+      filter: brightness(2);
+    }
+  }
+}

@@ -42,12 +42,13 @@ $bp576: 576;
 
   /**/
   --accent-color: var(--orange);
-  --border-color: var(--grey);
+  --border-color: var(--gray);
   --header-bg-color: var(--dark);
   --footer-bg-color: var(--dark);
   --main-bg-color: var(--beige);
   --song-bg-color: #fff;
-  --text-color: var(--dark-grey);
+  --placeholder-color: var(--mid-gray);
+  --text-color: var(--dark-gray);
   --title-color: var(--dark);
   --shadow-color: rgba(56, 55, 142, 0.15);
 
@@ -58,7 +59,11 @@ $bp576: 576;
   //--brown-dark: #432c00;
   --brown: #26231b;
   --dark: #0b0800;
-  --dark-grey: #6c6c6c;
-  --grey: #c0c0c0;
+  --dark-gray: #6c6c6c;
+  --mid-gray: #8e8e93;
+  --gray: #c0c0c0;
+  --light-gray: #f5f5f5;
   --orange: #f5c149;
+  --error: #ff6542;
+  //--error: #eb6034;
 }

@@ -1,0 +1,26 @@
+.FileItem {
+  margin-bottom: 16px;
+
+  &__remove {
+    color: var(--error);
+    font-size: 10px;
+
+    span {
+      font-weight: bold !important;
+    }
+  }
+
+  &__box {
+    display: flex;
+    font-size: 14px;
+  }
+
+  &__name {
+    margin: 0 8px;
+    color: var(--title-color);
+  }
+
+  &__size {
+    color: var(--text-color);
+  }
+}

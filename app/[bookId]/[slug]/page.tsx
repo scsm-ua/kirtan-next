@@ -1,6 +1,4 @@
 import { notFound } from 'next/navigation';
-import 'react-responsive-modal/styles.css';
-
 import './SongPage.scss';
 
 import AudioList from '@/components/song/AudioList/AudioList';

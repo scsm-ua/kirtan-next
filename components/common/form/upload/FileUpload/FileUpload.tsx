@@ -1,0 +1,49 @@
+'use client';
+import React, { DragEvent, useRef } from 'react';
+
+import { FileDropzone } from '@/components/common/form/upload/FileDropzone/FileDropzone';
+import { FileItem } from '@/components/common/form/upload/FileItem/FileItem';
+import FormField from '@/components/common/form/FormField/FormField';
+
+/**/
+type Props = {
+  errors: Object;
+  file: File | null;
+  onFile: (file: File | null) => void;
+};
+
+/**
+ *
+ */
+export default function FileUpload({ errors, file, onFile }: Props) {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileSelect = (files: FileList) => files && onFile(files[0]);
+  const handleRemoveFile = () => onFile(null);
+
+  const handleBoxClick = () => fileInputRef.current?.click();
+  const handleDrop = (e: DragEvent) => {
+    e.preventDefault();
+    handleFileSelect(e.dataTransfer.files);
+  };
+
+
+  return (
+    <>
+      <FormField
+        inputClassName="FormField__input--dashed FormField__input--large"
+        name="image"
+        zodError={errors}
+      >
+        <FileDropzone
+          fileInputRef={fileInputRef}
+          onBoxClick={handleBoxClick}
+          onDrop={handleDrop}
+          onFileSelect={handleFileSelect}
+        />
+      </FormField>
+
+      <FileItem file={file} onRemove={handleRemoveFile} />
+    </>
+  );
+}

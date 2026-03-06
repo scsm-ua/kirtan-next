@@ -1,0 +1,54 @@
+.FormField {
+  margin-bottom: 16px;
+
+  &__label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  &__text {
+    color: var(--text-color);
+    margin-bottom: 8px;
+  }
+
+  &__message {
+    color: var(--error);
+    margin-bottom: 8px;
+  }
+
+  &__input {
+    height: 44px;
+    width: 100%;
+    border-radius: 24px;
+    border: solid 1px var(--border-color);
+    transition: all var(--transition-duration);
+    overflow: hidden;
+
+    &:hover {
+      border-color: var(--accent-color);
+    }
+
+    &:focus-within {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 2px var(--accent-color);
+    }
+
+    &--large {
+      height: 104px;
+    }
+
+    &--dashed {
+      border-style: dashed !important;
+    }
+
+    &--error {
+      border-color: var(--error) !important;
+
+      &:focus-within {
+        box-shadow: 0 0 0 2px var(--error);
+      }
+    }
+  }
+}

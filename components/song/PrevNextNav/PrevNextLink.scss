@@ -22,7 +22,7 @@
   &:not(&--disabled):hover,
   &:not([data-disabled]):hover {
     .PrevNextLink__icon {
-      color: var(--dark-grey);
+      color: var(--dark-gray);
     }
 
     .PrevNextLink__label {
@@ -32,7 +32,7 @@
 
   &__label {
     font-size: 12px;
-    color: var(--dark-grey);
+    color: var(--dark-gray);
     transition: color 0.25s;
   }
 
@@ -41,7 +41,7 @@
     max-height: 24px;
     line-height: 1;
     padding-left: 6px;
-    color: var(--grey);
+    color: var(--gray);
     transition: color 0.25s;
 
     &--prev {
