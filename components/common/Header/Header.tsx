@@ -1,6 +1,7 @@
 'use client';
 
 import './Header.scss';
+import FeedbackWidget from '@/components/feedback/FeedbackWidget';
 import { PATH } from '@/other/constants';
 
 /**
@@ -20,6 +21,8 @@ function Header({ bookId }: { bookId: string }) {
               src={PATH.IMG.LOGO}
             />
           </a>
+
+          <FeedbackWidget bookId={bookId} />
         </div>
       </div>
     </header>

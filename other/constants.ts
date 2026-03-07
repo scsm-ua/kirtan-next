@@ -42,11 +42,3 @@ export const PATH = {
 export const PREFERENCES = {
   PREFERRED_BOOK_ID: 'CURRENT_BOOK_ID'
 };
-
-/**/
-export const MODAL_CLASS_NAMES = {
-  modal: 'AppModal__container',
-  overlay: 'AppModal__mask',
-  closeButton: 'AppModal__button',
-  closeIcon: 'AppModal__icon'
-};

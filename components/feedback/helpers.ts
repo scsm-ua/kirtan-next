@@ -1,54 +1,51 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 
+import type { TFeedbackTranslations } from '@/types/translations';
+
 /**/
-// const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
 export const MAX_IMAGE_SIZE = 2097152; // 2MB
+
+export const FIELDS = {
+  EMAIL: 'email',
+  IMAGE: 'image',
+  MESSAGE: 'message',
+  NAME: 'name'
+};
 
 const CHAT_ID = -1003735575930;
 const TOKEN = '8651091209:AAFp34KDkoZ8iaZtGWnPS7UglRUxns_yF8g';
 
-const schema = z.object({
-  email: z
-    .email('Invalid email address.')
-    .optional()
-    .or(z.literal('')),
-  // image: z
-  //   .instanceof(FileList)
-  //   .nullable()
-  //   .optional()
-  //   .refine(
-  //     (files) => !files || files?.[0]?.size <= MAX_IMAGE_SIZE,
-  //     'Max image size is 5MB.'
-  //   )
-  //   .refine(
-  //     (files) => !files || ACCEPTED_IMAGE_TYPES.includes(files?.[0]?.type),
-  //     'Only .jpg, .jpeg, .png and .webp formats are supported.'
-  //   ),
-  message: z
-    .string()
-    .min(5, 'Message requires at least 5 symbols.')
-    .max(1000, 'Message can be at most 1000 symbols.'),
-  name: z
-    .string()
-    .max(80, 'Name can be at most 80 symbols.')
-}) as any;
+/**/
+export function getFormInit(t: TFeedbackTranslations) {
+  return {
+    defaultValues: {
+      email: '',
+      message: '',
+      name: ''
+    },
+    resolver: zodResolver(
+      z.object({
+        email: z
+          .email(t.FIELDS.EMAIL.VALIDATION.INVALID)
+          .optional()
+          .or(z.literal('')),
+        message: z
+          .string()
+          .min(5, t.FIELDS.MESSAGE.VALIDATION.MIN_LENGTH)
+          .max(1000, t.FIELDS.MESSAGE.VALIDATION.MAX_LENGTH),
+        name: z.string().max(80, t.FIELDS.NAME.VALIDATION.MAX_LENGTH)
+      }) as any
+    )
+  } as any;
+}
 
-const DEFAULT_VALUES: TSubmitFormData = {
-  email: '',
-  image: null,
-  message: '',
-  name: ''
+/**/
+export type TSubmitFormData = {
+  email: string;
+  message: string;
+  name: string;
 };
-
-/**/
-export const FORM_INIT = {
-  defaultValues: DEFAULT_VALUES,
-  resolver: zodResolver(schema)
-} as any;
-
-/**/
-export type TSubmitFormData = z.infer<typeof schema>;
 
 /**
  *
@@ -64,8 +61,7 @@ export function onFeedbackSubmit(data: TSubmitFormData, file: File) {
       parse_mode: 'Markdown',
       text: buildTextBody(data)
     })
-  })
-    .catch(console.error);
+  }).catch(console.error);
 
   if (!file) return;
 
@@ -76,8 +72,7 @@ export function onFeedbackSubmit(data: TSubmitFormData, file: File) {
   fetch(`https://api.telegram.org/bot${TOKEN}/sendPhoto`, {
     method: 'POST',
     body: fd
-  } as any)
-    .catch(console.error);
+  } as any).catch(console.error);
 }
 
 /**
@@ -86,10 +81,10 @@ export function onFeedbackSubmit(data: TSubmitFormData, file: File) {
 function buildTextBody(data: TSubmitFormData): string {
   let text = `*Message:* ${data.message}`;
 
-  if ('email' in data) {
+  if (data.email) {
     text = `*Email:* ${data.email}\n` + text;
   }
-  if ('name' in data) {
+  if (data.name) {
     text = `*Name:* ${data.name}\n` + text;
   }
 

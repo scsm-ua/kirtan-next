@@ -1,4 +1,4 @@
-@use '../mixins' as m;
+@use '../../../styles/mixins' as m;
 
 .AppModal {
   &__mask {
@@ -15,7 +15,8 @@
 
       margin: 30px 0;
       border-radius: 24px;
-      padding: var(--side-padding);
+      padding: 24px;
+      border: solid 1px var(--border-color);
       background-color: var(--song-bg-color) !important;
 
       @include m.tablet-up {
@@ -27,28 +28,26 @@
     }
   }
 
-  &__button.react-responsive-modal-closeButton {
-    @include m.icomoon('\e910');
-    font-weight: 700;
-    font-size: 16px;
-    padding: 8px;
-    height: 36px;
-    width: 36px;
-    top: 14px;
-    right: 8px;
+  &__header {
+    position: relative;
+    padding: 0 36px;
+    margin-bottom: 16px;
+  }
+
+  &__close {
+    position: absolute;
+    top: 3px;
+    right: -3px;
+    font-size: 18px;
     color: var(--dark);
-    transition: color 0.25s;
 
     &:hover {
       color: var(--accent-color);
     }
   }
 
-  &__icon {
-    display: none;
-  }
-
-  &__content {
-    padding-top: var(--side-padding);
+  &__title {
+    min-height: 1px;
+    text-align: center;
   }
 }

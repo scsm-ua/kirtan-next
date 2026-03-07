@@ -92,6 +92,42 @@
     },
     "META": {
       "TRANSLATION_NAME": "Tulkojums latviešu valodā"
+    },
+    "FEEDBACK": {
+      "TRIGGER_TEXT": "Atsauksmes",
+      "TITLE": "Dalies ar atsauksmēm",
+      "TU_MESSAGE": "Mēs novērtējam jūsu atsauksmes. Paldies!",
+      "APPEAL": "Pastāstiet mums, ko domājat, vai ierosiniet, kā uzlabot vietni.",
+      "FIELDS": {
+        "NAME": {
+          "LABEL": "Vārds",
+          "VALIDATION": {
+            "MAX_LENGTH": "Vārds nedrīkst pārsniegt 80 rakstzīmes."
+          }
+        },
+        "EMAIL": {
+          "LABEL": "Jūsu e-pasts",
+          "VALIDATION": {
+            "INVALID": "Ievadiet derīgu e-pasta adresi."
+          }
+        },
+        "MESSAGE": {
+          "LABEL": "Ziņojums",
+          "VALIDATION": {
+            "MAX_LENGTH": "Ziņojums nedrīkst pārsniegt 1000 rakstzīmes.",
+            "MIN_LENGTH": "Ziņojums ir pārāk īss (min. 5 rakstzīmes)."
+          }
+        },
+        "IMAGE": {
+          "VALIDATION": {
+            "TYPE": "Atļauti tikai attēlu faili.",
+            "SIZE": "Maksimālais attēla izmērs ir 2 MB."
+          },
+          "TEXT": "Ievelciet attēlu šeit vai noklikšķiniet, lai augšupielādētu",
+          "SUBTEXT": "(maks. 2 MB)"
+        },
+        "SUBMIT": "Nosūtīt atsauksmi"
+      }
     }
   },
   "en": {
@@ -187,6 +223,42 @@
     },
     "META": {
       "TRANSLATION_NAME": "English Translation"
+    },
+    "FEEDBACK": {
+      "TRIGGER_TEXT": "Feedback",
+      "TITLE": "Share Your Feedback",
+      "TU_MESSAGE": "We appreciate your feedback. Thank you!",
+      "APPEAL": "Tell us what you think or suggest ways to make the site better.",
+      "FIELDS": {
+        "NAME": {
+          "LABEL": "Name",
+          "VALIDATION": {
+            "MAX_LENGTH": "Name can’t exceed 80 characters."
+          }
+        },
+        "EMAIL": {
+          "LABEL": "Your Email",
+          "VALIDATION": {
+            "INVALID": "Enter a valid email."
+          }
+        },
+        "MESSAGE": {
+          "LABEL": "Message",
+          "VALIDATION": {
+            "MAX_LENGTH": "Message can’t exceed 1000 characters.",
+            "MIN_LENGTH": "Message is too short (min 5 characters)."
+          }
+        },
+        "IMAGE": {
+          "VALIDATION": {
+            "TYPE": "Only image files are allowed.",
+            "SIZE": "Maximum image size is 2 MB."
+          },
+          "TEXT": "Drop an image here or click to upload",
+          "SUBTEXT": "(2MB max)"
+        },
+        "SUBMIT": "Submit Feedback"
+      }
     }
   },
   "es": {
@@ -282,6 +354,42 @@
     },
     "META": {
       "TRANSLATION_NAME": "Traducción al español"
+    },
+    "FEEDBACK": {
+      "TRIGGER_TEXT": "Comentarios",
+      "TITLE": "Comparte tus comentarios",
+      "TU_MESSAGE": "Agradecemos tus comentarios. ¡Gracias!",
+      "APPEAL": "Cuéntanos qué piensas o sugiere formas de mejorar el sitio.",
+      "FIELDS": {
+        "NAME": {
+          "LABEL": "Nombre",
+          "VALIDATION": {
+            "MAX_LENGTH": "El nombre no puede superar los 80 caracteres."
+          }
+        },
+        "EMAIL": {
+          "LABEL": "Tu correo electrónico",
+          "VALIDATION": {
+            "INVALID": "Introduce un correo electrónico válido."
+          }
+        },
+        "MESSAGE": {
+          "LABEL": "Mensaje",
+          "VALIDATION": {
+            "MAX_LENGTH": "El mensaje no puede superar los 1000 caracteres.",
+            "MIN_LENGTH": "El mensaje es demasiado corto (mín. 5 caracteres)."
+          }
+        },
+        "IMAGE": {
+          "VALIDATION": {
+            "TYPE": "Solo se permiten archivos de imagen.",
+            "SIZE": "El tamaño máximo de la imagen es de 2 MB."
+          },
+          "TEXT": "Suelta una imagen aquí o haz clic para subirla",
+          "SUBTEXT": "(máx. 2 MB)"
+        },
+        "SUBMIT": "Enviar comentarios"
+      }
     }
   },
   "ru": {
@@ -390,6 +498,42 @@
     },
     "META": {
       "TRANSLATION_NAME": "Русский перевод"
+    },
+    "FEEDBACK": {
+      "TRIGGER_TEXT": "Отзыв",
+      "TITLE": "Поделитесь отзывом",
+      "TU_MESSAGE": "Спасибо за ваш отзыв!",
+      "APPEAL": "Расскажите, что вы думаете, или предложите, как можно улучшить сайт.",
+      "FIELDS": {
+        "NAME": {
+          "LABEL": "Имя",
+          "VALIDATION": {
+            "MAX_LENGTH": "Имя не должно превышать 80 символов."
+          }
+        },
+        "EMAIL": {
+          "LABEL": "Ваш e-mail",
+          "VALIDATION": {
+            "INVALID": "Введите корректный e-mail."
+          }
+        },
+        "MESSAGE": {
+          "LABEL": "Сообщение",
+          "VALIDATION": {
+            "MAX_LENGTH": "Сообщение не должно превышать 1000 символов.",
+            "MIN_LENGTH": "Сообщение слишком короткое (мин. 5 символов)."
+          }
+        },
+        "IMAGE": {
+          "VALIDATION": {
+            "TYPE": "Разрешены только файлы изображений.",
+            "SIZE": "Максимальный размер изображения — 2 МБ."
+          },
+          "TEXT": "Перетащите изображение сюда или нажмите для загрузки",
+          "SUBTEXT": "(макс. 2 МБ)"
+        },
+        "SUBMIT": "Отправить отзыв"
+      }
     }
   },
   "ua": {
@@ -498,6 +642,42 @@
     },
     "META": {
       "TRANSLATION_NAME": "Український переклад"
+    },
+    "FEEDBACK": {
+      "TRIGGER_TEXT": "Відгук",
+      "TITLE": "Поділіться відгуком",
+      "TU_MESSAGE": "Дякуємо за ваш відгук!",
+      "APPEAL": "Розкажіть, що ви думаєте, або запропонуйте, як можна покращити сайт.",
+      "FIELDS": {
+        "NAME": {
+          "LABEL": "Ім’я",
+          "VALIDATION": {
+            "MAX_LENGTH": "Ім’я не повинно перевищувати 80 символів."
+          }
+        },
+        "EMAIL": {
+          "LABEL": "Ваш e-mail",
+          "VALIDATION": {
+            "INVALID": "Введіть коректний e-mail."
+          }
+        },
+        "MESSAGE": {
+          "LABEL": "Повідомлення",
+          "VALIDATION": {
+            "MAX_LENGTH": "Повідомлення не повинно перевищувати 1000 символів.",
+            "MIN_LENGTH": "Повідомлення занадто коротке (мін. 5 символів)."
+          }
+        },
+        "IMAGE": {
+          "VALIDATION": {
+            "TYPE": "Дозволені лише файли зображень.",
+            "SIZE": "Максимальний розмір зображення — 2 МБ."
+          },
+          "TEXT": "Перетягніть зображення сюди або натисніть, щоб завантажити",
+          "SUBTEXT": "(макс. 2 МБ)"
+        },
+        "SUBMIT": "Надіслати відгук"
+      }
     }
   },
   "pt": {
@@ -593,6 +773,42 @@
     },
     "META": {
       "TRANSLATION_NAME": "Tradução para o português brasileiro"
+    },
+    "FEEDBACK": {
+      "TRIGGER_TEXT": "Feedback",
+      "TITLE": "Compartilhe seu feedback",
+      "TU_MESSAGE": "Agradecemos seu feedback. Obrigado!",
+      "APPEAL": "Conte-nos o que você acha ou sugira formas de melhorar o site.",
+      "FIELDS": {
+        "NAME": {
+          "LABEL": "Nome",
+          "VALIDATION": {
+            "MAX_LENGTH": "O nome não pode exceder 80 caracteres."
+          }
+        },
+        "EMAIL": {
+          "LABEL": "Seu e-mail",
+          "VALIDATION": {
+            "INVALID": "Digite um e-mail válido."
+          }
+        },
+        "MESSAGE": {
+          "LABEL": "Mensagem",
+          "VALIDATION": {
+            "MAX_LENGTH": "A mensagem não pode exceder 1000 caracteres.",
+            "MIN_LENGTH": "A mensagem é muito curta (mín. 5 caracteres)."
+          }
+        },
+        "IMAGE": {
+          "VALIDATION": {
+            "TYPE": "Apenas arquivos de imagem são permitidos.",
+            "SIZE": "O tamanho máximo da imagem é 2 MB."
+          },
+          "TEXT": "Arraste uma imagem aqui ou clique para enviar",
+          "SUBTEXT": "(máx. 2 MB)"
+        },
+        "SUBMIT": "Enviar feedback"
+      }
     }
   }
 }

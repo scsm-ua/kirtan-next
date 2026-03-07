@@ -1,5 +1,5 @@
 'use client';
-import React, { DragEvent, useRef } from 'react';
+import { DragEvent, useRef } from 'react';
 
 import { FileDropzone } from '@/components/common/form/upload/FileDropzone/FileDropzone';
 import { FileItem } from '@/components/common/form/upload/FileItem/FileItem';
@@ -26,7 +26,6 @@ export default function FileUpload({ errors, file, onFile }: Props) {
     e.preventDefault();
     handleFileSelect(e.dataTransfer.files);
   };
-
 
   return (
     <>

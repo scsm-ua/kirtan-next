@@ -1,9 +1,8 @@
 'use client';
 import { ReactNode, useState } from 'react';
-import { Modal } from 'react-responsive-modal';
 
 import './OtherTranslations.scss';
-import { MODAL_CLASS_NAMES } from '@/other/constants';
+import AppModal from '@/components/common/Modal/AppModal';
 import { translate } from '@/other/i18n';
 
 /**/
@@ -30,14 +29,9 @@ function OtherTranslations({ bookId, children, disabled }: Props) {
         <span className="OtherTranslations__label">{bookId.toUpperCase()}</span>
       </button>
 
-      <Modal
-        center
-        classNames={MODAL_CLASS_NAMES}
-        onClose={() => setOpen(false)}
-        open={isOpen}
-      >
-        <div className="AppModal__content">{children}</div>
-      </Modal>
+      <AppModal header=" " isOpen={isOpen} onClose={() => setOpen(false)}>
+        {children}
+      </AppModal>
     </>
   );
 }

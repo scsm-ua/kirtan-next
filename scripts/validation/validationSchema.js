@@ -386,7 +386,125 @@ const TRANSLATION_VALIDATION_SCHEMA = {
           type: 'string'
         }
       }
-    }
+    },
+		FEEDBACK: {
+			type: 'object',
+			additionalProperties: false,
+			required: ['APPEAL', 'FIELDS', 'TITLE', 'TRIGGER_TEXT', 'TU_MESSAGE'],
+			properties: {
+				APPEAL: {
+					type: 'string'
+				},
+				TITLE: {
+					type: 'string'
+				},
+				TRIGGER_TEXT: {
+					type: 'string'
+				},
+				TU_MESSAGE: {
+					type: 'string'
+				},
+				FIELDS: {
+					type: 'object',
+					additionalProperties: false,
+					required: ['EMAIL', 'IMAGE', 'MESSAGE', 'NAME', 'SUBMIT'],
+					properties: {
+						EMAIL: {
+							type: 'object',
+							additionalProperties: false,
+							required: ['LABEL', 'VALIDATION'],
+							properties: {
+								LABEL: {
+									type: 'string'
+								},
+								VALIDATION: {
+									type: 'object',
+									additionalProperties: false,
+									required: ['INVALID'],
+									properties: {
+										INVALID: {
+											type: 'string'
+										}
+									}
+								}
+							}
+						},
+						IMAGE: {
+							type: 'object',
+							additionalProperties: false,
+							required: ['SUBTEXT', 'TEXT', 'VALIDATION'],
+							properties: {
+								SUBTEXT: {
+									type: 'string'
+								},
+								TEXT: {
+									type: 'string'
+								},
+								VALIDATION: {
+									type: 'object',
+									additionalProperties: false,
+									required: ['SIZE', 'TYPE'],
+									properties: {
+										SIZE: {
+											type: 'string'
+										},
+										TYPE: {
+											type: 'string'
+										}
+									}
+								}
+							}
+						},
+						MESSAGE: {
+							type: 'object',
+							additionalProperties: false,
+							required: ['LABEL', 'VALIDATION'],
+							properties: {
+								LABEL: {
+									type: 'string'
+								},
+								VALIDATION: {
+									type: 'object',
+									additionalProperties: false,
+									required: ['MAX_LENGTH', 'MIN_LENGTH'],
+									properties: {
+										MAX_LENGTH: {
+											type: 'string'
+										},
+										MIN_LENGTH: {
+											type: 'string'
+										}
+									}
+								}
+							}
+						},
+						NAME: {
+							type: 'object',
+							additionalProperties: false,
+							required: ['LABEL', 'VALIDATION'],
+							properties: {
+								LABEL: {
+									type: 'string'
+								},
+								VALIDATION: {
+									type: 'object',
+									additionalProperties: false,
+									required: ['MAX_LENGTH'],
+									properties: {
+										MAX_LENGTH: {
+											type: 'string'
+										}
+									}
+								}
+							}
+						},
+						SUBMIT: {
+							type: 'string'
+						}
+					}
+				}
+			}
+		}
   }
 };
 

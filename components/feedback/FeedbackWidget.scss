@@ -1,23 +1,45 @@
 .FeedbackWidget {
-  position: fixed;
-  right: 14px;
-  bottom: calc(var(--footer-height) + 12px);
-  //bottom: 14px;
-
   &__container {
     height: fit-content;
   }
 
   &__button {
-    height: 40px;
-    width: 40px;
-    font-size: 20px;
-    padding: 4px;
-    margin-left: 12px;
+    height: 32px;
+    font-size: 14px;
+    padding: 8px 14px;
+    color: #fff;
+    background-color: transparent;
+    border-radius: 16px;
+    border: solid 1px var(--accent-color);
+
+    &:hover {
+      color: var(--accent-color);
+    }
+
+    &:active {
+      color: var(--accent-color);
+      filter: brightness(2);
+      background: var(--brown);
+    }
   }
 
   &__title {
     margin-bottom: 24px;
+  }
+
+  &__appeal {
+    font-size: 14px;
+    color: var(--dark);
+    border-bottom: solid 0.5px var(--border-color);
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+  }
+
+  &__finished {
+    border-top: solid 0.5px var(--border-color);
+    margin: 24px 0 12px;
+    text-align: center;
+    padding-top: 24px;
   }
 
   &__field {
@@ -43,7 +65,6 @@
     color: #fff;
     font-size: 16px;
     font-weight: 700;
-    letter-spacing: 0.6px;
 
     &:hover {
       color: var(--accent-color);

@@ -1,55 +1,59 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 
-import { translate } from '@/other/i18n';
 import {
-  FORM_INIT, MAX_IMAGE_SIZE,
+  FIELDS, getFormInit,
+  MAX_IMAGE_SIZE,
   onFeedbackSubmit,
   type TSubmitFormData
 } from '@/components/feedback/helpers';
-import FormField from '@/components/common/form/FormField/FormField';
-import { FileDropzone } from '@/components/common/form/upload/FileDropzone/FileDropzone';
 import FileUpload from '@/components/common/form/upload/FileUpload/FileUpload';
+import FormField from '@/components/common/form/FormField/FormField';
+
+import type { TFeedbackTranslations } from '@/types/translations';
 
 type Props = {
-  // bookId: string;
-  // onSubmit: (values: TSubmitFormData) => void;
+  onFinish: () => void;
+  translations: TFeedbackTranslations;
 };
 
 /**
  *
  */
-function FormInner({ bookId }: Props) {
+function FormInner({ onFinish, translations: t }: Props) {
   const [file, setFile] = useState<File>(null);
+
+  useEffect(() => {
+    // Forcing focus. Weird, but the attribute doesn't work.
+    document.getElementById(FIELDS.NAME).focus();
+  }, []);
 
   const {
     register,
     handleSubmit,
     setError,
     formState: { errors }
-  } = useForm<TSubmitFormData>(FORM_INIT);
+  } = useForm<TSubmitFormData>(getFormInit(t));
 
   const onFile = (file: File | null) => {
     setFile(file);
-    file || setError('image', null);
+    file || setError(FIELDS.IMAGE, null);
   };
 
   const onSubmit = (data: TSubmitFormData) => {
     if (file && !file.type.startsWith('image/')) {
-      return setError('image', {
-        type: 'filetype',
-        message: 'Only image files are accepted.'
+      return setError(FIELDS.IMAGE, {
+        message: t.FIELDS.IMAGE.VALIDATION.TYPE
       });
     }
     if (file?.size > MAX_IMAGE_SIZE) {
-      return setError('image', {
-        type: 'filesize',
-        message: 'Max image size is 2MB.'
+      return setError(FIELDS.IMAGE, {
+        message: t.FIELDS.IMAGE.VALIDATION.SIZE
       });
     }
+
     onFeedbackSubmit(data, file);
+    onFinish();
   };
 
   return (
@@ -58,35 +62,43 @@ function FormInner({ bookId }: Props) {
       noValidate
       onSubmit={handleSubmit(onSubmit)}
     >
-      <FormField label="Name" name="name" zodError={errors}>
+      <FormField
+        label={t.FIELDS.NAME.LABEL}
+        name={FIELDS.NAME}
+        zodError={errors}
+      >
         <input
           autoFocus
           className="AppTextInput AppTextInput--gray"
-          id="name"
+          id={FIELDS.NAME}
           type="text"
-          {...register('name')}
+          {...register(FIELDS.NAME)}
         />
       </FormField>
 
-      <FormField label="E-mail" name="email" zodError={errors}>
+      <FormField
+        label={t.FIELDS.EMAIL.LABEL}
+        name={FIELDS.EMAIL}
+        zodError={errors}
+      >
         <input
           className="AppTextInput AppTextInput--gray"
-          id="email"
+          id={FIELDS.EMAIL}
           type="email"
-          {...register('email')}
+          {...register(FIELDS.EMAIL)}
         />
       </FormField>
 
       <FormField
         inputClassName="FormField__input--large"
-        label="Message"
-        name="message"
+        label={t.FIELDS.MESSAGE.LABEL}
+        name={FIELDS.MESSAGE}
         zodError={errors}
       >
         <textarea
-          className="AppTextInput AppTextInput--area"
-          id="message"
-          {...register('message')}
+          className="AppTextInput AppTextInput--area AppTextInput--gray"
+          id={FIELDS.MESSAGE}
+          {...register(FIELDS.MESSAGE)}
           rows="3"
         />
       </FormField>
@@ -94,7 +106,11 @@ function FormInner({ bookId }: Props) {
       <FileUpload errors={errors} file={file} onFile={onFile} />
 
       <div className="FeedbackWidget__footer">
-        <input className="AppButton FeedbackWidget__submit" type="submit" value="Send feedback" />
+        <input
+          className="AppButton FeedbackWidget__submit"
+          type="submit"
+          value={t.FIELDS.SUBMIT}
+        />
       </div>
     </form>
   );

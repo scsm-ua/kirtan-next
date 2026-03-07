@@ -1,9 +1,8 @@
 'use client';
 import { useState } from 'react';
-import { Modal } from 'react-responsive-modal';
 
 import './SongShare.scss';
-import { MODAL_CLASS_NAMES } from '@/other/constants';
+import AppModal from '@/components/common/Modal/AppModal';
 import SongShareForm from '@/components/song/SongShare/SongShareForm';
 import { translate } from '@/other/i18n';
 
@@ -28,16 +27,13 @@ function SongShare({ bookId }: Props) {
         <span className="icon-arrow-up-from-bracket" />
       </button>
 
-      <Modal
-        center
-        classNames={MODAL_CLASS_NAMES}
+      <AppModal
+        header={translate(bookId, 'SONG_PAGE.SHARE')}
+        isOpen={isOpen}
         onClose={() => setOpen(false)}
-        open={isOpen}
       >
-        <div className="AppModal__content">
-          <SongShareForm bookId={bookId} onClose={() => setOpen(false)} />
-        </div>
-      </Modal>
+        <SongShareForm bookId={bookId} onClose={() => setOpen(false)} />
+      </AppModal>
     </>
   );
 }

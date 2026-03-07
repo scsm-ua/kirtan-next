@@ -34,12 +34,6 @@ function SongShareForm({ bookId, onClose }: Props) {
 
   return (
     <div className="SongShare">
-      <header className="SongShare__header">
-        <h4 className="SongShare__title">
-          {translate(bookId, 'SONG_PAGE.SHARE')}
-        </h4>
-      </header>
-
       <div className="SongShare__qr">
         <QRCode size={240} value={href} />
       </div>

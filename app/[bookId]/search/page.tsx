@@ -7,7 +7,6 @@ import { getSearchPageMeta } from '@/other/metadata/getSearchPageMeta';
 import Layout from '@/components/common/Layout/Layout';
 import PageList from '@/components/search/PageList/PageList';
 import SearchModule from '@/components/search/SearchModule/SearchModule';
-// import LdJson from '@/other/metadata/LdJson';
 
 import type { BookListPageProps } from '@/types/book';
 
@@ -34,12 +33,6 @@ async function SearchPage({ params }: BookListPageProps) {
         </header>
 
         <SearchModule bookId={bookId} pageList={pageList} />
-
-        {/*<LdJson*/}
-        {/*  bookId={bookId}*/}
-        {/*  description={book.subtitle}*/}
-        {/*  title={book.title}*/}
-        {/*/>*/}
       </div>
     </Layout>
   );
