@@ -103,7 +103,13 @@ function FormInner({ onFinish, translations: t }: Props) {
         />
       </FormField>
 
-      <FileUpload errors={errors} file={file} onFile={onFile} />
+      <FileUpload
+        errors={errors}
+        file={file}
+        onFile={onFile}
+        subtext={t.FIELDS.IMAGE.SUBTEXT}
+        text={t.FIELDS.IMAGE.TEXT}
+      />
 
       <div className="FeedbackWidget__footer">
         <input

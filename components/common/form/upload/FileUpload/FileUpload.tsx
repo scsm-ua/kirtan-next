@@ -10,12 +10,14 @@ type Props = {
   errors: Object;
   file: File | null;
   onFile: (file: File | null) => void;
+  subtext: string;
+  text: string;
 };
 
 /**
  *
  */
-export default function FileUpload({ errors, file, onFile }: Props) {
+export default function FileUpload({ errors, file, onFile, subtext, text }: Props) {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileSelect = (files: FileList) => files && onFile(files[0]);
@@ -39,6 +41,8 @@ export default function FileUpload({ errors, file, onFile }: Props) {
           onBoxClick={handleBoxClick}
           onDrop={handleDrop}
           onFileSelect={handleFileSelect}
+          subtext={subtext}
+          text={text}
         />
       </FormField>
 

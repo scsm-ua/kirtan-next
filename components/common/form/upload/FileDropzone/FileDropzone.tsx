@@ -7,6 +7,8 @@ interface Props {
   onBoxClick: () => void;
   onDrop: (e: DragEvent) => void;
   onFileSelect: (files: FileList | null) => void;
+  subtext: string;
+  text: string;
 }
 
 /**
@@ -16,7 +18,9 @@ export function FileDropzone({
   fileInputRef,
   onBoxClick,
   onDrop,
-  onFileSelect
+  onFileSelect,
+  subtext,
+  text
 }: Props) {
   const handleDragOver = (e: DragEvent) => e.preventDefault();
   const handleFileSelect = (e) => onFileSelect(e.target.files)
@@ -34,8 +38,8 @@ export function FileDropzone({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="FileDropzone__box">
-          <b>Upload image or drag & drop it here</b>
-          <span>(2MB max)</span>
+          <b>{text}</b>
+          <span>{subtext}</span>
         </div>
       </label>
 
