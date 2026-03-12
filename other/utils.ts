@@ -46,6 +46,6 @@ export function isMobile() {
       )
     )
       check = true;
-  })(navigator.userAgent || navigator.vendor || window.opera);
+  })(navigator.userAgent || navigator.vendor || window['opera']);
   return check;
 }
