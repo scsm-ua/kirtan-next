@@ -55,7 +55,7 @@ function Layout({
         <meta name="theme-color" content="#ffffff" />
       </head>
 
-      <body className="Body">
+      <body className="Body" id="body">
         <div className="Layout">
           <div className="Layout__content">
             <Header bookId={bookId} />

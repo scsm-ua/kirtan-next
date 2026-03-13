@@ -11,23 +11,26 @@ type Props = { prevNext: TNavItems };
  *
  */
 export function SwipeNav({ prevNext }: Props) {
+  let listener;
+
   const goAway = ({ detail }: CustomEvent) => {
     if (detail['directions'].left && prevNext.next) {
-      alert('Going to NEXT page.');
       window.location.href = prevNext.next.path;
     }
 
     if (detail['directions'].right && prevNext.prev) {
-      alert('Going to PREV page.');
       window.location.href = prevNext.prev.path;
     }
   };
 
   useEffect(() => {
-    SwipeListener(document.getElementsByClassName('Layout')[0]);
+    listener = SwipeListener(document, { preventScroll: true });
     document.addEventListener('swipe', goAway);
 
-    return () => document.removeEventListener('swipe', goAway);
+    return () => {
+      listener?.off();
+      document.removeEventListener('swipe', goAway);
+    };
   }, [prevNext]);
 
   return null;
