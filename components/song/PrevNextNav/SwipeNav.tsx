@@ -13,10 +13,12 @@ type Props = { prevNext: TNavItems };
 export function SwipeNav({ prevNext }: Props) {
   const goAway = ({ detail }: CustomEvent) => {
     if (detail['directions'].left && prevNext.next) {
+      alert('Going to NEXT page.');
       window.location.href = prevNext.next.path;
     }
 
     if (detail['directions'].right && prevNext.prev) {
+      alert('Going to PREV page.');
       window.location.href = prevNext.prev.path;
     }
   };
