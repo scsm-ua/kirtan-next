@@ -24,7 +24,7 @@ export function SwipeNav({ prevNext }: Props) {
   };
 
   useEffect(() => {
-    SwipeListener(document);
+    SwipeListener(document.getElementsByClassName('Layout')[0]);
     document.addEventListener('swipe', goAway);
 
     return () => document.removeEventListener('swipe', goAway);
