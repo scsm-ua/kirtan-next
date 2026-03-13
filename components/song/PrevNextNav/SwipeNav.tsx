@@ -24,7 +24,7 @@ export function SwipeNav({ prevNext }: Props) {
   };
 
   useEffect(() => {
-    listener = SwipeListener(document, { preventScroll: true });
+    listener = SwipeListener(document);
     document.addEventListener('swipe', goAway);
 
     return () => {
