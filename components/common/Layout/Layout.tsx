@@ -5,7 +5,7 @@ import Footer from '@/components/common/Footer/Footer';
 import { GoogleAnalytics } from '@/components/common/GoogleAnalytics';
 import Header from '@/components/common/Header/Header';
 import { PATH } from '@/other/constants';
-import { useServiceWorker } from '@/other/hooks/useServiceWorker';
+import { ServiceWorkerRegistration } from '@/components/common/ServiceWorkerRegistration';
 
 /**
  *
@@ -25,9 +25,6 @@ function Layout({
 }>) {
   const path = PATH.IMG.FAV;
   const cls = classNames('Main', className);
-  
-  // Register service worker for PWA
-  useServiceWorker();
 
   return (
     <html lang="en">
@@ -71,6 +68,7 @@ function Layout({
         </div>
 
         <GoogleAnalytics bookId={bookId} songId={songId} />
+        <ServiceWorkerRegistration />
       </body>
     </html>
   );
