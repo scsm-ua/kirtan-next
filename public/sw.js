@@ -1,9 +1,51 @@
 // Minimal service worker for PWA with offline support
-const CACHE_NAME = 'kirtan-v1';
+const CACHE_NAME = 'kirtan-v2';
 
-// Install event - activate immediately
+// Install event - pre-cache all pages from sitemap
 self.addEventListener('install', (event) => {
-  self.skipWaiting();
+  event.waitUntil(
+    fetch('/sitemap.xml')
+      .then(response => response.text())
+      .then(xml => {
+        // Parse sitemap XML to extract URLs
+        const urlMatches = xml.matchAll(/<loc>(.*?)<\/loc>/g);
+        const urls = Array.from(urlMatches, match => {
+          // Convert absolute URLs to relative paths
+          const url = new URL(match[1]);
+          return url.pathname;
+        });
+        
+        // Add homepage and ensure uniqueness
+        const uniqueUrls = [...new Set(['/', ...urls])];
+        
+        console.log(`📦 Pre-caching ${uniqueUrls.length} pages...`);
+        return caches.open(CACHE_NAME)
+          .then(cache => cache.addAll(uniqueUrls))
+          .then(() => {
+            // Calculate total cache size
+            return caches.open(CACHE_NAME).then(cache => {
+              return cache.keys().then(requests => {
+                return Promise.all(
+                  requests.map(req => cache.match(req))
+                ).then(responses => {
+                  let totalBytes = 0;
+                  responses.forEach(response => {
+                    if (response && response.headers.has('content-length')) {
+                      totalBytes += parseInt(response.headers.get('content-length'), 10);
+                    }
+                  });
+                  const totalKB = (totalBytes / 1024).toFixed(2);
+                  console.log(`✅ Cached ${uniqueUrls.length} pages (${totalKB} KB)`);
+                });
+              });
+            });
+          });
+      })
+      .catch(err => {
+        console.warn('⚠️  Pre-caching failed, falling back to runtime caching', err);
+      })
+      .finally(() => self.skipWaiting())
+  );
 });
 
 // Activate event - clean up old caches and take control
