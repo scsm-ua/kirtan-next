@@ -12,6 +12,14 @@ type Props = { prevNext: TNavItems };
  */
 export function SwipeNav({ prevNext }: Props) {
   const goAway = ({ detail }: CustomEvent) => {
+    // Skip if the modal window is being shown
+    // or if user has selected some text.
+    if (
+      document.body.style.overflow === 'hidden' ||
+      !window.getSelection().isCollapsed
+    )
+      return;
+
     if (detail['directions'].left && prevNext.next) {
       window.location.href = prevNext.next.path;
     }
@@ -22,10 +30,13 @@ export function SwipeNav({ prevNext }: Props) {
   };
 
   useEffect(() => {
-    SwipeListener(document);
-    document.addEventListener('swipe', goAway);
+    const listener = SwipeListener(document.body);
+    document.body.addEventListener('swipe', goAway);
 
-    return () => document.removeEventListener('swipe', goAway);
+    return () => {
+      listener?.off();
+      document.body.removeEventListener('swipe', goAway);
+    };
   }, [prevNext]);
 
   return null;

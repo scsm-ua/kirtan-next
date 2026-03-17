@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 
 import './Layout.scss';
-import FeedbackWidget from '@/components/feedback/FeedbackWidget';
 import Footer from '@/components/common/Footer/Footer';
 import { GoogleAnalytics } from '@/components/common/GoogleAnalytics';
 import Header from '@/components/common/Header/Header';
@@ -31,7 +30,7 @@ function Layout({
       <head>
         {/*These two are Next default*/}
         {/*  <meta charSet="UTF-8" />*/}
-        {/*  <meta name="viewport" content="width=device-width, initial-scale=1" />*/}
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
         <link rel="apple-touch-icon" sizes="57x57" href={`${path}apple-icon-57x57.png`} />
         <link rel="apple-touch-icon" sizes="60x60" href={`${path}apple-icon-60x60.png`} />
@@ -61,7 +60,6 @@ function Layout({
             <Header bookId={bookId} />
             <main className={cls}>
               {children}
-              <FeedbackWidget bookId={bookId} />
             </main>
           </div>
 
