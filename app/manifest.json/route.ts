@@ -11,7 +11,7 @@ export async function GET() {
 
   const manifest: WebAppManifest = {
     name: isDev ? 'Kirtan Site (Dev)' : 'Kirtan Site',
-    short_name: isDev ? 'Kirtan (Dev)' : 'kirtan.site',
+    short_name: isDev ? 'dev.kirtan.site' : 'kirtan.site',
     description: 'Kirtan songbook collection',
     start_url: '/',
     display: 'standalone',
