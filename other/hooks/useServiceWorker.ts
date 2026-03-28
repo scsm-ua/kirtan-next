@@ -12,6 +12,18 @@ export function useServiceWorker() {
         .register('/sw.js', { scope: '/' })
         .then((registration) => {
           console.log('Service Worker registered:', registration.scope);
+          
+          // Wait for service worker to be ready
+          return navigator.serviceWorker.ready;
+        })
+        .then(() => {
+          // Send current page URL to service worker for language caching
+          if (navigator.serviceWorker.controller) {
+            navigator.serviceWorker.controller.postMessage({
+              type: 'CACHE_LANGUAGE',
+              url: window.location.href
+            });
+          }
         })
         .catch((error) => {
           console.error('Service Worker registration failed:', error);
