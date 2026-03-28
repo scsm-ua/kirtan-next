@@ -51,7 +51,7 @@ async function sitemap(): Promise<MetadataRoute.Sitemap> {
  */
 function getXmlItem(path: string, priority: number, freq = 'weekly') {
   return {
-    url: SITE.ORIGIN + path,
+    url: SITE.ORIGIN + path + '/',  // Last `/` to prevent redirects.
     changeFrequency: freq,
     priority: priority
   };

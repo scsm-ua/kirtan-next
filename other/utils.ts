@@ -1,6 +1,8 @@
 const TAG_REGEX = /<[^>]+>/gi;
 const NOTE_MD_REGEX = /\*\*\*(.*?)\*\*\*/gm;
-const TERM_MD_REGEX = /\*{1,2}(.*?)\*{1,2}/gm;
+const TERM_MD_REGEX = /\*\*(.*?)\*\*/gm;
+const ITALIC_MD_REGEX = /\*(.*?)\*/gm;
+const LINK_MD_REGEX = /\[([^\]]+)\]\(([^\)]+)\)/g;
 
 /**
  * If a value is object.
@@ -26,6 +28,8 @@ export function processTranslationLines(
       .replace(TAG_REGEX, '')
       .replace(NOTE_MD_REGEX, `<i class="${cssPrefix}__note">$1</i>\n`)
       .replace(TERM_MD_REGEX, `<i class="${cssPrefix}__term">$1</i>`)
+      .replace(ITALIC_MD_REGEX, `<i>$1</i>`)
+      .replace(LINK_MD_REGEX, '<a href="$2" target="_blank">$1</a>')
       .replaceAll('\\\n', '<br />')
       .split(/\n/)
   );
@@ -35,6 +39,11 @@ export function processTranslationLines(
  *
  */
 export function isMobile() {
+  // Return false during SSR (server-side rendering)
+  if (typeof window === 'undefined' || typeof navigator === 'undefined') {
+    return false;
+  }
+
   let check = false;
   (function (a) {
     if (
