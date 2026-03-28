@@ -20,7 +20,7 @@ export function useServiceWorker() {
           // Send current page URL to service worker for language caching
           if (navigator.serviceWorker.controller) {
             navigator.serviceWorker.controller.postMessage({
-              type: 'CACHE_LANGUAGE',
+              type: 'PAGE_LOADED',
               url: window.location.href
             });
           }
