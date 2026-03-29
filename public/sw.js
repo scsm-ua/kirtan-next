@@ -1,6 +1,6 @@
 // Minimal service worker for PWA with offline support
 
-const CACHE_NAME = 'kirtan-2026-03-28-v15';
+const CACHE_NAME = 'kirtan-2026-03-29-v11';
 
 // Runtime cache for sitemap URLs (avoids refetching on language change)
 let sitemapUrlsCache = null;
@@ -212,7 +212,7 @@ self.addEventListener('activate', (event) => {
 
 // Message event - listen for commands from the page
 self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'PAGE_LOADED') {
+  if (event.data && event.data.type === 'CACHE_ALL_BY_LANGUAGE') {
     
     const url = event.data.url;
     const lang = getLanguageFromUrl(url);
@@ -265,9 +265,10 @@ function normalizeUrl(url) {
 
 // Helper: Normalize URL for static assets (remove query params for cache busting)
 function normalizeStaticUrl(url) {
-  const urlObj = new URL(url);
-  urlObj.search = ''; // Remove query parameters
-  return urlObj.href;
+  return url;
+  // const urlObj = new URL(url);
+  // urlObj.search = ''; // Remove query parameters
+  // return urlObj.href;
 }
 
 // Helper: Generate offline page response
