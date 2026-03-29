@@ -22,8 +22,11 @@ function ContentItem({ bookId, item }: Props) {
   const _pages = Array.isArray(page) ? page.join(', ') : page;
   let href = '/' + bookId + '/' + id;
 
-  if (pages?.length > 1) {
+  // Put page number to navigation, only if required by variations. First page is default.
+  if (pages?.length > 1 && page[0] !== page) {
     href += `?p=${page}`;
+  } else {
+    href += `/`; 
   }
 
   return (

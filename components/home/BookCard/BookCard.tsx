@@ -25,7 +25,7 @@ function BookCard({ bookDescription }: Props) {
   if (!useHiddenBooks(hidden)) return null;
 
   const handleClick = () => saveBookChoice(slug);
-  const href = '/' + slug + PATH.PAGE.A_Z;
+  const href = `/${slug}${PATH.PAGE.A_Z}/`;
 
   const src = PATH.IMG.COVER + 'banner-' + slug + '.jpg';
   const srcSet =

@@ -11,13 +11,22 @@ export function getPagesList(bookId: string): Promise<Array<TPage>> {
   return getContentsByBookId(bookId).then((groups: Array<TContentGroup>) => {
     groups.forEach((group: TContentGroup) =>
       group.items.forEach((item: TContentItem) =>
-        item.pages.forEach((page: string) =>
-          pagesMap.set(page, {
+        item.pages.forEach((page: string) => {
+
+          let path = `/${bookId}/${item.id}`;
+          // Put page number to navigation, only if required by variations. First page is default.
+          if (item.pages?.length > 1 && item.pages[0] != page) {
+            path += `?p=${page}`;
+          } else {
+            path += `/`; 
+          }
+
+          return pagesMap.set(page, {
             page: page + '',
-            path: `/${bookId}/${item.id}?p=${page}`,
+            path,
             title: item.title
           })
-        )
+        })
       )
     );
 

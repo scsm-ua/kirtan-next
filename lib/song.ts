@@ -174,7 +174,15 @@ function getPrevNextNav(
  */
 function getSongPath(song: TContentItem): string {
   let path = song.id;
-  if (song.page) path += `?p=${song.page}`;
+  if (song.page 
+      && song.pages?.length 
+      // Put page number to navigation, only if required by variations.
+      // First page is dafult.
+      && song.page !== song.pages[0]) {
+        path += `?p=${song.page}`;
+  } else {
+    path += '/';
+  }
 
   return path;
 }
