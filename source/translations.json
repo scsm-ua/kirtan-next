@@ -95,9 +95,9 @@
     },
     "FEEDBACK": {
       "TRIGGER_TEXT": "Atsauksmes",
-      "TITLE": "Dalies ar atsauksmēm",
+      "TITLE": "Jūsu atsauksme",
       "TU_MESSAGE": "Mēs novērtējam jūsu atsauksmes. Paldies!",
-      "APPEAL": "Pastāstiet mums, ko domājat, vai ierosiniet, kā uzlabot vietni.",
+      "APPEAL": "Atradi kļūdu vai ir ideja par vietni? Būsim pateicīgi arī par saitēm uz lekcijām un grāmatām, kas skaidro dziesmas tekstu.",
       "FIELDS": {
         "NAME": {
           "LABEL": "Vārds",
@@ -113,6 +113,7 @@
         },
         "MESSAGE": {
           "LABEL": "Ziņojums",
+          "PLACEHOLDER": "Atstājiet atsauksmi vai dalieties ar saiti…",
           "VALIDATION": {
             "MAX_LENGTH": "Ziņojums nedrīkst pārsniegt 1000 rakstzīmes.",
             "MIN_LENGTH": "Ziņojums ir pārāk īss (min. 5 rakstzīmes)."
@@ -226,9 +227,9 @@
     },
     "FEEDBACK": {
       "TRIGGER_TEXT": "Feedback",
-      "TITLE": "Share Your Feedback",
+      "TITLE": "Your feedback",
       "TU_MESSAGE": "We appreciate your feedback. Thank you!",
-      "APPEAL": "Tell us what you think or suggest ways to make the site better.",
+      "APPEAL": "Found a mistake or have an idea for the site? We’d also appreciate links to talks and books explaining the song.",
       "FIELDS": {
         "NAME": {
           "LABEL": "Name",
@@ -244,6 +245,7 @@
         },
         "MESSAGE": {
           "LABEL": "Message",
+          "PLACEHOLDER": "Share feedback or a link…",
           "VALIDATION": {
             "MAX_LENGTH": "Message can’t exceed 1000 characters.",
             "MIN_LENGTH": "Message is too short (min 5 characters)."
@@ -357,9 +359,9 @@
     },
     "FEEDBACK": {
       "TRIGGER_TEXT": "Comentarios",
-      "TITLE": "Comparte tus comentarios",
+      "TITLE": "Tu opinión",
       "TU_MESSAGE": "Agradecemos tus comentarios. ¡Gracias!",
-      "APPEAL": "Cuéntanos qué piensas o sugiere formas de mejorar el sitio.",
+      "APPEAL": "¿Encontraste un error o tienes una idea para el sitio? También agradeceremos enlaces a charlas y libros que expliquen la canción.",
       "FIELDS": {
         "NAME": {
           "LABEL": "Nombre",
@@ -375,6 +377,7 @@
         },
         "MESSAGE": {
           "LABEL": "Mensaje",
+          "PLACEHOLDER": "Comparte tu opinión o un enlace…",
           "VALIDATION": {
             "MAX_LENGTH": "El mensaje no puede superar los 1000 caracteres.",
             "MIN_LENGTH": "El mensaje es demasiado corto (mín. 5 caracteres)."
@@ -501,9 +504,9 @@
     },
     "FEEDBACK": {
       "TRIGGER_TEXT": "Отзыв",
-      "TITLE": "Поделитесь отзывом",
+      "TITLE": "Ваш отзыв",
       "TU_MESSAGE": "Спасибо за ваш отзыв!",
-      "APPEAL": "Расскажите, что вы думаете, или предложите, как можно улучшить сайт.",
+      "APPEAL": "Нашли ошибку или есть идея для сайта? Будем благодарны за ссылки на беседы и книги с объяснением текста песни.",
       "FIELDS": {
         "NAME": {
           "LABEL": "Имя",
@@ -519,6 +522,7 @@
         },
         "MESSAGE": {
           "LABEL": "Сообщение",
+          "PLACEHOLDER": "Оставьте отзыв или ссылку…",
           "VALIDATION": {
             "MAX_LENGTH": "Сообщение не должно превышать 1000 символов.",
             "MIN_LENGTH": "Сообщение слишком короткое (мин. 5 символов)."
@@ -645,9 +649,9 @@
     },
     "FEEDBACK": {
       "TRIGGER_TEXT": "Відгук",
-      "TITLE": "Поділіться відгуком",
+      "TITLE": "Ваш відгук",
       "TU_MESSAGE": "Дякуємо за ваш відгук!",
-      "APPEAL": "Розкажіть, що ви думаєте, або запропонуйте, як можна покращити сайт.",
+      "APPEAL": "Знайшли помилку чи маєте ідею для сайту? Будемо вдячні за лінки на бесіди та книги з поясненням тексту пісні.",
       "FIELDS": {
         "NAME": {
           "LABEL": "Ім’я",
@@ -663,6 +667,7 @@
         },
         "MESSAGE": {
           "LABEL": "Повідомлення",
+          "PLACEHOLDER": "Поділіться відгуком або посиланням…",
           "VALIDATION": {
             "MAX_LENGTH": "Повідомлення не повинно перевищувати 1000 символів.",
             "MIN_LENGTH": "Повідомлення занадто коротке (мін. 5 символів)."
@@ -776,9 +781,9 @@
     },
     "FEEDBACK": {
       "TRIGGER_TEXT": "Feedback",
-      "TITLE": "Compartilhe seu feedback",
+      "TITLE": "Seu feedback",
       "TU_MESSAGE": "Agradecemos seu feedback. Obrigado!",
-      "APPEAL": "Conte-nos o que você acha ou sugira formas de melhorar o site.",
+      "APPEAL": "Encontrou um erro ou tem uma ideia para o site? Também agradecemos links para palestras e livros que expliquem a música.",
       "FIELDS": {
         "NAME": {
           "LABEL": "Nome",
@@ -794,6 +799,7 @@
         },
         "MESSAGE": {
           "LABEL": "Mensagem",
+          "PLACEHOLDER": "Compartilhe feedback ou um link…",
           "VALIDATION": {
             "MAX_LENGTH": "A mensagem não pode exceder 1000 caracteres.",
             "MIN_LENGTH": "A mensagem é muito curta (mín. 5 caracteres)."

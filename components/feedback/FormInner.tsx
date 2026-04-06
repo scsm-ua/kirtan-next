@@ -100,6 +100,7 @@ function FormInner({ onFinish, translations: t }: Props) {
         <textarea
           className="AppTextInput AppTextInput--area AppTextInput--gray"
           id={FIELDS.MESSAGE}
+          placeholder={t.FIELDS.MESSAGE.PLACEHOLDER}
           // @ts-ignore
           {...register(FIELDS.MESSAGE)}
           rows={3}
