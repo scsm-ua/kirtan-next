@@ -1,3 +1,5 @@
+import type { TContentItem } from '@/types/common';
+
 const TAG_REGEX = /<[^>]+>/gi;
 const NOTE_MD_REGEX = /\*\*\*(.*?)\*\*\*/gm;
 const TERM_MD_REGEX = /\*\*(.*?)\*\*/gm;
@@ -57,4 +59,22 @@ export function isMobile() {
       check = true;
   })(navigator.userAgent || navigator.vendor || window['opera']);
   return check;
+}
+
+export function getSongPathWithPage(
+  bookId: string,
+  song: TContentItem, 
+  page?: string
+) {
+  if (!page) {
+    page = song.page;
+  }
+  let path = `/${bookId}/${song.id}`;
+  // Put page number to navigation, only if required by variations. First page is default.
+  if (song.pages?.length > 1 && song.pages[0] !== page) {
+    path += `?p=${page}`;
+  } else {
+    path += `/`; 
+  }
+  return path;
 }
