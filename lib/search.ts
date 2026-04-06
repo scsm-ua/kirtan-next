@@ -12,13 +12,13 @@ export function getPagesList(bookId: string): Promise<Array<TPage>> {
   return getContentsByBookId(bookId).then((groups: Array<TContentGroup>) => {
     groups.forEach((group: TContentGroup) =>
       group.items.forEach((item: TContentItem) =>
-        item.pages.forEach((page: string) => {
-          return pagesMap.set(page, {
+        item.pages.forEach((page: string) =>
+          pagesMap.set(page, {
             page: page + '',
             path: getSongPathWithPage(bookId, item, page),
             title: item.title
           })
-        })
+        )
       )
     );
 
