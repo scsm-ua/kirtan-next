@@ -2,11 +2,18 @@
 
 import { useEffect } from 'react';
 
+// Prevent service worker registration if this env is set to 'true'
+const PREVENT_SW = process.env.NEXT_PUBLIC_PREVENT_SERVICE_WORKER === 'true';
+
 /**
  * Register service worker for PWA functionality
  */
 export function useServiceWorker() {
   useEffect(() => {
+    if (PREVENT_SW) {
+      console.log('Service Worker registration prevented by env');
+      return;
+    }
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker
         .register('/sw.js', { scope: '/' })
