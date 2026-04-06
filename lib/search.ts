@@ -13,12 +13,9 @@ export function getPagesList(bookId: string): Promise<Array<TPage>> {
     groups.forEach((group: TContentGroup) =>
       group.items.forEach((item: TContentItem) =>
         item.pages.forEach((page: string) => {
-
-          let path = getSongPathWithPage(bookId, item, page);
-
           return pagesMap.set(page, {
             page: page + '',
-            path,
+            path: getSongPathWithPage(bookId, item, page),
             title: item.title
           })
         })
