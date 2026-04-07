@@ -2,6 +2,7 @@ import classnames from 'classnames';
 
 import './ContentItem.scss';
 import type { TContentItem } from '@/types/common';
+import { getSongPathWithPage } from '@/other/utils';
 
 /**/
 type Props = {
@@ -20,12 +21,9 @@ function ContentItem({ bookId, item }: Props) {
   );
 
   const _pages = Array.isArray(page) ? page.join(', ') : page;
-  let href = '/' + bookId + '/' + id;
-
-  if (pages?.length > 1) {
-    href += `?p=${page}`;
-  }
-
+  
+  let href = getSongPathWithPage(bookId, item);
+  
   return (
     <li className="ContentItem">
       <a href={href} className="ContentItem__link">

@@ -458,9 +458,12 @@ const TRANSLATION_VALIDATION_SCHEMA = {
 						MESSAGE: {
 							type: 'object',
 							additionalProperties: false,
-							required: ['LABEL', 'VALIDATION'],
+							required: ['LABEL', 'PLACEHOLDER', 'VALIDATION'],
 							properties: {
 								LABEL: {
+									type: 'string'
+								},
+								PLACEHOLDER: {
 									type: 'string'
 								},
 								VALIDATION: {

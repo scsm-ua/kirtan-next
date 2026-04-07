@@ -1,4 +1,5 @@
 import { getContentsByBookId } from '@/lib/contents';
+import { getSongPathWithPage } from '@/other/utils';
 import type { TContentGroup, TContentItem } from '@/types/common';
 import type { TPage } from '@/types/search';
 
@@ -14,7 +15,7 @@ export function getPagesList(bookId: string): Promise<Array<TPage>> {
         item.pages.forEach((page: string) =>
           pagesMap.set(page, {
             page: page + '',
-            path: `/${bookId}/${item.id}?p=${page}`,
+            path: getSongPathWithPage(bookId, item, page),
             title: item.title
           })
         )

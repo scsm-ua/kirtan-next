@@ -1,5 +1,5 @@
 const path = require('path');
-const { readdirSync } = require('fs');
+const { readdirSync, readFileSync } = require('fs');
 
 const { CONST } = require('./constants');
 
@@ -15,11 +15,26 @@ function addSongsCount(booksMap, bookSlug) {
     `${CONST.FOLDER.SRC_OUTPUT}/${bookSlug}`,
     CONST.FOLDER.SONGS
   );
-	
-	booksMap[bookSlug] = {
-		...booksMap[bookSlug],
-		songsCount: readdirSync(targetDir).length
-	};
+
+  // Get all files in the target directory.
+  const files = readdirSync(targetDir);
+
+  // Count only files that do NOT contain '"translation": "no"'.
+  const filesWithTranslation = files.filter((file) => {
+    const filePath = path.join(targetDir, file);
+    try {
+      const content = readFileSync(filePath, 'utf8');
+      return !content.includes('"translation": "no"');
+    } catch (err) {
+      // If file can't be read, exclude it from count.
+      return false;
+    }
+  });
+
+  booksMap[bookSlug] = {
+    ...booksMap[bookSlug],
+    songsCount: filesWithTranslation.length
+  };
 }
 
 /**/

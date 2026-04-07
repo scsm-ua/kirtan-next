@@ -16,7 +16,7 @@ function SongbookList({ bookId, bookDescriptions, slug }: Props) {
   return (
     <ul className="SongbookList">
       {bookDescriptions.map((description: TBookDescription) => {
-        const href = `/${description.slug}/${slug}`;
+        const href = `/${description.slug}/${slug}/`;
 
         return (
           <SongBookItem

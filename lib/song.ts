@@ -7,6 +7,7 @@ import { getContentsByBookId } from '@/lib/contents';
 import type { TBookDescription, TBooksMap } from '@/types/book';
 import type { TContentGroup, TContentItem } from '@/types/common';
 import type { TNavItems, TNavItemsMap, TSong } from '@/types/song';
+import { getSongPathWithPage } from '@/other/utils';
 
 /**
  *
@@ -159,22 +160,12 @@ function getPrevNextNav(
 ): TNavItems {
   return {
     prev: prevSong && {
-      path: '/' + bookId + '/' + getSongPath(prevSong),
+      path: getSongPathWithPage(bookId, prevSong),
       title: prevSong.title
     },
     next: nextSong && {
-      path: '/' + bookId + '/' + getSongPath(nextSong),
+      path: getSongPathWithPage(bookId, nextSong),
       title: nextSong.title
     }
   };
-}
-
-/**
- *
- */
-function getSongPath(song: TContentItem): string {
-  let path = song.id;
-  if (song.page) path += `?p=${song.page}`;
-
-  return path;
 }

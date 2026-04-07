@@ -29,4 +29,9 @@
   &__term {
     font-weight: 400;
   }
+
+  a {
+    color: var(--link-color);
+    text-decoration: underline;
+  }
 }

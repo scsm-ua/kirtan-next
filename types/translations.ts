@@ -18,6 +18,7 @@ export type TFeedbackTranslations = {
     };
     MESSAGE: {
       LABEL: string;
+      PLACEHOLDER: string;
       VALIDATION: {
         MAX_LENGTH: string;
         MIN_LENGTH: string;
