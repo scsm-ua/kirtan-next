@@ -1,3 +1,7 @@
+v2.2.1
+21 April 2026
+  - Fix: hard coded lang attribute.
+_________________________________________________________
 v2.1.0
 18 March 2026
   - Added the feedback form.

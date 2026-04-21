@@ -27,11 +27,11 @@ function Layout({
   const cls = classNames('Main', className);
 
   return (
-    <html lang="en">
+    <html lang={bookId.slice(0, 2)}>
       <head>
         {/*These two are Next default*/}
         {/*  <meta charSet="UTF-8" />*/}
-          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
         <link rel="apple-touch-icon" sizes="57x57" href={`${path}apple-icon-57x57.png`} />
         <link rel="apple-touch-icon" sizes="60x60" href={`${path}apple-icon-60x60.png`} />
