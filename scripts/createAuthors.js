@@ -40,7 +40,7 @@ function create(groups) {
 			items: items.sort((a, b) => a.title.localeCompare(b.title))
 		}))
 		.sort((a, b) => a.items.length === b.items.length
-			? a.name.localeCompare(b.name)
+			? (a.name || '').localeCompare(b.name || '')    // `author` can be `null`.
 			: b.items.length - a.items.length
 		);
 }
