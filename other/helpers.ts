@@ -3,6 +3,13 @@ import { PATH } from '@/other/constants';
 /**
  *
  */
+export function getBookLangLabel(slug: string): string {
+  return slug.split('-')[0].toUpperCase();
+}
+
+/**
+ *
+ */
 export function getBannerUrlBase(bookId: string): string {
   return PATH.IMG.COVER + 'banner-' + bookId;
 }

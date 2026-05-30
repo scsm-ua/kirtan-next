@@ -16,9 +16,25 @@
   }
 
   &__title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
     &--active {
       color: var(--accent-color);
     }
+  }
+
+  &__lang {
+    flex-shrink: 0;
+    background-color: #e0e0e0;
+    color: #444;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    padding: 4px 8px;
+    border-radius: 50px;
+    letter-spacing: 0.05em;
   }
 
   &__subtitle {
