@@ -9,36 +9,14 @@
   align-items: center;
   justify-content: center;
 
-  width: 64px;
-  height: 64px;
+  width: var(--swipe-diameter);
+  height: var(--swipe-diameter);
 
   background: var(--main-bg-color);
   border-radius: 50%;
-  box-shadow: 0 4px 16px var(--shadow-color);
+  box-shadow: 0px 0px 8px 1px var(--shadow-color);
 
-  transition: opacity 0.15s ease-out, transform 0.15s ease-out;
-
-  &--left {
-    left: 16px;
-    transform: translate(calc(-100% - 16px), -50%);
-
-    &.SwipeNav--visible {
-      transform: translate(0, -50%);
-    }
-  }
-
-  &--right {
-    right: 16px;
-    transform: translate(calc(100% + 16px), -50%);
-
-    &.SwipeNav--visible {
-      transform: translate(0, -50%);
-    }
-  }
-
-  &--ready {
-    background: var(--accent-color);
-  }
+  // background stays --main-bg-color in all states
 
   &__ring {
     position: absolute;
@@ -48,33 +26,29 @@
     transform: rotate(-90deg);
   }
 
-  &__ring-bg {
-    fill: none;
-    stroke: var(--border-color);
-    stroke-width: 3;
-    opacity: 0.4;
-  }
-
   &__ring-fg {
     fill: none;
     stroke: var(--accent-color);
-    stroke-width: 3;
+    stroke-width: var(--swipe-stroke);
     stroke-linecap: round;
     transition: stroke-dashoffset 0.05s linear;
   }
 
   &--ready &__ring-fg {
-    stroke: var(--main-bg-color);
+    stroke: var(--accent-color);
   }
 
   &__arrow {
-    font-size: 28px;
-    line-height: 1;
+    font-size: 24px;
     color: var(--title-color);
-    user-select: none;
+
+    &--flip {
+      display: inline-block;
+      transform: rotate(180deg);
+    }
   }
 
   &--ready &__arrow {
-    color: var(--main-bg-color);
+    color: var(--accent-color);
   }
 }

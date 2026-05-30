@@ -4,11 +4,20 @@ import { useEffect, useRef, useState } from 'react';
 
 import type { TNavItems } from '@/types/song';
 
-const MIN_SHOW = 50;            // px before the indicator appears
-const MIN_HORIZONTAL = 200;     // px to fully fill the ring (triggers nav)
-const DIRECTION_LOCK = 5;       // px before we decide horizontal vs vertical
+// — swipe detection thresholds —
+const MIN_SHOW = 30;            // px of horizontal travel before indicator appears
+const MIN_HORIZONTAL = 200;     // px to fully fill the ring (triggers navigation)
+const DIRECTION_LOCK = 5;       // px before direction is locked (horizontal vs vertical)
 
-const RING_RADIUS = 28;
+// — visual indicator layout —
+const CIRCLE_SIZE = 42;         // px container diameter — single source of truth (passed as --swipe-diameter)
+const STROKE_WIDTH = 8;         // ring stroke px — single source of truth (passed as --swipe-stroke)
+const PULL_DISTANCE = 48;       // px the circle moves inward from the edge at progress=1
+
+// — SVG ring (all derived from SVG_SIZE / STROKE_WIDTH) —
+const SVG_SIZE = 64;            // viewBox units
+const SVG_CENTER = SVG_SIZE / 2;
+const RING_RADIUS = SVG_CENTER - STROKE_WIDTH / 2; // keep stroke inside viewBox boundary
 const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
 
 type Props = { prevNext: TNavItems };
@@ -97,24 +106,37 @@ export function SwipeNav({ prevNext }: Props) {
   if (!target) return null;
 
   const ready = progress >= 1;
-  const cls =
-    `SwipeNav SwipeNav--${onLeftEdge ? 'left' : 'right'} SwipeNav--visible` +
-    (ready ? ' SwipeNav--ready' : '');
+  const cls = 'SwipeNav' + (ready ? ' SwipeNav--ready' : '');
+
+  // At progress=0 circle is fully visible, flush with the screen edge.
+  // As progress → 1 it pulls inward by PULL_DISTANCE.
+  const left = onLeftEdge
+    ? progress * PULL_DISTANCE                                      // left edge: 0 → PULL_DISTANCE
+    : window.innerWidth - CIRCLE_SIZE - progress * PULL_DISTANCE;  // right edge: (w-64) → (w-64-PULL)
+  const opacity = Math.min(progress * 2, 1);
 
   return (
-    <div className={cls} aria-hidden="true">
-      <svg className="SwipeNav__ring" viewBox="0 0 64 64">
-        <circle className="SwipeNav__ring-bg" cx="32" cy="32" r={RING_RADIUS} />
+    <div
+      className={cls}
+      style={{
+        left,
+        opacity,
+        ['--swipe-diameter' as string]: `${CIRCLE_SIZE}px`,
+        ['--swipe-stroke' as string]: STROKE_WIDTH,
+      }}
+      aria-hidden="true"
+    >
+      <svg className="SwipeNav__ring" viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`}>
         <circle
           className="SwipeNav__ring-fg"
-          cx="32"
-          cy="32"
+          cx={SVG_CENTER}
+          cy={SVG_CENTER}
           r={RING_RADIUS}
           strokeDasharray={RING_CIRCUMFERENCE}
           strokeDashoffset={RING_CIRCUMFERENCE * (1 - progress)}
         />
       </svg>
-      <span className="SwipeNav__arrow">{onLeftEdge ? '←' : '→'}</span>
+      <span className={`SwipeNav__arrow icon-chevron-right${onLeftEdge ? ' SwipeNav__arrow--flip' : ''}`} />
     </div>
   );
 }
