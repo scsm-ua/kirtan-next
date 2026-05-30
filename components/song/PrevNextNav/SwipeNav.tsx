@@ -6,7 +6,7 @@ import type { TNavItems } from '@/types/song';
 
 // — swipe detection thresholds —
 const MIN_SHOW = 30;            // px of horizontal travel before indicator appears
-const MIN_HORIZONTAL = 200;     // px to fully fill the ring (triggers navigation)
+const MIN_HORIZONTAL = 150;     // px to fully fill the ring (triggers navigation)
 const DIRECTION_LOCK = 5;       // px before direction is locked (horizontal vs vertical)
 
 // — visual indicator layout —
