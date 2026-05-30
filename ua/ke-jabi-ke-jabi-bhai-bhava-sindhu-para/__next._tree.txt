@@ -2,7 +2,7 @@
 :HL["/_next/static/css/df4278d403dcd14f.css","style"]
 :HL["/_next/static/css/ca4902fbb637c4f3.css","style"]
 :HL["/_next/static/css/1bed6f1127166984.css","style"]
-:HL["/_next/static/css/c043f3f47926f80d.css","style"]
+:HL["/_next/static/css/9b1aef2d717b96c8.css","style"]
 :HL["/_next/static/css/d5a791cb6aaa3b04.css","style"]
 :HL["/_next/static/css/6478641350b88fb5.css","style"]
-0:{"buildId":"n-s3NpYxfAUvAQ01CFDSb","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"bookId","paramType":"d","paramKey":"ua","hasRuntimePrefetch":false,"slots":{"children":{"name":"slug","paramType":"d","paramKey":"ke-jabi-ke-jabi-bhai-bhava-sindhu-para","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"c-63uTALJ9ke0UAtjgwTr","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"bookId","paramType":"d","paramKey":"ua","hasRuntimePrefetch":false,"slots":{"children":{"name":"slug","paramType":"d","paramKey":"ke-jabi-ke-jabi-bhai-bhava-sindhu-para","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
