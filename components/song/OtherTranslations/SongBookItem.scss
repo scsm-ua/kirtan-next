@@ -27,8 +27,9 @@
 
   &__lang {
     flex-shrink: 0;
-    background-color: #e0e0e0;
-    color: #444;
+    background-color: transparent;
+    border: 1px solid var(--gray);
+    color: var(--dark-gray);
     font-size: 11px;
     font-weight: 700;
     line-height: 1;
