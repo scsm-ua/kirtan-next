@@ -1,8 +1,15 @@
 @use 'sass:map';
 @use 'sass:string';
+@use 'variables' as v;
 
 @mixin tablet-up {
   @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin sidebar-mode {
+  @media (min-width: #{v.$bp-sidebar}px), (min-aspect-ratio: 1/1) {
     @content;
   }
 }
