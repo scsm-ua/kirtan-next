@@ -1,19 +1,44 @@
+@use '@/styles/mixins' as m;
+
 .Footer {
   background-color: var(--footer-bg-color);
   height: var(--footer-height);
   max-height: var(--footer-height);
   overflow: hidden;
 
+  @include m.sidebar-mode {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--sidebar-width);
+    height: auto;
+    max-height: none;
+    overflow: visible;
+    z-index: 10;
+  }
+
   &__container {
     height: 100%;
     margin: 0 auto;
     max-width: var(--page-max-width);
+
+    @include m.sidebar-mode {
+      max-width: none;
+    }
   }
 
   &__content {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    @include m.sidebar-mode {
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 100%;
+      padding-top: var(--header-height);
+    }
   }
 
   &__item {

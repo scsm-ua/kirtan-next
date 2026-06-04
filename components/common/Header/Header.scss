@@ -9,12 +9,13 @@
 
   //@include tablet-up {
   //@include mixins.tablet-up {
-  @include m.tablet-up {
+  @include m.sidebar-mode {
   //@include mixins.breakpoint(variables.$bp576) {
   //@include m.breakpoint(v.$bp576) {
-    position: fixed;
+  // Disable fixed postion to make more screen space.
+    // position: fixed;
     top: 0;
-    left: 0;
+    left: var(--sidebar-width);
     right: 0;
     z-index: 10;
   }

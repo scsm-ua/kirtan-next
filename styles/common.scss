@@ -131,10 +131,11 @@ p {
   min-height: calc(100% - var(--header-height));
   background-color: var(--main-bg-color);
 
-  @include mixins.breakpoint($min: variables.$bp768) {
-    //min-height: 100%;
-    margin-top: var(--header-height);
-  }
+  // Was for fixed header.
+  // @include mixins.breakpoint($min: variables.$bp768) {
+  //   //min-height: 100%;
+  //   margin-top: var(--header-height);
+  // }
 
   &__container {
     margin: 0 auto;

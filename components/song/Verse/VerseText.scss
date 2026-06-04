@@ -1,6 +1,11 @@
 .VerseText {
   list-style-type: none;
-  margin: 0 0 10px 0;
+  // Center the verse block while keeping inner text alignment intact.
+  // fit-content shrinks to the longest line; min-width ensures short poems
+  // don't collapse too narrow.
+  width: fit-content;
+  min-width: 300px;
+  margin: 0 auto 10px auto;
   padding: 0;
 
   &__line {
