@@ -28,6 +28,22 @@
   &__box {
     height: 64.3%;
     overflow: hidden;
+    position: relative;
+  }
+
+  &__lang {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    padding: 6px 10px;
+    border-radius: 50px;
+    letter-spacing: 0.05em;
+    pointer-events: none;
   }
 
   &__image {

@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import './SongBookItem.scss';
 import BookThumbnail from '@/components/common/BookThumnail/BookThumbnail';
 import { useHiddenBooks } from '@/other/hooks/useHiddenBooks';
+import { getBookLangLabel } from '@/other/helpers';
 import { TBookDescription } from '@/types/book';
 
 /**/
@@ -31,7 +32,10 @@ function SongBookItem({ description, href, isActive }: Props) {
           <BookThumbnail bookId={description.slug} />
 
           <div className="SongBookItem__info">
-            <h5 className={cls}>{description.title}</h5>
+            <h5 className={cls}>
+              <span className="SongBookItem__lang">{getBookLangLabel(description.slug)}</span>
+              {description.title}
+            </h5>
 
             <div className="ellipsis SongBookItem__subtitle">
               {description.subtitle}

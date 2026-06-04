@@ -2,6 +2,7 @@
 
 import './BookCard.scss';
 import { displayVersionInfo } from '@/other/displayVersion';
+import { getBookLangLabel } from '@/other/helpers';
 import { PATH } from '@/other/constants';
 import { saveBookChoice } from '@/other/userPreferrences';
 import { translate } from '@/other/i18n';
@@ -51,6 +52,9 @@ function BookCard({ bookDescription }: Props) {
                   srcSet={srcSet}
                   src={src}
                 />
+                <span className="BookCard__lang">
+                  {getBookLangLabel(slug)}
+                </span>
               </div>
 
               <div className="BookCard__info">
