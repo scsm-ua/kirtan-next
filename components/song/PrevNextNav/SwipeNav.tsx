@@ -1,6 +1,7 @@
 'use client';
 import './SwipeNav.scss';
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 import type { TNavItems } from '@/types/song';
 
@@ -11,6 +12,7 @@ const DIRECTION_LOCK = 5;       // px before direction is locked (horizontal vs 
 
 // — visual indicator layout —
 const CIRCLE_SIZE = 42;         // px container diameter — single source of truth (passed as --swipe-diameter)
+const ACTIVE_CIRCLE_SIZE = 55;
 const STROKE_WIDTH = 8;         // ring stroke px — single source of truth (passed as --swipe-stroke)
 const PULL_DISTANCE = 48;       // px the circle moves inward from the edge at progress=1
 
@@ -20,6 +22,20 @@ const SVG_CENTER = SVG_SIZE / 2;
 const RING_RADIUS = SVG_CENTER - STROKE_WIDTH / 2; // keep stroke inside viewBox boundary
 const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
 
+const TRANSITION_SCREEN_OUT = 'transform 0.22s ease';
+
+function getContentEl() {
+  return document.querySelector<HTMLElement>('.Layout__content');
+}
+
+function slideOutScreen(direction: Direction) {
+  const el = getContentEl();
+  if (!el) return;
+  const x = direction === 'right' ? window.innerWidth : -window.innerWidth;
+  el.style.transition = TRANSITION_SCREEN_OUT;
+  el.style.transform = `translateX(${x}px)`;
+}
+
 type Props = { prevNext: TNavItems };
 type Direction = 'left' | 'right' | null;
 type SwipeState = { direction: Direction; progress: number };
@@ -28,6 +44,7 @@ const INITIAL: SwipeState = { direction: null, progress: 0 };
 
 export function SwipeNav({ prevNext }: Props) {
   const [swipe, setSwipe] = useState<SwipeState>(INITIAL);
+  const [loading, setLoading] = useState(false);
   const stateRef = useRef<SwipeState>(INITIAL);
   const prevNextRef = useRef(prevNext);
   prevNextRef.current = prevNext;
@@ -68,6 +85,7 @@ export function SwipeNav({ prevNext }: Props) {
         update(INITIAL);
         return;
       }
+
       const progress = Math.min((ax - MIN_SHOW) / (MIN_HORIZONTAL - MIN_SHOW), 1);
       update({ direction: dx < 0 ? 'left' : 'right', progress });
     };
@@ -77,12 +95,15 @@ export function SwipeNav({ prevNext }: Props) {
       lock = null;
       update(INITIAL);
 
-      if (!window.getSelection()?.isCollapsed) return;
-      if (progress < 1) return;
+      if (!window.getSelection()?.isCollapsed || progress < 1) return;
 
       const { prev, next } = prevNextRef.current;
       const target = direction === 'left' ? next : prev;
-      if (target) window.location.href = target.path;
+      if (!target) return;
+
+      window.location.href = target.path;
+      setLoading(true);
+      slideOutScreen(direction);
     };
 
     document.body.addEventListener('touchstart', onStart, { passive: true });
@@ -97,6 +118,13 @@ export function SwipeNav({ prevNext }: Props) {
       document.body.removeEventListener('touchcancel', onEnd);
     };
   }, []);
+
+  if (loading) {
+    return createPortal(
+      <div className="SwipeNav__loading" aria-hidden="true" />,
+      document.body
+    );
+  }
 
   const { direction, progress } = swipe;
   if (!direction) return null;
@@ -123,6 +151,7 @@ export function SwipeNav({ prevNext }: Props) {
         opacity,
         ['--swipe-diameter' as string]: `${CIRCLE_SIZE}px`,
         ['--swipe-stroke' as string]: STROKE_WIDTH,
+        ['--swipe-scale-on-ready' as string]: ACTIVE_CIRCLE_SIZE / CIRCLE_SIZE,
       }}
       aria-hidden="true"
     >
