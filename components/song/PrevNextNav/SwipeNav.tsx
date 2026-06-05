@@ -102,8 +102,12 @@ export function SwipeNav({ prevNext }: Props) {
       if (!target) return;
 
       window.location.href = target.path;
-      setLoading(true);
       slideOutScreen(direction);
+      getContentEl()?.addEventListener(
+        'transitionend',
+        () => setTimeout(() => setLoading(true), 100),
+        { once: true }
+      );
     };
 
     document.body.addEventListener('touchstart', onStart, { passive: true });
