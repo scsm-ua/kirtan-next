@@ -29,12 +29,15 @@ type SwipeState = { direction: Direction; progress: number };
 
 const INITIAL: SwipeState = { direction: null, progress: 0 };
 
+const vibrate = (ms: number) => navigator.vibrate?.(ms);
+
 export function SwipeNav({ prevNext }: Props) {
   const [swipe, setSwipe] = useState<SwipeState>(INITIAL);
   const [releasing, setReleasing] = useState<Direction>(null);
   const circleRef = useRef<HTMLDivElement>(null);
   const stateRef = useRef<SwipeState>(INITIAL);
   const prevNextRef = useRef(prevNext);
+  const didVibrate = useRef(false);
   prevNextRef.current = prevNext;
 
   const update = (next: SwipeState) => {
@@ -51,6 +54,7 @@ export function SwipeNav({ prevNext }: Props) {
       startX = e.touches[0].clientX;
       startY = e.touches[0].clientY;
       lock = null;
+      didVibrate.current = false;
     };
 
     const onMove = (e: TouchEvent) => {
@@ -75,6 +79,10 @@ export function SwipeNav({ prevNext }: Props) {
       }
 
       const progress = Math.min((ax - MIN_SHOW) / (MIN_HORIZONTAL - MIN_SHOW), 1);
+      if (progress >= 1 && !didVibrate.current) {
+        didVibrate.current = true;
+        vibrate(30);
+      }
       update({ direction: dx < 0 ? 'left' : 'right', progress });
     };
 
@@ -91,6 +99,7 @@ export function SwipeNav({ prevNext }: Props) {
       const target = direction === 'left' ? next : prev;
       if (!target) { update(INITIAL); return; }
 
+      vibrate(50);
       setReleasing(direction);
       // drive exit via imperative transition on the next frame so the element is painted first
       requestAnimationFrame(() => {
