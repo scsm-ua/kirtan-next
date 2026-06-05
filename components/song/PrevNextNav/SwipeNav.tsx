@@ -22,7 +22,9 @@ const SVG_CENTER = SVG_SIZE / 2;
 const RING_RADIUS = SVG_CENTER - STROKE_WIDTH / 2; // keep stroke inside viewBox boundary
 const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
 
-const TRANSITION_SCREEN_OUT = 'transform 0.22s ease';
+const SLIDE_OUT_MS = 220;
+const SLIDE_OUT_DELAY_MS = 110;
+const TRANSITION_SCREEN_OUT = `transform ${SLIDE_OUT_MS}ms ease`;
 
 function getContentEl() {
   return document.querySelector<HTMLElement>('.Layout__content');
@@ -102,7 +104,7 @@ export function SwipeNav({ prevNext }: Props) {
       if (!target) return;
 
       window.location.href = target.path;
-      slideOutScreen(direction);
+      setTimeout(() => slideOutScreen(direction), SLIDE_OUT_DELAY_MS);
       getContentEl()?.addEventListener(
         'transitionend',
         () => setTimeout(() => setLoading(true), 100),
