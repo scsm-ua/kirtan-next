@@ -81,7 +81,9 @@ export function SwipeNav({ prevNext }: Props) {
       const progress = Math.min((ax - MIN_SHOW) / (MIN_HORIZONTAL - MIN_SHOW), 1);
       if (progress >= 1 && !didVibrate.current) {
         didVibrate.current = true;
-        vibrate(30);
+        vibrate(1);
+      } else if (progress < 1) {
+        didVibrate.current = false;
       }
       update({ direction: dx < 0 ? 'left' : 'right', progress });
     };
@@ -99,7 +101,6 @@ export function SwipeNav({ prevNext }: Props) {
       const target = direction === 'left' ? next : prev;
       if (!target) { update(INITIAL); return; }
 
-      vibrate(50);
       setReleasing(direction);
       // drive exit via imperative transition on the next frame so the element is painted first
       requestAnimationFrame(() => {
