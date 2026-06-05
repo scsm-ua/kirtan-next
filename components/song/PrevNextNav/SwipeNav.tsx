@@ -1,7 +1,6 @@
 'use client';
 import './SwipeNav.scss';
 import { useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
 
 import type { TNavItems } from '@/types/song';
 
@@ -22,21 +21,7 @@ const SVG_CENTER = SVG_SIZE / 2;
 const RING_RADIUS = SVG_CENTER - STROKE_WIDTH / 2; // keep stroke inside viewBox boundary
 const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
 
-const SLIDE_OUT_MS = 220;
-const SLIDE_OUT_DELAY_MS = 110;
-const TRANSITION_SCREEN_OUT = `transform ${SLIDE_OUT_MS}ms ease`;
-
-function getContentEl() {
-  return document.querySelector<HTMLElement>('.Layout__content');
-}
-
-function slideOutScreen(direction: Direction) {
-  const el = getContentEl();
-  if (!el) return;
-  const x = direction === 'right' ? window.innerWidth : -window.innerWidth;
-  el.style.transition = TRANSITION_SCREEN_OUT;
-  el.style.transform = `translateX(${x}px)`;
-}
+const EXIT_DURATION_MS = 400;
 
 type Props = { prevNext: TNavItems };
 type Direction = 'left' | 'right' | null;
@@ -46,7 +31,8 @@ const INITIAL: SwipeState = { direction: null, progress: 0 };
 
 export function SwipeNav({ prevNext }: Props) {
   const [swipe, setSwipe] = useState<SwipeState>(INITIAL);
-  const [loading, setLoading] = useState(false);
+  const [releasing, setReleasing] = useState<Direction>(null);
+  const circleRef = useRef<HTMLDivElement>(null);
   const stateRef = useRef<SwipeState>(INITIAL);
   const prevNextRef = useRef(prevNext);
   prevNextRef.current = prevNext;
@@ -95,21 +81,30 @@ export function SwipeNav({ prevNext }: Props) {
     const onEnd = () => {
       const { direction, progress } = stateRef.current;
       lock = null;
-      update(INITIAL);
 
-      if (!window.getSelection()?.isCollapsed || progress < 1) return;
+      if (!window.getSelection()?.isCollapsed || progress < 1) {
+        update(INITIAL);
+        return;
+      }
 
       const { prev, next } = prevNextRef.current;
       const target = direction === 'left' ? next : prev;
-      if (!target) return;
+      if (!target) { update(INITIAL); return; }
+
+      setReleasing(direction);
+      // drive exit via imperative transition on the next frame so the element is painted first
+      requestAnimationFrame(() => {
+        const el = circleRef.current;
+        if (el) {
+          const scale = ACTIVE_CIRCLE_SIZE / CIRCLE_SIZE;
+          const tx = direction === 'right' ? '105vw' : '-105vw';
+          el.style.transition = `transform ${EXIT_DURATION_MS}ms ease, opacity ${EXIT_DURATION_MS}ms ease`;
+          el.style.transform = `translateY(-50%) translateX(${tx}) scale(${scale})`;
+          el.style.opacity = '0';
+        }
+      });
 
       window.location.href = target.path;
-      setTimeout(() => slideOutScreen(direction), SLIDE_OUT_DELAY_MS);
-      getContentEl()?.addEventListener(
-        'transitionend',
-        () => setTimeout(() => setLoading(true), 100),
-        { once: true }
-      );
     };
 
     document.body.addEventListener('touchstart', onStart, { passive: true });
@@ -125,13 +120,6 @@ export function SwipeNav({ prevNext }: Props) {
     };
   }, []);
 
-  if (loading) {
-    return createPortal(
-      <div className="SwipeNav__loading" aria-hidden="true" />,
-      document.body
-    );
-  }
-
   const { direction, progress } = swipe;
   if (!direction) return null;
 
@@ -140,7 +128,7 @@ export function SwipeNav({ prevNext }: Props) {
   if (!target) return null;
 
   const ready = progress >= 1;
-  const cls = 'SwipeNav' + (ready ? ' SwipeNav--ready' : '');
+  const cls = 'SwipeNav' + (ready || releasing ? ' SwipeNav--ready' : '');
 
   // At progress=0 circle is fully visible, flush with the screen edge.
   // As progress → 1 it pulls inward by PULL_DISTANCE.
@@ -151,6 +139,7 @@ export function SwipeNav({ prevNext }: Props) {
 
   return (
     <div
+      ref={circleRef}
       className={cls}
       style={{
         left,

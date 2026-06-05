@@ -57,22 +57,4 @@
   &--ready &__arrow {
     color: var(--accent-color);
   }
-
-  &__loading {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 6px solid var(--border-color);
-    border-top-color: var(--dark-gray);
-    animation: swipe-spin 0.5s linear infinite;
-  }
-}
-
-@keyframes swipe-spin {
-  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
