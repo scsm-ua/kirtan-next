@@ -1,0 +1,52 @@
+.HotkeyHint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px 5px 8px;
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  animation: hotkey-hint-in 0.3s ease both;
+
+  // hide on touch devices via pointer capability
+  @media (pointer: coarse) {
+    display: none;
+  }
+
+  &--fading {
+    animation: hotkey-hint-out 500ms ease forwards;
+  }
+
+  &__key {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    font-family: var(--font-mono, monospace);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--title-color);
+    background: var(--light-gray);
+    border: 1px solid var(--gray);
+    border-radius: 4px;
+    box-shadow: 0 1px 0 var(--gray);
+  }
+
+  &__label {
+    font-size: 12px;
+    color: #fff;
+  }
+}
+
+@keyframes hotkey-hint-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hotkey-hint-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}

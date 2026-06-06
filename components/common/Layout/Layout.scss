@@ -11,6 +11,10 @@
     height: calc(100% - var(--footer-height));
     overflow: auto;
 
+    &:focus {
+      outline: none;
+    }
+
     @include m.sidebar-mode {
       height: 100%;
       margin-left: var(--sidebar-width);

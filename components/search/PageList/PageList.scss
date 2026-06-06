@@ -40,5 +40,27 @@
         color: var(--accent-color);
       }
     }
+
+    &--pending {
+      position: relative;
+      overflow: hidden;
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--accent-color);
+        opacity: 0.3;
+        transform: scaleX(0);
+        transform-origin: left;
+        animation: pageListProgress 1s linear forwards;
+      }
+    }
+  }
+}
+
+@keyframes pageListProgress {
+  to {
+    transform: scaleX(1);
   }
 }

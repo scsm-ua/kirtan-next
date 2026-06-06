@@ -5,7 +5,6 @@ import { getBookIdParamList, getBooksMap } from '@/lib/books';
 import { getPagesList } from '@/lib/search';
 import { getSearchPageMeta } from '@/other/metadata/getSearchPageMeta';
 import Layout from '@/components/common/Layout/Layout';
-import PageList from '@/components/search/PageList/PageList';
 import SearchModule from '@/components/search/SearchModule/SearchModule';
 
 import type { BookListPageProps } from '@/types/book';
@@ -23,7 +22,6 @@ async function SearchPage({ params }: BookListPageProps) {
   const booksMap = await getBooksMap();
 
   const book = booksMap[bookId];
-  const pageList = <PageList bookId={bookId} pages={pages} /> as any;
 
   return (
     <Layout bookId={bookId}>
@@ -32,7 +30,7 @@ async function SearchPage({ params }: BookListPageProps) {
           <BookDescription bookDescription={book} />
         </header>
 
-        <SearchModule bookId={bookId} pageList={pageList} />
+        <SearchModule bookId={bookId} pages={pages} />
       </div>
     </Layout>
   );

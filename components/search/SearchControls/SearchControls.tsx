@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import type { SyntheticEvent } from 'react';
 
 import './SearchControls.scss';
@@ -16,17 +17,27 @@ type Props = {
  *
  */
 function SearchControls({ bookId, value, onClear, onInput, onSubmit }: Props) {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (!/Mobi|Android/i.test(navigator.userAgent)) {
+      inputRef.current?.focus();
+    }
+  }, []);
+
   const handleChange = (e: SyntheticEvent) => onInput(e.target['value']);
 
   const handleKeyDown = (e: SyntheticEvent) => {
     (e['key'] === 'Enter' || e['keyCode'] === 13) && onSubmit();
   };
 
+  const handleNumpad = (digit: string) => onInput(value + digit);
+
   return (
     <div className="SearchControls">
       <div className="SearchControls__container">
         <input
-          autoFocus
+          ref={inputRef}
           className="SearchControls__input"
           placeholder={translate(bookId, 'SEARCH_PAGE.INPUT_PLACEHOLDER')}
           type="text"
@@ -51,6 +62,19 @@ function SearchControls({ bookId, value, onClear, onInput, onSubmit }: Props) {
       >
         <span className="icon-search" />
       </button>
+
+
+      <div className="SearchControls__numpad">
+          {['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].map((d) => (
+            <button
+              key={d}
+              className="SearchControls__numpad-btn"
+              onClick={() => handleNumpad(d)}
+            >
+              {d}
+            </button>
+          ))}
+        </div>
     </div>
   );
 }

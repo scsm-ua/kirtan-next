@@ -11,12 +11,13 @@ import type { TPage } from '@/types/search';
 type Props = {
   bookId: string;
   pages: TPage[];
+  pendingPage?: string;
 };
 
 /**
  *
  */
-function PageList({ bookId, pages }: Props) {
+function PageList({ bookId, pages, pendingPage }: Props) {
   const pageQuery = usePageQuery();
 
   return (
@@ -29,7 +30,8 @@ function PageList({ bookId, pages }: Props) {
         {pages.map((item: TPage) => {
           const cls = classNames(
             'PageList__button',
-            pageQuery === item.page && 'PageList__button--active'
+            pageQuery === item.page && 'PageList__button--active',
+            pendingPage === item.page && 'PageList__button--pending'
           );
 
           return (

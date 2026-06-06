@@ -43,4 +43,10 @@
   &__logo {
     max-width: 100%;
   }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
 }
