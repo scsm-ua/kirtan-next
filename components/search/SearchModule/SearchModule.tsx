@@ -11,7 +11,8 @@ import { translate } from '@/other/i18n';
 import type { TSearchResult, TSearchResultItem } from '@/components/search/SearchModule/types';
 import type { TPage } from '@/types/search';
 
-const AUTO_NAVIGATION_DELAY_MS = 1500;
+const SINGLE_MATCH_DELAY_MS = 1000;
+const EXACT_MATCH_DELAY_MS = 2000;
 
 /**/
 type Props = {
@@ -25,6 +26,7 @@ type State = {
   isLoading?: boolean;
   page?: number;
   pendingPage?: string;
+  pendingPageDurationMs?: number;
   query?: string;
   results?: Array<TSearchResultItem>;
   resultsForQuery?: string;
@@ -36,12 +38,22 @@ type State = {
 class SearchModule extends PureComponent<Props, State> {
   redirectTimer: ReturnType<typeof setTimeout> | null = null;
 
+  findExactPageMatch = (query: string) => this.props.pages.find((p) => p.page === query);
+
+  startPendingNavigation = (match: { page: string; path: string }, delayMs: number) => {
+    this.setState({ pendingPage: match.page, pendingPageDurationMs: delayMs });
+    this.redirectTimer = setTimeout(() => {
+      window.location.href = match.path;
+    }, delayMs);
+  };
+
   state: State = {
     hasMore: false,
     hasNotFound: false,
     isLoading: false,
     page: 1,
     pendingPage: '',
+    pendingPageDurationMs: SINGLE_MATCH_DELAY_MS,
     query: '',
     results: [],
     resultsForQuery: ''
@@ -74,12 +86,15 @@ class SearchModule extends PureComponent<Props, State> {
       const filtered = pages.filter((p) => p.page.startsWith(query));
 
       if (filtered.length === 1) {
-        this.setState({ pendingPage: filtered[0].page });
-        this.redirectTimer = setTimeout(() => {
-          window.location.href = filtered[0].path;
-        }, AUTO_NAVIGATION_DELAY_MS);
+        this.startPendingNavigation(filtered[0], SINGLE_MATCH_DELAY_MS);
       } else {
-        this.setState({ pendingPage: '' });
+        const exactMatch = filtered.find((p) => p.page === query);
+
+        if (exactMatch) {
+          this.startPendingNavigation(exactMatch, EXACT_MATCH_DELAY_MS);
+        } else {
+          this.setState({ pendingPage: '' });
+        }
       }
     } else {
       this.setState({ pendingPage: '' });
@@ -90,7 +105,22 @@ class SearchModule extends PureComponent<Props, State> {
   handleMore = () => this.startSearch();
 
   /**/
-  handleSubmit = () => this.startSearch();
+  handleSubmit = () => {
+    const { query } = this.state;
+
+    if (!query) return;
+
+    if (/^\d+$/.test(query)) {
+      const exactMatch = this.findExactPageMatch(query);
+
+      if (exactMatch) {
+        window.location.href = exactMatch.path;
+        return;
+      }
+    }
+
+    this.startSearch();
+  };
 
   /**/
   startSearch() {
@@ -141,7 +171,7 @@ class SearchModule extends PureComponent<Props, State> {
   /**/
   render() {
     const { bookId, pages } = this.props;
-    const { hasMore, hasNotFound, isLoading, pendingPage, query, results } = this.state;
+    const { hasMore, hasNotFound, isLoading, pendingPage, pendingPageDurationMs, query, results } = this.state;
 
     const isNumericQuery = /^\d+$/.test(query);
     const filteredPages = isNumericQuery
@@ -161,7 +191,7 @@ class SearchModule extends PureComponent<Props, State> {
         </header>
 
         <main className="SearchModule__content">
-          {hasNotFound || isLoading || results.length > 0 || <PageList bookId={bookId} pages={filteredPages} pendingPage={pendingPage} />}
+          {hasNotFound || isLoading || results.length > 0 || <PageList bookId={bookId} pages={filteredPages} pendingPage={pendingPage} pendingPageDurationMs={pendingPageDurationMs} />}
 
           {hasNotFound && (
             <div className="SearchModule__nothing">

@@ -12,12 +12,13 @@ type Props = {
   bookId: string;
   pages: TPage[];
   pendingPage?: string;
+  pendingPageDurationMs?: number;
 };
 
 /**
  *
  */
-function PageList({ bookId, pages, pendingPage }: Props) {
+function PageList({ bookId, pages, pendingPage, pendingPageDurationMs = 1000 }: Props) {
   const pageQuery = usePageQuery();
 
   return (
@@ -37,7 +38,12 @@ function PageList({ bookId, pages, pendingPage }: Props) {
           return (
             <li className="PageList__item" key={item.page}>
               <a href={item.path} title={item.title}>
-                <button className={cls}>{item.page}</button>
+                <button
+                  className={cls}
+                  style={{ '--page-list-progress-duration': `${pendingPageDurationMs}ms` } as React.CSSProperties}
+                >
+                  <span className="PageList__buttonText">{item.page}</span>
+                </button>
               </a>
             </li>
           );

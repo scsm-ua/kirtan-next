@@ -22,7 +22,7 @@ function HotkeyHint() {
     if (/Mobi|Android/i.test(navigator.userAgent)) return;
 
     const last = Number(localStorage.getItem(LS_KEY) ?? 0);
-    // if (Date.now() - last < HOTKEYS_HINT_PERIOD) return;
+    if (Date.now() - last < HOTKEYS_HINT_PERIOD) return;
 
     localStorage.setItem(LS_KEY, String(Date.now()));
     setVisible(true);
