@@ -15,8 +15,12 @@ export function useServiceWorker() {
       return;
     }
     if ('serviceWorker' in navigator) {
+      const swVersion =
+        __BUILD_INFO__.commit || __BUILD_INFO__.version || 'dev';
+      const swUrl = `/sw.js?v=${encodeURIComponent(swVersion)}`;
+
       navigator.serviceWorker
-        .register('/sw.js', { scope: '/' })
+        .register(swUrl, { scope: '/' })
         .then((registration) => {
           console.log('Service Worker registered:', registration.scope);
         })

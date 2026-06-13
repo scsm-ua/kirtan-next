@@ -1,18 +1,23 @@
 'use client';
-import { PureComponent, type ReactElement } from 'react';
+import { PureComponent } from 'react';
 
 import './SearchModule.scss';
 import { lookFor } from '@/components/search/SearchModule/helpers';
+import PageList from '@/components/search/PageList/PageList';
 import SearchControls from '@/components/search/SearchControls/SearchControls';
 import SearchResults from '@/components/search/SearchResults/SearchResults';
 import { translate } from '@/other/i18n';
 
 import type { TSearchResult, TSearchResultItem } from '@/components/search/SearchModule/types';
+import type { TPage } from '@/types/search';
+
+const SINGLE_MATCH_DELAY_MS = 1000;
+const EXACT_MATCH_DELAY_MS = 2000;
 
 /**/
 type Props = {
   bookId: string;
-  pageList: ReactElement;
+  pages: TPage[];
 };
 
 type State = {
@@ -20,6 +25,8 @@ type State = {
   hasNotFound?: boolean;
   isLoading?: boolean;
   page?: number;
+  pendingPage?: string;
+  pendingPageDurationMs?: number;
   query?: string;
   results?: Array<TSearchResultItem>;
   resultsForQuery?: string;
@@ -29,32 +36,91 @@ type State = {
  *
  */
 class SearchModule extends PureComponent<Props, State> {
+  redirectTimer: ReturnType<typeof setTimeout> | null = null;
+
+  findExactPageMatch = (query: string) => this.props.pages.find((p) => p.page === query);
+
+  startPendingNavigation = (match: { page: string; path: string }, delayMs: number) => {
+    this.setState({ pendingPage: match.page, pendingPageDurationMs: delayMs });
+    this.redirectTimer = setTimeout(() => {
+      window.location.href = match.path;
+    }, delayMs);
+  };
+
   state: State = {
     hasMore: false,
     hasNotFound: false,
     isLoading: false,
     page: 1,
+    pendingPage: '',
+    pendingPageDurationMs: SINGLE_MATCH_DELAY_MS,
     query: '',
     results: [],
     resultsForQuery: ''
   };
 
   /**/
-  handleClear = () =>
+  handleClear = () => {
+    if (this.redirectTimer) clearTimeout(this.redirectTimer);
     this.setState({
       hasNotFound: false,
+      pendingPage: '',
       query: '',
       results: []
     });
+  };
 
   /**/
-  handleInput = (query: string) => this.setState({ query });
+  componentWillUnmount() {
+    if (this.redirectTimer) clearTimeout(this.redirectTimer);
+  }
+
+  /**/
+  handleInput = (query: string) => {
+    this.setState({ query });
+
+    if (this.redirectTimer) clearTimeout(this.redirectTimer);
+
+    if (/^\d+$/.test(query)) {
+      const { pages } = this.props;
+      const filtered = pages.filter((p) => p.page.startsWith(query));
+
+      if (filtered.length === 1) {
+        this.startPendingNavigation(filtered[0], SINGLE_MATCH_DELAY_MS);
+      } else {
+        const exactMatch = filtered.find((p) => p.page === query);
+
+        if (exactMatch) {
+          this.startPendingNavigation(exactMatch, EXACT_MATCH_DELAY_MS);
+        } else {
+          this.setState({ pendingPage: '' });
+        }
+      }
+    } else {
+      this.setState({ pendingPage: '' });
+    }
+  };
 
   /**/
   handleMore = () => this.startSearch();
 
   /**/
-  handleSubmit = () => this.startSearch();
+  handleSubmit = () => {
+    const { query } = this.state;
+
+    if (!query) return;
+
+    if (/^\d+$/.test(query)) {
+      const exactMatch = this.findExactPageMatch(query);
+
+      if (exactMatch) {
+        window.location.href = exactMatch.path;
+        return;
+      }
+    }
+
+    this.startSearch();
+  };
 
   /**/
   startSearch() {
@@ -104,8 +170,13 @@ class SearchModule extends PureComponent<Props, State> {
 
   /**/
   render() {
-    const { bookId, pageList } = this.props;
-    const { hasMore, hasNotFound, isLoading, query, results } = this.state;
+    const { bookId, pages } = this.props;
+    const { hasMore, hasNotFound, isLoading, pendingPage, pendingPageDurationMs, query, results } = this.state;
+
+    const isNumericQuery = /^\d+$/.test(query);
+    const filteredPages = isNumericQuery
+      ? pages.filter((p) => p.page.startsWith(query))
+      : pages;
 
     return (
       <div className="SearchModule">
@@ -120,7 +191,7 @@ class SearchModule extends PureComponent<Props, State> {
         </header>
 
         <main className="SearchModule__content">
-          {hasNotFound || isLoading || results.length > 0 || pageList}
+          {hasNotFound || isLoading || results.length > 0 || <PageList bookId={bookId} pages={filteredPages} pendingPage={pendingPage} pendingPageDurationMs={pendingPageDurationMs} />}
 
           {hasNotFound && (
             <div className="SearchModule__nothing">

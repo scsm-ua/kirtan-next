@@ -18,6 +18,11 @@ class ThreeModeSwitch extends React.PureComponent<Props, State> {
   state: State = { mode: this.props.value };
 
   /**/
+  static getDerivedStateFromProps(props: Props, state: State): Partial<State> | null {
+    return props.value !== state.mode ? { mode: props.value } : null;
+  }
+
+  /**/
   handleLabel = () => {
     let mode;
     switch (this.state.mode) {

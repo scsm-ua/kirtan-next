@@ -18,12 +18,11 @@ type Props = {
 function PrevNextNav({ navMap }: Props) {
   const pageQuery = usePageQuery();
 
-  if (typeof pageQuery !== 'string') return null;
-
   const prevNext: TNavItems =
-    navMap[pageQuery] ||
-    (Object.values(navMap) && Object.values(navMap)[0]) ||
+    (typeof pageQuery === 'string' && (navMap[pageQuery] || Object.values(navMap)[0])) ||
     {} as any;
+
+  if (typeof pageQuery !== 'string') return null;
 
   return (
     <div className="PrevNextNav">

@@ -1,3 +1,13 @@
+v2.3.0
+6 June 2026
+  - New desktop layout.
+  - Global keyboard hotkeys, press H for help.
+  - Keyboard navigation for book list.
+  - Improved swipe navigation: tuned threshold, animation, and UI arrows. Haptic feedback.
+  - Songbook language tag display.
+  - Improved search layout and navigation.
+  - Service worker auto versioning.
+_________________________________________________________
 v2.2.1
 21 April 2026
   - Fix: hard coded lang attribute.
