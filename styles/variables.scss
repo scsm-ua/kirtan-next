@@ -56,6 +56,12 @@ $bp-sidebar: 1200;
   --shadow-color: rgba(56, 55, 142, 0.15);
   --link-color: #1e80f3;
 
+  /* Reusable pill / round-button states */
+  --btn-bg: rgba(0, 0, 0, 0.06);
+  --btn-hover-bg: rgba(0, 0, 0, 0.1);
+  --btn-active-bg: #bfa871;
+  --btn-active-hover-bg: #a99166;
+
   /**/
   --beige: #fffaed;
   //--brown-light: #7e5700;

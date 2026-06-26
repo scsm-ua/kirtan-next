@@ -2,16 +2,19 @@
 import { useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 
-import type { TTranslationMode } from '@/types/common';
+import { VIEW_MODE, WBW_MODE } from '@/types/common';
+import type { TViewMode, TWbwMode } from '@/types/common';
 
-// User-facing key → internal mode value:
-//   '1' = original + translation (both, internal '3')
-//   '2' = original only          (internal '1')
-//   '3' = translation only       (internal '2')
-const KEY_TO_MODE: Record<string, TTranslationMode> = {
-  '1': '3',
-  '2': '1',
-  '3': '2',
+const KEY_TO_MODE: Record<string, TViewMode> = {
+  '1': VIEW_MODE.ALL,
+  '2': VIEW_MODE.VERSE,
+  '3': VIEW_MODE.TRANSLATION,
+};
+
+const KEY_TO_WBW: Record<string, TWbwMode> = {
+  '4': WBW_MODE.HIDE,
+  '5': WBW_MODE.INLINE,
+  '6': WBW_MODE.CLASSICAL,
 };
 
 const NON_SONG_SEGMENTS = new Set(['contents', 'a-z', 'search', 'authors']);
@@ -97,6 +100,16 @@ export function useGlobalHotkeys({ onShowHelp }: Config): void {
           window.dispatchEvent(
             new CustomEvent('kirtan:setMode', {
               detail: { mode: KEY_TO_MODE[e.key] },
+            })
+          );
+          break;
+
+        case '4':
+        case '5':
+        case '6':
+          window.dispatchEvent(
+            new CustomEvent('kirtan:setWbwMode', {
+              detail: { wbwMode: KEY_TO_WBW[e.key] },
             })
           );
           break;

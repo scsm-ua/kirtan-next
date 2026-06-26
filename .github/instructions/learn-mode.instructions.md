@@ -1,22 +1,28 @@
 ---
-description: "Use when modifying the song Learn mode: the per-word translation view (LearnVerse), the word-by-word parser/tokenizer in components/song/Verse/helpers.tsx, the Learn checkbox in SongText, or the SONG_LEARN_MODE preference."
-applyTo: ["components/song/Verse/LearnVerse.tsx", "components/song/Verse/LearnVerse.scss", "components/song/Verse/helpers.tsx", "components/song/SongText/SongText.tsx", "other/userPreferrences.ts"]
+description: "Use when modifying the song Learn mode: the per-word translation view (LearnVerse), the word-by-word parser/tokenizer in components/song/Verse/helpers.tsx, the wbw mode controls in SongText, or the SONG_WBW_MODE preference."
+applyTo: ["components/song/Verse/LearnVerse.tsx", "components/song/Verse/LearnVerse.scss", "components/song/Verse/helpers.tsx", "components/song/SongText/SongText.tsx", "components/common/DisplayModeMenu/**", "other/userPreferrences.ts"]
 ---
 
 # Song Learn Mode Architecture
 
-Learn mode is an alternate render of a verse that pairs each source-text token with its `word_by_word` translation as columnar pairs. It's an independent toggle, **orthogonal** to the existing `TTranslationMode` (1/2/3 switch).
+Learn mode is an alternate render of a verse that pairs each source-text token with its `word_by_word` translation as columnar pairs. It is one of three values of the **word-by-word mode** (`TWbwMode = 'hide' | 'inline' | 'classical'`, with named constants in `WBW_MODE`), which is **orthogonal** to the **view mode** (`TViewMode = 'all' | 'verse' | 'translation'`).
 
 ## Toggle & State
 
 | Concern | Location |
 |---|---|
-| Persistence | `getSongLearnMode` / `setSongLearnMode` in `other/userPreferrences.ts` (localStorage key `SONG_LEARN_MODE`, `'1'` or absent) |
-| Local state | `isLearn` in `components/song/SongText/SongText.tsx`, hydrated from storage inside `useEffect` (SSR-safe) |
-| UI control | "Learn" checkbox in `SongText.tsx`, rendered next to `ThreeModeSwitch`. **Only shown when `isWBW`** (some verse in the song has `word_by_word` data) |
-| Verse prop | `isLearn={isLearn && isWBW}` passed to each `<Verse>` — never just `isLearn` |
+| Persistence | `getSongWbwMode` / `setSongWbwMode` in `other/userPreferrences.ts` (localStorage key `SONG_WBW_MODE`, values `'hide' \| 'inline' \| 'classical'`, default `WBW_MODE.INLINE`). Invalid stored values fall back to the default. |
+| Local state | `wbwMode` in `components/song/SongText/SongText.tsx`, hydrated from storage inside `useEffect` (SSR-safe). Default before hydration is `WBW_MODE.INLINE`. |
+| UI control | Second radio group inside `<DisplayModeMenu>` (`components/common/DisplayModeMenu/`), rendered next to the view-mode group. The wbw group is **only shown when `isWBW`** (some verse has `word_by_word` data); pass `hasWbw={isWBW}`. |
+| Verse prop | `wbwMode={effectiveWbwMode}` where `effectiveWbwMode = isWBW ? wbwMode : WBW_MODE.HIDE`. `Verse` derives `isLearn = isWBW && wbwMode === WBW_MODE.INLINE` internally. |
 
-When `isLearn` is true, `Verse.tsx` swaps `<VerseText>` for `<LearnVerse>` **and** hides the `<VerseWbw>` block (its content is inlined into LearnVerse). The translation block and 3-mode switch keep working unchanged.
+`Verse` behaviour by wbw mode:
+
+- `WBW_MODE.INLINE` → `<LearnVerse>` replaces `<VerseText>`; the `<VerseWbw>` block is hidden (its content is inlined into LearnVerse).
+- `WBW_MODE.CLASSICAL` → `<VerseText>` is shown **and** `<VerseWbw>` block is rendered+open, independent of the view mode.
+- `WBW_MODE.HIDE` → `<VerseText>` is shown; no `<VerseWbw>` block.
+
+The translation block and view-mode switch keep working unchanged across all three wbw modes.
 
 ## Data Pipeline (`helpers.tsx`)
 

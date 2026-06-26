@@ -30,6 +30,7 @@ function HotkeysModal({ bookId, isOpen, onClose }: Props) {
     { keys: ['←'], desc: t('SONG_PAGE.PREVIOUS_SONG') },
     { keys: ['→'], desc: t('SONG_PAGE.NEXT_SONG') },
     { keys: ['1', '2', '3'], desc: t('SONG_PAGE.SHOW_TRANSLATION') },
+    { keys: ['4', '5', '6'], desc: 'Word-by-word: hide / inline / classical' }, // TODO: add HOTKEYS.WORD_BY_WORD to translations.json
   ];
 
   return (

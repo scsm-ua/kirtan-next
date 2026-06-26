@@ -2,18 +2,17 @@ import classNames from 'classnames';
 
 import './LearnVerse.scss';
 import {
-  buildLearnLines,
   getLineContent,
   getLineIndent
 } from '@/components/song/Verse/helpers';
-import type { TSong, TVerse } from '@/types/song';
+import type { TInlineWbwEntry, TSong } from '@/types/song';
 
 /**/
 type Props = {
   meta: TSong['meta'];
   hasNumber: boolean;
+  lines: TInlineWbwEntry[][];
   text: Array<string>;
-  wordByWord: TVerse['word_by_word'];
 };
 
 /**
@@ -21,12 +20,10 @@ type Props = {
  * Word + translation share a column so the wider one defines the column width,
  * keeping next pairs aligned on the y axis.
  */
-function LearnVerse({ hasNumber, meta, text, wordByWord }: Props) {
+function LearnVerse({ hasNumber, lines, meta, text }: Props) {
   const parensLight = meta && meta['verse parentheses'] === 'non bold';
   const lineLight =
     meta && meta['inline verse'] === 'non bold' && !hasNumber;
-
-  const lines = buildLearnLines(text, wordByWord);
 
   return (
     <ul className="LearnVerse">

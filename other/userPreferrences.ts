@@ -1,5 +1,6 @@
 import { PREFERENCES } from '@/other/constants';
-import type { TTranslationMode } from '@/types/common';
+import { VIEW_MODE, WBW_MODE } from '@/types/common';
+import type { TViewMode, TWbwMode } from '@/types/common';
 
 /**
  * Preserve user choice of the Book ID in the Local storage.
@@ -14,41 +15,42 @@ export function saveBookChoice(bookId: string): void {
 
 /**
  * Preserve user choice of show/hide song verses/translation.
- * Value:	'1' - show only verses,
- * 				'2' - show only translation,
- * 				'3' - show both (default).
+ * Stored as semantic strings: 'all' | 'verse' | 'translation'.
  */
-const SONG_DISPLAY_MODE = 'SONG_DISPLAY_MODE';
+const SONG_VIEW_MODE = 'SONG_VIEW_MODE';
 
 /**/
-const SONG_LEARN_MODE = 'SONG_LEARN_MODE';
+const SONG_WBW_MODE = 'SONG_WBW_MODE';
 
 /**/
 const SHOW_HIDDEN_BOOKS = 'SHOW_HIDDEN_BOOKS';
 
 /**/
-export function getSongDisplayMode(): TTranslationMode {
-  const val = localStorage.getItem(SONG_DISPLAY_MODE);
-  return (val || '3') as TTranslationMode;
-}
-
-/**/
-export function setSongDisplayMode(value: TTranslationMode) {
-  localStorage.setItem(SONG_DISPLAY_MODE, value);
-}
-
-/**/
-export function getSongLearnMode(): boolean {
-  return localStorage.getItem(SONG_LEARN_MODE) === '1';
-}
-
-/**/
-export function setSongLearnMode(value: boolean) {
-  if (value) {
-    localStorage.setItem(SONG_LEARN_MODE, '1');
-  } else {
-    localStorage.removeItem(SONG_LEARN_MODE);
+export function getSongViewMode(): TViewMode {
+  const val = localStorage.getItem(SONG_VIEW_MODE);
+  if (val === VIEW_MODE.ALL || val === VIEW_MODE.VERSE || val === VIEW_MODE.TRANSLATION) {
+    return val;
   }
+  return VIEW_MODE.ALL;
+}
+
+/**/
+export function setSongViewMode(value: TViewMode) {
+  localStorage.setItem(SONG_VIEW_MODE, value);
+}
+
+/**/
+export function getSongWbwMode(): TWbwMode {
+  const val = localStorage.getItem(SONG_WBW_MODE);
+  if (val === WBW_MODE.HIDE || val === WBW_MODE.INLINE || val === WBW_MODE.CLASSICAL) {
+    return val;
+  }
+  return WBW_MODE.INLINE;
+}
+
+/**/
+export function setSongWbwMode(value: TWbwMode) {
+  localStorage.setItem(SONG_WBW_MODE, value);
 }
 
 /**/

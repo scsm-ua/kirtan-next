@@ -1,4 +1,4 @@
-import type { TSong } from '@/types/song';
+import type { TInlineWbwEntry, TSong, TWbwEntry } from '@/types/song';
 
 /**
  *
@@ -65,11 +65,6 @@ export function getLineContent(
 }
 
 /**/
-export type TWbwEntry = { key: string[]; trans: string };
-
-/**/
-export type TLearnGroup = { text: string; trans: string; sep: string };
-
 // Separators between words: whitespace, comma, dot, hyphen. Kept in output.
 const SEP_CHARS = '\\s,.\\-';
 const WORD_RE = new RegExp(`([^${SEP_CHARS}]+)([${SEP_CHARS}]*)`, 'g');
@@ -121,16 +116,16 @@ export function parseWordByWord(lines: string[]): TWbwEntry[] {
  * (spaces/commas/dots/hyphens) are preserved in each group's text.
  * If dict runs out before text does, remaining tokens get translation '-'.
  */
-export function buildLearnLines(
+export function buildInlineWordByWord(
   text: string[],
   wordByWord: string[]
-): TLearnGroup[][] {
+): TInlineWbwEntry[][] {
   const dict = parseWordByWord(wordByWord);
   let cursor = 0;
 
   return text.map((line) => {
     const tokens = tokenizeLine(line);
-    const groups: TLearnGroup[] = [];
+    const groups: TInlineWbwEntry[] = [];
     let i = 0;
 
     while (i < tokens.length) {
@@ -152,4 +147,38 @@ export function buildLearnLines(
 
     return groups;
   });
+}
+
+/**
+ * Detect whether the per-word inline Learn mode is meaningful for a verse:
+ * every parsed `word_by_word` entry maps a single source word to a translation,
+ * and that source word appears in the verse text. When false, the verse only
+ * supports the classical (block) wbw layout.
+ */
+export function wbwInlineModeAvailable(
+  text: string[],
+  wordByWord: string[]
+): boolean {
+  if (!text?.length || !wordByWord?.length) return false;
+  const dict = parseWordByWord(wordByWord);
+  if (!dict.length) return false;
+  const multi = dict.find((e) => e.key.length !== 1);
+  if (multi) {
+    console.warn(
+      `[wbwInlineModeAvailable] multi-word key: "${multi}"`, multi
+    );
+    return false;
+  }
+  const textTokens = new Set<string>();
+  for (const line of text) {
+    for (const tok of tokenizeLine(line)) textTokens.add(tok.word);
+  }
+  const missing = dict.find((e) => !textTokens.has(e.key[0]));
+  if (missing) {
+    console.warn(
+      `[wbwInlineModeAvailable] key not found in text: "${missing.key[0]}"`
+    );
+    return false;
+  }
+  return true;
 }
