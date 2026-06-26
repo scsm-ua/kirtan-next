@@ -65,8 +65,11 @@ export function getLineContent(
 }
 
 /**/
-// Separators between words: whitespace, comma, dot, hyphen. Kept in output.
-const SEP_CHARS = '\\s,.\\-';
+// Separators between words: whitespace, comma, dot, hyphen, plus sentence
+// punctuation (`! ? : ;`). Kept in output verbatim as each token's trailing
+// `sep`. Used by both `tokenizeLine` (text side) and `parseWordByWord` (key
+// side) — keep in lockstep or alignment breaks.
+const SEP_CHARS = '\\s,.\\-!?:;';
 const WORD_RE = new RegExp(`([^${SEP_CHARS}]+)([${SEP_CHARS}]*)`, 'g');
 
 /**
