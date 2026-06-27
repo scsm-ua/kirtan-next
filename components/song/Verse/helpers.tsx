@@ -65,26 +65,35 @@ export function getLineContent(
 }
 
 /**/
-// Separators between words: whitespace, comma, dot, hyphen, plus sentence
-// punctuation (`! ? : ;`). Kept in output verbatim as each token's trailing
-// `sep`. Used by both `tokenizeLine` (text side) and `parseWordByWord` (key
-// side) — keep in lockstep or alignment breaks.
-const SEP_CHARS = '\\s,.\\-!?:;';
-const WORD_RE = new RegExp(`([^${SEP_CHARS}]+)([${SEP_CHARS}]*)`, 'g');
+// Separators between words: whitespace, comma, dot, hyphen, sentence
+// punctuation (`! ? : ;`), plus brackets (`( ) [ ]`). Kept in output verbatim
+// as each token's trailing `sep`. Used by both `tokenizeLine` (text side) and
+// `parseWordByWord` (key side) — keep in lockstep or alignment breaks.
+const SEP_CHARS = '\\s,.\\-!?:;()\\[\\]';
+// Capture leading seps + word + trailing seps. `pre` is non-empty only on the
+// first token (subsequent tokens' leading seps are consumed by the previous
+// token's trailing `sep`) — but we keep it on every token for shape symmetry.
+const WORD_RE = new RegExp(
+  `([${SEP_CHARS}]*)([^${SEP_CHARS}]+)([${SEP_CHARS}]*)`,
+  'g'
+);
 
 /**
- * Tokenize a verse line into `{ word, sep }` pairs where `sep` is the
- * original trailing separator (spaces/commas/dots/hyphens). Tokens
- * recombined with their seps reproduce the source text exactly.
+ * Tokenize a verse line into `{ pre, word, sep }` triples where `pre` is any
+ * leading separator (parens/brackets) and `sep` is the trailing separator
+ * (spaces/commas/dots/hyphens/brackets). Recombining `pre + word + sep`
+ * across tokens reproduces the source text verbatim.
  */
-export function tokenizeLine(aLine: string): { word: string; sep: string }[] {
+export function tokenizeLine(
+  aLine: string
+): { pre: string; word: string; sep: string }[] {
   const line = aLine.replace(TAG_RE, '').trim();
   if (!line) return [];
-  const tokens: { word: string; sep: string }[] = [];
+  const tokens: { pre: string; word: string; sep: string }[] = [];
   const re = new RegExp(WORD_RE.source, 'g');
   let m: RegExpExecArray | null;
   while ((m = re.exec(line)) !== null) {
-    tokens.push({ word: m[1], sep: m[2] });
+    tokens.push({ pre: m[1], word: m[2], sep: m[3] });
   }
   return tokens;
 }
@@ -138,8 +147,12 @@ export function buildInlineWordByWord(
       const slice = tokens.slice(i, i + len);
       // Keep internal seps attached; the trailing sep is emitted between pairs
       // so the original separator (space / hyphen / comma) renders verbatim.
+      // The leading `pre` of the first token preserves any opening bracket
+      // that would otherwise be dropped at the start of a line.
+      const first = slice[0];
       const last = slice[slice.length - 1];
       const textOut =
+        first.pre +
         slice.slice(0, -1).map((t) => t.word + t.sep).join('') + last.word;
       // Keep the original sep verbatim (including multi-space indents);
       // the renderer converts whitespace to NBSPs so widths survive.

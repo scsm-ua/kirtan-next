@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import classNames from 'classnames';
 
 import './LearnVerse.scss';
@@ -6,6 +7,21 @@ import {
   getLineIndent
 } from '@/components/song/Verse/helpers';
 import type { TInlineWbwEntry, TSong } from '@/types/song';
+
+// Break a translation like "material senses (jada indriya)" into two visual
+// lines so the parenthesised qualifier sits under the main translation.
+// Triggers on ` (` (space before an open paren) so bare `(of Orissa)` or
+// `word(x)` stay on one line.
+function renderTrans(trans: string) {
+  const parts = trans.split(/ (?=\()/);
+  if (parts.length === 1) return trans;
+  return parts.map((p, i) => (
+    <Fragment key={i}>
+      {i > 0 && <br />}
+      {p}
+    </Fragment>
+  ));
+}
 
 /**/
 type Props = {
@@ -65,7 +81,7 @@ function LearnVerse({ hasNumber, lines, meta, text }: Props) {
                     {groupText}
                     {displaySep}
                   </span>
-                  <span className={transCls}>{trans}</span>
+                  <span className={transCls}>{renderTrans(trans)}</span>
                 </span>
               );
             })}

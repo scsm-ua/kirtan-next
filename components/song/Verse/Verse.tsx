@@ -37,12 +37,18 @@ function Verse({
 }: Props) {
   const { number, subtitle, text, translation, word_by_word, inline_word_by_word } = verse;
   const isWide = mode === VIEW_MODE.TRANSLATION;
-  const isLearn = hasLearnWbw && wbwMode === WBW_MODE.INLINE;
+  // Per-verse learn flag: when the song is in inline mode but this verse
+  // lacks per-word data, fall back to the classical view for this verse.
+  const verseHasInline = !!inline_word_by_word;
+  const isLearn = hasLearnWbw && wbwMode === WBW_MODE.INLINE && verseHasInline;
 
   const showVerse = mode === VIEW_MODE.VERSE || mode === VIEW_MODE.ALL;
   const showTranslation = mode === VIEW_MODE.TRANSLATION || mode === VIEW_MODE.ALL;
   const showWbwBlock =
-    hasWbw && wbwMode === WBW_MODE.CLASSICAL && mode !== VIEW_MODE.TRANSLATION;
+    hasWbw &&
+    mode !== VIEW_MODE.TRANSLATION &&
+    (wbwMode === WBW_MODE.CLASSICAL ||
+      (wbwMode === WBW_MODE.INLINE && !verseHasInline));
 
   const stCls = (classnames as any)(
     'Verse__subtitles',

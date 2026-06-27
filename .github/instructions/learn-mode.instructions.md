@@ -45,16 +45,17 @@ verse.text[]            verse.word_by_word[]
 ### Separator class (single source of truth)
 
 ```ts
-const SEP_CHARS = '\\s,.\\-';
+const SEP_CHARS = '\\s,.\\-!?:;()\\[\\]';
 ```
 
 Used by `tokenizeLine` (text side) **and** `parseWordByWord` (key side). If you change it, both sides change in lockstep — never split text and keys by different rules or alignment breaks.
 
-### `tokenizeLine(line)` → `{ word, sep }[]`
+### `tokenizeLine(line)` → `{ pre, word, sep }[]`
 
 - Strips HTML tags and leading indent.
-- `word` = run of non-separator chars. `sep` = the run of separators that followed it (may include comma/dot/hyphen).
-- Invariant: `tokens.map(t => t.word + t.sep).join('') === stripped(line)`. Anything that breaks this invariant will desync display from source.
+- `word` = run of non-separator chars. `sep` = the run of separators that followed it.
+- `pre` = run of separators **preceding** the word. Non-empty only on the first token (e.g. opening `(` before the line’s first word); kept on every token for shape symmetry.
+- Invariant: `tokens.map(t => t.pre + t.word + t.sep).join('') === stripped(line)`. Anything that breaks this invariant will desync display from source.
 
 ### `parseWordByWord(lines)` → `TWbwEntry[]`
 
@@ -75,7 +76,7 @@ Keys split with the same `SEP_CHARS` class, so `śrī-gaura` becomes 2 tokens an
 
 **Strictly sequential, no fuzzy matching, no lookahead.** Walks tokens in order; for each dict entry, consumes `entry.key.length` text tokens and emits one `TLearnGroup { text, trans, sep }`. The cursor persists **across text lines** because `word_by_word` is verse-wide, not line-scoped.
 
-- Each group's `text` keeps internal seps attached (`slice[0..n-2].map(t => t.word + t.sep).join('') + lastWord`); the **trailing sep is split off into `sep`** so the original separator (space / hyphen / comma / multi-space indent) can be rendered verbatim between pairs. `sep` is stored as-is — the renderer converts whitespace runs to NBSPs.
+- Each group's `text` keeps internal seps attached (`first.pre + slice[0..n-2].map(t => t.word + t.sep).join('') + lastWord`); the **trailing sep is split off into `sep`** so the original separator (space / hyphen / comma / bracket / multi-space indent) can be rendered verbatim between pairs. The first slice's `pre` is prepended so leading punctuation (e.g. `(`) survives. `sep` is stored as-is — the renderer converts whitespace runs to NBSPs.
 - If dict runs out before text does, remaining tokens get `trans: '-'`.
 
 Mismatches are intentional dead-ends: if `text` and `word_by_word` aren't 1-to-1 token-count-aligned, columns will drift from that point. Fix the source data — do not add lookahead/fuzzy logic here.
