@@ -5,12 +5,15 @@ import { useRef, useState } from 'react';
 
 import './DisplayModeMenu.scss';
 
+import { translate } from '@/other/i18n';
 import type { TViewMode, TWbwMode } from '@/types/common';
 import { VIEW_MODE, WBW_MODE } from '@/types/common';
 
 /**/
 type Props = {
+  bookId: string;
   children?: ReactNode;
+  hasTranslation: boolean;
   hasWbw: boolean;
   hasLearnWbw?: boolean;
   label: string;
@@ -22,29 +25,31 @@ type Props = {
 
 const DISPLAY_OPTIONS: Array<{
   iconCls: string;
-  label: string;
+  labelKey: string;
   value: TViewMode;
 }> = [
-  { value: VIEW_MODE.ALL, label: 'Show all', iconCls: 'all' },
-  { value: VIEW_MODE.VERSE, label: 'Verses only', iconCls: 'verse' },
-  { value: VIEW_MODE.TRANSLATION, label: 'Translation only', iconCls: 'translation' }
+  { value: VIEW_MODE.ALL, labelKey: 'DISPLAY_MODE_MENU.SHOW_ALL', iconCls: 'all' },
+  { value: VIEW_MODE.VERSE, labelKey: 'DISPLAY_MODE_MENU.VERSES_ONLY', iconCls: 'verse' },
+  { value: VIEW_MODE.TRANSLATION, labelKey: 'DISPLAY_MODE_MENU.TRANSLATION_ONLY', iconCls: 'translation' }
 ];
 
 const WBW_OPTIONS: Array<{
   iconCls: string;
-  label: string;
+  labelKey: string;
   value: TWbwMode;
 }> = [
-  { value: WBW_MODE.HIDE, label: 'Hide word-by-word', iconCls: 'hide' },
-  { value: WBW_MODE.INLINE, label: 'Inline word-by-word', iconCls: 'inline' },
-  { value: WBW_MODE.CLASSICAL, label: 'Classical word-by-word', iconCls: 'classical' }
+  { value: WBW_MODE.HIDE, labelKey: 'DISPLAY_MODE_MENU.HIDE_WBW', iconCls: 'hide' },
+  { value: WBW_MODE.INLINE, labelKey: 'DISPLAY_MODE_MENU.INLINE_WBW', iconCls: 'inline' },
+  { value: WBW_MODE.CLASSICAL, labelKey: 'DISPLAY_MODE_MENU.CLASSICAL_WBW', iconCls: 'classical' }
 ];
 
 /**
  *
  */
 function DisplayModeMenu({
+  bookId,
   children,
+  hasTranslation,
   hasWbw,
   hasLearnWbw,
   label,
@@ -95,7 +100,7 @@ function DisplayModeMenu({
             {(mode === VIEW_MODE.ALL || mode === VIEW_MODE.TRANSLATION) && (
               <span className="DisplayModeMenu__icon DisplayModeMenu__icon--translation" />
             )}
-            {hasWbw && mode !== VIEW_MODE.TRANSLATION && (
+            {hasWbw && mode !== VIEW_MODE.TRANSLATION && wbwMode !== WBW_MODE.HIDE && (
               <span
                 className={`DisplayModeMenu__icon DisplayModeMenu__icon--${wbwMode}`}
               />
@@ -112,36 +117,37 @@ function DisplayModeMenu({
         inert={!open}
       >
         <div className="DisplayModeMenu__panel" role="menu">
-          <div
-            className="DisplayModeMenu__group"
-            role="radiogroup"
-            aria-label="Verse / translation"
-          >
-            {DISPLAY_OPTIONS.map((opt) => (
-              <button
-                key={opt.value}
-                type="button"
-                role="radio"
-                tabIndex={open ? 0 : -1}
-                aria-checked={mode === opt.value}
-                className={classNames(
-                  'DisplayModeMenu__item',
-                  mode === opt.value && 'DisplayModeMenu__item--active'
-                )}
-                onClick={() => pickMode(opt.value)}
-              >
-                <span className="DisplayModeMenu__iconSlot" aria-hidden="true">
-                  <span
-                    className={classNames(
-                      'DisplayModeMenu__icon',
-                      `DisplayModeMenu__icon--${opt.iconCls}`
-                    )}
-                  />
-                </span>
-                <span className="DisplayModeMenu__itemLabel">{opt.label}</span>
-              </button>
-            ))}
-          </div>
+          {hasTranslation && (
+            <div
+              className="DisplayModeMenu__group"
+              role="radiogroup"
+            >
+              {DISPLAY_OPTIONS.map((opt) => (
+                <button
+                  key={opt.value}
+                  type="button"
+                  role="radio"
+                  tabIndex={open ? 0 : -1}
+                  aria-checked={mode === opt.value}
+                  className={classNames(
+                    'DisplayModeMenu__item',
+                    mode === opt.value && 'DisplayModeMenu__item--active'
+                  )}
+                  onClick={() => pickMode(opt.value)}
+                >
+                  <span className="DisplayModeMenu__iconSlot" aria-hidden="true">
+                    <span
+                      className={classNames(
+                        'DisplayModeMenu__icon',
+                        `DisplayModeMenu__icon--${opt.iconCls}`
+                      )}
+                    />
+                  </span>
+                  <span className="DisplayModeMenu__itemLabel">{translate(bookId, opt.labelKey)}</span>
+                </button>
+              ))}
+            </div>
+          )}
 
           {hasWbw && (
             <div
@@ -151,13 +157,13 @@ function DisplayModeMenu({
                 mode === VIEW_MODE.TRANSLATION && 'DisplayModeMenu__group--collapsed'
               )}
               role="radiogroup"
-              aria-label="Word by word"
               aria-hidden={mode === VIEW_MODE.TRANSLATION}
               inert={mode === VIEW_MODE.TRANSLATION}
             >
               {WBW_OPTIONS.filter((opt) => {
-                // Hide classical inline in "verse only" mode.
-                if (mode === VIEW_MODE.VERSE && opt.value === WBW_MODE.CLASSICAL) return false;
+                // Hide classical in "verse only" mode, but keep it when inline
+                // isn't available — otherwise the user has no way to enable WBW.
+                if (mode === VIEW_MODE.VERSE && opt.value === WBW_MODE.CLASSICAL && hasLearnWbw) return false;
                 // Inline option requires learn-mode data; classical block is
                 // always available whenever the menu renders.
                 if (opt.value === WBW_MODE.INLINE && !hasLearnWbw) return false;
@@ -183,7 +189,7 @@ function DisplayModeMenu({
                       )}
                     />
                   </span>
-                  <span className="DisplayModeMenu__itemLabel">{opt.label}</span>
+                  <span className="DisplayModeMenu__itemLabel">{translate(bookId, opt.labelKey)}</span>
                 </button>
               ))}
             </div>

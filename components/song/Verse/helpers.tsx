@@ -181,7 +181,7 @@ export function wbwInlineModeAvailable(
   const multi = dict.find((e) => e.key.length !== 1);
   if (multi) {
     console.warn(
-      `[wbwInlineModeAvailable] multi-word key: "${multi}"`, multi
+      `[wbwInlineModeAvailable] multi-word key:`, JSON.stringify(multi)
     );
     return false;
   }

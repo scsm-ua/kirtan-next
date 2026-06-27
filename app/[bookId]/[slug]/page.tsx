@@ -89,6 +89,7 @@ async function SongPage({ params }: SongPageProps) {
           </header>
 
           <SongText
+            bookId={bookId}
             label={translate(bookId, 'SONG_PAGE.SHOW_TRANSLATION')}
             song={song}
           />

@@ -57,13 +57,25 @@
     margin-left: 12px;
   }
 
+  &__numpad-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 12px;
+    gap: 8px;
+  }
+
+  &__numpad-label {
+    font-size: 13px;
+    color: var(--gray);
+  }
+
   &__numpad {
     display: grid;
     grid-template-columns: repeat(10, 40px);
     justify-content: center;
     gap: 8px;
-    width: 100%;
-    margin-top: 12px;
 
     @media (max-width: 527px) {
       grid-template-columns: repeat(5, 40px);
