@@ -34,9 +34,13 @@ function SongText({ bookId, label, song }: Props) {
   const [mode, setMode] = useState<TViewMode>(null);
   const [wbwMode, setWbwMode] = useState<TWbwMode>(WBW_MODE.INLINE);
   const [updateCount, setCounter] = useState<number>(0);
+  // Debug override: hotkey-set INLINE on a song that doesn't qualify for
+  // full inline mode. Renders inline anyway with stub translations.
+  const [forceInline, setForceInline] = useState<boolean>(false);
 
   const hasTranslation = !('translation' in song.meta) || song.meta.translation !== 'no';
-  const { hasWbw, hasLearnWbw } = song;
+  const { hasWbw, fullInlineWbw } = song;
+  const allowInline = fullInlineWbw || forceInline;
   const effectiveMode: TViewMode =
     !hasTranslation && (mode === VIEW_MODE.TRANSLATION || mode === VIEW_MODE.ALL)
       ? VIEW_MODE.VERSE
@@ -48,13 +52,13 @@ function SongText({ bookId, label, song }: Props) {
   if (
     effectiveMode === VIEW_MODE.VERSE &&
     effectiveWbwMode === WBW_MODE.CLASSICAL &&
-    hasLearnWbw
+    allowInline
   ) {
     effectiveWbwMode = WBW_MODE.INLINE;
   }
   // Inline is meaningless without learn data; fall back to the classical
   // block (always available when hasWbw).
-  if (effectiveWbwMode === WBW_MODE.INLINE && !hasLearnWbw) {
+  if (effectiveWbwMode === WBW_MODE.INLINE && !allowInline) {
     effectiveWbwMode = WBW_MODE.CLASSICAL;
   }
 
@@ -78,6 +82,7 @@ function SongText({ bookId, label, song }: Props) {
   const handleWbwModeChange = (value: TWbwMode) => {
     setSongWbwMode(value);
     setWbwMode(value);
+    setForceInline(false);
   };
 
   const isCompact = effectiveMode === VIEW_MODE.VERSE && wbwMode === WBW_MODE.HIDE;
@@ -92,24 +97,31 @@ function SongText({ bookId, label, song }: Props) {
   };
 
   const isLearn =
-    hasLearnWbw && wbwMode === WBW_MODE.INLINE && effectiveMode !== VIEW_MODE.TRANSLATION;
+    allowInline && wbwMode === WBW_MODE.INLINE && effectiveMode !== VIEW_MODE.TRANSLATION;
   const handleLearnToggle = () => {
     if (isLearn) {
       handleWbwModeChange(WBW_MODE.HIDE);
     } else {
-      if (effectiveMode === VIEW_MODE.TRANSLATION) handleViewModeChange(VIEW_MODE.ALL);
+      handleViewModeChange(VIEW_MODE.ALL);
       handleWbwModeChange(WBW_MODE.INLINE);
     }
   };
+
+  const showLearn = hasWbw && isCompact;
+  const showCompact = hasWbw && (isLearn || !isCompact);
 
   useEffect(() => {
     const handleSetMode = (e: Event) => {
       handleViewModeChange((e as CustomEvent<{ mode: TViewMode }>).detail.mode);
     };
     const handleSetWbw = (e: Event) => {
-      handleWbwModeChange(
-        (e as CustomEvent<{ wbwMode: TWbwMode }>).detail.wbwMode
-      );
+      const next = (e as CustomEvent<{ wbwMode: TWbwMode }>).detail.wbwMode;
+      handleWbwModeChange(next);
+      // Debug: hotkey-forced inline on a song that doesn't qualify.
+      if (next === WBW_MODE.INLINE && !fullInlineWbw) {
+        console.warn('[SongText] force inline (debug): song.fullInlineWbw=false');
+        setForceInline(true);
+      }
     };
 
     window.addEventListener('kirtan:setMode', handleSetMode);
@@ -131,7 +143,7 @@ function SongText({ bookId, label, song }: Props) {
                   bookId={bookId}
                   hasTranslation={hasTranslation}
                   hasWbw={hasWbw}
-                  hasLearnWbw={hasLearnWbw}
+                  fullInlineWbw={allowInline}
                   label={label}
                   mode={effectiveMode}
                   wbwMode={effectiveWbwMode}
@@ -139,7 +151,7 @@ function SongText({ bookId, label, song }: Props) {
                   onWbwModeChange={handleWbwModeChange}
                 >
                   <div className="SongText__btnGroup">
-                    {hasLearnWbw && (
+                    {showLearn && (
                       <button
                         type="button"
                         className={classNames(
@@ -160,25 +172,27 @@ function SongText({ bookId, label, song }: Props) {
                         </svg>
                       </button>
                     )}
-                    <button
-                      type="button"
-                      className={classNames(
-                        'SongText__compact',
-                        isCompact && 'SongText__compact--active'
-                      )}
-                      onClick={handleCompactToggle}
-                      aria-pressed={isCompact}
-                      aria-label={translate(bookId, isCompact ? 'DISPLAY_MODE_MENU.SHOW_ALL' : 'DISPLAY_MODE_MENU.COMPACT_VIEW')}
-                      title={translate(bookId, isCompact ? 'DISPLAY_MODE_MENU.SHOW_ALL' : 'DISPLAY_MODE_MENU.COMPACT_VIEW')}
-                    >
-                      <svg
-                        className="SongText__compactIcon"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
+                    {showCompact && (
+                      <button
+                        type="button"
+                        className={classNames(
+                          'SongText__compact',
+                          isCompact && 'SongText__compact--active'
+                        )}
+                        onClick={handleCompactToggle}
+                        aria-pressed={isCompact}
+                        aria-label={translate(bookId, isCompact ? 'DISPLAY_MODE_MENU.SHOW_ALL' : 'DISPLAY_MODE_MENU.COMPACT_VIEW')}
+                        title={translate(bookId, isCompact ? 'DISPLAY_MODE_MENU.SHOW_ALL' : 'DISPLAY_MODE_MENU.COMPACT_VIEW')}
                       >
-                        <path d="M7 2v11h3v9l7-12h-4l4-8z" />
-                      </svg>
-                    </button>
+                        <svg
+                          className="SongText__compactIcon"
+                          viewBox="0 0 24 24"
+                          aria-hidden="true"
+                        >
+                          <path d="M7 2v11h3v9l7-12h-4l4-8z" />
+                        </svg>
+                      </button>
+                    )}
                   </div>
                 </DisplayModeMenu>
               ) : (
@@ -195,7 +209,7 @@ function SongText({ bookId, label, song }: Props) {
             {song.verses.map((verse: TVerse, idx: number, arr: TVerse[]) => (
               <Verse
                 hasWbw={hasWbw}
-                hasLearnWbw={hasLearnWbw}
+                fullInlineWbw={allowInline}
                 key={idx}
                 length={arr.length}
                 meta={song.meta}

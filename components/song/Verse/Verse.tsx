@@ -15,7 +15,7 @@ import { VIEW_MODE, WBW_MODE } from '@/types/common';
 /**/
 type Props = {
   hasWbw: boolean;
-  hasLearnWbw: boolean;
+  fullInlineWbw: boolean;
   length: number;
   meta: TSong['meta'];
   mode: TViewMode;
@@ -28,7 +28,7 @@ type Props = {
  */
 function Verse({
   hasWbw,
-  hasLearnWbw,
+  fullInlineWbw,
   length,
   meta,
   mode,
@@ -40,7 +40,7 @@ function Verse({
   // Per-verse learn flag: when the song is in inline mode but this verse
   // lacks per-word data, fall back to the classical view for this verse.
   const verseHasInline = !!inline_word_by_word;
-  const isLearn = hasLearnWbw && wbwMode === WBW_MODE.INLINE && verseHasInline;
+  const isLearn = fullInlineWbw && wbwMode === WBW_MODE.INLINE && verseHasInline;
 
   const showVerse = mode === VIEW_MODE.VERSE || mode === VIEW_MODE.ALL;
   const showTranslation = mode === VIEW_MODE.TRANSLATION || mode === VIEW_MODE.ALL;
@@ -80,7 +80,7 @@ function Verse({
             <VerseText hasNumber={!!number} meta={meta} text={text} />
           </Collapse>
 
-          {hasLearnWbw && inline_word_by_word && (
+          {fullInlineWbw && inline_word_by_word && (
             <Collapse
               defaultOpen={showVerse && isLearn}
               open={showVerse && isLearn}

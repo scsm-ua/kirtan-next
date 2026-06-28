@@ -15,7 +15,7 @@ type Props = {
   children?: ReactNode;
   hasTranslation: boolean;
   hasWbw: boolean;
-  hasLearnWbw?: boolean;
+  fullInlineWbw?: boolean;
   label: string;
   mode: TViewMode;
   wbwMode: TWbwMode;
@@ -51,7 +51,7 @@ function DisplayModeMenu({
   children,
   hasTranslation,
   hasWbw,
-  hasLearnWbw,
+  fullInlineWbw,
   label,
   mode,
   wbwMode,
@@ -163,10 +163,10 @@ function DisplayModeMenu({
               {WBW_OPTIONS.filter((opt) => {
                 // Hide classical in "verse only" mode, but keep it when inline
                 // isn't available — otherwise the user has no way to enable WBW.
-                if (mode === VIEW_MODE.VERSE && opt.value === WBW_MODE.CLASSICAL && hasLearnWbw) return false;
+                if (mode === VIEW_MODE.VERSE && opt.value === WBW_MODE.CLASSICAL && fullInlineWbw) return false;
                 // Inline option requires learn-mode data; classical block is
                 // always available whenever the menu renders.
-                if (opt.value === WBW_MODE.INLINE && !hasLearnWbw) return false;
+                if (opt.value === WBW_MODE.INLINE && !fullInlineWbw) return false;
                 return true;
               }).map((opt) => (
                 <button

@@ -59,7 +59,7 @@ function LearnVerse({ hasNumber, lines, meta, text }: Props) {
 
         return (
           <li className={cls} key={index}>
-            {lines[index].map(({ text: groupText, trans, sep }, i) => {
+            {lines[index].map(({ text: groupText, trans, sep, error }, i) => {
               const wordCls = classNames(
                 'LearnVerse__word',
                 (lineLight || (parensLight && /[()]/.test(groupText))) &&
@@ -67,7 +67,8 @@ function LearnVerse({ hasNumber, lines, meta, text }: Props) {
               );
               const transCls = classNames(
                 'LearnVerse__trans',
-                trans === '-' && 'LearnVerse__trans--missing'
+                trans === '-' && 'LearnVerse__trans--missing',
+                error && `LearnVerse__trans--error-${error}`
               );
 
               // Convert each whitespace char to NBSP so multi-space indents

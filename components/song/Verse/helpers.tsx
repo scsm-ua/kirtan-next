@@ -154,9 +154,20 @@ export function buildInlineWordByWord(
       const textOut =
         first.pre +
         slice.slice(0, -1).map((t) => t.word + t.sep).join('') + last.word;
+      // Mirror `wbwInlineModeAvailable`'s per-entry checks, but classify:
+      // - 'multi'    — dict entry has a multi-word key (rare, ambiguous slice)
+      // - 'mismatch' — dict ran out, or key[0] doesn't match the text token
+      let error: 'multi' | 'mismatch' | undefined;
+      if (!entry || entry.key[0] !== first.word) error = 'mismatch';
+      else if (entry.key.length !== 1) error = 'multi';
       // Keep the original sep verbatim (including multi-space indents);
       // the renderer converts whitespace to NBSPs so widths survive.
-      groups.push({ text: textOut, trans: entry ? entry.trans : '-', sep: last.sep });
+      groups.push({
+        text: textOut,
+        trans: entry ? entry.trans : '-',
+        sep: last.sep,
+        ...(error ? { error } : {})
+      });
       i += len;
       if (entry) cursor++;
     }

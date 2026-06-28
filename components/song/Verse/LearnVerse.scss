@@ -50,6 +50,16 @@
     &--missing {
       color: var(--dark);
     }
+
+    &--error-multi {
+      background-color: #fff3bf;
+      border-radius: 3px;
+    }
+
+    &--error-mismatch {
+      background-color: #ffd6d6;
+      border-radius: 3px;
+    }
   }
 
   &__word {

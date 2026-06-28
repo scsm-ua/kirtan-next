@@ -91,12 +91,13 @@ export async function getSongBySlug(
     );
     if (song.hasWbw) {
       for (const v of song.verses) {
-        if (wbwInlineModeAvailable(v.text, v.word_by_word)) {
+        if (v.word_by_word) {
+          v.isWbwInlineModeAvailable = wbwInlineModeAvailable(v.text, v.word_by_word);
           v.inline_word_by_word = buildInlineWordByWord(v.text, v.word_by_word);
         }
       }
     }
-    song.hasLearnWbw = !!song.verses?.some((v: TVerse) => v.inline_word_by_word);
+    song.fullInlineWbw = !!song.hasWbw && song.verses.every((v: TVerse) => !!v.isWbwInlineModeAvailable);
     return song;
   } catch (e) {
     console.error(e);
