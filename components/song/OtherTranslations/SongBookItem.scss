@@ -5,6 +5,20 @@
     border-bottom: solid 1px var(--gray);
   }
 
+  a:focus {
+    outline: none;
+  }
+
+  a:focus-visible &__container {
+    border-radius: 8px;
+    outline: 2px solid var(--dark-gray);
+    outline-offset: 10px;
+  }
+
+  a:focus &__title:not(#{&}__title--active) {
+    color: var(--title-color);
+  }
+
   &__container {
     display: flex;
     align-items: center;

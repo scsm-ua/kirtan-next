@@ -43,6 +43,12 @@
   &__button {
     top: 19.5px;
     right: 16px;
+
+    &:focus,
+    &:focus-visible {
+      outline: none;
+      box-shadow: none;
+    }
   }
 
   &__close {

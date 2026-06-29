@@ -6,20 +6,20 @@
   }
 
   &__list {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 -8px 0 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+    gap: 8px;
     padding: 0;
     list-style-type: none;
   }
 
   &__item {
-    padding: 0 8px 8px 0;
+    padding: 0;
   }
 
   &__button {
     height: 32px;
-    width: 44px;
+    width: 100%;
     padding: 8px;
     border-radius: 6px;
     border: solid 1px var(--gray);
@@ -40,5 +40,49 @@
         color: var(--accent-color);
       }
     }
+
+    &--pending {
+      position: relative;
+      overflow: hidden;
+      animation: pageListProgressText var(--page-list-progress-duration, 1000ms) linear forwards;
+
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background: var(--accent-color);
+        opacity: 0.3;
+        transform: scaleX(0);
+        transform-origin: left;
+        animation: pageListProgress var(--page-list-progress-duration, 1000ms) linear forwards;
+      }
+
+      .PageList__buttonText {
+        position: relative;
+        z-index: 1;
+      }
+    }
+  }
+}
+
+@keyframes pageListProgress {
+  80% {
+    opacity: 0.3;
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes pageListProgressText {
+  80% {
+    color: var(--dark-gray);
+  }
+
+  to {
+    color: #000;
   }
 }

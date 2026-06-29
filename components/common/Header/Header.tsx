@@ -2,6 +2,7 @@
 
 import './Header.scss';
 import FeedbackWidget from '@/components/feedback/FeedbackWidget';
+import HotkeyHint from '@/components/common/GlobalHotkeys/HotkeyHint';
 import { PATH } from '@/other/constants';
 
 /**
@@ -22,7 +23,10 @@ function Header({ bookId }: { bookId: string }) {
             />
           </a>
 
-          <FeedbackWidget bookId={bookId} />
+          <div className="Header__actions">
+            <HotkeyHint />
+            <FeedbackWidget bookId={bookId} />
+          </div>
         </div>
       </div>
     </header>

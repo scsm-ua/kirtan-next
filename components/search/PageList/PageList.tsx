@@ -11,12 +11,14 @@ import type { TPage } from '@/types/search';
 type Props = {
   bookId: string;
   pages: TPage[];
+  pendingPage?: string;
+  pendingPageDurationMs?: number;
 };
 
 /**
  *
  */
-function PageList({ bookId, pages }: Props) {
+function PageList({ bookId, pages, pendingPage, pendingPageDurationMs = 1000 }: Props) {
   const pageQuery = usePageQuery();
 
   return (
@@ -29,13 +31,19 @@ function PageList({ bookId, pages }: Props) {
         {pages.map((item: TPage) => {
           const cls = classNames(
             'PageList__button',
-            pageQuery === item.page && 'PageList__button--active'
+            pageQuery === item.page && 'PageList__button--active',
+            pendingPage === item.page && 'PageList__button--pending'
           );
 
           return (
             <li className="PageList__item" key={item.page}>
               <a href={item.path} title={item.title}>
-                <button className={cls}>{item.page}</button>
+                <button
+                  className={cls}
+                  style={{ '--page-list-progress-duration': `${pendingPageDurationMs}ms` } as React.CSSProperties}
+                >
+                  <span className="PageList__buttonText">{item.page}</span>
+                </button>
               </a>
             </li>
           );

@@ -1,5 +1,5 @@
 'use client';
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 
 import './OtherTranslations.scss';
 import AppModal from '@/components/common/Modal/AppModal';
@@ -18,6 +18,41 @@ type Props = {
  */
 function OtherTranslations({ bookId, children, disabled }: Props) {
   const [isOpen, setOpen] = useState(false);
+  const listRef = useRef<HTMLDivElement>(null);
+  const focusedIdx = useRef(-1);
+
+  useEffect(() => {
+    const handler = () => {
+      if (!disabled) setOpen((v) => !v);
+    };
+    window.addEventListener('kirtan:toggleOtherTranslations', handler);
+    return () => window.removeEventListener('kirtan:toggleOtherTranslations', handler);
+  }, [disabled]);
+
+  // Keyboard cursor navigation.
+  useEffect(() => {
+    if (!isOpen) {
+      focusedIdx.current = -1;
+      return;
+    }
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown') return;
+      e.preventDefault();
+
+      const links = Array.from(
+        listRef.current?.querySelectorAll<HTMLAnchorElement>('a[href]') ?? []
+      );
+      if (!links.length) return;
+
+      const dir = e.key === 'ArrowDown' ? 1 : -1;
+      focusedIdx.current = (focusedIdx.current + dir + links.length) % links.length;
+      links[focusedIdx.current].focus();
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
 
   return (
     <>
@@ -31,7 +66,7 @@ function OtherTranslations({ bookId, children, disabled }: Props) {
       </button>
 
       <AppModal header=" " isOpen={isOpen} onClose={() => setOpen(false)}>
-        {children}
+        <div ref={listRef}>{children}</div>
       </AppModal>
     </>
   );

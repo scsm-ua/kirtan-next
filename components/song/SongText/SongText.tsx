@@ -41,11 +41,20 @@ function SongText({ label, song }: Props) {
     setMode(getSongDisplayMode());
   }, []);
 
-  const handleChange = (mode) => {
-    setCounter((updateCount) => ++updateCount);
+  const handleChange = (mode: TTranslationMode) => {
+    setCounter((c) => ++c);
     setSongDisplayMode(mode);
     setMode(mode);
   };
+
+  useEffect(() => {
+    const handleSetMode = (e: Event) => {
+      handleChange((e as CustomEvent<{ mode: TTranslationMode }>).detail.mode);
+    };
+
+    window.addEventListener('kirtan:setMode', handleSetMode);
+    return () => window.removeEventListener('kirtan:setMode', handleSetMode);
+  }, []);
 
   return (
     <main className={contentCls}>

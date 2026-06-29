@@ -2,6 +2,7 @@ import classNames from 'classnames';
 
 import './Layout.scss';
 import Footer from '@/components/common/Footer/Footer';
+import GlobalHotkeys from '@/components/common/GlobalHotkeys/GlobalHotkeys';
 import { GoogleAnalytics } from '@/components/common/GoogleAnalytics';
 import Header from '@/components/common/Header/Header';
 import { PATH } from '@/other/constants';
@@ -57,7 +58,7 @@ function Layout({
 
       <body className="Body">
         <div className="Layout">
-          <div className="Layout__content">
+          <div className="Layout__content" tabIndex={-1}>
             <Header bookId={bookId} />
             <main className={cls}>
               {children}
@@ -69,6 +70,7 @@ function Layout({
 
         <GoogleAnalytics bookId={bookId} songId={songId} />
         <ServiceWorkerRegistration />
+        <GlobalHotkeys bookId={bookId} />
       </body>
     </html>
   );
