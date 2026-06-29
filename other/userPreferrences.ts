@@ -23,6 +23,9 @@ const SONG_VIEW_MODE = 'SONG_VIEW_MODE';
 const SONG_WBW_MODE = 'SONG_WBW_MODE';
 
 /**/
+const SONG_LEARN_MODE = 'SONG_LEARN_MODE';
+
+/**/
 const SHOW_HIDDEN_BOOKS = 'SHOW_HIDDEN_BOOKS';
 
 /**/
@@ -51,6 +54,20 @@ export function getSongWbwMode(): TWbwMode {
 /**/
 export function setSongWbwMode(value: TWbwMode) {
   localStorage.setItem(SONG_WBW_MODE, value);
+}
+
+/**/
+export function getSongLearnMode(): boolean {
+  return localStorage.getItem(SONG_LEARN_MODE) === '1';
+}
+
+/**/
+export function setSongLearnMode(value: boolean) {
+  if (value) {
+    localStorage.setItem(SONG_LEARN_MODE, '1');
+  } else {
+    localStorage.removeItem(SONG_LEARN_MODE);
+  }
 }
 
 /**/
