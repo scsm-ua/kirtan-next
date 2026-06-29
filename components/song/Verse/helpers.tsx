@@ -191,9 +191,9 @@ export function wbwInlineModeAvailable(
   if (!dict.length) return false;
   const multi = dict.find((e) => e.key.length !== 1);
   if (multi) {
-    console.warn(
-      `[wbwInlineModeAvailable] multi-word key:`, JSON.stringify(multi)
-    );
+    // console.warn(
+    //   `[wbwInlineModeAvailable] multi-word key:`, JSON.stringify(multi)
+    // );
     return false;
   }
   const textTokens = new Set<string>();
@@ -202,9 +202,9 @@ export function wbwInlineModeAvailable(
   }
   const missing = dict.find((e) => !textTokens.has(e.key[0]));
   if (missing) {
-    console.warn(
-      `[wbwInlineModeAvailable] key not found in text: "${missing.key[0]}"`
-    );
+    // console.warn(
+    //   `[wbwInlineModeAvailable] key not found in text: "${missing.key[0]}"`
+    // );
     return false;
   }
   return true;

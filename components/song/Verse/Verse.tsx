@@ -16,6 +16,7 @@ import { VIEW_MODE, WBW_MODE } from '@/types/common';
 type Props = {
   hasWbw: boolean;
   fullInlineWbw: boolean;
+  forceInline?: boolean;
   length: number;
   meta: TSong['meta'];
   mode: TViewMode;
@@ -29,6 +30,7 @@ type Props = {
 function Verse({
   hasWbw,
   fullInlineWbw,
+  forceInline,
   length,
   meta,
   mode,
@@ -48,7 +50,11 @@ function Verse({
     hasWbw &&
     mode !== VIEW_MODE.TRANSLATION &&
     (wbwMode === WBW_MODE.CLASSICAL ||
-      (wbwMode === WBW_MODE.INLINE && !verseHasInline));
+      (wbwMode === WBW_MODE.INLINE && !verseHasInline) ||
+      // Debug: hotkey-forced inline shows the classical block too so the
+      // (correct) source data is visible alongside the potentially broken
+      // inline rendering.
+      (wbwMode === WBW_MODE.INLINE && forceInline));
 
   const stCls = (classnames as any)(
     'Verse__subtitles',
