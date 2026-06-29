@@ -210,6 +210,7 @@ function SongText({ bookId, label, song }: Props) {
               <Verse
                 hasWbw={hasWbw}
                 fullInlineWbw={allowInline}
+                forceInline={forceInline}
                 key={idx}
                 length={arr.length}
                 meta={song.meta}
