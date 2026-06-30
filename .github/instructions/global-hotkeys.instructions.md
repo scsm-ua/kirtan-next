@@ -33,17 +33,23 @@ useGlobalHotkeys (hook)  ──► router.push(...)            // direct navigat
 | `s` | Navigate to `/{bookId}/search` |
 | `l` | On song page → `kirtan:toggleOtherTranslations`; otherwise → `/{bookId}` |
 | `1` `2` `3` | Dispatch `kirtan:setMode` with `{ mode }` payload |
+| `4` `5` `6` | Dispatch `kirtan:setWbwMode` with `{ wbwMode }` payload (hide / inline / classical) |
 | `,` `[` `-` `←` | Dispatch `kirtan:prevSong` (see `song-navigation.instructions.md`) |
 | `.` `]` `=` `→` | Dispatch `kirtan:nextSong` |
 | `↑` `↓` `PgUp` `PgDn` `Home` `End` `Space` | **Handled natively by the browser** — no hotkey case. See "Vertical scrolling" below. |
 
-User-facing mode keys (`1/2/3`) map to internal `TTranslationMode` values via `KEY_TO_MODE`:
+Mode keys map to internal `TViewMode` ids (see `VIEW_MODE` in `types/common.ts`):
 
 ```
-'1' (user) → '3' (both)      ← intentionally mismatched
-'2' (user) → '1' (original)
-'3' (user) → '2' (translation)
+'1' → VIEW_MODE.ALL          ('all')
+'2' → VIEW_MODE.VERSE        ('verse')
+'3' → VIEW_MODE.TRANSLATION  ('translation')
 ```
+
+The `KEY_TO_MODE` lookup in `useGlobalHotkeys` is the only place where the
+user-facing digit keys are translated into view-mode ids — outside of
+`ThreeModeSwitch.tsx` (which keeps its own positional '1'/'2'/'3' for CSS),
+no other file should reference raw mode digits.
 
 ## Guardrails
 
@@ -81,7 +87,8 @@ Result: ArrowUp/Down, PageUp/Down, Home/End and Space all scroll natively withou
 
 All events use the `kirtan:` prefix. Use **camelCase** after the colon. Existing names:
 
-- `kirtan:setMode` (carries `detail: { mode: TTranslationMode }`)
+- `kirtan:setMode` (carries `detail: { mode: TViewMode }`)
+- `kirtan:setWbwMode` (carries `detail: { wbwMode: TWbwMode }`)
 - `kirtan:toggleOtherTranslations` (no payload)
 - `kirtan:prevSong` / `kirtan:nextSong` (no payload)
 

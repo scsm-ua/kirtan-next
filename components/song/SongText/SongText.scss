@@ -16,27 +16,60 @@
   }
 
   &__toggle {
-    margin: -4px 0 16px 0;
-    max-width: var(--content-max-width);
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 16px;
+    margin: -4px 0 8px 0;
+    min-width: 0;
   }
 
+  &__btnGroup {
+    margin-left: auto;
+    display: inline-flex;
+    gap: 8px;
+    flex-shrink: 0;
+
+    @media (max-width: 299px) {
+      display: none;
+    }
+  }
+
+  &__compact,
   &__learn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--btn-bg);
+    border: 1px solid rgba(15, 23, 42, 0.04);
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    font-size: 14px;
-    color: rgb(108, 108, 108);
+    justify-content: center;
     cursor: pointer;
-    user-select: none;
-    -webkit-user-select: none;
+    padding: 0;
+    color: var(--title-color);
+    transition: background-color 0.25s ease, color 0.25s ease;
 
-    input {
-      cursor: pointer;
+    &:focus,
+    &:focus-visible {
+      outline: none;
     }
+
+    &:hover {
+      background: var(--btn-hover-bg);
+    }
+
+    &--active {
+      background: var(--btn-active-bg);
+      color: var(--song-bg-color);
+    }
+
+    &--active:hover {
+      background: var(--btn-active-hover-bg);
+    }
+  }
+
+  &__compactIcon,
+  &__learnIcon {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
   }
 
   &__list {

@@ -1,4 +1,8 @@
 .Verse {
+  &:first-child:not(:has(.Verse__header)) {
+    margin-top: 24px;
+  }
+
   &__subtitles {
     margin: 16px 0;
 

@@ -1,3 +1,11 @@
+v2.4.0
+29 June 2026
+  - Learn mode: word-by-word translation rendered inline under each source word.
+  - New view controls menu with three word-by-word modes: hide, inline, classical.
+  - Hotkeys help popup: pressing a key now runs its action and closes the popup.
+  - Misaligned word-by-word entries are highlighted to surface data issues.
+_________________________________________________________
+
 v2.3.0
 6 June 2026
   - New desktop layout.

@@ -1,19 +1,34 @@
+import { Fragment } from 'react';
 import classNames from 'classnames';
 
 import './LearnVerse.scss';
 import {
-  buildLearnLines,
   getLineContent,
   getLineIndent
 } from '@/components/song/Verse/helpers';
-import type { TSong, TVerse } from '@/types/song';
+import type { TInlineWbwEntry, TSong } from '@/types/song';
+
+// Break a translation like "material senses (jada indriya)" into two visual
+// lines so the parenthesised qualifier sits under the main translation.
+// Triggers on ` (` (space before an open paren) so bare `(of Orissa)` or
+// `word(x)` stay on one line.
+function renderTrans(trans: string) {
+  const parts = trans.split(/ (?=\()/);
+  if (parts.length === 1) return trans;
+  return parts.map((p, i) => (
+    <Fragment key={i}>
+      {i > 0 && <br />}
+      {p}
+    </Fragment>
+  ));
+}
 
 /**/
 type Props = {
   meta: TSong['meta'];
   hasNumber: boolean;
+  lines: TInlineWbwEntry[][];
   text: Array<string>;
-  wordByWord: TVerse['word_by_word'];
 };
 
 /**
@@ -21,12 +36,10 @@ type Props = {
  * Word + translation share a column so the wider one defines the column width,
  * keeping next pairs aligned on the y axis.
  */
-function LearnVerse({ hasNumber, meta, text, wordByWord }: Props) {
+function LearnVerse({ hasNumber, lines, meta, text }: Props) {
   const parensLight = meta && meta['verse parentheses'] === 'non bold';
   const lineLight =
     meta && meta['inline verse'] === 'non bold' && !hasNumber;
-
-  const lines = buildLearnLines(text, wordByWord);
 
   return (
     <ul className="LearnVerse">
@@ -46,7 +59,7 @@ function LearnVerse({ hasNumber, meta, text, wordByWord }: Props) {
 
         return (
           <li className={cls} key={index}>
-            {lines[index].map(({ text: groupText, trans, sep }, i) => {
+            {lines[index].map(({ text: groupText, trans, sep, error }, i) => {
               const wordCls = classNames(
                 'LearnVerse__word',
                 (lineLight || (parensLight && /[()]/.test(groupText))) &&
@@ -54,7 +67,8 @@ function LearnVerse({ hasNumber, meta, text, wordByWord }: Props) {
               );
               const transCls = classNames(
                 'LearnVerse__trans',
-                trans === '-' && 'LearnVerse__trans--missing'
+                trans === '-' && 'LearnVerse__trans--missing',
+                error && `LearnVerse__trans--error-${error}`
               );
 
               // Convert each whitespace char to NBSP so multi-space indents
@@ -68,7 +82,7 @@ function LearnVerse({ hasNumber, meta, text, wordByWord }: Props) {
                     {groupText}
                     {displaySep}
                   </span>
-                  <span className={transCls}>{trans}</span>
+                  <span className={transCls}>{renderTrans(trans)}</span>
                 </span>
               );
             })}

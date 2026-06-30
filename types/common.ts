@@ -25,8 +25,40 @@ export type TContentItem = {
     translation: boolean;
   }
 };
-/**/
-export type TTranslationMode = '1' | '2' | '3';
+/**
+ * What the user wants to see in the song body:
+ *   'all'         – verses + translation
+ *   'verse'       – original verses only
+ *   'translation' – translation only
+ */
+export type TViewMode = 'all' | 'verse' | 'translation';
+
+/**
+ * Named ids for `TViewMode`. Prefer these constants over raw string
+ * literals so the meaning is self-evident at call sites.
+ */
+export const VIEW_MODE = {
+  ALL: 'all',
+  VERSE: 'verse',
+  TRANSLATION: 'translation'
+} as const satisfies Record<string, TViewMode>;
+
+/**
+ * Word-by-word presentation:
+ *   'hide'      – no per-word translation
+ *   'inline'    – inline column pairs ("learn" view)
+ *   'classical' – separate block under the translation
+ */
+export type TWbwMode = 'hide' | 'inline' | 'classical';
+
+/**
+ * Named ids for `TWbwMode`.
+ */
+export const WBW_MODE = {
+  HIDE: 'hide',
+  INLINE: 'inline',
+  CLASSICAL: 'classical'
+} as const satisfies Record<string, TWbwMode>;
 
 /**/
 declare global {

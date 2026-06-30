@@ -3,10 +3,14 @@ import path from 'path';
 
 import { FILES, PATH } from '@/other/constants';
 import { getContentsByBookId } from '@/lib/contents';
+import {
+  buildInlineWordByWord,
+  wbwInlineModeAvailable
+} from '@/components/song/Verse/helpers';
 
 import type { TBookDescription, TBooksMap } from '@/types/book';
 import type { TContentGroup, TContentItem } from '@/types/common';
-import type { TNavItems, TNavItemsMap, TSong } from '@/types/song';
+import type { TNavItems, TNavItemsMap, TSong, TVerse } from '@/types/song';
 import { getSongPathWithPage } from '@/other/utils';
 
 /**
@@ -81,7 +85,26 @@ export async function getSongBySlug(
 
   try {
     const str = await fs.readFile(p, 'utf8');
-    return JSON.parse(str) as TSong;
+    const song = JSON.parse(str) as TSong;
+    song.hasWbw = !!song.verses?.find(
+      (v: TVerse) => v.word_by_word?.length > 0
+    );
+    song.hasVersesText = !!song.verses?.find(
+      (v: TVerse) => v.text?.length > 0
+    );
+    song.hasVersesTranslations = !!song.verses?.find(
+      (v: TVerse) => v.translation?.length > 0
+    );
+    if (song.hasWbw) {
+      for (const v of song.verses) {
+        if (v.word_by_word) {
+          v.isWbwInlineModeAvailable = wbwInlineModeAvailable(v.text, v.word_by_word);
+          v.inline_word_by_word = buildInlineWordByWord(v.text, v.word_by_word);
+        }
+      }
+    }
+    song.fullInlineWbw = !!song.hasWbw && song.verses.every((v: TVerse) => !!v.isWbwInlineModeAvailable);
+    return song;
   } catch (e) {
     console.error(e);
     return null;

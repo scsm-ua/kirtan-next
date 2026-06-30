@@ -9,34 +9,56 @@ import VerseTranslation from '@/components/song/Verse/VerseTranslation';
 import VerseWbw from '@/components/song/Verse/VerseWbw';
 
 import type { TSong, TVerse } from '@/types/song';
-import type { TTranslationMode } from '@/types/common';
+import type { TViewMode, TWbwMode } from '@/types/common';
+import { VIEW_MODE, WBW_MODE } from '@/types/common';
 
 /**/
 type Props = {
-  isLearn?: boolean;
-  isWBW: boolean;
+  hasWbw: boolean;
+  fullInlineWbw: boolean;
+  forceInline?: boolean;
   length: number;
   meta: TSong['meta'];
-  mode: TTranslationMode;
+  mode: TViewMode;
   verse: TVerse;
+  wbwMode?: TWbwMode;
 };
 
 /**
  *
  */
-function Verse({ isLearn, isWBW, length, meta, mode, verse }: Props) {
-  const { number, subtitle, text, translation, word_by_word } = verse;
-  const isWide = mode === '2';
+function Verse({
+  hasWbw,
+  fullInlineWbw,
+  forceInline,
+  length,
+  meta,
+  mode,
+  verse,
+  wbwMode = WBW_MODE.CLASSICAL
+}: Props) {
+  const { number, subtitle, text, translation, word_by_word, inline_word_by_word } = verse;
+  const isWide = mode === VIEW_MODE.TRANSLATION;
+  // Per-verse learn flag: when the song is in inline mode but this verse
+  // lacks per-word data, fall back to the classical view for this verse.
+  const verseHasInline = !!inline_word_by_word;
+  const isLearn = fullInlineWbw && wbwMode === WBW_MODE.INLINE && verseHasInline;
 
-  const showVerse = mode === '1' || mode === '3';
-  const showWbw = mode === '3';
-  const showTranslation = mode === '2' || mode === '3';
-  const showWbwBlock = isWBW && !isLearn;
-  // const showWbwBlock = isWBW;
+  const showVerse = mode === VIEW_MODE.VERSE || mode === VIEW_MODE.ALL;
+  const showTranslation = mode === VIEW_MODE.TRANSLATION || mode === VIEW_MODE.ALL;
+  const showWbwBlock =
+    hasWbw &&
+    mode !== VIEW_MODE.TRANSLATION &&
+    (wbwMode === WBW_MODE.CLASSICAL ||
+      (wbwMode === WBW_MODE.INLINE && !verseHasInline) ||
+      // Debug: hotkey-forced inline shows the classical block too so the
+      // (correct) source data is visible alongside the potentially broken
+      // inline rendering.
+      (wbwMode === WBW_MODE.INLINE && forceInline));
 
   const stCls = (classnames as any)(
     'Verse__subtitles',
-    mode === '2' && 'Verse__subtitles--large'
+    mode === VIEW_MODE.TRANSLATION && 'Verse__subtitles--large'
   );
 
   return (
@@ -56,22 +78,32 @@ function Verse({ isLearn, isWBW, length, meta, mode, verse }: Props) {
       )}
 
       {text?.length > 0 && (
-        <Collapse defaultOpen={showVerse} open={showVerse}>
-          {isLearn ? (
-            <LearnVerse
-              hasNumber={!!number}
-              meta={meta}
-              text={text}
-              wordByWord={word_by_word}
-            />
-          ) : (
+        <>
+          <Collapse
+            defaultOpen={showVerse && !isLearn}
+            open={showVerse && !isLearn}
+          >
             <VerseText hasNumber={!!number} meta={meta} text={text} />
+          </Collapse>
+
+          {fullInlineWbw && inline_word_by_word && (
+            <Collapse
+              defaultOpen={showVerse && isLearn}
+              open={showVerse && isLearn}
+            >
+              <LearnVerse
+                hasNumber={!!number}
+                lines={inline_word_by_word}
+                meta={meta}
+                text={text}
+              />
+            </Collapse>
           )}
-        </Collapse>
+        </>
       )}
 
-      {showWbwBlock && (
-        <Collapse defaultOpen={showWbw} open={showWbw}>
+      {hasWbw && word_by_word?.length > 0 && (
+        <Collapse defaultOpen={showWbwBlock} open={showWbwBlock}>
           <VerseWbw lines={word_by_word} />
         </Collapse>
       )}
@@ -80,7 +112,7 @@ function Verse({ isLearn, isWBW, length, meta, mode, verse }: Props) {
         <Collapse defaultOpen={showTranslation} open={showTranslation}>
           <VerseTranslation
             isWide={isWide}
-            isWBW={isWBW}
+            isWBW={hasWbw}
             translation={translation}
           />
         </Collapse>
@@ -91,4 +123,5 @@ function Verse({ isLearn, isWBW, length, meta, mode, verse }: Props) {
 
 /**/
 export default Verse;
+
 

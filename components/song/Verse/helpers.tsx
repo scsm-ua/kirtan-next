@@ -1,4 +1,4 @@
-import type { TSong } from '@/types/song';
+import type { TInlineWbwEntry, TSong, TWbwEntry } from '@/types/song';
 
 /**
  *
@@ -65,28 +65,35 @@ export function getLineContent(
 }
 
 /**/
-export type TWbwEntry = { key: string[]; trans: string };
-
-/**/
-export type TLearnGroup = { text: string; trans: string; sep: string };
-
-// Separators between words: whitespace, comma, dot, hyphen. Kept in output.
-const SEP_CHARS = '\\s,.\\-';
-const WORD_RE = new RegExp(`([^${SEP_CHARS}]+)([${SEP_CHARS}]*)`, 'g');
+// Separators between words: whitespace, comma, dot, hyphen, sentence
+// punctuation (`! ? : ;`), plus brackets (`( ) [ ]`). Kept in output verbatim
+// as each token's trailing `sep`. Used by both `tokenizeLine` (text side) and
+// `parseWordByWord` (key side) — keep in lockstep or alignment breaks.
+const SEP_CHARS = '\\s,.\\-!?:;()\\[\\]';
+// Capture leading seps + word + trailing seps. `pre` is non-empty only on the
+// first token (subsequent tokens' leading seps are consumed by the previous
+// token's trailing `sep`) — but we keep it on every token for shape symmetry.
+const WORD_RE = new RegExp(
+  `([${SEP_CHARS}]*)([^${SEP_CHARS}]+)([${SEP_CHARS}]*)`,
+  'g'
+);
 
 /**
- * Tokenize a verse line into `{ word, sep }` pairs where `sep` is the
- * original trailing separator (spaces/commas/dots/hyphens). Tokens
- * recombined with their seps reproduce the source text exactly.
+ * Tokenize a verse line into `{ pre, word, sep }` triples where `pre` is any
+ * leading separator (parens/brackets) and `sep` is the trailing separator
+ * (spaces/commas/dots/hyphens/brackets). Recombining `pre + word + sep`
+ * across tokens reproduces the source text verbatim.
  */
-export function tokenizeLine(aLine: string): { word: string; sep: string }[] {
+export function tokenizeLine(
+  aLine: string
+): { pre: string; word: string; sep: string }[] {
   const line = aLine.replace(TAG_RE, '').trim();
   if (!line) return [];
-  const tokens: { word: string; sep: string }[] = [];
+  const tokens: { pre: string; word: string; sep: string }[] = [];
   const re = new RegExp(WORD_RE.source, 'g');
   let m: RegExpExecArray | null;
   while ((m = re.exec(line)) !== null) {
-    tokens.push({ word: m[1], sep: m[2] });
+    tokens.push({ pre: m[1], word: m[2], sep: m[3] });
   }
   return tokens;
 }
@@ -121,16 +128,16 @@ export function parseWordByWord(lines: string[]): TWbwEntry[] {
  * (spaces/commas/dots/hyphens) are preserved in each group's text.
  * If dict runs out before text does, remaining tokens get translation '-'.
  */
-export function buildLearnLines(
+export function buildInlineWordByWord(
   text: string[],
   wordByWord: string[]
-): TLearnGroup[][] {
+): TInlineWbwEntry[][] {
   const dict = parseWordByWord(wordByWord);
   let cursor = 0;
 
   return text.map((line) => {
     const tokens = tokenizeLine(line);
-    const groups: TLearnGroup[] = [];
+    const groups: TInlineWbwEntry[] = [];
     let i = 0;
 
     while (i < tokens.length) {
@@ -140,16 +147,65 @@ export function buildLearnLines(
       const slice = tokens.slice(i, i + len);
       // Keep internal seps attached; the trailing sep is emitted between pairs
       // so the original separator (space / hyphen / comma) renders verbatim.
+      // The leading `pre` of the first token preserves any opening bracket
+      // that would otherwise be dropped at the start of a line.
+      const first = slice[0];
       const last = slice[slice.length - 1];
       const textOut =
+        first.pre +
         slice.slice(0, -1).map((t) => t.word + t.sep).join('') + last.word;
+      // Mirror `wbwInlineModeAvailable`'s per-entry checks, but classify:
+      // - 'multi'    — dict entry has a multi-word key (rare, ambiguous slice)
+      // - 'mismatch' — dict ran out, or key[0] doesn't match the text token
+      let error: 'multi' | 'mismatch' | undefined;
+      if (!entry || entry.key[0] !== first.word) error = 'mismatch';
+      else if (entry.key.length !== 1) error = 'multi';
       // Keep the original sep verbatim (including multi-space indents);
       // the renderer converts whitespace to NBSPs so widths survive.
-      groups.push({ text: textOut, trans: entry ? entry.trans : '-', sep: last.sep });
+      groups.push({
+        text: textOut,
+        trans: entry ? entry.trans : '-',
+        sep: last.sep,
+        ...(error ? { error } : {})
+      });
       i += len;
       if (entry) cursor++;
     }
 
     return groups;
   });
+}
+
+/**
+ * Detect whether the per-word inline Learn mode is meaningful for a verse:
+ * every parsed `word_by_word` entry maps a single source word to a translation,
+ * and that source word appears in the verse text. When false, the verse only
+ * supports the classical (block) wbw layout.
+ */
+export function wbwInlineModeAvailable(
+  text: string[],
+  wordByWord: string[]
+): boolean {
+  if (!text?.length || !wordByWord?.length) return false;
+  const dict = parseWordByWord(wordByWord);
+  if (!dict.length) return false;
+  const multi = dict.find((e) => e.key.length !== 1);
+  if (multi) {
+    // console.warn(
+    //   `[wbwInlineModeAvailable] multi-word key:`, JSON.stringify(multi)
+    // );
+    return false;
+  }
+  const textTokens = new Set<string>();
+  for (const line of text) {
+    for (const tok of tokenizeLine(line)) textTokens.add(tok.word);
+  }
+  const missing = dict.find((e) => !textTokens.has(e.key[0]));
+  if (missing) {
+    // console.warn(
+    //   `[wbwInlineModeAvailable] key not found in text: "${missing.key[0]}"`
+    // );
+    return false;
+  }
+  return true;
 }

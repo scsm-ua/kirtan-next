@@ -11,29 +11,33 @@
   &__line {
     font-weight: 700;
     line-height: 24px;
-    text-indent: -1em;
+    // Hanging indent: wrapped continuation lines sit 0.5em right of the
+    // first line, so they stay visibly distinct from a "real" next indent
+    // level (which is a full 1em step).
+    padding-left: 0.5em;
+    text-indent: -0.5em;
     color: var(--title-color);
   }
 
   &__indent {
     &--0 {
-      margin-left: 1em;
+      margin-left: 0;
     }
 
     &--1 {
-      margin-left: 2em;
+      margin-left: 1em;
     }
 
     &--2 {
-      margin-left: 3em;
+      margin-left: 2em;
     }
 
     &--3 {
-      margin-left: 4em;
+      margin-left: 3em;
     }
 
     &--4 {
-      margin-left: 5em;
+      margin-left: 4em;
     }
   }
 

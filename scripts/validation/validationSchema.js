@@ -10,6 +10,7 @@ const TRANSLATION_VALIDATION_SCHEMA = {
     'NOT_FOUND_PAGE',
     'SEARCH_PAGE',
     'SONG_PAGE',
+    'DISPLAY_MODE_MENU',
     // 'i18n',
     'META'
   ],
@@ -224,7 +225,8 @@ const TRANSLATION_VALIDATION_SCHEMA = {
         'INPUT_PLACEHOLDER',
         'LOAD_MORE',
         'NO_RESULTS',
-        'PAGE_LIST'
+        'PAGE_LIST',
+        'OR_ENTER_PAGE'
       ],
       properties: {
         HEAD: {
@@ -269,6 +271,9 @@ const TRANSLATION_VALIDATION_SCHEMA = {
           type: 'string'
         },
         PAGE_LIST: {
+          type: 'string'
+        },
+        OR_ENTER_PAGE: {
           type: 'string'
         }
       }
@@ -323,6 +328,30 @@ const TRANSLATION_VALIDATION_SCHEMA = {
         NEXT: {
           type: 'string'
         }
+      }
+    },
+    DISPLAY_MODE_MENU: {
+      type: 'object',
+      additionalProperties: false,
+      required: [
+        'SHOW_ALL',
+        'VERSES_ONLY',
+        'TRANSLATION_ONLY',
+        'HIDE_WBW',
+        'INLINE_WBW',
+        'CLASSICAL_WBW',
+        'LEARN_MODE',
+        'COMPACT_VIEW'
+      ],
+      properties: {
+        SHOW_ALL: { type: 'string' },
+        VERSES_ONLY: { type: 'string' },
+        TRANSLATION_ONLY: { type: 'string' },
+        HIDE_WBW: { type: 'string' },
+        INLINE_WBW: { type: 'string' },
+        CLASSICAL_WBW: { type: 'string' },
+        LEARN_MODE: { type: 'string' },
+        COMPACT_VIEW: { type: 'string' }
       }
     },
     i18n: {

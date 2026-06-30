@@ -64,7 +64,9 @@ function SearchControls({ bookId, value, onClear, onInput, onSubmit }: Props) {
       </button>
 
 
-      <div className="SearchControls__numpad">
+      <div className="SearchControls__numpad-wrapper">
+        <span className="SearchControls__numpad-label">{translate(bookId, 'SEARCH_PAGE.OR_ENTER_PAGE')}</span>
+        <div className="SearchControls__numpad">
           {['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'].map((d) => (
             <button
               key={d}
@@ -75,6 +77,7 @@ function SearchControls({ bookId, value, onClear, onInput, onSubmit }: Props) {
             </button>
           ))}
         </div>
+      </div>
     </div>
   );
 }

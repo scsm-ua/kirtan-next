@@ -75,7 +75,8 @@
       "INPUT_PLACEHOLDER": "Atrast dziesmu",
       "LOAD_MORE": "Ielādēt vēl",
       "NO_RESULTS": "Nekas netika atrasts",
-      "PAGE_LIST": "Lappušu saraksts"
+      "PAGE_LIST": "Lappušu saraksts",
+      "OR_ENTER_PAGE": "vai ievadiet lappuses numuru"
     },
     "SONG_PAGE": {
       "CLOSE": "Aiztaisīt",
@@ -89,6 +90,16 @@
       "SHOW_TRANSLATION": "Parādīt tulkojumu",
       "PAGE": "lpp.",
       "NEXT": "Nākošais"
+    },
+    "DISPLAY_MODE_MENU": {
+      "SHOW_ALL": "Rādīt visu",
+      "VERSES_ONLY": "Tikai vārdi",
+      "TRANSLATION_ONLY": "Tikai tulkojums",
+      "HIDE_WBW": "Slēpt vārds-pa-vārdam",
+      "INLINE_WBW": "Starprindu vārds-pa-vārdam",
+      "CLASSICAL_WBW": "Klasiskais vārds-pa-vārdam",
+      "LEARN_MODE": "Mācīšanās",
+      "COMPACT_VIEW": "Kompakti"
     },
     "META": {
       "TRANSLATION_NAME": "Tulkojums latviešu valodā"
@@ -207,7 +218,8 @@
       "INPUT_PLACEHOLDER": "Find a song",
       "LOAD_MORE": "Load more",
       "NO_RESULTS": "Nothing has been found",
-      "PAGE_LIST": "List of pages"
+      "PAGE_LIST": "List of pages",
+      "OR_ENTER_PAGE": "or enter page number"
     },
     "SONG_PAGE": {
       "CLOSE": "Close",
@@ -221,6 +233,16 @@
       "SHOW_TRANSLATION": "Show verses / translation",
       "PAGE": "page",
       "NEXT": "Next"
+    },
+    "DISPLAY_MODE_MENU": {
+      "SHOW_ALL": "Show all",
+      "VERSES_ONLY": "Verses only",
+      "TRANSLATION_ONLY": "Translation only",
+      "HIDE_WBW": "Hide word-by-word",
+      "INLINE_WBW": "Inline word-by-word",
+      "CLASSICAL_WBW": "Classical word-by-word",
+      "LEARN_MODE": "Learning",
+      "COMPACT_VIEW": "Compact"
     },
     "META": {
       "TRANSLATION_NAME": "English Translation"
@@ -339,7 +361,8 @@
       "INPUT_PLACEHOLDER": "Encuentra una canción",
       "LOAD_MORE": "Cargar más",
       "NO_RESULTS": "No se ha encontrado nada",
-      "PAGE_LIST": "Lista de páginas"
+      "PAGE_LIST": "Lista de páginas",
+      "OR_ENTER_PAGE": "o ingresa el número de página"
     },
     "SONG_PAGE": {
       "CLOSE": "Cerca",
@@ -353,6 +376,16 @@
       "SHOW_TRANSLATION": "Mostrar traducción",
       "PAGE": "página",
       "NEXT": "Próxima"
+    },
+    "DISPLAY_MODE_MENU": {
+      "SHOW_ALL": "Mostrar todo",
+      "VERSES_ONLY": "Solo versos",
+      "TRANSLATION_ONLY": "Solo traducción",
+      "HIDE_WBW": "Ocultar palabra por palabra",
+      "INLINE_WBW": "Palabra por palabra interlineal",
+      "CLASSICAL_WBW": "Palabra por palabra clásico",
+      "LEARN_MODE": "Aprendizaje",
+      "COMPACT_VIEW": "Compacto"
     },
     "META": {
       "TRANSLATION_NAME": "Traducción al español"
@@ -471,7 +504,8 @@
       "INPUT_PLACEHOLDER": "Найти песню",
       "LOAD_MORE": "Загрузить еще",
       "NO_RESULTS": "Ничего не найдено",
-      "PAGE_LIST": "Список страниц"
+      "PAGE_LIST": "Список страниц",
+      "OR_ENTER_PAGE": "или введите номер страницы"
     },
     "SONG_PAGE": {
       "CLOSE": "Закрыть",
@@ -485,6 +519,16 @@
       "SHOW_TRANSLATION": "Показывать стихи / перевод",
       "PAGE": "с.",
       "NEXT": "Следующий"
+    },
+    "DISPLAY_MODE_MENU": {
+      "SHOW_ALL": "Показать всё",
+      "VERSES_ONLY": "Только стихи",
+      "TRANSLATION_ONLY": "Только перевод",
+      "HIDE_WBW": "Скрыть пословник",
+      "INLINE_WBW": "Междустрочный пословник",
+      "CLASSICAL_WBW": "Классический пословник",
+      "LEARN_MODE": "Обучение",
+      "COMPACT_VIEW": "Компактно"
     },
     "i18n": {
       "Bhakti Lalita Devi": "Бхакти Лалита Деви",
@@ -616,7 +660,8 @@
       "INPUT_PLACEHOLDER": "Знайти пісню",
       "LOAD_MORE": "Шукати ще",
       "NO_RESULTS": "Нічого не знайдено",
-      "PAGE_LIST": "Список сторінок"
+      "PAGE_LIST": "Список сторінок",
+      "OR_ENTER_PAGE": "або введіть номер сторінки"
     },
     "SONG_PAGE": {
       "CLOSE": "Закрити",
@@ -630,6 +675,16 @@
       "SHOW_TRANSLATION": "Показувати вірші / переклад",
       "PAGE": "с.",
       "NEXT": "Наступний"
+    },
+    "DISPLAY_MODE_MENU": {
+      "SHOW_ALL": "Показати все",
+      "VERSES_ONLY": "Тільки вірші",
+      "TRANSLATION_ONLY": "Тільки переклад",
+      "HIDE_WBW": "Сховати послівник",
+      "INLINE_WBW": "Міжрядковий послівник",
+      "CLASSICAL_WBW": "Класичний послівник",
+      "LEARN_MODE": "Навчання",
+      "COMPACT_VIEW": "Компактно"
     },
     "i18n": {
       "Bhakti Lalita Devi": "Бгакті Лаліта Деві",
@@ -761,7 +816,8 @@
       "INPUT_PLACEHOLDER": "Encontrar uma canção",
       "LOAD_MORE": "Carregar mais",
       "NO_RESULTS": "Nada foi encontrado",
-      "PAGE_LIST": "Lista de páginas"
+      "PAGE_LIST": "Lista de páginas",
+      "OR_ENTER_PAGE": "ou digite o número da página"
     },
     "SONG_PAGE": {
       "CLOSE": "Fechar",
@@ -775,6 +831,16 @@
       "SHOW_TRANSLATION": "Mostrar tradução",
       "PAGE": "página",
       "NEXT": "Próximo"
+    },
+    "DISPLAY_MODE_MENU": {
+      "SHOW_ALL": "Mostrar tudo",
+      "VERSES_ONLY": "Somente versos",
+      "TRANSLATION_ONLY": "Somente tradução",
+      "HIDE_WBW": "Ocultar palavra por palavra",
+      "INLINE_WBW": "Palavra por palavra interlinear",
+      "CLASSICAL_WBW": "Palavra por palavra clássico",
+      "LEARN_MODE": "Aprendizado",
+      "COMPACT_VIEW": "Compacto"
     },
     "META": {
       "TRANSLATION_NAME": "Tradução para o português brasileiro"
