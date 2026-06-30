@@ -8,6 +8,13 @@ $bp840: 840;
 $bp768: 768;
 $bp576: 576;
 $bp-sidebar: 1200;
+$bp-sidebar-max-height: 800;
+
+// Conditions that switch the layout from bottom-bar to left-sidebar.
+// Sidebar requires a short screen (height <= $bp-sidebar-max-height) AND either
+// a wide viewport or a landscape/square aspect ratio.
+// Shared with the `sidebar-mode` mixin to avoid duplication.
+$sidebar-media: '(min-width: #{$bp-sidebar}px) and (max-height: #{$bp-sidebar-max-height}px), (min-aspect-ratio: 1/1) and (max-height: #{$bp-sidebar-max-height}px)';
 
 /**
  *
@@ -38,7 +45,7 @@ $bp-sidebar: 1200;
   --bp-768: 768px;
   --bp-576: 576px;
 
-  @media (min-width: #{$bp-sidebar}px), (min-aspect-ratio: 1/1) {
+  @media #{$sidebar-media} {
     --footer-height: 0px;
     --sidebar-width: var(--header-height);
   }

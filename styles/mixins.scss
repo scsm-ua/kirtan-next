@@ -9,7 +9,7 @@
 }
 
 @mixin sidebar-mode {
-  @media (min-width: #{v.$bp-sidebar}px), (min-aspect-ratio: 1/1) {
+  @media #{v.$sidebar-media} {
     @content;
   }
 }
