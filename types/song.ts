@@ -19,6 +19,8 @@ export type TSong = {
   author: Array<string>;
   // Derived server-side in `getSongBySlug`, not present in source JSON:
   hasWbw: boolean;
+  hasVersesText: boolean;
+  hasVersesTranslations: boolean;
   fullInlineWbw: boolean;
   meta: {
     author?: string;

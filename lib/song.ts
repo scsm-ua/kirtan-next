@@ -89,6 +89,12 @@ export async function getSongBySlug(
     song.hasWbw = !!song.verses?.find(
       (v: TVerse) => v.word_by_word?.length > 0
     );
+    song.hasVersesText = !!song.verses?.find(
+      (v: TVerse) => v.text?.length > 0
+    );
+    song.hasVersesTranslations = !!song.verses?.find(
+      (v: TVerse) => v.translation?.length > 0
+    );
     if (song.hasWbw) {
       for (const v of song.verses) {
         if (v.word_by_word) {

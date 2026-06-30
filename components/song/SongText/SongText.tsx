@@ -38,11 +38,10 @@ function SongText({ bookId, label, song }: Props) {
   // full inline mode. Renders inline anyway with stub translations.
   const [forceInline, setForceInline] = useState<boolean>(false);
 
-  const hasTranslation = !('translation' in song.meta) || song.meta.translation !== 'no';
-  const { hasWbw, fullInlineWbw } = song;
+  const { hasWbw, fullInlineWbw, hasVersesTranslations, hasVersesText } = song;
   const allowInline = fullInlineWbw || forceInline;
   const effectiveMode: TViewMode =
-    !hasTranslation && (mode === VIEW_MODE.TRANSLATION || mode === VIEW_MODE.ALL)
+    !hasVersesTranslations && (mode === VIEW_MODE.TRANSLATION || mode === VIEW_MODE.ALL)
       ? VIEW_MODE.VERSE
       : mode;
   let effectiveWbwMode: TWbwMode = hasWbw ? wbwMode : WBW_MODE.HIDE;
@@ -136,12 +135,12 @@ function SongText({ bookId, label, song }: Props) {
     <main className={contentCls}>
       {mode ? (
         <>
-          {(hasTranslation || hasWbw) && (
+          {(hasVersesText && (hasVersesTranslations || hasWbw)) && (
             <div className="SongText__toggle">
               {hasWbw ? (
                 <DisplayModeMenu
                   bookId={bookId}
-                  hasTranslation={hasTranslation}
+                  hasTranslation={hasVersesTranslations}
                   hasWbw={hasWbw}
                   fullInlineWbw={allowInline}
                   label={label}
