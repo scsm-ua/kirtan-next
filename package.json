@@ -2,17 +2,19 @@
   "name": "kirtan-next",
   "version": "2.3.0",
   "private": true,
+  "packageManager": "pnpm@10.33.2",
   "scripts": {
     "dev": "next dev --webpack -p 3333",
     "build": "next build --webpack",
-    "build:prod": "env-cmd -f env/.env.prod npm run build",
-    "build:test": "env-cmd -f env/.env.dev npm run build",
-    "build:all": "npm run validation && npm run install:src && next build --webpack",
+    "build:prod": "env-cmd -f env/.env.prod pnpm run build",
+    "build:test": "env-cmd -f env/.env.dev pnpm run build",
+    "build:all": "pnpm run install:fetch && pnpm run install:post-fetch && pnpm run validation && next build --webpack",
     "start": "serve out -p 3334",
-    "lint": "eslint",
     "postbuild": "node scripts/postbuild.js",
-    "install:src": "node scripts/processSrc.js",
+    "install:fetch": "node scripts/shared/installShared.js && node scripts/shared/fetchTelegraphPages.js",
+    "install:post-fetch": "node scripts/processSrc.js",
     "validation": "node scripts/validate.js",
+    "lint": "eslint",
     "type-check": "tsc --noEmit --pretty true"
   },
   "dependencies": {
@@ -43,7 +45,6 @@
     "prettier": "^2.8.8",
     "sass": "^1.93.2",
     "serve": "^14.2.5",
-    "sync-request": "^6.1.0",
     "typescript": "^5"
   }
 }
