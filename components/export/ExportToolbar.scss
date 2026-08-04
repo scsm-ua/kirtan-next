@@ -1,0 +1,46 @@
+.ExportToolbar {
+  position: fixed;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+
+  button {
+    padding: 4px 10px;
+    cursor: pointer;
+    align-self: stretch;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  &__copied {
+    font-size: 12px;
+    color: #2a7a2a;
+  }
+
+  @media print {
+    display: none;
+  }
+}
+
+// Preview-only styles; the same rules live in DOC_STYLE for the downloaded file.
+.ExportPage {
+  padding: 8px 40px;
+
+  h5 { text-align: center; }
+  p.verse { margin-left: 40px; }
+  p.wbw { font-size: 0.9em; }
+}
