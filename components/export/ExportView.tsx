@@ -2,8 +2,15 @@
 import { useEffect, useRef, useState } from 'react';
 
 import ExportToolbar from '@/components/export/ExportToolbar';
-import { filterExportBody, wrapExportDoc } from '@/other/exportDoc';
-import type { TVerseNumberMode } from '@/other/exportDoc';
+import {
+  DEFAULT_EXPORT_OPTIONS,
+  exportOptionsFromSearch,
+  exportOptionsToSearch,
+  filterExportBody,
+  makeExportFileName,
+  wrapExportDoc
+} from '@/other/exportDoc';
+import type { TExportOptions } from '@/other/exportDoc';
 import './ExportToolbar.scss';
 
 /**/
@@ -20,34 +27,48 @@ type Props = {
  */
 function ExportView({ body, fileName, lang, title }: Props) {
   const previewRef = useRef<HTMLDivElement>(null);
-  const [onlyTranslated, setOnlyTranslated] = useState<boolean>(true);
-  const [withWbw, setWithWbw] = useState<boolean>(true);
-  const [verseNumberMode, setVerseNumberMode] = useState<TVerseNumberMode>('heading');
+  const [options, setOptions] = useState<TExportOptions>(DEFAULT_EXPORT_OPTIONS);
+  const [hydrated, setHydrated] = useState(false);
 
-  const getBody = () => filterExportBody(body, { onlyTranslated, verseNumberMode, withWbw });
+  const patchOptions = (patch: Partial<TExportOptions>) =>
+    setOptions((o) => ({ ...o, ...patch }));
 
+  // Stamp the title with the open-time datetime so Print → Save as PDF uses it as filename.
+  useEffect(() => {
+    document.title = makeExportFileName(fileName);
+  }, []);
+
+  // Restore options from the URL on mount so refresh / shared links keep state.
+  useEffect(() => {
+    setOptions(exportOptionsFromSearch(window.location.search));
+    setHydrated(true);
+  }, []);
+
+  // Reflect current options back into the URL (no history entry).
+  useEffect(() => {
+    if (!hydrated) return;
+    const search = exportOptionsToSearch(options);
+    const url = `${window.location.pathname}${search ? '?' + search : ''}${window.location.hash}`;
+    window.history.replaceState(null, '', url);
+  }, [hydrated, options]);
+
+  const getBody = () => filterExportBody(body, options);
+
+  // Runs on every render (incl. HMR of exportDoc.ts) to keep preview in sync.
   useEffect(() => {
     if (previewRef.current) previewRef.current.innerHTML = getBody();
-  }, [body, onlyTranslated, verseNumberMode, withWbw]);
+  });
 
   return (
     <>
       <ExportToolbar
         fileName={fileName}
         getHtml={() => wrapExportDoc(getBody(), title, lang)}
-        onlyTranslated={onlyTranslated}
-        onOnlyTranslatedChange={setOnlyTranslated}
-        onWithWbwChange={setWithWbw}
-        onVerseNumberModeChange={setVerseNumberMode}
-        verseNumberMode={verseNumberMode}
-        withWbw={withWbw}
+        onChange={patchOptions}
+        options={options}
       />
 
-      <div
-        className="ExportPage"
-        ref={previewRef}
-        dangerouslySetInnerHTML={{ __html: body }}
-      />
+      <div className="ExportPage" ref={previewRef} />
     </>
   );
 }

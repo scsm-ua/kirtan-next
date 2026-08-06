@@ -17,8 +17,7 @@ export async function generateMetadata({
 }: BookListPageProps): Promise<Metadata> {
   const { bookId } = await params;
   return {
-    robots: { index: false, follow: false },
-    title: `Export — ${bookId}`
+    robots: { index: false, follow: false }
   };
 }
 

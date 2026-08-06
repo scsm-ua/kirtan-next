@@ -2,6 +2,7 @@ import { escHtml as esc } from '@/other/exportDoc';
 import { getBooksMap } from '@/lib/books';
 import { getContentsByBookId, getIndexesByBookId } from '@/lib/contents';
 import { getSongBySlug } from '@/lib/song';
+import { translate } from '@/other/i18n';
 import { processTranslationLines } from '@/other/utils';
 
 import type { TContentGroup, TContentItem } from '@/types/common';
@@ -71,19 +72,26 @@ function paragraph(cls: string, lines: string[], isHtml = false): string {
 /**
  *
  */
-function heading(level: number, text: string): string {
+function heading(level: number, text: string, cls?: string): string {
   if (!text) return '';
-  return `<h${level}>${esc(text)}</h${level}>\n`;
+  const attr = cls ? ` class="${cls}"` : '';
+  return `<h${level}${attr}>${esc(text)}</h${level}>\n`;
 }
 
 /**
  *
  */
-function renderVerse(verse: TVerse, showNumber: boolean, meta: TSong['meta']): string {
+function renderVerse(
+  verse: TVerse,
+  showNumber: boolean,
+  meta: TSong['meta'],
+  headerPrefix = ''
+): string {
   const num = showNumber && verse.number ? esc(verse.number) : '';
   const hasNumber = !!verse.number;
   let html = `<div class="verse-block" data-number="${num}">\n`;
 
+  html += headerPrefix;
   if (num) {
     html += heading(5, verse.number);
   }
@@ -105,28 +113,65 @@ function renderVerse(verse: TVerse, showNumber: boolean, meta: TSong['meta']): s
   return html + '</div>\n';
 }
 
+type TIndexOpts = {
+  bookId: string;
+  className: string;
+  getTitle: (item: TContentItem) => string;
+  groups: TContentGroup[];
+  headingKey: string;
+  showGroupNames: boolean;
+};
+
+/**
+ * Unified renderer for TOC and A–Z first-lines sections.
+ * Each item is a single link containing "title — page".
+ * `data-translated` mirrors `item.has.translation` so the client filter
+ * can hide untranslated entries via the same query as songs.
+ */
+function renderIndex(opts: TIndexOpts): string {
+  let html = heading(1, translate(opts.bookId, opts.headingKey));
+
+  for (const group of opts.groups) {
+    if (opts.showGroupNames && group.name) {
+      html += heading(2, group.name, `${opts.className}-group`);
+    }
+
+    for (const item of group.items as TContentItem[]) {
+      const title = opts.getTitle(item);
+      const page = item.page
+        ? `<span class="page-num"> — ${esc(String(item.page))}</span>`
+        : '';
+      const flag = item.has?.translation ? 1 : 0;
+      html += `<p class="${opts.className}" data-translated="${flag}"><a href="#song-${item.id}">${esc(
+        title
+      )}${page}</a></p>\n`;
+    }
+  }
+
+  return html;
+}
+
 /**
  *
  */
-function renderSong(song: TSong): string {
-  let html = `<section class="song" data-translated="${
+function renderSong(song: TSong, slug: string): string {
+  let html = `<section class="song" id="song-${slug}" data-translated="${
     isTranslated(song) ? 1 : 0
   }">\n`;
 
-  html += heading(2, (song.title || []).join(' '));
-  (song.subtitle || []).forEach((s: string) => (html += heading(3, s)));
-  (song.author || []).forEach((a: string) => (html += heading(4, a)));
-  // Song-level word-by-word note (rendered under the header on the site).
-  html += paragraph(
-    'wbw',
-    processTranslationLines(song.word_by_word, 'wbw'),
-    true
-  );
+  const navSpan =
+    ' <span class="nav-links">&nbsp;&nbsp;<a href="#toc">↑</a>&nbsp;&nbsp;<a href="#first-lines">↓</a></span>';
+  const songTitle = esc((song.title || []).join(' '));
+  // Song headings go inside the first verse-block so break-inside: avoid keeps them together.
+  let songHeader = `<h2>${songTitle}${navSpan}</h2>\n`;
+  (song.subtitle || []).forEach((s: string) => (songHeader += heading(3, s)));
+  (song.author || []).forEach((a: string) => (songHeader += heading(4, a)));
+  songHeader += paragraph('wbw', processTranslationLines(song.word_by_word, 'wbw'), true);
 
   const showNumbers = song.verses.length > 1;
-  for (const verse of song.verses) {
-    html += renderVerse(verse, showNumbers, song.meta);
-  }
+  song.verses.forEach((verse, i) => {
+    html += renderVerse(verse, showNumbers, song.meta, i === 0 ? songHeader : '');
+  });
 
   return html + '</section>\n';
 }
@@ -134,25 +179,16 @@ function renderSong(song: TSong): string {
 /**
  *
  */
-function renderFirstLines(
-  indexes: TContentGroup[],
-  translated: Set<string>
-): string {
-  let html = heading(1, 'First lines');
-
-  for (const group of indexes) {
-    for (const item of group.items) {
-      // In the a-z file, title and aliasName are swapped vs. contents.
-      const line = item.title || item.aliasName;
-      const page = item.page ? ` — ${item.page}` : '';
-      const flag = translated.has(item.id) ? 1 : 0;
-      html += `<p class="first-line" data-translated="${flag}">${esc(
-        line
-      )}${esc(page)}</p>\n`;
-    }
-  }
-
-  return html;
+function renderFirstLines(indexes: TContentGroup[], bookId: string): string {
+  return renderIndex({
+    bookId,
+    className: 'first-line',
+    // In the a-z file, title and aliasName are swapped vs. contents.
+    getTitle: (item) => item.title || item.aliasName,
+    groups: indexes,
+    headingKey: 'FOOTER.INDEX',
+    showGroupNames: true
+  });
 }
 
 /**
@@ -167,10 +203,22 @@ export async function buildExportHtml(bookId: string): Promise<TExportDoc> {
     getIndexesByBookId(bookId)
   ]);
   const book = booksMap[bookId];
+  const bookTitle = book?.title || bookId;
 
-  let body = '';
+  let body = heading(1, bookTitle, 'book-title');
+  body +=
+    `<p class="nav-links"><a href="#first-lines">↓ ${esc(
+      translate(bookId, 'FOOTER.INDEX')
+    )}</a></p>\n`;
+  body += `<section class="toc" id="toc">\n${renderIndex({
+    bookId,
+    className: 'toc-item',
+    getTitle: (item) => item.title,
+    groups: contents,
+    headingKey: 'FOOTER.CONTENTS',
+    showGroupNames: true
+  })}</section>\n`;
   const seen = new Set<string>();
-  const translated = new Set<string>();
 
   for (const group of contents) {
     let groupHtml = group.name ? heading(1, group.name) : '';
@@ -182,17 +230,18 @@ export async function buildExportHtml(bookId: string): Promise<TExportDoc> {
 
       const song = await getSongBySlug(item.id, bookId);
       if (!song) continue;
-      if (isTranslated(song)) translated.add(item.id);
-      groupHtml += renderSong(song);
+      groupHtml += renderSong(song, item.id);
     }
 
     body += `<section class="category">\n${groupHtml}</section>\n`;
   }
 
-  body += renderFirstLines(indexes, translated);
+  body += `<section class="first-lines" id="first-lines">\n${renderFirstLines(
+    indexes,
+    bookId
+  )}</section>\n`;
 
   const lang = bookId.slice(0, 2);
-  const title = book?.title || bookId;
 
-  return { body, lang, title };
+  return { body, lang, title: bookTitle };
 }
