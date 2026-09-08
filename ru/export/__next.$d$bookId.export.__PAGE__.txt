@@ -3,7 +3,7 @@
 6:I[5207,[],"OutletBoundary"]
 7:"$Sreact.suspense"
 :HL["/_next/static/css/4b0014ca66bfdf36.css","style"]
-3:T133491,<h1 class="book-title">Гаудия Гитанджали</h1>
+3:T13348e,<h1 class="book-title">Гаудия Гитанджали</h1>
 <p class="nav-links"><a href="#first-lines">↓ Индекс</a></p>
 <section class="toc" id="toc">
 <h1>Содержание</h1>
@@ -96,7 +96,7 @@
 <p class="toc-item" data-translated="1"><a href="#song-jadi-gaura-na-hoto-tobe-ki-hoito">Джади Гаура на хо’то<span class="page-num"> — 125</span></a></p>
 <p class="toc-item" data-translated="1"><a href="#song-emona-gauranga-bine-nahi-ara">Эмона Гауранга бине нахи ара<span class="page-num"> — 126</span></a></p>
 <p class="toc-item" data-translated="1"><a href="#song-ke-jabi-ke-jabi-bhai-bhava-sindhu-para">Ке джаби ке джаби<span class="page-num"> — 127</span></a></p>
-<p class="toc-item" data-translated="1"><a href="#song-bimala-hemajini-tanu-anupama-re">Бимала хемаджини<span class="page-num"> — 128</span></a></p>
+<p class="toc-item" data-translated="1"><a href="#song-vimala-hemajin-tanu-anupama-re">Бимала хемаджини<span class="page-num"> — 128</span></a></p>
 <p class="toc-item" data-translated="1"><a href="#song-gauranga-bolite-hobe-pulaka-shorira">Гауранга болите хабе<span class="page-num"> — 129</span></a></p>
 <p class="toc-item" data-translated="1"><a href="#song-aruna-basane-sonara-suraja">Шри Шри Гаурасундарер Авирбхава Васаре<span class="page-num"> — 130</span></a></p>
 <h2 class="toc-item-group">Песни, посвященные вайшнавам</h2>
@@ -3696,7 +3696,7 @@
 <p class="translation">Благоприятный ветер — это божественная любовь к Господу Кришне. Все падшие души были спасены на этом корабле, только Лочан Дас остался позади из-за своих злодеяний.</p>
 </div>
 </section>
-<section class="song" id="song-bimala-hemajini-tanu-anupama-re" data-translated="1">
+<section class="song" id="song-vimala-hemajin-tanu-anupama-re" data-translated="1">
 <div class="verse-block" data-number="1">
 <h2>Бимала хемаджини <span class="nav-links">&nbsp;&nbsp;<a href="#toc">↑</a>&nbsp;&nbsp;<a href="#first-lines">↓</a></span></h2>
 <h4>Ш́рӣла Вр̣нда̄ван Да̄с Т̣ха̄кур</h4>
@@ -10130,7 +10130,7 @@
 <p class="first-line" data-translated="1"><a href="#song-atma-samarpane-gela-abhimana">а̄тма-самарпане гела̄ абхима̄на<span class="page-num"> — 166</span></a></p>
 <p class="first-line" data-translated="1"><a href="#song-acharya-varyam-gaura-dhama-nishtham">а̄ча̄рйа-варйам̣ гаура-дха̄ма-ниш̣т̣хам̣</a></p>
 <h2 class="first-line-group">Б</h2>
-<p class="first-line" data-translated="1"><a href="#song-bimala-hemajini-tanu-anupama-re">бимала хемаджини тану анупама ре!<span class="page-num"> — 128</span></a></p>
+<p class="first-line" data-translated="1"><a href="#song-vimala-hemajin-tanu-anupama-re">бимала хемаджини тану анупама ре!<span class="page-num"> — 128</span></a></p>
 <p class="first-line" data-translated="1"><a href="#song-bondhu-gon-shiunoho-vachana-mora">бондху-гон̣! ш́уноха вачана мора<span class="page-num"> — 191</span></a></p>
 <p class="first-line" data-translated="1"><a href="#song-bhagyadhishia-tvadiyo-vimala-sukhamayah">бха̄гйа̄дхӣш́а! твадӣйо бимала-сукхамайах̣<span class="page-num"> — 279</span></a></p>
 <p class="first-line" data-translated="1"><a href="#song-bhaja-bhakata-vatsala-shri-gaurahari">бхаджа бхаката-ватсала ш́рӣ гаурахари<span class="page-num"> — 58</span></a></p>
@@ -10316,7 +10316,7 @@
 <p class="first-line" data-translated="1"><a href="#song-emona-gauranga-bine-nahi-ara">эмона гаура̄н̇га бине на̄хи а̄ра<span class="page-num"> — 126</span></a></p>
 <p class="first-line" data-translated="1"><a href="#song-emona-durmati-samsara-bhitore">эмона дурмати, сам̇са̄ра бхиторе<span class="page-num"> — 154</span></a></p>
 </section>
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"body":"$3","fileName":"Songbook-Export-ru","lang":"ru","title":"Гаудия Гитанджали"}],["$L4"],"$L5"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"EgrXaZMXeabaQ-ODBBR4b"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"body":"$3","fileName":"Songbook-Export-ru","lang":"ru","title":"Гаудия Гитанджали"}],["$L4"],"$L5"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"JGdFw_EkYIZq9xuD5LmzN"}
 4:["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/4b0014ca66bfdf36.css","precedence":"next"}]
 5:["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]
 8:null
