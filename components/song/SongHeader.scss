@@ -15,10 +15,6 @@
     line-height: 140%;
     color: var(--title-color);
 
-    > div:not(:last-child) {
-      margin-bottom: 10px;
-    }
-
     @include m.tablet-up {
       font-size: 28px;
     }
