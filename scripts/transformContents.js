@@ -10,12 +10,16 @@ const songIds = [];
 /**
  * @param targetDir {string} - directory of the songbook.
  * @param resourceMap {ResourceMap}
+ * @param options {Object}
+ * @param options.audioTitleFilter {Array<string> | null} - person ids to keep
+ *   (see songbookSettings.js); null keeps all audio.
  */
-function transformContents(targetDir, resourceMap) {
+function transformContents(targetDir, resourceMap, options = {}) {
   const input = transform(
     readFile(targetDir, CONST.FILES.CONTENTS),
     resourceMap,
-    targetDir
+    targetDir,
+    options
   );
 
   const output = JSON.stringify(input, null, 2);
@@ -26,9 +30,11 @@ function transformContents(targetDir, resourceMap) {
  * @param groups {Array<RawContentGroup>}
  * @param resourceMap {ResourceMap}
  * @param targetDir {string} - directory of the songbook.
+ * @param options {Object}
+ * @param options.audioTitleFilter {Array<string> | null}
  * @return {Array<ContentGroup>}
  */
-function transform(groups, resourceMap, targetDir) {
+function transform(groups, resourceMap, targetDir, options) {
   const pageIdxDict = getherPageIdxDict(groups, targetDir);
 
   let itemIdx = 0;
@@ -38,7 +44,7 @@ function transform(groups, resourceMap, targetDir) {
       items: group.items.map((item) => {
 				/** @type {RawSong} */
 				const rawSong = readFile(`${targetDir}/songs`, `${item.id}.json`);
-				const resources = resourceMap[item.id];
+				const resources = mapResources(resourceMap[item.id], options.audioTitleFilter || null);
 	
 				/** @type {Song} */
 				const song = { ...rawSong, resources };
@@ -56,6 +62,25 @@ function transform(groups, resourceMap, targetDir) {
 			})
     };
   });
+}
+
+/**
+ * Applies the per-book audio title filter.
+ * @param resource {ResourceObj | void}
+ * @param audioTitleFilter {Array<string> | null}
+ * @return {ResourceObj | void}
+ */
+function mapResources(resource, audioTitleFilter) {
+  if (!resource) return;
+
+  const audio = resource.audio
+    .filter((a) => !audioTitleFilter || audioTitleFilter.includes(a.personId))
+    // personId was added for filtering only, remove it.
+    .map(({ personId, ...rest }) => rest);
+
+  if (!audio.length) return;
+
+  return { ...resource, audio };
 }
 
 /**

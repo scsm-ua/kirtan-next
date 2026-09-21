@@ -84,6 +84,8 @@
  * @typedef {Object} AudioObj
  * @property {string} embed_url
  * @property {string} iframe_url
+ * @property {string} personId - raw title (person id), used by the per-book
+ *   audio filter and stripped before the resource is written into a song json.
  * @property {I18n} title
  */
 

@@ -11,7 +11,7 @@ Deliver a better and more future-proof user experience with a modern front-end s
 Follows the standard Next.js layout (App Router). The additions are:
 
 - `./source` — inputs consumed by the build pipeline. Two files are committed as the source of truth:
-  - `songbooks.json` — `slug → git repo URL` map of songbook packages.
+  - `songbooks.json` — `slug → git repo URL` map of songbook packages. A value can also be an object with a `repository` URL plus per-book settings (e.g. `audio.filter.by_title` — person ids; only audio tracks with these titles are kept for the book).
   - `resources.json` — `slug → git repo URL` for the shared resources package (audio metadata, persons).
   - `translations.json` — site i18n strings.
 

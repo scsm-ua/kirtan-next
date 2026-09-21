@@ -292,7 +292,8 @@ const TRANSLATION_VALIDATION_SCHEMA = {
         'SHARE_SONG',
         'SHOW_TRANSLATION',
         'PAGE',
-        'NEXT'
+        'NEXT',
+        'AUDIO_CAPTION'
       ],
       properties: {
         CLOSE: {
@@ -326,6 +327,9 @@ const TRANSLATION_VALIDATION_SCHEMA = {
           type: 'string'
         },
         NEXT: {
+          type: 'string'
+        },
+        AUDIO_CAPTION: {
           type: 'string'
         }
       }
