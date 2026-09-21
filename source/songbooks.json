@@ -5,7 +5,18 @@
   "en": "git+https://github.com/scsm-ua/kirtan-guide-en.git#word-by-word",
   "pt": "git+https://github.com/scsm-ua/kirtan-guide-pt.git",
   "es": "git+https://github.com/scsm-ua/kirtan-guide-es.git",
-  "en-2026": "git+https://github.com/scsm-ua/kirtan-guide-en-london.git#hidden",
+  "en-2026": {
+    "repository": "git+https://github.com/scsm-ua/kirtan-guide-en-london.git#hidden",
+    "audio": {
+      "filter": {
+        "by_title": [
+          "Srila B.S. Govinda Dev-Goswami Maharaj",
+          "Srila B.R. Sridhar Dev-Goswami Maharaj",
+          "Nabadwip temple"
+        ]
+      }
+    }
+  },
   "en-pe": "git+https://github.com/scsm-ua/kirtan-guide-pocket-edition.git",
   "ru-kdm": "git+https://github.com/scsm-ua/gaudiya-gitanjali-ru-kd-morning.git#morning-short"
 }

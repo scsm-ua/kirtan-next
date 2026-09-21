@@ -89,7 +89,8 @@
       "SHARE_SONG": "Padalīties ar dziesmu",
       "SHOW_TRANSLATION": "Parādīt tulkojumu",
       "PAGE": "lpp.",
-      "NEXT": "Nākošais"
+      "NEXT": "Nākošais",
+      "AUDIO_CAPTION": "Klausies audio:"
     },
     "DISPLAY_MODE_MENU": {
       "SHOW_ALL": "Rādīt visu",
@@ -232,7 +233,8 @@
       "SHARE_SONG": "Share song",
       "SHOW_TRANSLATION": "Show verses / translation",
       "PAGE": "page",
-      "NEXT": "Next"
+      "NEXT": "Next",
+      "AUDIO_CAPTION": "Listen audio:"
     },
     "DISPLAY_MODE_MENU": {
       "SHOW_ALL": "Show all",
@@ -375,7 +377,8 @@
       "SHARE_SONG": "Compartir canción",
       "SHOW_TRANSLATION": "Mostrar traducción",
       "PAGE": "página",
-      "NEXT": "Próxima"
+      "NEXT": "Próxima",
+      "AUDIO_CAPTION": "Escuchar audio:"
     },
     "DISPLAY_MODE_MENU": {
       "SHOW_ALL": "Mostrar todo",
@@ -518,7 +521,8 @@
       "SHARE_SONG": "Поделиться песней",
       "SHOW_TRANSLATION": "Показывать стихи / перевод",
       "PAGE": "с.",
-      "NEXT": "Следующий"
+      "NEXT": "Следующий",
+      "AUDIO_CAPTION": "Слушать аудио:"
     },
     "DISPLAY_MODE_MENU": {
       "SHOW_ALL": "Показать всё",
@@ -674,7 +678,8 @@
       "SHARE_SONG": "Поділитися піснею",
       "SHOW_TRANSLATION": "Показувати вірші / переклад",
       "PAGE": "с.",
-      "NEXT": "Наступний"
+      "NEXT": "Наступний",
+      "AUDIO_CAPTION": "Слухати аудіо:"
     },
     "DISPLAY_MODE_MENU": {
       "SHOW_ALL": "Показати все",
@@ -830,7 +835,8 @@
       "SHARE_SONG": "Compartilhar canção",
       "SHOW_TRANSLATION": "Mostrar tradução",
       "PAGE": "página",
-      "NEXT": "Próximo"
+      "NEXT": "Próximo",
+      "AUDIO_CAPTION": "Ouvir áudio:"
     },
     "DISPLAY_MODE_MENU": {
       "SHOW_ALL": "Mostrar tudo",

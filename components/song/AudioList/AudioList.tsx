@@ -8,6 +8,7 @@ import type { TAudio } from '@/types/resources';
 /**/
 type Props = {
   audio: Array<TAudio>;
+  caption: string;
   language: string;
 };
 
@@ -38,10 +39,12 @@ class AudioList extends PureComponent<Props, State> {
 
   /**/
   render() {
-    const { audio, language } = this.props;
+    const { audio, caption, language } = this.props;
 
     return (
       <div className="AudioList">
+        {caption && <p className="AudioList__caption">{caption}</p>}
+
         <ul className="AudioList__list">
           {audio.map((a: TAudio) => {
             const title = a.title[language] || a.title.en;

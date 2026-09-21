@@ -66,6 +66,8 @@ function handleAudio(audioArr, personsMap) {
     .sort((a) => (a.title.includes('Dev-Goswami') ? -1 : 1))
     .map((a) => ({
       ...a,
+      // Person id is needed to support filtering audio by title.
+      personId: a.title,
       title: personsMap[a.title]
     }));
 }

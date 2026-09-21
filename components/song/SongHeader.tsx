@@ -1,6 +1,7 @@
 import './SongHeader.scss';
+import { Fragment, type ReactNode } from 'react';
 import { PATH } from '@/other/constants';
-import { processTranslationLines } from '@/other/utils';
+import { groupLines, processTranslationLines } from '@/other/utils';
 import type { TSong } from '@/types/song';
 
 /**/
@@ -15,38 +16,53 @@ type Props = {
 function SongHeader({ bookId, song }: Props) {
   const { author, meta, subtitle, title, word_by_word } = song;
 
+  const authorHref =
+    `/${bookId}` +
+    PATH.PAGE.AUTHORS +
+    (meta.author ? `#section-${meta.author}` : '');
+
   return (
     <section className="SongHeader">
       {title?.length > 0 && (
         <h1 className="SongHeader__title">
-          {title.map((item: string) => (
-            <div key={item}>{item}</div>
+          {groupLines(title).map((group, index) => (
+            <div key={index}>{renderLines(group)}</div>
           ))}
         </h1>
       )}
 
       {getWBW(word_by_word)}
 
-      {(subtitle || []).map((item) => (
-        <div className="SongHeader__subtitle" key={item}>
-          {item}
+      {groupLines(subtitle || []).map((group, index) => (
+        <div className="SongHeader__subtitle" key={index}>
+          {renderLines(group)}
         </div>
       ))}
 
-      {author?.map((item) => {
-        const href =
-          `/${bookId}` +
-          PATH.PAGE.AUTHORS +
-          (meta.author ? `#section-${meta.author}` : '');
-
-        return (
-          <div className="SongHeader__author" key={item}>
-            <a href={href}>{item}</a>
-          </div>
-        );
-      })}
+      {groupLines(author || []).map((group, index) => (
+        <div className="SongHeader__author" key={index}>
+          {renderLines(group, (line) => (
+            <a href={authorHref}>{line}</a>
+          ))}
+        </div>
+      ))}
     </section>
   );
+}
+
+/**
+ *
+ */
+function renderLines(
+  lines: string[],
+  renderLine?: (line: string) => ReactNode,
+) {
+  return lines.map((line, index) => (
+    <Fragment key={index}>
+      {index > 0 && <br />}
+      {renderLine ? renderLine(line) : line}
+    </Fragment>
+  ));
 }
 
 /**

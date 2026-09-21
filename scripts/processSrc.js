@@ -7,6 +7,7 @@ const { CONST } = require('./constants');
 const { createAuthors } = require('./createAuthors');
 const { createAZ } = require('./createAZ');
 const songbooks = require('../source/songbooks.json');
+const { getAudioTitleFilter } = require('./songbookSettings');
 const { prepareSharedResources } = require('./shared/prepareSharedResources');
 const { copySongbook } = require('./shared/copySongbook');
 const { transformContents } = require('./transformContents');
@@ -33,7 +34,9 @@ Object.keys(songbooks).forEach((bookSlug) => {
 		copySongbook(targetDir, bookSlug, booksMap);
 		addSongsCount(booksMap, bookSlug);
 		
-		transformContents(targetDir, resourceMap);
+		transformContents(targetDir, resourceMap, {
+			audioTitleFilter: getAudioTitleFilter(bookSlug)
+		});
 		createAZ(targetDir);
 		createAuthors(targetDir);
 		

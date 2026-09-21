@@ -5,7 +5,7 @@ const { mkdirSync, writeFileSync } = require('fs');
 const chalk = require('chalk');
 
 const { CONST } = require('../constants');
-const songbooks = require('../../source/songbooks.json');
+const { getSongbookRepositories } = require('../songbookSettings');
 const resources = require('../../source/resources.json');
 
 /**/
@@ -56,7 +56,7 @@ function writeSharedManifest() {
 		name: 'kirtan-shared',
 		version: '1.0.0',
 		private: true,
-		dependencies: { ...songbooks, ...resources }
+		dependencies: { ...getSongbookRepositories(), ...resources }
 	};
 
 	writeFileSync(

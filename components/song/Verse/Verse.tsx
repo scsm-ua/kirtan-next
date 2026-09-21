@@ -1,5 +1,6 @@
 'use client';
 import classnames from 'classnames';
+import { Fragment } from 'react';
 
 import './Verse.scss';
 import Collapse from '@/components/common/Collapse/Collapse';
@@ -8,6 +9,7 @@ import VerseText from '@/components/song/Verse/VerseText';
 import VerseTranslation from '@/components/song/Verse/VerseTranslation';
 import VerseWbw from '@/components/song/Verse/VerseWbw';
 
+import { groupLines } from '@/other/utils';
 import type { TSong, TVerse } from '@/types/song';
 import type { TViewMode, TWbwMode } from '@/types/common';
 import { VIEW_MODE, WBW_MODE } from '@/types/common';
@@ -65,8 +67,15 @@ function Verse({
     <li className="Verse" data-mode={mode}>
       {subtitle?.length > 0 && showTranslation && (
         <div className={stCls}>
-          {subtitle.map((s: string) => (
-            <div key={s}>{s}</div>
+          {groupLines(subtitle).map((group, index) => (
+            <div key={index}>
+              {group.map((s, i) => (
+                <Fragment key={i}>
+                  {i > 0 && <br />}
+                  {s}
+                </Fragment>
+              ))}
+            </div>
           ))}
         </div>
       )}
