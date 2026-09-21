@@ -3,6 +3,12 @@
   padding: 0 var(--side-padding);
   max-width: var(--content-max-width);
 
+  &__caption {
+    font-weight: 300;
+    margin: 16px 0 0;
+    color: var(--text-color);
+  }
+
   &__list {
     list-style-type: none;
     margin: 16px 0;

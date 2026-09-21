@@ -51,6 +51,8 @@ function Trigger({ isOpen, onClick, title }: TriggerProps) {
         <span className="icon-shevron-right" />
       </span>
 
+      <span className="AudioContentCollapse__embed" title="Audio">♪</span>
+
       <span className="AudioContentCollapse__title">{title}</span>
     </button>
   );

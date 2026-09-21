@@ -99,6 +99,7 @@ async function SongPage({ params }: SongPageProps) {
           {song.resources?.audio?.length > 0 && (
             <AudioList
               audio={song.resources?.audio}
+              caption={translate(bookId, 'SONG_PAGE.AUDIO_CAPTION')}
               language={bookId.slice(0, 2)}
             />
           )}
