@@ -16,6 +16,31 @@ export function isObject(x: any): boolean {
 }
 
 /**
+ * Splits an array of lines into paragraph groups, using empty items as
+ * separators. Lines within a group are rendered together (joined with <br>),
+ * while empty items produce bigger space between groups.
+ */
+export function groupLines(lines: string[]): string[][] {
+  const groups: string[][] = [];
+  let current: string[] = [];
+
+  for (const line of lines || []) {
+    if (line === '') {
+      if (current.length > 0) {
+        groups.push(current);
+        current = [];
+      }
+    } else {
+      current.push(line);
+    }
+  }
+
+  if (current.length > 0) groups.push(current);
+
+  return groups;
+}
+
+/**
  *
  */
 export function processTranslationLines(
