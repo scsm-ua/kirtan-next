@@ -74,7 +74,8 @@ async function SongPage({ params }: SongPageProps) {
               <div className="SongPage__controls">
                 <OtherTranslations
                   bookId={bookId}
-                  disabled={descriptions.length === 0}
+                  // descriptions always include the current book, so 1 means no other translations
+                  disabled={descriptions.length < 2}
                 >
                   <SongbookList
                     bookId={bookId}
