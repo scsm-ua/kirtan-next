@@ -1,0 +1,14 @@
+.SongImage {
+  display: flex;
+  justify-content: center;
+  margin: 6px 0 16px 0;
+
+  &__img {
+    display: block;
+    width: 100%;
+    max-width: var(--song-image-max-width);
+    height: auto;
+    max-height: calc(100vh - var(--footer-height));
+    object-fit: contain;
+  }
+}
