@@ -19,10 +19,6 @@
       margin-bottom: 10px;
     }
 
-    > div:not(:last-child) {
-      margin-bottom: 10px;
-    }
-
     @include m.tablet-up {
       font-size: 28px;
     }
