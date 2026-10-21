@@ -17,25 +17,21 @@ fs.writeFileSync(path.join(BUILD_DIR, '.nojekyll'), '');
 writeLegacyHtmlRedirects();
 
 /**
- * Pre-redesign URLs ended with `.html` (e.g. `/ua/some-slug.html`); the current
- * route is the trailing-slash form `/ua/some-slug/`. On static hosting (GH Pages)
- * there are no server redirects, so a request for a `.html` path hits a missing
- * file and returns a 404 status (only the client 404 page redirected browsers).
- * Emit a real `.html` file per song/page so the legacy URL responds 200 and
- * redirects (canonical + instant meta refresh) to the new URL.
+ * Prebuild emtpy legacy (from old site) .html pages with redurect to new canonicals.
+ * Prevents 404 for search bots.
  */
 function writeLegacyHtmlRedirects() {
 	let count = 0;
 
 	for (const bookId of readBookIds()) {
+		const dir = path.join(BUILD_DIR, bookId);
+		fs.mkdirSync(dir, {recursive: true});
+
 		for (const slug of readBookSlugs(bookId)) {
 			if (!slug || slug.includes('/')) continue;
 
 			const target = `${ORIGIN}/${bookId}/${slug}/`;
-			const file = path.join(BUILD_DIR, bookId, `${slug}.html`);
-
-			fs.mkdirSync(path.dirname(file), {recursive: true});
-			fs.writeFileSync(file, redirectHtml(target));
+			fs.writeFileSync(path.join(dir, `${slug}.html`), redirectHtml(target));
 			count++;
 		}
 	}
