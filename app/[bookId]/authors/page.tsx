@@ -49,15 +49,12 @@ async function AuthorsPage({ params }: BookListPageProps) {
     (g: TContentGroup) => !g.name && g.items.length > 0
   );
 
-  const groups = noAuthor
-    ? [
-        ...items,
-        {
-          items: noAuthor.items,
-          name: translate(bookId, 'AUTHORS_PAGE.UNKNOWN_AUTHOR')
-        }
-      ]
-    : items;
+  const unknown = noAuthor
+    ? byFirstLine({
+        items: noAuthor.items,
+        name: translate(bookId, 'AUTHORS_PAGE.UNKNOWN_AUTHOR')
+      })
+    : undefined;
 
   return (
     <Layout bookId={bookId}>
@@ -68,7 +65,11 @@ async function AuthorsPage({ params }: BookListPageProps) {
 
         <div className="Main__content">
           <AuthorBadges contents={items} />
-          <Authors bookId={bookId} contents={groups.map(byFirstLine)} />
+          <Authors
+            bookId={bookId}
+            contents={items.map(byFirstLine)}
+            unknown={unknown}
+          />
         </div>
 
         <LdJson bookId={bookId} pageKey="AUTHORS_PAGE" page={SONGBOOK_PAGE.AUTHORS} />

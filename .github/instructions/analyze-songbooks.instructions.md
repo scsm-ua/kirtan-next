@@ -38,8 +38,9 @@ components/analyze/AnalyzeTable.scss layout + table chrome
     (page = joined `pages` array or single `page`, `undefined` for page-less
     books; `translated` = `item.has.translation`), absent key = song not in
     that book.
-- Rows are **pre-sorted by first line on the server** via `firstLineKey`
-  (strips leading quotes/brackets `‘ ’ ' " “ (` and whitespace).
+- Rows are **pre-sorted by first line on the server** via `compareFirstLines`
+  from `scripts/compareHelpers.js` (same comparator as the A-Z and authors
+  build scripts).
 
 **GOTCHA (hydration)**: the client must NOT re-run `localeCompare` for the
 default order — Node and browser collation differ, which caused a hydration

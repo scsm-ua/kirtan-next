@@ -1,6 +1,5 @@
-const deburr = require('lodash.deburr');
-
 const { CONST } = require('./constants');
+const { compareFirstLines, stripMarks } = require('./compareHelpers');
 const { readFile, writeFile } = require('./ioHelpers');
 
 /**
@@ -21,9 +20,7 @@ function convert(groups) {
 	
 	makeLineVersions(
 		groups.flatMap((cat) => cat.items)
-	).sort((a, b) =>
-		getAliasCleaned(a).localeCompare(getAliasCleaned(b), undefined, { numeric: true })
-	)
+	).sort((a, b) => compareFirstLines(a.aliasName, b.aliasName))
 		.forEach((item) => {
 			const firstLetter = getFirstLetter(item);
 			if (!list.has(firstLetter)) {
@@ -109,25 +106,6 @@ function pushLineVersions(result, item, line, seen) {
 			})
 		}
 	}
-}
-
-/**
- * For the sake of correct comparison some symbols should be omitted.
- * @param item {ContentItem}
- * @returns {string}
- */
-function getAliasCleaned(item) {
-	return stripMarks(deburr(item.aliasName))
-		.replace(/[«,\-'()\s]/g, '');
-}
-
-/**
- * Removes combining marks (deburr keeps dot-below letters like `ṭ`).
- * @param str {string}
- * @returns {string}
- */
-function stripMarks(str) {
-	return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
 /**

@@ -23,12 +23,9 @@ const TRANSLATION_VALIDATION_SCHEMA = {
         HEAD: {
           type: 'object',
           additionalProperties: false,
-          required: ['DESCRIPTION', 'TITLE'],
+          required: ['DESCRIPTION'],
           properties: {
             DESCRIPTION: {
-              type: 'string'
-            },
-            TITLE: {
               type: 'string'
             }
           }
@@ -59,12 +56,9 @@ const TRANSLATION_VALIDATION_SCHEMA = {
         HEAD: {
           type: 'object',
           additionalProperties: false,
-          required: ['DESCRIPTION', 'TITLE'],
+          required: ['DESCRIPTION'],
           properties: {
             DESCRIPTION: {
-              type: 'string'
-            },
-            TITLE: {
               type: 'string'
             }
           }
@@ -98,12 +92,9 @@ const TRANSLATION_VALIDATION_SCHEMA = {
         HEAD: {
           type: 'object',
           additionalProperties: false,
-          required: ['DESCRIPTION', 'TITLE'],
+          required: ['DESCRIPTION'],
           properties: {
             DESCRIPTION: {
-              type: 'string'
-            },
-            TITLE: {
               type: 'string'
             }
           }
@@ -153,12 +144,9 @@ const TRANSLATION_VALIDATION_SCHEMA = {
         HEAD: {
           type: 'object',
           additionalProperties: false,
-          required: ['DESCRIPTION', 'TITLE'],
+          required: ['DESCRIPTION'],
           properties: {
             DESCRIPTION: {
-              type: 'string'
-            },
-            TITLE: {
               type: 'string'
             }
           }
@@ -189,12 +177,9 @@ const TRANSLATION_VALIDATION_SCHEMA = {
         HEAD: {
           type: 'object',
           additionalProperties: false,
-          required: ['DESCRIPTION', 'TITLE'],
+          required: ['DESCRIPTION'],
           properties: {
             DESCRIPTION: {
-              type: 'string'
-            },
-            TITLE: {
               type: 'string'
             }
           }
@@ -238,12 +223,9 @@ const TRANSLATION_VALIDATION_SCHEMA = {
         HEAD: {
           type: 'object',
           additionalProperties: false,
-          required: ['DESCRIPTION', 'TITLE'],
+          required: ['DESCRIPTION'],
           properties: {
             DESCRIPTION: {
-              type: 'string'
-            },
-            TITLE: {
               type: 'string'
             }
           }
