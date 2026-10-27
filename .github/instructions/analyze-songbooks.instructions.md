@@ -27,8 +27,8 @@ components/analyze/AnalyzeTable.scss layout + table chrome
 
 `getAnalyzeData(currentBookId)` returns `{ books, rows }`:
 
-- **books**: non-hidden books from `getBooksMap()` (plus the current book even
-  if hidden), ordered **current book first**, rest by `sort_order`.
+- **books**: all books from `getBooksMap()` (hidden ones included), ordered
+  **current book first**, rest by `sort_order`.
 - **rows**: one `TAnalyzeRow` per song slug, built by walking books in that
   order over `getContentsByBookId` (contents.json), keeping only
   `type === ITEM_TYPE.SONG` items.

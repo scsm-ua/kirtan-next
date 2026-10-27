@@ -50,7 +50,6 @@ export function getAnalyzeData(currentBookId: string): TAnalyzeData {
   const booksMap = getBooksMap();
 
   const books: Array<TAnalyzeBook> = Object.keys(booksMap)
-    .filter((bookId) => !booksMap[bookId].hidden || bookId === currentBookId)
     .sort((a, b) => {
       if (a === currentBookId) return -1;
       if (b === currentBookId) return 1;

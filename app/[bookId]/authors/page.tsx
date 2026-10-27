@@ -12,20 +12,14 @@ import { translate } from '@/other/i18n';
 import type { BookListPageProps } from '@/types/book';
 import type { TContentGroup, TContentItem } from '@/types/common';
 
-/** Ignores leading quotes / brackets (e.g. `‘`, `(`). */
-function firstLineKey(s: string): string {
-  return s.replace(/^[\s‘’'"“(]+/, '');
-}
-
-/** Shows songs by first line (title kept as tooltip), sorted by it. */
+/** Shows songs by first line (title kept as tooltip); order comes pre-sorted from authors.json. */
 function byFirstLine(group: TContentGroup): TContentGroup {
   const items = group.items
     .map((item: TContentItem) => ({
       ...item,
       title: item.aliasName || item.title,
       aliasName: item.title
-    }))
-    .sort((a, b) => firstLineKey(a.title).localeCompare(firstLineKey(b.title)));
+    }));
   return { ...group, items };
 }
 

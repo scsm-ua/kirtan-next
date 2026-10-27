@@ -38,7 +38,7 @@ function create(groups) {
 	return Array.from(authors)
 		.map(([author, items]) => ({
 			name: author,
-			items: items.sort((a, b) => compareFirstLines(a.title, b.title))
+			items: items.sort((a, b) => compareFirstLines(a.aliasName || a.title, b.aliasName || b.title))
 		}))
 		.sort((a, b) => a.items.length === b.items.length
 			? (a.name || '').localeCompare(b.name || '')    // `author` can be `null`.
