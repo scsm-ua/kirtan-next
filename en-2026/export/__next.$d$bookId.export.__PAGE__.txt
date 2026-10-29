@@ -3,7 +3,7 @@
 6:I[5207,[],"OutletBoundary"]
 7:"$Sreact.suspense"
 :HL["/_next/static/css/d41aea12ff0698fe.css","style"]
-3:Tf1f49,<h1 class="book-title">Kirtan Guide</h1>
+3:Tf1f4b,<h1 class="book-title">Kirtan Guide</h1>
 <p class="nav-links"><a href="#first-lines">↓ Index</a></p>
 <section class="toc" id="toc">
 <h1>Contents</h1>
@@ -5388,7 +5388,7 @@ Here Śrīla Guru Mahārāj expresses that śaraṇāgati means faith that Bhaga
 <h2>Dainyātmikā <span class="nav-links">&nbsp;&nbsp;<a href="#toc">↑</a>&nbsp;&nbsp;<a href="#first-lines">↓</a></span></h2>
 <h4>by Śrīla Bhakti Vinod Ṭhākur</h4>
 <h5>1</h5>
-<p class="verse"><strong>prabhu he!</strong><br>
+<p class="verse"><strong>(prabhu he!)</strong><br>
 <strong>emana durmati&nbsp;&nbsp;&nbsp;&nbsp;saṁsāra bhitare</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;paḍiyā āchhinu āmi</strong><br>
 <strong>tava nija-jana&nbsp;&nbsp;&nbsp;&nbsp;kona mahājane</strong><br>
@@ -11246,7 +11246,7 @@ The bees, intoxicated in the festival<br />of drinking the honey of the Lord’s
 <p class="first-line" data-translated="1"><a href="#song-yoga-pithopari-sthita-ashta-sakhi-subeshtita">yoga-pīṭhopari-sthita aṣṭa-sakhī-suveṣṭita<span class="page-num"> — 206</span></a></p>
 <p class="first-line" data-translated="1"><a href="#song-gaite-gaite-nama-ki-doshia-hoilo">yugāyitaṁ nimeṣeṇa chakṣuṣā prāvṛṣāyitam<span class="page-num"> — 202</span></a></p>
 </section>
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"body":"$3","fileName":"Songbook-Export-en-2026","lang":"en","title":"Kirtan Guide"}],["$L4"],"$L5"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Fd_wHVuI9bshV0aa2lOyB"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"body":"$3","fileName":"Songbook-Export-en-2026","lang":"en","title":"Kirtan Guide"}],["$L4"],"$L5"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"PP7uqlfzwM5aCJZThrjqK"}
 4:["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/d41aea12ff0698fe.css","precedence":"next"}]
 5:["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]
 8:null
