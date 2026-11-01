@@ -8,7 +8,7 @@ b:I[5207,[],"MetadataBoundary"]
 d:I[4374,[],"default",1]
 :HL["/_next/static/css/2a876d8558f3a8fc.css","style"]
 :HL["/_next/static/css/d41aea12ff0698fe.css","style"]
-0:{"P":null,"c":["","ua","export",""],"q":"","i":false,"f":[[["",{"children":[["bookId","ua","d",null],{"children":["export",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/2a876d8558f3a8fc.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","html",null,{"children":["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":["$L4",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/d41aea12ff0698fe.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,null]},null,false,null]},null,false,"$@8"]},null,false,null],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],null]}],false]],"m":"$undefined","G":["$d",[]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"ZTHwZFJeuyMDUdGGkXxKD"}
+0:{"P":null,"c":["","ua","export",""],"q":"","i":false,"f":[[["",{"children":[["bookId","ua","d",null],{"children":["export",{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",16],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/2a876d8558f3a8fc.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":[null,["$","html",null,{"children":["$","body",null,{"children":["$","$L2",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L3",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}],{"children":[["$","$1","c",{"children":["$L4",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/d41aea12ff0698fe.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L5",null,{"children":["$","$6",null,{"name":"Next.MetadataOutlet","children":"$@7"}]}]]}],{},null,false,null]},null,false,null]},null,false,"$@8"]},null,false,null],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$6",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],null]}],false]],"m":"$undefined","G":["$d",[]],"S":true,"h":null,"s":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"Il2LCExAmGT4KvvLxNn14"}
 e:[]
 8:"$We"
 a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
@@ -16,7 +16,7 @@ f:I[2342,[],"IconMark"]
 7:null
 c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link","1",{"rel":"icon","href":"/favicon.ico?452facfc02637e1f","type":"image/x-icon","sizes":"96x96"}],["$","$Lf","2",{}]]
 10:I[107,["7458","static/chunks/app/%5BbookId%5D/export/page-8f248534efbcc5a8.js"],"default"]
-11:Tc08fe,<h1 class="book-title">Ґаудія Ґітанджалі</h1>
+11:Tc05ea,<h1 class="book-title">Ґаудія Ґітанджалі</h1>
 <p class="nav-links"><a href="#first-lines">↓ Індекс</a></p>
 <section class="toc" id="toc">
 <h1>Зміст</h1>
@@ -266,7 +266,7 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;самракшакам са̄дарам</strong><br>
 <strong>ванде шрī-ґурудевам а̄ната-шіра̄</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;а̄ча̄рйя-варйям ніджам</strong><br>
-<strong></strong><br>
+<br>
 <strong>преракам пра̄чʼя-па̄шча̄тья-шішʼяна̄м</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;бгакті-вартмані</strong><br>
 <strong>бгакті-нірмалам-а̄ча̄рʼя-сва̄мінам</strong><br>
@@ -495,83 +495,83 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 <h2>Джая Дгвані <span class="nav-links">&nbsp;&nbsp;<a href="#toc">↑</a>&nbsp;&nbsp;<a href="#first-lines">↓</a></span></h2>
 <h3>"Кī Джая!" прославлення</h3>
 <p class="verse"><strong>джая са-парікара шрī-шрī-ґуру-ґаура̄нґа-ра̄дга̄-ґовіндасундар ґірідга̄рīджīу кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>джая ом вішнупа̄да парамахамса-парівра̄джака̄ча̄рʼя-варʼя аштоттара-шята-шрī шрīмад бгакті сундар ґовінда дев-ґосва̄мī маха̄ра̄дж кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>джая ом вішнупа̄да парамахамса-парівра̄джака̄ча̄рʼя-варʼя аштоттара-шята-шрī шрīмад бгакті ракшак шрīдгар дев-ґосва̄мī маха̄ра̄дж кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>джая ом вішнупа̄да парамахамса-парівра̄джака̄ча̄рʼя-варʼя аштоттара-шята-шрī шрīмад бгакті сіддга̄нта сарасватī тха̄кур кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>джая ом вішнупа̄да шрīла ґаура-кішора да̄с ба̄ба̄джī маха̄ра̄дж кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>джая ом вішнупа̄да шрīла сач-чід-а̄нанда бгактівінода тха̄кур кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>джая ом вішнупа̄да шрīла джаґанна̄тх да̄с ба̄ба̄джī маха̄ра̄дж кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>шрī рӯпа̄нуґа ґуру-варґа кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>нама̄ча̄рʼя шрīла харіда̄с тха̄кур кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>ананта-котī вайшнава-вринда кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>шрī баладева відьябгӯшана кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>шрīла вішвана̄тх чакравартī прабгу кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>шрī нароттама-шьяма̄нанда-шрīніва̄са-а̄ча̄рʼя-прабгу кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>шрīла вринда̄ван да̄с тха̄кур кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>шрīла кришнада̄с кавіра̄дж кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>сапаршада шрī нітьянанда прабгу кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>сапаршада шрīман маха̄прабгу кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>джая шрī-шрī ра̄дга̄-кришна ґопа-ґопī-ґопīна̄тх шьяма-кунда ра̄дга̄-кунда ґірі-ґовардган кī джая!</strong><br>
-<strong></strong><br>
-<strong>шрī лакшмī-вара̄хадева кī джая! (у нашому Навадвіп Матху)</strong><br>
-<strong></strong><br>
+<br>
+<strong>шрī лакшмī-вара̄хадева кī джая! </strong>(у нашому Навадвіп Матху)<br>
+<br>
 <strong>шюддга бгакті вігна віна̄шяя шрī нрисімгадева кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>бгакта-правара прахла̄д маха̄ра̄дж кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>туласī маха̄ра̄нī кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>ґанґа̄-ямуна̄джī кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>ґрантхара̄джа шрīмад-бга̄ґаватам чайтанья-чаріта̄мрита кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>вішва-вайшнава ра̄джа сабга̄ кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>а̄кара матха-ра̄джа шрī чайтанья матх кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>тадīя шякха-матх кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>шрī чайтанья са̄расват матх кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>вішва-бʼяпī тадīя шякха-матх кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>шрīдга̄м ма̄япур кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>шрīдга̄м набадвīп кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>вринда̄ван дга̄м кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>пурушоттам дга̄м кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>баладева-субгадра̄-джаґанна̄тхджī кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>шрī ґовінда кунда кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>шрī сада̄шіва ґанґадгараджīу кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>самавета вайшнава-мандала кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>самавета бгакта-вринда кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>харіна̄ма-санкīртана кī джая!</strong><br>
-<strong></strong><br>
+<br>
 <strong>ніта̄і-ґаура-према̄нанде харібол!</strong></p>
 </div>
 </section>
@@ -955,7 +955,7 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 <h5>12</h5>
 <p class="verse"><strong>авічінтья нітьянанда-чайтанья-прака̄шя</strong><br>
 <strong>шрī ґуру-праса̄де декхе еі адгама да̄са</strong><br>
-<strong>(шрī ґуру-праса̄де декхе шрī ґовінда да̄са)</strong></p>
+(шрī ґуру-праса̄де декхе шрī ґовінда да̄са)</p>
 </div>
 </section>
 <section class="song" id="song-jaya-jaya-gurudever-arati-ujjvala" data-translated="1">
@@ -1740,7 +1740,7 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 <div class="verse-block" data-number="10">
 <h5>10</h5>
 <p class="verse"><strong>шрī-ґуру-вайшнава-па̄да-падма корі а̄шя</strong><br>
-<strong>(харі) на̄ма-санкīртана кохе нароттама да̄са</strong></p>
+(харі)<strong> на̄ма-санкīртана кохе нароттама да̄са</strong></p>
 <p class="translation">Уповаючи на лотосові стопи Шрі Ґуру та Вайшнавів, Нароттам Дас співає <i>санкіртану</i> Святого Імені.</p>
 </div>
 </section>
@@ -1886,10 +1886,10 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;сва-праса̄д-анна діло бга̄і</strong><br>
 <strong>сеі анна̄мрита па̄о,&nbsp;&nbsp;&nbsp;&nbsp;ра̄дга̄-кришна-ґуна ґа̄о,</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;преме да̄ко чайтанья-ніта̄і</strong><br>
-<strong></strong><br>
-<strong>&nbsp;&nbsp;&nbsp;&nbsp;(преме бгоре да̄каре)</strong><br>
-<strong>(даял ніта̄і чайтанья боле, преме бгоре да̄каре)</strong><br>
-<strong>&nbsp;&nbsp;&nbsp;&nbsp;(ніта̄і ґаура харібол)</strong></p>
+<br>
+<strong>&nbsp;&nbsp;&nbsp;&nbsp;</strong>(преме бгоре да̄каре)<br>
+(даял ніта̄і чайтанья боле, преме бгоре да̄каре)<br>
+<strong>&nbsp;&nbsp;&nbsp;&nbsp;</strong>(ніта̄і ґаура харібол)</p>
 </div>
 </section>
 </section>
@@ -2186,7 +2186,7 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 <section class="song" id="song-shri-krishna-chaitanya-prabhu-daya-kara-more" data-translated="1">
 <div class="verse-block" data-number="1">
 <h2>Са̄варана-Шрī-Ґаура-па̄да-падме Пра̄ртхана̄ <span class="nav-links">&nbsp;&nbsp;<a href="#toc">↑</a>&nbsp;&nbsp;<a href="#first-lines">↓</a></span></h2>
-<h4>Шрīла Нароттам Да̄с Тха̄кур</h4>
+<h4>Вірші з 1 по 7 написав Шрīла Нароттам Да̄с Тха̄кур</h4>
 <h5>1</h5>
 <p class="verse"><strong>шрī кришна чайтанья прабгу дая кара море</strong><br>
 <strong>тома̄ віна̄ ке даялу джаґата ма̄джга̄ре</strong></p>
@@ -2230,9 +2230,9 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 </div>
 <div class="verse-block" data-number="8">
 <h5>8</h5>
-<p class="verse"><strong>(дая кара прабгупа̄да шрī ґаура прака̄шя)</strong><br>
-<strong>(тава джана крипа̄ ма̄ґе еі адгама да̄са)</strong></p>
-<p class="translation">Будь ласка, даруй Свою милість, Шріло Прабгупаде Сарасваті Тхакуре, проявлення Шрі Ґаури. Цей занепалий слуга благає про милість Твоїх близьких супутників.</p>
+<p class="verse"><strong>дая кара прабгупа̄да шрī ґаура прака̄шя</strong><br>
+<strong>тава джана крипа̄ ма̄ґе еі адгама да̄са</strong></p>
+<p class="translation">Будь ласка, даруй Свою милість, Шріло Прабгупаде Сарасваті Тхакуре, проявлення Шрі Ґаури. Цей занепалий слуга благає про милість Твоїх близьких супутників. <i>(Цей вірш написав Шрīла Бгакті Ракшак Шрīдгар Дев-Ґосва̄мī Маха̄ра̄дж)</i></p>
 </div>
 </section>
 <section class="song" id="song-vaishnava-thakura-dayara-sagara" data-translated="1">
@@ -2240,7 +2240,7 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 <h2>Шрī Вайшнава-махіма̄-ґīті <span class="nav-links">&nbsp;&nbsp;<a href="#toc">↑</a>&nbsp;&nbsp;<a href="#first-lines">↓</a></span></h2>
 <h4>Шрīла Бгактівінод Тха̄кур</h4>
 <h5>1</h5>
-<p class="verse"><strong>(охе) вайшнава тха̄кура, даяра са̄ґара,</strong><br>
+<p class="verse">(охе)<strong> вайшнава тха̄кура, даяра са̄ґара,</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;е да̄се каруна̄ корі</strong><br>
 <strong>дія пада-чха̄я, шодго хе а̄ма̄ре,</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;тома̄ра чарана дгорі</strong></p>
@@ -2252,7 +2252,7 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;чоя ґуна дехо’ да̄се</strong><br>
 <strong>чоя сат-санґа,&nbsp;&nbsp;&nbsp;&nbsp;дехо’ хе а̄ма̄ре,</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;босечхі санґера а̄шє</strong></p>
-<p class="translation">Приборкай у мені шість спонукань, виправ шість вад і наділи цього слугу шістьма благими чеснотами. Прошу, даруй мені шість видів благого спілкування з відданими. Я сиджу біля Твоїх стоп, з глибоким прагненням до такого спілкування.</p>
+<p class="translation">Приборкай у мені шість спонукань, виправ шість вад і наділи цього слугу шістьма благими чеснотами. Прошу, даруй мені шість видів благого спілкування з відданими. Я сиджу біля Твоїх стоп, з глибоким прагненням до такого спілкування <i>(див. примітку)</i>.</p>
 </div>
 <div class="verse-block" data-number="3">
 <h5>3</h5>
@@ -2271,15 +2271,15 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 <p class="translation">Крішна - твій, ти можеш дати Його, ти маєш силу зробити це. Я ж, позбавлений всього, кличу: «Крішна, Крішна!» — і відчайдушно біжу за Тобою.</p>
 </div>
 <div class="verse-block" data-number="">
-<p class="verse"><strong>(а̄мі) (дга̄і тава па̄чхе па̄чхе)</strong><br>
-<strong>(кришна дгана па̄бара̄се дга̄і тава па̄чхе па̄чхе)</strong><br>
-<strong>(тумі ділеоу діте па̄ро)</strong><br>
-<strong>(кришна тома̄р хридоєр дган тумі ділеоу діте па̄ро)</strong><br>
-<strong>(кришна дева̄р шякті дгара тумі ділеоу діте па̄ро)</strong></p>
+<p class="verse">(а̄мі)<strong> </strong>(дга̄і тава па̄чхе па̄чхе)<br>
+(кришна дгана па̄бара̄се дга̄і тава па̄чхе па̄чхе)<br>
+(тумі ділеоу діте па̄ро)<br>
+(кришна тома̄р хридоєр дган тумі ділеоу діте па̄ро)<br>
+(кришна дева̄р шякті дгара тумі ділеоу діте па̄ро)</p>
 <p class="translation">Я біжу за тобою у відчаї. Я біжу за тобою з надією отримати скарб Крішни. Якщо ти забажаєш, ти можеш дати Крішну іншим. Крішна - скарб твого серця. Ти маєш силу дати Крішну. Якщо ти забажаєш, ти можеш дати Крішну іншим.</p>
 </div>
 <div class="verse-block" data-number="">
-<h3>Примітка до строфи 2</h3>
+<h3>Примітка до вірша 2</h3>
 <p class="translation"><i class="translation__bold">Шість спонукань</i> — це прагнення мови, ума, гніву, язика, шлунка та статевих органів.<br>
 <i class="translation__bold">Шість вад:</i><br />1) схильність переїдати або накопичення грошей понад необхідного;<br />2) зайві зусилля заради матеріальних цілей;<br />3) пусті балачки на мирські теми;<br />4) надмірна привʼязаність до вказівок святого письма або, навпаки, зневага до них;<br />5) близьке спілкування з людьми, зануреними в матеріалістичний настрій;<br />6) прагнення мирської слави та досягнень.<br>
 <i class="translation__bold">Шість благих чеснот:</i><br />1) натхнення в служінні;<br />2) терпіння та терпимість;<br />3) впевненість;<br />4) рішучість виконувати дії, сприятливі відданому служінню;<br />5) твердий намір відмовитися від спілкування з невідданими;<br />6) внутрішня дисципліна завжди слідувати по стопам попередніх <i>ачарʼїв</i>.<br>
@@ -3219,7 +3219,7 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 </div>
 <div class="verse-block" data-number="2">
 <h5>2</h5>
-<p class="verse"><strong>канта-кера тару&nbsp;&nbsp;&nbsp;&nbsp;сада̄і себілі (мана)</strong><br>
+<p class="verse"><strong>канта-кера тару&nbsp;&nbsp;&nbsp;&nbsp;сада̄і себілі </strong>(мана)<br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;амрита па̄’ба̄ра а̄шє</strong><br>
 <strong>према-калпатару&nbsp;&nbsp;&nbsp;&nbsp;шрī ґаура̄нґа а̄ма̄ра</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;та̄ха̄ре бгабілі біше</strong></p>
@@ -3227,17 +3227,17 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 </div>
 <div class="verse-block" data-number="3">
 <h5>3</h5>
-<p class="verse"><strong>саура-бгера а̄шє&nbsp;&nbsp;&nbsp;&nbsp;пала̄шя шюнкілі (мана)</strong><br>
+<p class="verse"><strong>саура-бгера а̄шє&nbsp;&nbsp;&nbsp;&nbsp;пала̄шя шюнкілі </strong>(мана)<br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;на̄са̄те пашіло кīта</strong><br>
-<strong>‘ікшу-данда’ бга̄ві’&nbsp;&nbsp;&nbsp;&nbsp;ка̄тха чушилі (мана)</strong><br>
+<strong>‘ікшу-данда’ бга̄ві’&nbsp;&nbsp;&nbsp;&nbsp;ка̄тха чушилі </strong>(мана)<br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;кемоне па̄ібі мітха</strong></p>
 <p class="translation">Шукаючи солодкий аромат, я нюхав щось схоже на пахучу квітку. Але вона не мала запаху, як не має запаху квітка <i>палашя</i>. Натомість з неї вилетів ґедзь і вкусив мене за носа. Я намагався насолодитися нектаром мирського життя, помилково вважаючи його солодким, як сік цукрової тростини. Натомість я ніби жував сухе дерево. Так всі мої спроби насолоди виявились марними.</p>
 </div>
 <div class="verse-block" data-number="4">
 <h5>4</h5>
-<p class="verse"><strong>‘ха̄ра’ болія&nbsp;&nbsp;&nbsp;&nbsp;ґола̄я парілі (мана)</strong><br>
+<p class="verse"><strong>‘ха̄ра’ болія&nbsp;&nbsp;&nbsp;&nbsp;ґола̄я парілі </strong>(мана)<br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;шямана кінкора са̄па</strong><br>
-<strong>‘шітала’ болія&nbsp;&nbsp;&nbsp;&nbsp;а̄ґуна поха̄лі (мана)</strong><br>
+<strong>‘шітала’ болія&nbsp;&nbsp;&nbsp;&nbsp;а̄ґуна поха̄лі </strong>(мана)<br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;па̄ілі баджара-та̄па</strong></p>
 <p class="translation">Визнавши поразку, змучений та безсилий, я очікую змію смерті. Жар матеріального життя я прийняв за заспокійливу прохолоду. Замість неї я отримав нестерпне страждання, як від удару громом.</p>
 </div>
@@ -3245,7 +3245,7 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 <h5>5</h5>
 <p class="verse"><strong>самса̄ра бгаджілі&nbsp;&nbsp;&nbsp;&nbsp;шрī-ґаура̄нґа бгулілі</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;на̄ шюнілі са̄дгура катха̄</strong><br>
-<strong>іха-парака̄ла&nbsp;&nbsp;&nbsp;&nbsp;дука̄ла кхоялі (мана)</strong><br>
+<strong>іха-парака̄ла&nbsp;&nbsp;&nbsp;&nbsp;дука̄ла кхоялі </strong>(мана)<br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;кха̄ілі а̄пана ма̄тха̄</strong></p>
 <p class="translation">Присвятивши себе сімʼї та мирському життю, я забув Господа Ґауранґу і не прийняв настанови святих. Тепер, коли мої дні злічено, я розумію, що помираю вдруге. Перший раз я загинув, коли марно стратив життя на потурання чуттєвим насолодам.</p>
 </div>
@@ -4386,7 +4386,7 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 <h2>Дайньятміка̄ <span class="nav-links">&nbsp;&nbsp;<a href="#toc">↑</a>&nbsp;&nbsp;<a href="#first-lines">↓</a></span></h2>
 <h4>Шрīла Бгактівінод Тха̄кур</h4>
 <h5>1</h5>
-<p class="verse"><strong>(прабгу хе!)</strong><br>
+<p class="verse">(прабгу хе!)<br>
 <strong>емона дурматі,&nbsp;&nbsp;&nbsp;&nbsp;самса̄ра бгіторе,</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;подія а̄чхіну а̄мі</strong><br>
 <strong>тава ніджа-джана,&nbsp;&nbsp;&nbsp;&nbsp;коно маха̄джане,</strong><br>
@@ -4915,7 +4915,7 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 <h4>Шрīла Бгактівінод Тха̄кур</h4>
 <h5>1</h5>
 <p class="verse"><strong>&nbsp;&nbsp;&nbsp;&nbsp;кобе хо’бе боло се-діна а̄ма̄р</strong><br>
-<strong>(а̄ма̄р) апара̄дга гучі’,&nbsp;&nbsp;&nbsp;&nbsp;шюддга на̄ме ручі,</strong><br>
+(а̄ма̄р)<strong> апара̄дга гучі’,&nbsp;&nbsp;&nbsp;&nbsp;шюддга на̄ме ручі,</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;крипа̄-боле хо’бе хридоє саньча̄р</strong></p>
 </div>
 <div class="verse-block" data-number="2">
@@ -4934,7 +4934,7 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 </div>
 <div class="verse-block" data-number="4">
 <h5>4</h5>
-<p class="verse"><strong>(кобе) коріте шрī-кришна-&nbsp;&nbsp;&nbsp;&nbsp;на̄ма уча̄рана,</strong><br>
+<p class="verse">(кобе)<strong> коріте шрī-кришна-&nbsp;&nbsp;&nbsp;&nbsp;на̄ма уча̄рана,</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;пулакіта дехо ґадґада вачана</strong><br>
 <strong>байбарнья-бепатху&nbsp;&nbsp;&nbsp;&nbsp;хобе сангатана,</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;нірантара нетре бо’бе ашру-дга̄р</strong></p>
@@ -6083,10 +6083,10 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 <div class="verse-block" data-number="">
 <h2>Джая Ра̄дга̄-Ма̄дгава <span class="nav-links">&nbsp;&nbsp;<a href="#toc">↑</a>&nbsp;&nbsp;<a href="#first-lines">↓</a></span></h2>
 <h4>Шрīла Бгактівінод Тха̄кур</h4>
-<p class="verse"><strong>(джая) ра̄дга̄-ма̄дгава&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(джая) куньджа-біха̄рī</strong><br>
-<strong>(джая) ґопī-джана-валлабга&nbsp;&nbsp;&nbsp;&nbsp;(джая) ґірі-вара-дга̄рī</strong><br>
-<strong>(джая) яшода̄-нандана,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(джая) враджа-джана-раньджана,</strong><br>
-<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(джая) джа̄муна-тīра-вана-ча̄рī</strong></p>
+<p class="verse">(джая)<strong> ра̄дга̄-ма̄дгава&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>(джая)<strong> куньджа-біха̄рī</strong><br>
+(джая)<strong> ґопī-джана-валлабга&nbsp;&nbsp;&nbsp;&nbsp;</strong>(джая)<strong> ґірі-вара-дга̄рī</strong><br>
+(джая)<strong> яшода̄-нандана,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>(джая)<strong> враджа-джана-раньджана,</strong><br>
+<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>(джая)<strong> джа̄муна-тīра-вана-ча̄рī</strong></p>
 </div>
 </section>
 <section class="song" id="song-mayura-mukuta-pitambara-dhari" data-translated="0">
@@ -6104,12 +6104,12 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 </div>
 <div class="verse-block" data-number="3">
 <h5>3</h5>
-<p class="verse"><strong>(джая) яшода̄-нандана кришна мура̄рі</strong><br>
+<p class="verse">(джая)<strong> яшода̄-нандана кришна мура̄рі</strong><br>
 <strong>муралīдгара ґовардгана-дга̄рī</strong></p>
 </div>
 <div class="verse-block" data-number="4">
 <h5>4</h5>
-<p class="verse"><strong>(джая) ґопī-джана-баллабга вамші-біха̄рī</strong><br>
+<p class="verse">(джая)<strong> ґопī-джана-баллабга вамші-біха̄рī</strong><br>
 <strong>муралīдгара ґовардгана-дга̄рī</strong></p>
 </div>
 </section>
@@ -6284,7 +6284,7 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 </div>
 <div class="verse-block" data-number="5">
 <h5>5</h5>
-<p class="verse"><strong>(сакхī хе)&nbsp;&nbsp;&nbsp;&nbsp;судга̄моя се рӯпа-ма̄дгурī</strong><br>
+<p class="verse">(сакхī хе)<strong>&nbsp;&nbsp;&nbsp;&nbsp;судга̄моя се рӯпа-ма̄дгурī</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;декхіле наяна,&nbsp;&nbsp;&nbsp;&nbsp;хоя ачетана,</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;джгоре премамоя ва̄рі</strong></p>
 </div>
@@ -7270,10 +7270,10 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 <h5>6-8</h5>
 <p class="verse"><strong>саба̄ра анґете шобге шрī чандана ма̄ла̄</strong><br>
 <strong>а̄нанде на̄чоє собе хоіє вібгола̄</strong><br>
-<strong></strong><br>
+<br>
 <strong>ні джа̄нанде на̄че маха̄прабгу вішвамбгара</strong><br>
 <strong>чаранера та̄лі шюні аті манохара</strong><br>
-<strong></strong><br>
+<br>
 <strong>бга̄ва̄вешє ма̄ла̄ на̄хі рохоє ґала̄я</strong><br>
 <strong>чхіндія подоє ґія бгакатера ґа̄я</strong></p>
 <p class="wbw"><i class="wbw__bold">саба̄ра</i> — у всіх; <i class="wbw__bold">анґете</i> — на тілах; <i class="wbw__bold">шобге</i> — сяє; <i class="wbw__bold">шрī чандана</i> — священний сандал; <i class="wbw__bold">ма̄ла̄</i> — гірлянда; <i class="wbw__bold">а̄нанде</i> — у блаженстві; <i class="wbw__bold">на̄чоє</i> — танцюють; <i class="wbw__bold">собе</i> — усі; <i class="wbw__bold">хоіє</i> — ставши; <i class="wbw__bold">вібгола̄</i> — охоплені захватом;<br>
@@ -7638,7 +7638,7 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 <h4>Шрīла Вринда̄ван Да̄с Тха̄кур</h4>
 <p class="verse"><strong>харе кришна харе кришна кришна кришна харе харе</strong><br>
 <strong>харе ра̄ма харе ра̄ма ра̄ма ра̄ма харе харе</strong><br>
-<strong></strong><br>
+<br>
 <strong>“прабгу кохе—кохілан еі маха̄мантра</strong><br>
 <strong>іха̄ джапа ґія сабе корія нірбандга</strong><br>
 <strong>іха̄ хоіте сарва-сіддгі хоібе саба̄ра</strong><br>
@@ -8363,12 +8363,12 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 <strong>варна-дгарма-нірвішєша-сарвалока-ністарам</strong><br>
 <strong>шрī-сарасватī-пріянь ча бгакті-сундара̄шраям</strong><br>
 <strong>шрīдгарам нама̄мі бгакті-ракшакам джаґад-ґурум</strong><br>
-<strong></strong><br>
+<br>
 <strong>сіндгу-чандра-парватенду-шяка-джанма-лīланам</strong><br>
 <strong>шюддга-дīпта-ра̄ґа-бгакті-ґаурава̄нушіланам</strong><br>
 <strong>бінду-чандра-ратна-сома-шяка-лочана̄нтарам</strong><br>
 <strong>шрīдгарам нама̄мі бгакті-ракшакам джаґад-ґурум</strong><br>
-<strong></strong><br>
+<br>
 <strong>канака суручі ра̄нґам сундарам саумʼя-мӯртім</strong><br>
 <strong>вібудга-кула-вареньям шрī-ґурум сіддгі-пӯртім</strong><br>
 <strong>таруна-тапана-ва̄сам бгактідань чід-віла̄сам</strong><br>
@@ -8388,10 +8388,10 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 <h5>2-4</h5>
 <p class="verse"><strong>судīргонната-дīпта̄нґам, супīбʼя-вапушам парам</strong><br>
 <strong>тріданда-туласīма̄ла̄-, ґопīчандана-бгӯшитам</strong><br>
-<strong></strong><br>
+<br>
 <strong>ачінтья-пратібга̄-сніґдгам, дівʼяґʼяна-прабга̄карам</strong><br>
 <strong>веда̄ді-сарвашястра̄на̄м, са̄маньджасья-відга̄якам</strong><br>
-<strong></strong><br>
+<br>
 <strong>ґаудīяча̄рʼя-ратна̄на̄м, уджджвалам ратна-каустубгам</strong><br>
 <strong>шрī-чайтанья-маха̄премон-, матта̄лīна̄м шіроманім</strong></p>
 </div>
@@ -8399,7 +8399,7 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 <h5>5-6</h5>
 <p class="verse"><strong>ґа̄ятрй-артха-вінірджʼясам, ґīта̄-ґӯдга̄ртха-ґауравам</strong><br>
 <strong>стотраратна̄ді-самриддгам, прапанна-джīвана̄мритам</strong><br>
-<strong></strong><br>
+<br>
 <strong>апӯрваґрантха-самбга̄рам, бгакта̄на̄м хрид-раса̄янам</strong><br>
 <strong>крипая єна даттам там, наумі ка̄рунья-сундарам</strong></p>
 </div>
@@ -8412,13 +8412,13 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 <h5>8-10</h5>
 <p class="verse"><strong>дга̄мані шрī-навадвīпе, ґуптаґовардгане шюбге</strong><br>
 <strong>вішвавішрута-чайтанья-, са̄расвата-матхоттамам</strong><br>
-<strong></strong><br>
+<br>
 <strong>стха̄паїтва̄ ґурӯн ґаура-, ра̄дга̄-ґовіндавіґраха̄н</strong><br>
 <strong>прака̄шяяті ча̄тма̄нам, сева̄-самсіддгі-віґрахах</strong><br>
-<strong></strong><br>
+<br>
 <strong>ґаура-шрīрӯпа-сіддга̄нта-, дівʼя-дга̄ра̄дгарам ґурум</strong><br>
 <strong>шрī-бгакті-ракшакам девам, шрīдгарам пранама̄мй ахам</strong><br>
-<strong></strong><br>
+<br>
 <strong>шраддгая ях патхен нітьям, пранаті-дашякам муда̄</strong><br>
 <strong>вішяте ра̄ґама̄рґешу, тасья бгакта-праса̄датах</strong></p>
 </div>
@@ -8584,22 +8584,22 @@ c:[["$","meta","0",{"name":"robots","content":"noindex, nofollow"}],["$","link",
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;па̄да-юґам-абгая-варада̄нам</strong><br>
 <strong>канака-гана-ніндітам вапура-мара-вандітам</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;натана-ґаті-ґаурава-ніда̄нам</strong><br>
-<strong></strong><br>
+<br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;бгадже шрīдгара-сва̄мінам-анішям</strong><br>
 <strong>шярада-відгу-нінді-мукха- падма-маті-шобганам</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;ґопī-тілака-чарчіта-субга̄лам</strong><br>
-<strong></strong><br>
+<br>
 <strong>ґамана-джіта-ва̄ранам&nbsp;&nbsp;&nbsp;&nbsp;шямана-бгая-та̄ранам</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;пракриті-ручі-нінді-крита-вешям</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;пракриті-ручі-намбграма-сувешям</strong><br>
 <strong>пхулла-кара-паллавам&nbsp;&nbsp;&nbsp;&nbsp;бгакта-джана-валлабгам</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;тунґа-притхулам хридая-дешям</strong><br>
-<strong></strong><br>
+<br>
 <strong>ґаура-пурата-саурабгам кришна-пурата-ґауравам</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;вібудга-кула-падма-налішям</strong><br>
 <strong>бгакта-кула-данданам бганда-мата-кханданам</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;бгакта-кула-нандана-ятīшям</strong><br>
-<strong></strong><br>
+<br>
 <strong>трібгувана-ніва̄сіне&nbsp;&nbsp;&nbsp;&nbsp;кришнам-упадешінам</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;асура-кула-да̄мбгіка-крита̄нтам</strong><br>
 <strong>наумі будга-на̄якам парама-ґаті-да̄якам</strong><br>

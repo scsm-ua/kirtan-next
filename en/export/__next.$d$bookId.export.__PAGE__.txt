@@ -3,7 +3,7 @@
 6:I[5207,[],"OutletBoundary"]
 7:"$Sreact.suspense"
 :HL["/_next/static/css/d41aea12ff0698fe.css","style"]
-3:Tf1f4b,<h1 class="book-title">Kirtan Guide</h1>
+3:Tf1c8c,<h1 class="book-title">Kirtan Guide</h1>
 <p class="nav-links"><a href="#first-lines">↓ Index</a></p>
 <section class="toc" id="toc">
 <h1>Contents</h1>
@@ -2741,7 +2741,7 @@ N.B. On Harivāsar-tithis (days on which devotees fast from grains) the above so
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;chhaya guṇa deha’ dāse</strong><br>
 <strong>chhaya sat-saṅga&nbsp;&nbsp;&nbsp;&nbsp;deha’ he āmāre</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;basechhi saṅgera āśe</strong></p>
-<p class="translation">Subjugate the six urges, rectify the six defects, bestow the six good qualities upon this servitor. Please grant me the six kinds of saintly association. I sit at your feet aspiring for that association.*</p>
+<p class="translation">Subjugate the six urges, rectify the six defects, bestow the six good qualities upon this servitor. Please grant me the six kinds of saintly association. I sit at your feet aspiring for that association <i>(see footnote)</i>.</p>
 </div>
 <div class="verse-block" data-number="3">
 <h5>3</h5>
@@ -2765,9 +2765,11 @@ N.B. On Harivāsar-tithis (days on which devotees fast from grains) the above so
 (tumi dileo kṛṣṇa dite pāra)<br>
 (kṛṣṇa tomār hṛdayer dhan tumi dileo dite pāra)<br>
 (kṛṣṇa debār śakti-dhara tumi dileo dite pāra)</p>
-<p class="translation">(I run after you. With the hope of attaining the wealth of Kṛṣṇa, I run after you. If you desire to give, you can give Kṛṣṇa. Kṛṣṇa is the wealth of your heart, and if you desire to give, you can give. You have the power to give Kṛṣṇa, and if you desire to give, you can give.)<br>
-*<i class="translation__bold">Footnote to verse 2:</i><br>
-The six urges are those of speech, the mind, anger, the tongue, the belly, and the genitals.<br>
+<p class="translation">(I run after you. With the hope of attaining the wealth of Kṛṣṇa, I run after you. If you desire to give, you can give Kṛṣṇa. Kṛṣṇa is the wealth of your heart, and if you desire to give, you can give. You have the power to give Kṛṣṇa, and if you desire to give, you can give.)</p>
+</div>
+<div class="verse-block" data-number="">
+<h3>Footnote to verse 2</h3>
+<p class="translation">The six urges are those of speech, the mind, anger, the tongue, the belly, and the genitals.<br>
 The six faults are overeating or collecting more monetary funds than required, over-endeavouring for material objectives, unnecessary talking about mundane affairs, being too attached to or too neglectful of Scriptural rules and regulations, associating with worldly-minded persons, and lusting after mundane achievements.<br>
 The six good qualities are enthusiasm, patience, confidence, the determination to perform activities favourable to devotional service, the resolution to abandon the association of non-devotees, and the discipline required to always follow in the footsteps of the predecessor āchāryas.<br>
 The six kinds of saintly association are offering gifts in charity, accepting charitable gifts, revealing one’s mind in confidence, enquiring confidentially, accepting prasādam and offering prasādam.</p>
@@ -2883,8 +2885,8 @@ The six kinds of saintly association are offering gifts in charity, accepting ch
 In regard to Lord Chaitanya’s Pastimes, Śrīla Rūpa Goswāmī has mentioned the following verse in his Śrī Chaitanyāṣṭakam:</p>
 </div>
 <div class="verse-block" data-number="">
-<p class="verse"><strong>sadopāsyaḥ śrīmān dhṛta-manuja-kāyaiḥ praṇayitāṁ</strong><br>
-<strong>vahadbhir gīr-vāṇair giriśa-parameṣṭhi-prabhṛtibhiḥ</strong></p>
+<p class="verse">sadopāsyaḥ śrīmān dhṛta-manuja-kāyaiḥ praṇayitāṁ<br>
+vahadbhir gīr-vāṇair giriśa-parameṣṭhi-prabhṛtibhiḥ</p>
 <p class="translation">“The gods, headed by Lord Śiva and Lord Brahmā, accepted the garb of ordinary men in the Pastimes of Śrī Chaitanyadev in order to eternally worship Him with heartfelt affection.” Śrī Chaitanyadev is the embodiment of that vast nectarean ocean found in Lord Kṛṣṇa’s Holy Name, which, as He is Kṛṣṇa Himself, is none other than Śrī Gaurāṅga’s own pure Name. Śrī Chaitanyadev is compared to that grand milk ocean which, after being churned, produced nectar. The nectar Mahāprabhu distributes is Lord Kṛṣṇa’s Holy Names, which extinguish all the miseries of material existence, such as anxieties arising from sinful activities performed in direct opposition to the Lord, and the three-fold sufferings which fuel the grand forest fire that scorches those in search of sense gratification, salvation, and mystic yoga perfections. I offer my obeisances to that beautiful Golden Lord, Gaurāṅga Sundar, the divine form of Kṛṣṇa-prema.</p>
 </div>
 <div class="verse-block" data-number="2">
@@ -3063,8 +3065,8 @@ Whenever the child Nimāi angrily cried, He could only be pacified by the chanti
 This was shown in the Lord’s explanation of the Upaniṣads, where it is stated:</p>
 </div>
 <div class="verse-block" data-number="">
-<p class="verse"><strong>apāṇipādo javano grahitā</strong><br>
-<strong>paśyatyachakṣuḥ sa śṛṇotyakarṇaḥ</strong></p>
+<p class="verse">apāṇipādo javano grahitā<br>
+paśyatyachakṣuḥ sa śṛṇotyakarṇaḥ</p>
 <p class="translation">“The Lord has no hands or legs, yet He walks and touches. The Lord has no eyes or ears, yet He sees and hears.”<br>
 Lord Gaurasundar also explained the ātmarāma verse which is found in the grandest of all famous literature, <i>Śrīmad Bhāgavatam</i>. He clearly showed that the Vedas, Purāṇas, Vedānta, and all other existing scriptures, which are like a magnificent temple where the Supreme Lord’s wonderful Pastimes are eternally resounded, support the conclusion that everything in this world is a reflection of the eternal variegatedness found in the spiritual realm. I offer my obeisances to that beautiful Golden Lord, Gaurāṅga Sundar, the divine form of Kṛṣṇa-prema.</p>
 </div>
@@ -3141,10 +3143,10 @@ Lord Gaurasundar also explained the ātmarāma verse which is found in the grand
 <p class="translation">Surrounded by innumerable devotees, Lord Gaurasundar displayed His divine and wonderful dancing figure in front of the Ratha Yātrā cart while performing congregational chanting of the Lord’s Holy Names. The Lord’s personality totally charmed the hearts of Pratāparudra Mahārāj, the assembled pilgrims, and all the other dear friends of the King. The Lord also revealed the inner purport of Lord Jagannātha’s Pastime of riding the cart to the Guṇḍichā temple, when He mentioned the verse by Śrīla Rūpa Goswāmī:</p>
 </div>
 <div class="verse-block" data-number="">
-<p class="verse"><strong>priyaḥ so ’yam kṛṣṇaḥ saha-chari kuru-kṣetra-militas</strong><br>
-<strong>tathāhaṁ sā rādhā tad idam ubhayoḥ saṅgama sukham</strong><br>
-<strong>tathāpy antaḥ-khelan-madhura-muralī-pañchama-juṣe</strong><br>
-<strong>mano me kālindī-pulina-vipināya spṛhayati</strong></p>
+<p class="verse">priyaḥ so ’yam kṛṣṇaḥ saha-chari kuru-kṣetra-militas<br>
+tathāhaṁ sā rādhā tad idam ubhayoḥ saṅgama sukham<br>
+tathāpy antaḥ-khelan-madhura-muralī-pañchama-juṣe<br>
+mano me kālindī-pulina-vipināya spṛhayati</p>
 <p class="translation">“O My dear friend, now I am at last reunited with My most beloved Kṛṣṇa in Kurukṣetra. I am the same Rādhārāṇī, and He is the same Kṛṣṇa. We are enjoying Our meeting, but still I wish to return to the banks of the Kālindī, where I could hear the sweet melody of His flute sounding the fifth note beneath the trees of the Vṛndāvan forest.” I offer my obeisances to that beautiful Golden Lord, Gaurāṅga Sundar, the divine form of Kṛṣṇa-prema.</p>
 </div>
 </section>
@@ -3217,10 +3219,10 @@ Lord Gaurasundar also explained the ātmarāma verse which is found in the grand
 <p class="translation">Lord Chaitanya stated that the mood of deep separation that Mādhavendra Purī was able to taste, as depicted in the following beautiful verse first spoken by Śrīmatī Rādhārāṇī, is the zenith point and desirable object of pure adoration:</p>
 </div>
 <div class="verse-block" data-number="">
-<p class="verse"><strong>ayi dīna-dayārdra nātha he</strong><br>
-<strong>mathurā-nātha kadāvalokyase</strong><br>
-<strong>hṛdayaṁ tvad-aloka-kātaraṁ</strong><br>
-<strong>dayita bhrāmyati kiṁ karomy aham</strong></p>
+<p class="verse">ayi dīna-dayārdra nātha he<br>
+mathurā-nātha kadāvalokyase<br>
+hṛdayaṁ tvad-aloka-kātaraṁ<br>
+dayita bhrāmyati kiṁ karomy aham</p>
 <p class="translation">“O my Lord! O most gracious master! O master of Mathurā! When will I see You again? Because of my not seeing You, my agitated heart has become unsteady. O most beloved one, what shall I do now?” After the Lord entered into Vraja, the background stage where Pastimes of pure love are enacted, He became overwhelmed to His heart’s full satisfaction. The Lord was charmed to see the beautiful gardens and forest groves that served as His playground for spiritual Pastimes in a previous era. While visiting the twelve forests of Vṛndāvan, the Lord exhibited various different dealings with the cowherd boys and maidens. I offer my obeisances to that beautiful Golden Lord, Gaurāṅga Sundar, the divine form of Kṛṣṇa-prema.</p>
 </div>
 <div class="verse-block" data-number="39">
@@ -3253,10 +3255,10 @@ Lord Gaurasundar also explained the ātmarāma verse which is found in the grand
 <p class="translation">Surcharged with the confusing dictations of pure love of God, Lord Gaurasundar, dancing in ecstasy, anxiously approached the sacred place of Rādhā Kuṇḍa, which was unmanifest at that time. The Lord hastily took bath in that flooded paddy field, sanctified the water, and revealed it to be Śrī Rādhā Kuṇḍa. In deep humility, the Lord began to carefully recite verses from the scriptures depicting Śrī Rādhā Kuṇḍa as the divine embodiment of pure love.</p>
 </div>
 <div class="verse-block" data-number="">
-<p class="verse"><strong>yathā rādhā priyā viṣṇos</strong><br>
-<strong>tasyāḥ kuṇḍaṁ priyaṁ tathā</strong><br>
-<strong>sarva gopīṣu saivaikā</strong><br>
-<strong>viṣṇor-atyanta vallabhā</strong></p>
+<p class="verse">yathā rādhā priyā viṣṇos<br>
+tasyāḥ kuṇḍaṁ priyaṁ tathā<br>
+sarva gopīṣu saivaikā<br>
+viṣṇor-atyanta vallabhā</p>
 <p class="translation">“Just as Śrī Rādhā is very dear to Lord Kṛṣṇa, similarly Her divine pond, Śrī Rādhā Kuṇḍa, is dear to the Lord. Of all the cowherd maidens, She is the dearmost consort to Lord Kṛṣṇa.” I offer my obeisances to that beautiful Golden Lord, Gaurāṅga Sundar, the divine form of Kṛṣṇa-prema.</p>
 </div>
 <div class="verse-block" data-number="42">
@@ -3276,10 +3278,10 @@ Lord Gaurasundar also explained the ātmarāma verse which is found in the grand
 <p class="translation">Lord Gaurāṅga mentioned a witty conversation that was carried on between a parrot and his mate. In their talk, Lord Kṛṣṇa, the transcendental Cupid, is described to be illusioned due to His deep feelings of separation from Śrī Rādhā.</p>
 </div>
 <div class="verse-block" data-number="">
-<p class="verse"><strong>rādhā-saṅge yadā bhāti</strong><br>
-<strong>tadā ‘madana-mohanaḥ’</strong><br>
-<strong>ayathā viśva-moho ’pi</strong><br>
-<strong>svayaṁ ‘madana-mohitaḥ’</strong></p>
+<p class="verse">rādhā-saṅge yadā bhāti<br>
+tadā ‘madana-mohanaḥ’<br>
+ayathā viśva-moho ’pi<br>
+svayaṁ ‘madana-mohitaḥ’</p>
 <p class="translation">The female parrot said, “When Lord Kṛṣṇa is with Rādhārāṇī, He is the enchanter of Cupid; otherwise, when He is alone, He Himself is enchanted by amorous feelings, even though He enchants the whole universe.” By this Pastime, Lord Gaurāṅga charmed the devotees’ hearts by showing that Lord Kṛṣṇa’s sweetness and charm ultimately lies in the fact that He can be subdued by pure love. I offer my obeisances to that beautiful Golden Lord, Gaurāṅga Sundar, the divine form of Kṛṣṇa-prema.</p>
 </div>
 <div class="verse-block" data-number="44">
@@ -3323,10 +3325,10 @@ Lord Gaurasundar also explained the ātmarāma verse which is found in the grand
 <p class="translation">When Lord Gaurāṅga referred to the verse <i>Brahmeti Paramātmeti Bhagavān iti śabdyate</i> in the <i>Śrīmad Bhāgavatam</i>, He harmoniously accommodated the conception of the non-differentiated aspect of reality, Brahman, the ultimate goal of the impersonalists, with the conception of the localised aspect of reality, Paramātmā, the goal of the mystic perfectionists. The Lord adjusted these two truths by showing that they are included within and surpassed by the ultimate conception of the nondualistic Absolute Truth, Bhagavān, who is the primeval principle of reality. When revealing this axiomatic truth in connection with the joyful and confidential nature of the Supreme Lord’s spiritual Pastimes, Lord Gaurāṅga pointed out the divine nature of Vraja, which is existing above the Vaikuṇṭha planets.</p>
 </div>
 <div class="verse-block" data-number="">
-<p class="verse"><strong>vaikuṇṭhāj janito varā madhu-purī tatrāpi rāsotsavād</strong><br>
-<strong>vṛndāraṇyam udāra-pāṇi-ramaṇāt tatrāpi govardhanaḥ</strong><br>
-<strong>rādhā-kuṇḍam ihāpi gokula-pateḥ premāmṛtāplāvanāt</strong><br>
-<strong>kuryād asya virājato giri-taṭe sevāṁ vivekī na kaḥ</strong></p>
+<p class="verse">vaikuṇṭhāj janito varā madhu-purī tatrāpi rāsotsavād<br>
+vṛndāraṇyam udāra-pāṇi-ramaṇāt tatrāpi govardhanaḥ<br>
+rādhā-kuṇḍam ihāpi gokula-pateḥ premāmṛtāplāvanāt<br>
+kuryād asya virājato giri-taṭe sevāṁ vivekī na kaḥ</p>
 <p class="translation">“Superior to the spiritual realm of Vaikuṇṭha is Mathurā, where Śrī Kṛṣṇa first appears. Superior to Mathurā is the Vṛndāvan forest where Kṛṣṇa enjoyed the Rāsa Dance. Better still is Govardhan Hill, which was the site of even more confidential Pastimes of love. But best of all is Rādhā Kuṇḍa, which is situated at the foot of Govardhan Hill, and holds the supreme position because it is over-flooded with the nectar of the highest kind of divine love. Who, acquainted with the science of devotion, will not aspire for the divine service of Śrīmatī Rādhārāṇī at Rādhā Kuṇḍa?” Initially, Lord Gaurāṅga revealed the nature of pure loving service rendered unto the son of Nanda Mahārāj in the parental relationship. But when considering the flow of dedication’s sweet mellows, Lord Gaurāṅga described the ultimate aspect of the Supreme Lord’s personality to be Śrī Gopījanavallabha, whose divine figure is the unlimited reservoir of all the primary and secondary mellows tasted in pure devotion. Śrī Gaurāṅga also hinted that the joyful and charming Rāsa-līlā Pastimes are an all-conscious reality, none other than the personal potency of Śrīmatī Rādhārāṇī. Such transcendental Pastimes are found within the superexcellent and inconceivable spiritual world, and are the highest conception of spiritual existence, auspiciousness, and beauty. Lord Gaurāṅga suggested this to be the supreme achievable object of the living entities. I offer my obeisances to that beautiful Golden Lord, Gaurāṅga Sundar, the divine form of Kṛṣṇa-prema.</p>
 </div>
 <div class="verse-block" data-number="49">
@@ -3346,10 +3348,10 @@ Lord Gaurasundar also explained the ātmarāma verse which is found in the grand
 <p class="translation">Lord Gaurasundar explained this famous verse of the <i>Śrīmad Bhāgavatam</i> sixty-one times to Śrīla Sanātan Goswāmī, and later to Prakāśānanda Saraswatī:</p>
 </div>
 <div class="verse-block" data-number="">
-<p class="verse"><strong>ātmārāmaś cha munayo</strong><br>
-<strong>nirgranthā apy urukrame</strong><br>
-<strong>kurvanty ahaitukīṁ</strong><br>
-<strong>bhaktim itthaṁ-bhūta guṇo hariḥ</strong></p>
+<p class="verse">ātmārāmaś cha munayo<br>
+nirgranthā apy urukrame<br>
+kurvanty ahaitukīṁ<br>
+bhaktim itthaṁ-bhūta guṇo hariḥ</p>
 <p class="translation">“Even the liberated souls fully satisfied in the self are irresistibly attracted by the superexcellent qualities of Kṛṣṇa and surrender to Him with unalloyed devotion.” The Lord separately combined each of the eleven words found in that verse and established that each one is an enormous storehouse of unlimited wealth supporting the conclusion of pure devotion. I offer my obeisances to that beautiful Golden Lord, Gaurāṅga Sundar, the divine form of Kṛṣṇa-prema.</p>
 </div>
 </section>
@@ -3516,8 +3518,8 @@ Lord Gaurasundar also explained the ātmarāma verse which is found in the grand
 <p class="translation">With great joy Śrī Gaurasundar told His dearmost associates Śrī Svarūp Dāmodar and Rāmānanda Rāya that the process of congre­gationally chanting the Holy Names of Kṛṣṇa bestows the highest benediction upon the living entities in this age of Kali:</p>
 </div>
 <div class="verse-block" data-number="">
-<p class="verse"><strong>harṣe prabhu kohena, “śuno svarūpa-rāma-rāya</strong><br>
-<strong>nāma saṅkīrtana kalau, parama upāya”</strong></p>
+<p class="verse">harṣe prabhu kohena, “śuno svarūpa-rāma-rāya<br>
+nāma saṅkīrtana kalau, parama upāya”</p>
 <p class="translation">In His famous composition Śrī Śikṣāṣṭakam also, Lord Gaurāṅga has placed the chanting of Lord Kṛṣṇa’s Names on the topmost level of importance. The Supreme Lord further taught that chanting Lord Kṛṣṇa’s Names in pure love of Godhead perfectly nourishes and fully satisfies all the living entities in the universe. I offer my obeisances to that beautiful Golden Lord, Gaurāṅga Sundar, the divine form of Kṛṣṇa-prema.</p>
 </div>
 <div class="verse-block" data-number="70">
@@ -4796,16 +4798,16 @@ Lord Gaurasundar also explained the ātmarāma verse which is found in the grand
 <h4>by Śrīla Vṛndāvan Dās Ṭhākur</h4>
 <p class="verse"><strong>“hare kṛṣṇa hare kṛṣṇa kṛṣṇa kṛṣṇa hare hare</strong><br>
 <strong>hare rāma hare rāma rāma rāma hare hare”</strong><br>
-<strong></strong><br>
+<br>
 <strong>prabhu kahe – “kahilāṅ ei mahāmantra</strong><br>
 <strong>ihā japa’ giyā sabe kariyā nirbandha</strong><br>
-<strong></strong><br>
+<br>
 <strong>ihā haite sarva-siddhi ha-ibe sabāra</strong><br>
 <strong>sarva-kṣaṇa bala’ ithe vidhi nāhi āra</strong><br>
-<strong></strong><br>
+<br>
 <strong>ki śayane ki bhojane, ki vā jāgaraṇe</strong><br>
 <strong>ahar-niśa chinta kṛṣṇa, balaha vadane</strong><br>
-<strong></strong><br>
+<br>
 <strong>āma-prati sneha yadi thāke sabākāra</strong><br>
 <strong>kṛṣṇa vinā keha kichhu nā balibe āra”</strong></p>
 <p class="translation">Śrīman Mahāprabhu said, “Hare Kṛṣṇa Hare Kṛṣṇa, Kṛṣṇa Kṛṣṇa Hare Hare, Hare Rāma Hare Rāma, Rāma Rāma Hare Hare.<br>
@@ -5388,7 +5390,7 @@ Here Śrīla Guru Mahārāj expresses that śaraṇāgati means faith that Bhaga
 <h2>Dainyātmikā <span class="nav-links">&nbsp;&nbsp;<a href="#toc">↑</a>&nbsp;&nbsp;<a href="#first-lines">↓</a></span></h2>
 <h4>by Śrīla Bhakti Vinod Ṭhākur</h4>
 <h5>1</h5>
-<p class="verse"><strong>(prabhu he!)</strong><br>
+<p class="verse">(prabhu he!)<br>
 <strong>emana durmati&nbsp;&nbsp;&nbsp;&nbsp;saṁsāra bhitare</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;paḍiyā āchhinu āmi</strong><br>
 <strong>tava nija-jana&nbsp;&nbsp;&nbsp;&nbsp;kona mahājane</strong><br>
@@ -6850,7 +6852,7 @@ Again and again tasting nectar, the soul dives and surfaces in the ever-increasi
 <h5>5-6</h5>
 <p class="verse"><strong>vākya-vega mano-vega krodha-vega āra</strong><br>
 <strong>jihva-vega udara-upastha-vega chhāra</strong><br>
-<strong></strong><br>
+<br>
 <strong>ei chhaya vega sahi’ kṛṣṇa-nāmāśraye</strong><br>
 <strong>jagat śāsite pāre parājiyā bhaye</strong></p>
 <p class="translation">Those who tolerate the six base urges – the urges of speech, the mind, anger, the tongue, the belly, and the genitals – by taking the shelter of Kṛṣṇa’s Name can instruct the world and conquer fear.</p>
@@ -6907,7 +6909,7 @@ Again and again tasting nectar, the soul dives and surfaces in the ever-increasi
 <h5>5-6</h5>
 <p class="verse"><strong>viṣayī yoṣit-saṅgī tat-tat-saṅgī āra</strong><br>
 <strong>māyāvādī dharma-dhvajī nāstika prakāra</strong><br>
-<strong></strong><br>
+<br>
 <strong>se saba asat-saṅga bhakti-hānikara</strong><br>
 <strong>viśeṣa yatane sei saṅga parihara</strong></p>
 <p class="translation">Materialists, those who are attached to women, their companions, māyāvādīs, religious hypocrites, and atheists – the association of such persons is destructive to bhakti. With great care, avoid all such association.</p>
@@ -6940,7 +6942,7 @@ Again and again tasting nectar, the soul dives and surfaces in the ever-increasi
 <h5>1-2</h5>
 <p class="verse"><strong>ānukūlya-saṅkalpera chhaya aṅga sāra</strong><br>
 <strong>utsāha viśvāsa dhairya tat-tat-karma āra</strong><br>
-<strong></strong><br>
+<br>
 <strong>saṅga-tyāga sādhu-vṛtti karile āśraya</strong><br>
 <strong>bhakti-yoga-siddhi labhe sarva-śāstre kaya</strong></p>
 <p class="translation">All the scriptures say that if one takes shelter in the six most important aspects of accepting the favourable – enthusiasm, conviction, perseverance, engaging in favourable activities, abandoning bad association, and following the conduct of the sādhus – then one will attain perfection in bhakti-yoga.</p>
@@ -6949,7 +6951,7 @@ Again and again tasting nectar, the soul dives and surfaces in the ever-increasi
 <h5>3-4</h5>
 <p class="verse"><strong>bhakti-anuṣṭhāne utsāhera prayojana</strong><br>
 <strong>bhaktite viśvāsa dṛḍha dhairyāvalambana</strong><br>
-<strong></strong><br>
+<br>
 <strong>ye karma karile haya bhaktira ullāsa</strong><br>
 <strong>ye karma jīvana-yātrā nirvāhe prayāsa</strong></p>
 <p class="translation">Enthusiasm for the practice of bhakti, firm conviction in bhakti, perseverance, activities by which bhakti develops, and activities by which one’s life is maintained are all necessary.</p>
@@ -7020,7 +7022,7 @@ Again and again tasting nectar, the soul dives and surfaces in the ever-increasi
 <h5>3-4</h5>
 <p class="verse"><strong>bhajana-chatura yei tā̐ra kara sevā</strong><br>
 <strong>kṛṣṇamaya sabe dekhe suvaiṣṇava yebā</strong><br>
-<strong></strong><br>
+<br>
 <strong>śatru mitra sad asat kichhu nā vichāre</strong><br>
 <strong>sarvottama saṅga bali’ sevaha tā̐hāre</strong></p>
 <p class="translation">Serve those who are expert in bhajan. Consider the association of such great Vaiṣṇavas, who see Kṛṣṇa within everything, and do not conceive of enemies and friends or good and bad, to be the best of all, and serve them.</p>
@@ -7055,7 +7057,7 @@ Again and again tasting nectar, the soul dives and surfaces in the ever-increasi
 <h5>3-4</h5>
 <p class="verse"><strong>ataeva dekhiyā bhaktera kadākāra</strong><br>
 <strong>svabhāvaja varṇa kārkaśyādi doṣa āra</strong><br>
-<strong></strong><br>
+<br>
 <strong>prākṛta baliyā bhakte kabhu nā nindibe</strong><br>
 <strong>śuddha-bhakti dekhi’ tā̐re sarvadā vandibe</strong></p>
 <p class="translation">Therefore, upon seeing the faults produced by a devotee’s nature or occupation, such as ugliness or apparent roughness, never consider a devotee mundane and criticise them. Rather, see their pure bhakti and always revere them.</p>
@@ -8044,7 +8046,7 @@ Again and again tasting nectar, the soul dives and surfaces in the ever-increasi
 <h5>10-11</h5>
 <p class="verse"><strong>yā̐ra nāme vālmīki ha-ila tapodhana</strong><br>
 <strong>yā̐ra nāme ajāmila pāila mochana</strong><br>
-<strong></strong><br>
+<br>
 <strong>yā̐ra nāme śravane saṁsāra-bandha ghuche</strong><br>
 <strong>hena prabhu avatari kali-yuge nāche</strong></p>
 <p class="translation">By whose Name Vālmīki became a powerful sage, by whose Name Ajāmil attained liberation, by hearing whose Name the bondage of material existence is destroyed, that very Lord descends in the Age of Kali and dances.</p>
@@ -8053,7 +8055,7 @@ Again and again tasting nectar, the soul dives and surfaces in the ever-increasi
 <h5>12-13</h5>
 <p class="verse"><strong>yā̐ra nāma la-i śuka nārada beḍāya</strong><br>
 <strong>sahasra-vadana-prabhu yāra guṇa gāya</strong><br>
-<strong></strong><br>
+<br>
 <strong>sarva-mahā-prāyaśchita ye prabhura nāma</strong><br>
 <strong>se prabhu nāchaye dekhe yata bhāgyavān</strong></p>
 <p class="translation">You whose Name Śukadev and Nārad take as they wander about, whose glories the thousand-mouthed Anantadev sings, whose Name is the supreme form of atonement, that Supreme Lord now dances and glances upon the fortunate souls.</p>
@@ -10542,7 +10544,7 @@ This was composed by Narottam Ṭhākur in praise of Śrīla Rūpa Goswāmī. In
 <strong>varṇa-dharma-nirviśeṣa-sarva-loka-nistaram</strong><br>
 <strong>śrī-sarasvatī-priyañ cha bhakti-sundarāśrayaṁ</strong><br>
 <strong>śrīdharaṁ namāmi bhakti-rakṣakaṁ jagad-gurum</strong><br>
-<strong></strong><br>
+<br>
 <strong>sindhu-chandra-parvatendu-śāka-janma-līlanaṁ</strong><br>
 <strong>śuddha-dīpta-rāga-bhakti-gauravānuśīlanam</strong><br>
 <strong>bindu-chandra-ratna-soma-śāka-lochanāntaraṁ</strong><br>
@@ -10738,7 +10740,7 @@ I offer my humble obeisances unto the Guru of the entire world, Oṁ Viṣṇup�
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;gaura-devo dayāyā</strong><br>
 <strong>rūpaṁ gauḍe bhavastaṁ parama-karuṇayā</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;prāhinod-dīna bandho!</strong><br>
-<strong></strong><br>
+<br>
 <strong>etaj jñātvā prakāśāt sudina-samudayaṁ</strong><br>
 <strong>&nbsp;&nbsp;&nbsp;&nbsp;smāramāśāḥ saharṣā</strong><br>
 <strong>jayante chaiva māyā-nigaḍa-nikara-</strong><br>
@@ -11246,7 +11248,7 @@ The bees, intoxicated in the festival<br />of drinking the honey of the Lord’s
 <p class="first-line" data-translated="1"><a href="#song-yoga-pithopari-sthita-ashta-sakhi-subeshtita">yoga-pīṭhopari-sthita aṣṭa-sakhī-suveṣṭita<span class="page-num"> — 206</span></a></p>
 <p class="first-line" data-translated="1"><a href="#song-gaite-gaite-nama-ki-doshia-hoilo">yugāyitaṁ nimeṣeṇa chakṣuṣā prāvṛṣāyitam<span class="page-num"> — 202</span></a></p>
 </section>
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"body":"$3","fileName":"Songbook-Export-en","lang":"en","title":"Kirtan Guide"}],["$L4"],"$L5"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"ZTHwZFJeuyMDUdGGkXxKD"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"body":"$3","fileName":"Songbook-Export-en","lang":"en","title":"Kirtan Guide"}],["$L4"],"$L5"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"Il2LCExAmGT4KvvLxNn14"}
 4:["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/d41aea12ff0698fe.css","precedence":"next"}]
 5:["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]
 8:null
