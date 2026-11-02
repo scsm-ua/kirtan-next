@@ -3,6 +3,8 @@ const TAG_REGEX = /<[^>]+>/gi;
 const BOLD_ITALIC_MD_REGEX = /(?<!\\)\*\*\*(.*?)(?<!\\)\*\*\*/gm;
 const BOLD_MD_REGEX = /(?<!\\)\*\*(.*?)(?<!\\)\*\*/gm;
 const ITALIC_MD_REGEX = /(?<!\\)\*(.*?)(?<!\\)\*/gm;
+// `![alt](src)` with an optional `=WxH` size suffix (added by the song loader).
+const IMAGE_MD_REGEX = /!\[([^\]]*)\]\(([^)\s]+)(?:\s+=(\d+)x(\d+))?\)/g;
 const LINK_MD_REGEX = /\[([^\]]+)\]\(([^\)]+)\)/g;
 const ESCAPED_ASTERISK_REGEX = /\\\*/g;
 
@@ -39,6 +41,21 @@ export function groupLines(lines: string[]): string[][] {
 }
 
 /**
+ * Custom <img> generator for markdown images inside song lines.
+ */
+function renderImageTag(
+  alt: string,
+  src: string,
+  cssPrefix: string,
+  width?: string,
+  height?: string
+): string {
+  const size = width && height ? ` width="${width}" height="${height}"` : '';
+  const safeAlt = alt.replaceAll('"', '&quot;');
+  return `<img class="${cssPrefix}__image" src="${src}" alt="${safeAlt}"${size} loading="lazy">`;
+}
+
+/**
  *
  */
 export function processTranslationLines(
@@ -58,6 +75,9 @@ export function processTranslationLines(
       .replace(ITALIC_MD_REGEX, `<i>$1</i>`)
       // Unescape remaining `\*` to a literal asterisk.
       .replace(ESCAPED_ASTERISK_REGEX, '*')
+      .replace(IMAGE_MD_REGEX, (_m, alt: string, src: string, w?: string, h?: string) =>
+        renderImageTag(alt, src, cssPrefix, w, h)
+      )
       .replace(LINK_MD_REGEX, '<a href="$2" target="_blank">$1</a>')
       .replaceAll('\\\n', '<br />')
       .split(/\n/)

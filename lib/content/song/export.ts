@@ -45,6 +45,14 @@ function renderVerseLine(
 }
 
 /**
+ * Root-relative (localized resource) images must survive in the downloaded
+ * standalone export document.
+ */
+function absolutizeImages(html: string): string {
+  return html.replace(/(<img[^>]*src=")\//g, `$1${SITE.ORIGIN}`);
+}
+
+/**
  * One paragraph per block; source lines are joined with <br> so the block
  * stays a single restylable paragraph in a word processor.
  */
@@ -82,7 +90,7 @@ function renderVerse(
   );
   html += paragraph(
     'translation',
-    processTranslationLines(verse.translation, 'translation'),
+    processTranslationLines(verse.translation, 'translation').map(absolutizeImages),
     true
   );
 
