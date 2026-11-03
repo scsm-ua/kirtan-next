@@ -8,19 +8,18 @@ import {
   localizeResourceImages,
   type TImageRenderer
 } from '@/lib/content/resourceImages';
+import { renderImageTag } from '@/other/utils';
 import { ITEM_TYPE } from '@/types/common';
 
 import type { ContentHandler } from '@/lib/content/handler';
 import type { TPage } from '@/types/page';
 
 /**
- * Images with known meta become raw <img> tags (marked passes them through)
- * so the intrinsic width/height prevents layout shift.
+ * Resource images become raw <img> tags (marked passes them through) so the
+ * intrinsic width/height, when known, prevents layout shift.
  */
 const renderPageImage: TImageRenderer = (alt, src, meta) =>
-  meta
-    ? `<img src="${src}" alt="${alt}" width="${meta.width}" height="${meta.height}">`
-    : `![${alt}](${src})`;
+  renderImageTag(alt, src, meta);
 
 /**
  * Rewrites authored relative links between source files, e.g.

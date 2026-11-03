@@ -1,6 +1,6 @@
 import { escHtml as esc } from '@/other/exportDoc';
 import { heading, NAV_SPAN } from '@/lib/content/exportHtml';
-import { processTranslationLines } from '@/other/utils';
+import { processTranslationLines, renderImageTag } from '@/other/utils';
 import { SITE } from '@/other/constants';
 
 import type { TSong, TVerse } from '@/types/song';
@@ -108,8 +108,8 @@ function renderImage(song: TSong): string {
   const src = image.src.startsWith('/')
     ? SITE.ORIGIN + image.src.slice(1)
     : image.src;
-  const alt = esc((song.title || []).join(' '));
-  return `<p class="song-image"><img src="${src}" alt="${alt}" width="${image.width}" height="${image.height}"></p>\n`;
+  const alt = (song.title || []).join(' ');
+  return `<p class="song-image">${renderImageTag(alt, src, image)}</p>\n`;
 }
 
 /**

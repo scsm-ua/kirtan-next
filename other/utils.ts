@@ -40,19 +40,24 @@ export function groupLines(lines: string[]): string[][] {
   return groups;
 }
 
+type TImageTagOptions = {
+  className?: string;
+  width?: number | string;
+  height?: number | string;
+};
+
 /**
- * Custom <img> generator for markdown images inside song lines.
+ * Shared lazy <img> generator for content images (song lines, pages, export).
  */
-function renderImageTag(
+export function renderImageTag(
   alt: string,
   src: string,
-  cssPrefix: string,
-  width?: string,
-  height?: string
+  { className, width, height }: TImageTagOptions = {}
 ): string {
+  const cls = className ? ` class="${className}"` : '';
   const size = width && height ? ` width="${width}" height="${height}"` : '';
-  const safeAlt = alt.replaceAll('"', '&quot;');
-  return `<img class="${cssPrefix}__image" src="${src}" alt="${safeAlt}"${size} loading="lazy">`;
+  const safeAlt = alt.replaceAll('&', '&amp;').replaceAll('"', '&quot;');
+  return `<img${cls} src="${src}" alt="${safeAlt}"${size} loading="lazy" decoding="async" fetchpriority="low">`;
 }
 
 /**
@@ -75,8 +80,8 @@ export function processTranslationLines(
       .replace(ITALIC_MD_REGEX, `<i>$1</i>`)
       // Unescape remaining `\*` to a literal asterisk.
       .replace(ESCAPED_ASTERISK_REGEX, '*')
-      .replace(IMAGE_MD_REGEX, (_m, alt: string, src: string, w?: string, h?: string) =>
-        renderImageTag(alt, src, cssPrefix, w, h)
+      .replace(IMAGE_MD_REGEX, (_m, alt: string, src: string, width?: string, height?: string) =>
+        renderImageTag(alt, src, { className: `${cssPrefix}__image`, width, height })
       )
       .replace(LINK_MD_REGEX, '<a href="$2" target="_blank">$1</a>')
       .replaceAll('\\\n', '<br />')
