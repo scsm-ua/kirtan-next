@@ -5,7 +5,7 @@
   "pt": "git+https://github.com/scsm-ua/kirtan-guide-pt.git",
   "es": "git+https://github.com/scsm-ua/kirtan-guide-es.git",
   "en": {
-    "repository": "git+https://github.com/scsm-ua/kirtan-guide-en-london.git",
+    "repository": "git+https://github.com/scsm-ua/kirtan-guide-en-london.git#fix/images-path",
     "audio": {
       "filter": {
         "by_title": [
