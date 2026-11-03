@@ -17,18 +17,20 @@ export type TImageRenderer = (
 
 const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-// "git+https://github.com/<owner>/<repo>.git" -> "https://github.com/<owner>/<repo>"
+// "git+https://github.com/<owner>/<repo>.git#<ref>" -> "https://github.com/<owner>/<repo>"
 const RESOURCES_REPO_URL = resourcesConfig.resources
   .replace(/^git\+/, '')
+  .replace(/#.*$/, '')
   .replace(/\.git$/, '');
 const RESOURCES_RAW_URL = RESOURCES_REPO_URL.replace(
   'https://github.com/',
   'https://raw.githubusercontent.com/'
 );
 
-// `<repo>/blob/<branch>/images/<path>?raw=true` or the
-// raw.githubusercontent.com equivalent; captures the path under images/.
-const RESOURCE_URL_PART = `(?:${escapeRegExp(RESOURCES_REPO_URL)}/blob|${escapeRegExp(RESOURCES_RAW_URL)})/[^/)]+/images/([^)?\\s]+)(?:\\?[^)\\s]*)?`;
+// `<repo>/(blob|raw)/<branch>/images/<path>?raw=true` or the
+// raw.githubusercontent.com equivalent; branch may contain slashes
+// (e.g. `feature/x`, `refs/heads/x`). Captures the path under images/.
+const RESOURCE_URL_PART = `(?:${escapeRegExp(RESOURCES_REPO_URL)}/(?:blob|raw)|${escapeRegExp(RESOURCES_RAW_URL)})/[^)\\s]+?/images/([^)?\\s]+)(?:\\?[^)\\s]*)?`;
 
 const RESOURCE_MD_IMAGE_RE = new RegExp(
   `!\\[([^\\]]*)\\]\\(${RESOURCE_URL_PART}\\)`,
