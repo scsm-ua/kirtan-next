@@ -10,6 +10,20 @@
       },
       "LINK_FULL_TITLE": "Pirmo rindiņu rādītājs"
     },
+    "AUDIO_PAGE": {
+      "HEAD": {
+        "DESCRIPTION": "Visi audio ieraksti"
+      },
+      "SCHEMA": {
+        "NAME": "Vaišnavu dziesmu grāmata – Audio",
+        "DESCRIPTION": "Klausies vaišnavu bhadžanu un kīrtanu audio ierakstus."
+      },
+      "LINK_FULL_TITLE": "Visi audio",
+      "BY_SINGER": "Audio pēc izpildītāja",
+      "BY_SONG": "Audio pēc dziesmas",
+      "SORT_FIRST_LINES": "Kārtot pēc pirmajām rindiņām",
+      "SORT_TITLES": "Kārtot pēc nosaukumiem"
+    },
     "AUTHORS_PAGE": {
       "HEAD": {
         "DESCRIPTION": "Autoru saraksts"
@@ -151,6 +165,20 @@
         "DESCRIPTION": "Browse an alphabetical index of Vaishnava bhajans and kirtans."
       },
       "LINK_FULL_TITLE": "Index of first lines"
+    },
+    "AUDIO_PAGE": {
+      "HEAD": {
+        "DESCRIPTION": "All audio recordings"
+      },
+      "SCHEMA": {
+        "NAME": "Vaishnava Songbook – Audio",
+        "DESCRIPTION": "Listen to audio recordings of Vaishnava bhajans and kirtans."
+      },
+      "LINK_FULL_TITLE": "All audios",
+      "BY_SINGER": "Audios by singer",
+      "BY_SONG": "Audios by song",
+      "SORT_FIRST_LINES": "Sort by first lines",
+      "SORT_TITLES": "Sort by titles"
     },
     "AUTHORS_PAGE": {
       "HEAD": {
@@ -294,6 +322,20 @@
       },
       "LINK_FULL_TITLE": "Índice de primeras líneas"
     },
+    "AUDIO_PAGE": {
+      "HEAD": {
+        "DESCRIPTION": "Todas las grabaciones de audio"
+      },
+      "SCHEMA": {
+        "NAME": "Cancionero vaishnava – Audio",
+        "DESCRIPTION": "Escucha grabaciones de audio de bhajans y kirtans vaishnavas."
+      },
+      "LINK_FULL_TITLE": "Todos los audios",
+      "BY_SINGER": "Audios por intérprete",
+      "BY_SONG": "Audios por canción",
+      "SORT_FIRST_LINES": "Ordenar por primeras líneas",
+      "SORT_TITLES": "Ordenar por títulos"
+    },
     "AUTHORS_PAGE": {
       "HEAD": {
         "DESCRIPTION": "Lista de autores"
@@ -435,6 +477,20 @@
         "DESCRIPTION": "Просмотрите алфавитный индекс вайшнавских бхаджанов и киртанов."
       },
       "LINK_FULL_TITLE": "Указатель первых строк"
+    },
+    "AUDIO_PAGE": {
+      "HEAD": {
+        "DESCRIPTION": "Все аудиозаписи"
+      },
+      "SCHEMA": {
+        "NAME": "Вайшнавский песенник – Аудио",
+        "DESCRIPTION": "Слушайте аудиозаписи вайшнавских бхаджанов и киртанов."
+      },
+      "LINK_FULL_TITLE": "Все аудио",
+      "BY_SINGER": "Аудио по исполнителям",
+      "BY_SONG": "Аудио по песням",
+      "SORT_FIRST_LINES": "Сортировать по первым строкам",
+      "SORT_TITLES": "Сортировать по названиям"
     },
     "AUTHORS_PAGE": {
       "HEAD": {
@@ -591,6 +647,20 @@
       },
       "LINK_FULL_TITLE": "Покажчик перших рядків"
     },
+    "AUDIO_PAGE": {
+      "HEAD": {
+        "DESCRIPTION": "Усі аудіозаписи"
+      },
+      "SCHEMA": {
+        "NAME": "Вайшнавський пісенник – Аудіо",
+        "DESCRIPTION": "Слухайте аудіозаписи вайшнавських бгаджанів і кіртанів."
+      },
+      "LINK_FULL_TITLE": "Усі аудіо",
+      "BY_SINGER": "Аудіо за виконавцями",
+      "BY_SONG": "Аудіо за піснями",
+      "SORT_FIRST_LINES": "Сортувати за першими рядками",
+      "SORT_TITLES": "Сортувати за назвами"
+    },
     "AUTHORS_PAGE": {
       "HEAD": {
         "DESCRIPTION": "Перелік авторів"
@@ -745,6 +815,20 @@
         "DESCRIPTION": "Navegue por um índice alfabético de bhajans e kirtans vaisnavas."
       },
       "LINK_FULL_TITLE": "Índice de primeiras linhas"
+    },
+    "AUDIO_PAGE": {
+      "HEAD": {
+        "DESCRIPTION": "Todas as gravações de áudio"
+      },
+      "SCHEMA": {
+        "NAME": "Cancioneiro vaishnava – Áudio",
+        "DESCRIPTION": "Ouça gravações de áudio de bhajans e kirtans vaishnavas."
+      },
+      "LINK_FULL_TITLE": "Todos os áudios",
+      "BY_SINGER": "Áudios por intérprete",
+      "BY_SONG": "Áudios por canção",
+      "SORT_FIRST_LINES": "Ordenar por primeiras linhas",
+      "SORT_TITLES": "Ordenar por títulos"
     },
     "AUTHORS_PAGE": {
       "HEAD": {
