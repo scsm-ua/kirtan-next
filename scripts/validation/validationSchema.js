@@ -3,6 +3,7 @@ const TRANSLATION_VALIDATION_SCHEMA = {
   additionalProperties: false,
   required: [
     'A_Z_PAGE',
+    'AUDIO_PAGE',
     'AUTHORS_PAGE',
     'BOOK_LIST_PAGE',
     'FOOTER',
@@ -46,6 +47,49 @@ const TRANSLATION_VALIDATION_SCHEMA = {
         LINK_FULL_TITLE: {
           type: 'string'
         }
+      }
+    },
+    AUDIO_PAGE: {
+      type: 'object',
+      additionalProperties: false,
+      required: [
+        'HEAD',
+        'SCHEMA',
+        'LINK_FULL_TITLE',
+        'BY_SINGER',
+        'BY_SONG',
+        'SORT_FIRST_LINES',
+        'SORT_TITLES'
+      ],
+      properties: {
+        HEAD: {
+          type: 'object',
+          additionalProperties: false,
+          required: ['DESCRIPTION'],
+          properties: {
+            DESCRIPTION: {
+              type: 'string'
+            }
+          }
+        },
+        SCHEMA: {
+          type: 'object',
+          additionalProperties: false,
+          required: ['NAME', 'DESCRIPTION'],
+          properties: {
+            NAME: {
+              type: 'string'
+            },
+            DESCRIPTION: {
+              type: 'string'
+            }
+          }
+        },
+        LINK_FULL_TITLE: { type: 'string' },
+        BY_SINGER: { type: 'string' },
+        BY_SONG: { type: 'string' },
+        SORT_FIRST_LINES: { type: 'string' },
+        SORT_TITLES: { type: 'string' }
       }
     },
     AUTHORS_PAGE: {

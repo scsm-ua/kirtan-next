@@ -14,8 +14,23 @@ export const SONGBOOK_PAGE = {
   SEARCH: 'search'
 } as const;
 
+/**
+ * Nested "all audios" pages inside a songbook. Values are URL sub-paths.
+ */
+export const AUDIO_PAGE = {
+  BY_SINGER_A_Z: 'audio/a-z',
+  BY_SINGER_CONTENTS: 'audio/contents',
+  BY_SONG_A_Z: 'a-z/audio',
+  BY_SONG_CONTENTS: 'contents/audio'
+} as const;
+
 /**/
-export type TSongbookPage = (typeof SONGBOOK_PAGE)[keyof typeof SONGBOOK_PAGE];
+export type TAudioPage = (typeof AUDIO_PAGE)[keyof typeof AUDIO_PAGE];
+
+/**/
+export type TSongbookPage =
+  | (typeof SONGBOOK_PAGE)[keyof typeof SONGBOOK_PAGE]
+  | TAudioPage;
 
 /*
  * All paths start and end with `/` to match `trailingSlash: true`

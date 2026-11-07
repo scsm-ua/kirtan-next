@@ -86,7 +86,7 @@ async function SongBody({
         <AudioList
           audio={song.resources?.audio}
           caption={translate(bookId, 'SONG_PAGE.AUDIO_CAPTION')}
-          language={bookId.slice(0, 2)}
+          songTitle={song.title?.join(' ')}
         />
       )}
     </ContentShell>

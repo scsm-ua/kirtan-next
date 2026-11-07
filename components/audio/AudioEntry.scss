@@ -1,0 +1,39 @@
+.AudioEntry {
+  padding: 8px 0 16px;
+
+  &__link {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  &__title {
+    flex: 1;
+    line-height: 28px;
+    margin: 0;
+    color: var(--title-color);
+  }
+
+  &__page {
+    font-weight: 400;
+    line-height: 28px;
+    color: var(--gray);
+    margin: 0 6px;
+  }
+
+  &__icon {
+    font-size: 24px;
+    line-height: 28px;
+    color: var(--dark-gray);
+  }
+
+  &__tracks {
+    list-style-type: none;
+    margin: 8px 0 0;
+    padding: 0;
+
+    > li + li {
+      margin-top: 16px;
+    }
+  }
+}

@@ -13,7 +13,11 @@
 
   &__list {
     list-style-type: none;
-    margin: 16px 0;
+    margin: 24px 0;
     padding: 0;
+
+    > li + li {
+      margin-top: 24px;
+    }
   }
 }

@@ -17,6 +17,7 @@ type TPageMetaOptions = {
   bookId: string;
   descriptionKey: string;
   page?: TSongbookPage;
+  hasPage?: (bookId: string) => boolean;
 };
 
 /**
@@ -25,7 +26,8 @@ type TPageMetaOptions = {
 export function getPageMeta({
   bookId,
   descriptionKey,
-  page
+  page,
+  hasPage
 }: TPageMetaOptions): Partial<Metadata> {
   const translate = getTranslationsByBookId(bookId);
   const book = getBookDescriptionById(bookId);
@@ -39,7 +41,7 @@ export function getPageMeta({
 
   return {
     ...getCommonMeta(),
-    alternates: getAlt(bookId, page),
+    alternates: getAlt(bookId, page, hasPage),
     description: description,
     openGraph: getOG(bookId, description, title, path),
     robots: ROBOTS,

@@ -2,6 +2,7 @@ import './AZ.scss';
 import '@/styles/index-page.scss';
 
 import ContentGroup from '@/components/contents/ContentGroup';
+// import { hasBookAudio } from '@/lib/audio';
 import IndexLink from '@/components/common/IndexLink/IndexLink';
 import { getSongbookPagePath, SONGBOOK_PAGE } from '@/other/paths';
 import { translate } from '@/other/i18n';
@@ -23,6 +24,13 @@ function AZ({ bookId, contents }: Props) {
         href={getSongbookPagePath(bookId, SONGBOOK_PAGE.CONTENTS)}
         title={translate(bookId, 'CONTENTS_PAGE.LINK_FULL_TITLE')}
       />
+
+      {/* {hasBookAudio(bookId) && (
+        <IndexLink
+          href={getSongbookPagePath(bookId, AUDIO_PAGE.BY_SONG_A_Z)}
+          title={translate(bookId, 'AUDIO_PAGE.LINK_FULL_TITLE')}
+        />
+      )} */}
 
       {contents.map((group: TContentGroup) => (
         <ContentGroup bookId={bookId} group={group} key={group.name} />

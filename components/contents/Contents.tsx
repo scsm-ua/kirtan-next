@@ -2,6 +2,7 @@ import './Contents.scss';
 import '@/styles/index-page.scss';
 
 import ContentGroup from '@/components/contents/ContentGroup';
+// import { hasBookAudio } from '@/lib/audio';
 import IndexLink from '@/components/common/IndexLink/IndexLink';
 import { getSongbookPagePath, SONGBOOK_PAGE } from '@/other/paths';
 import { translate } from '@/other/i18n';
@@ -26,6 +27,13 @@ function Contents({ bookId, contents }: Props) {
           href={getSongbookPagePath(bookId, SONGBOOK_PAGE.A_Z)}
           title={translate(bookId, 'A_Z_PAGE.LINK_FULL_TITLE')}
         />
+
+        {/* {hasBookAudio(bookId) && (
+          <IndexLink
+            href={getSongbookPagePath(bookId, AUDIO_PAGE.BY_SONG_CONTENTS)}
+            title={translate(bookId, 'AUDIO_PAGE.LINK_FULL_TITLE')}
+          />
+        )} */}
 
         {/* Hide "(hidden)" items here only; they stay in contents data to keep prev/next navigation order. */}
         {contents.map((group: TContentGroup, index: number) => (

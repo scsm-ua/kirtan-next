@@ -21,7 +21,7 @@
  * @typedef {Object} Song
  * @property {Array<string>} [author]
  * @property {RawSongMeta} meta
- * @property {ResourceObj} [resources]
+ * @property {SongResource} [resources]
  */
 
 /**
@@ -104,8 +104,21 @@
  * @property {string} embed_url
  * @property {string} iframe_url
  * @property {string} personId - raw title (person id), used by the per-book
- *   audio filter and stripped before the resource is written into a song json.
+ *   audio filter and as a stable singer key.
  * @property {I18n} title
+ */
+
+/**
+ * @typedef {Object} SongAudio
+ * @property {string} embed_url
+ * @property {string} personId
+ * @property {string} title - singer name in the book language (en fallback).
+ */
+
+/**
+ * @typedef {Object} SongResource
+ * @property {Array<SongAudio>} [audio]
+ * @property {ImageObj} [image]
  */
 
 /**
