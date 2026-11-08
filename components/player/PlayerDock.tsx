@@ -23,10 +23,15 @@ const SKIP_STEP = 5;
 const ROOT_CLASS = 'has-player-dock';
 const IDLE: TPlayerSnapshot = { status: 'idle', position: 0, duration: null };
 
+/**/
+type Props = {
+  autoAdvance?: boolean;
+};
+
 /**
  * Mount once per page: fixed bottom bar for the active player, closable only via X.
  */
-function PlayerDock() {
+function PlayerDock({ autoAdvance = true }: Props) {
   const { active, hasPrev, hasNext } = useSyncExternalStore(
     playerManager.subscribe,
     playerManager.getSnapshot,
@@ -39,6 +44,13 @@ function PlayerDock() {
   const visible = !!active;
   const controller = active ?? last;
   const snapshot = useControllerSnapshot(controller);
+
+  useEffect(() => {
+    playerManager.autoAdvance = autoAdvance;
+    return () => {
+      playerManager.autoAdvance = true;
+    };
+  }, [autoAdvance]);
 
   useEffect(() => {
     if (!visible) return;

@@ -105,13 +105,14 @@
  * @property {string} iframe_url
  * @property {string} personId - raw title (person id), used by the per-book
  *   audio filter and as a stable singer key.
+ * @property {string} personSlug
  * @property {I18n} title
  */
 
 /**
  * @typedef {Object} SongAudio
  * @property {string} embed_url
- * @property {string} personId
+ * @property {string} personSlug
  * @property {string} title - singer name in the book language (en fallback).
  */
 
@@ -134,6 +135,7 @@
 /**
  * @typedef {Object} Person
  * @property {string} id
+ * @property {string} slug
  * @property {I18n} i18n
  */
 

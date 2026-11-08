@@ -1,5 +1,6 @@
 const path = require('node:path');
 const { CONST } = require('./constants');
+const { sortSingers } = require('../other/sortSingers');
 const { readFile, writeFile } = require('./ioHelpers');
 
 /**
@@ -87,13 +88,14 @@ function mapResources(resource, audioTitleFilter, language) {
 
   const { image } = resource;
 
-  const audio = (resource.audio || [])
-    .filter((a) => !audioTitleFilter || audioTitleFilter.includes(a.personId))
-    .map(({ title, personId, ...rest }) => ({
-      title: title[language] || title.en,
-      personId,
-      ...rest
-    }));
+  const audio = sortSingers(
+    (resource.audio || [])
+      .filter((a) => !audioTitleFilter || audioTitleFilter.includes(a.personId))
+      .map(({ title, ...rest }) => {
+        delete rest.personId;
+        return { title: title[language] || title.en, ...rest };
+      })
+  );
 
   if (!audio.length && !image) return;
 

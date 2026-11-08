@@ -27,6 +27,11 @@ export function usePlayer(
 ) {
   const [controller] = useState(() => new PlayerController(source, title, subtitle));
   const snapshot = useControllerSnapshot(controller);
+  const isActive = useSyncExternalStore(
+    playerManager.subscribe,
+    () => playerManager.getSnapshot().active === controller,
+    () => false
+  );
 
   useEffect(() => {
     controller.setElement(ref.current);
@@ -39,5 +44,5 @@ export function usePlayer(
     };
   }, [controller, ref]);
 
-  return { controller, snapshot };
+  return { controller, snapshot, isActive };
 }

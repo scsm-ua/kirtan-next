@@ -1,8 +1,8 @@
 # player
 
-auto next on song page? - just stop?
+dock player - click on title navigates 
 
-book language in songbook.json
+small progress bar in inine player to highlight title
 
 # complex questions
 
@@ -23,6 +23,16 @@ add multiple song indexes, like for Sharanagati
 author: namas-te-narasimhaya - only Vyasadev, not Jayadev (check other songbooks)
 
 no author: Hare Kṛṣṇa Mahāmantra
+
+# Refactors 
+
+analyze: book language in songbook.json
+
+## build
+
+single page app for each page - prerendered content?
+
+json loaded
 
 ### Questionable:
 

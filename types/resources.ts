@@ -2,7 +2,7 @@
 export type TAudio = {
   embed_url: string;
   iframe_url: string;
-  personId: string;
+  personSlug: string;
   title: string;
 };
 

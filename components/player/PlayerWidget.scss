@@ -21,11 +21,15 @@
     min-width: 0;
     margin: 0;
     font-size: 14px;
-    font-weight: 700;
     line-height: 20px;
     color: var(--title-color);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  &--active:is(.PlayerWidget--paused, .PlayerWidget--ended) .PlayToggle {
+    color: var(--brown);
+    background: var(--accent-color);
   }
 }

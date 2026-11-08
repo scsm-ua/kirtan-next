@@ -18,6 +18,8 @@ class PlayerManager {
   private active: PlayerController | null = null;
   private snapshot: TPlayerDockSnapshot = { active: null, hasPrev: false, hasNext: false };
   private listeners = new Set<() => void>();
+  /** Play the next player in DOM order when the active one ends. */
+  autoAdvance = true;
 
   subscribe = (listener: () => void): (() => void) => {
     this.listeners.add(listener);
@@ -60,7 +62,7 @@ class PlayerManager {
   };
 
   handleEnded(controller: PlayerController): void {
-    if (controller !== this.active) return;
+    if (controller !== this.active || !this.autoAdvance) return;
     this.getSibling(controller, 1)?.play();
   }
 

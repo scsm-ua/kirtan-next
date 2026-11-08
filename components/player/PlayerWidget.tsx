@@ -18,9 +18,14 @@ type Props = {
 /**/
 function PlayerWidget({ source, title, subtitle, className }: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const { controller, snapshot } = usePlayer(source, title, ref, subtitle);
+  const { controller, snapshot, isActive } = usePlayer(source, title, ref, subtitle);
   const { status } = snapshot;
-  const cls = classNames('PlayerWidget', `PlayerWidget--${status}`, className);
+  const cls = classNames(
+    'PlayerWidget',
+    `PlayerWidget--${status}`,
+    isActive && 'PlayerWidget--active',
+    className
+  );
 
   return (
     // Row click is a mouse/touch shortcut; the PlayToggle button stays the keyboard target.

@@ -52,15 +52,7 @@ const TRANSLATION_VALIDATION_SCHEMA = {
     AUDIO_PAGE: {
       type: 'object',
       additionalProperties: false,
-      required: [
-        'HEAD',
-        'SCHEMA',
-        'LINK_FULL_TITLE',
-        'BY_SINGER',
-        'BY_SONG',
-        'SORT_FIRST_LINES',
-        'SORT_TITLES'
-      ],
+      required: ['HEAD', 'SCHEMA', 'LINK_FULL_TITLE'],
       properties: {
         HEAD: {
           type: 'object',
@@ -85,11 +77,7 @@ const TRANSLATION_VALIDATION_SCHEMA = {
             }
           }
         },
-        LINK_FULL_TITLE: { type: 'string' },
-        BY_SINGER: { type: 'string' },
-        BY_SONG: { type: 'string' },
-        SORT_FIRST_LINES: { type: 'string' },
-        SORT_TITLES: { type: 'string' }
+        LINK_FULL_TITLE: { type: 'string' }
       }
     },
     AUTHORS_PAGE: {
@@ -324,6 +312,7 @@ const TRANSLATION_VALIDATION_SCHEMA = {
         'SHARE_SONG',
         'SHOW_TRANSLATION',
         'PAGE_NUMBER',
+        'PAGE_IN_PAPER_SONGBOOK',
         'NEXT',
         'AUDIO_CAPTION',
         'META_DESCRIPTION',
@@ -358,6 +347,9 @@ const TRANSLATION_VALIDATION_SCHEMA = {
           type: 'string'
         },
         PAGE_NUMBER: {
+          type: 'string'
+        },
+        PAGE_IN_PAPER_SONGBOOK: {
           type: 'string'
         },
         NEXT: {

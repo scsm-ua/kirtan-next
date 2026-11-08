@@ -85,6 +85,7 @@ async function SongBody({
       {song.resources?.audio?.length > 0 && (
         <AudioList
           audio={song.resources?.audio}
+          bookId={bookId}
           caption={translate(bookId, 'SONG_PAGE.AUDIO_CAPTION')}
           songTitle={song.title?.join(' ')}
         />

@@ -2,12 +2,13 @@ import fs from 'node:fs';
 import path from 'path';
 
 import { getBookIdParamList } from '@/lib/books';
-import { getContentsByBookId, getIndexesByBookId } from '@/lib/contents';
+import { getContentsByBookId } from '@/lib/contents';
 import { compareFirstLines } from '@/scripts/compareHelpers';
 import { PATH } from '@/other/constants';
+import { sortSingers } from '@/other/sortSingers';
 import { ITEM_TYPE } from '@/types/common';
 
-import type { TAudioEntry, TAudioGroup, TAudioSort } from '@/types/audio';
+import type { TAudioTrack, TSinger } from '@/types/audio';
 import type { TContentGroup, TContentItem } from '@/types/common';
 import type { TAudio } from '@/types/resources';
 import type { TSong } from '@/types/song';
@@ -60,78 +61,64 @@ export function getAudioBookIdParamList(): Array<{ bookId: string }> {
 }
 
 /**
- * Songs with audio in the existing a-z (first lines) or contents (titles)
- * grouping; each song lists its recordings titled by singer.
+ * Singers with their recording count. First-appearance order in contents,
+ * with Dev-Goswami Maharajs moved to the front.
  */
-export function getAudioBySong(bookId: string, sort: TAudioSort): Array<TAudioGroup> {
-  const audioMap = getSongAudioMap(bookId);
-  const groups = sort === 'a-z' ? getIndexesByBookId(bookId) : getContentsByBookId(bookId);
-  const seen = new Set<string>();
+export function getSingers(bookId: string): Array<TSinger> {
+  const singers = new Map<string, TSinger>();
 
-  return groups
-    .map((group: TContentGroup) => ({
-      name: group.name,
-      items: group.items
-        .filter((item: TContentItem) => {
-          if (!audioMap.has(item.id) || seen.has(item.id)) return false;
-          seen.add(item.id);
-          return true;
-        })
-        .map((item: TContentItem): TAudioEntry => ({
-          item,
-          label: item.title,
-          tracks: audioMap.get(item.id).map((audio: TAudio) => ({
-            url: audio.embed_url,
-            title: audio.title
-          }))
-        }))
-    }))
-    .filter((group: TAudioGroup) => group.items.length > 0);
+  forEachRecording(bookId, (_item, audio) => {
+    const id = audio.personSlug;
+    const singer = singers.get(id);
+    if (singer) {
+      singer.count++;
+    } else {
+      singers.set(id, { id, name: audio.title, count: 1 });
+    }
+  });
+
+  return sortSingers(Array.from(singers.values()));
 }
 
 /**
- * Recordings grouped by singer. Singers keep their first-appearance order
- * with Dev-Goswami Maharajs moved to the front; songs sort by first line
- * (`a-z`) or title (`contents`).
+ * Flat playlist of one singer's recordings, sorted by song first line.
  */
-export function getAudioBySinger(bookId: string, sort: TAudioSort): Array<TAudioGroup> {
+export function getSingerTracks(bookId: string, singerId: string): Array<TAudioTrack> {
+  const tracks: Array<TAudioTrack> = [];
+
+  forEachRecording(bookId, (item, audio) => {
+    if (audio.personSlug !== singerId) return;
+    tracks.push({ item, label: item.aliasName || item.title, url: audio.embed_url });
+  });
+
+  return tracks.sort((a, b) => compareFirstLines(a.label, b.label));
+}
+
+/**/
+export function hasSinger(bookId: string, singerId: string): boolean {
+  return getSingers(bookId).some((singer) => singer.id === singerId);
+}
+
+/**/
+export function getSingerParamList(): Array<{ bookId: string; singerId: string }> {
+  return getAudioBookIdParamList().flatMap(({ bookId }) =>
+    getSingers(bookId).map((singer) => ({ bookId, singerId: singer.id }))
+  );
+}
+
+/**
+ * Visits every recording once per song, in contents order.
+ */
+function forEachRecording(bookId: string, fn: (item: TContentItem, audio: TAudio) => void) {
   const audioMap = getSongAudioMap(bookId);
-  const singers = new Map<string, TAudioGroup>();
   const seen = new Set<string>();
 
   for (const item of getAllItems(getContentsByBookId(bookId))) {
     const audioList = audioMap.get(item.id);
     if (!audioList || seen.has(item.id)) continue;
     seen.add(item.id);
-
-    for (const audio of audioList) {
-      const key = audio.personId;
-      if (!singers.has(key)) {
-        singers.set(key, { name: audio.title, items: [] });
-      }
-      const items = singers.get(key).items;
-      const last = items[items.length - 1];
-      // Same singer, several recordings of one song → one entry with many tracks.
-      if (last?.item.id === item.id) {
-        last.tracks.push({ url: audio.embed_url });
-        continue;
-      }
-      items.push({
-        item,
-        label: sort === 'a-z' ? item.aliasName : item.title,
-        tracks: [{ url: audio.embed_url }]
-      });
-    }
+    audioList.forEach((audio) => fn(item, audio));
   }
-
-  const keys = Array.from(singers.keys());
-  const isMain = (key: string) => key.includes('Dev-Goswami');
-
-  return [...keys.filter(isMain), ...keys.filter((key) => !isMain(key))].map((key) => {
-    const group = singers.get(key);
-    group.items.sort((a, b) => compareFirstLines(a.label, b.label));
-    return group;
-  });
 }
 
 /**/
