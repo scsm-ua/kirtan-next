@@ -4,6 +4,7 @@ import { useRef } from 'react';
 
 import './PlayerWidget.scss';
 import PlayToggle from '@/components/player/PlayToggle';
+import SeekBar from '@/components/player/SeekBar';
 import { usePlayer } from '@/other/player/usePlayer';
 import type { TPlayerSource } from '@/types/player';
 
@@ -19,7 +20,7 @@ type Props = {
 function PlayerWidget({ source, title, subtitle, className }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const { controller, snapshot, isActive } = usePlayer(source, title, ref, subtitle);
-  const { status } = snapshot;
+  const { status, position, duration } = snapshot;
   const cls = classNames(
     'PlayerWidget',
     `PlayerWidget--${status}`,
@@ -39,6 +40,16 @@ function PlayerWidget({ source, title, subtitle, className }: Props) {
       />
 
       {title && <p className="PlayerWidget__title">{title}</p>}
+
+      {isActive && (
+        <SeekBar
+          duration={duration}
+          label={title || 'Progress'}
+          loading={status === 'loading'}
+          position={position}
+          readOnly
+        />
+      )}
     </div>
   );
 }

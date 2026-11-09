@@ -1,4 +1,5 @@
 .PlayerWidget {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 14px;
@@ -26,6 +27,14 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  // Out of flow so the row keeps its height; sits under the title, below the text descenders.
+  .SeekBar {
+    position: absolute;
+    left: 39px;
+    right: 0;
+    bottom: -6px;
   }
 
   &--active:is(.PlayerWidget--paused, .PlayerWidget--ended) .PlayToggle {

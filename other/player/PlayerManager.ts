@@ -49,6 +49,19 @@ class PlayerManager {
     this.setActive(null);
   };
 
+  /** Plays the first connected controller in DOM order. */
+  playFirst = (): void => {
+    let first: PlayerController | null = null;
+    for (const c of this.controllers) {
+      const el = c.element;
+      if (!el?.isConnected) continue;
+      if (!first || el.compareDocumentPosition(first.element) & Node.DOCUMENT_POSITION_FOLLOWING) {
+        first = c;
+      }
+    }
+    first?.play();
+  };
+
   playNext = (): void => {
     if (this.active) this.getSibling(this.active, 1)?.play();
   };

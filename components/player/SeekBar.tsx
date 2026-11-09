@@ -10,7 +10,8 @@ type Props = {
   duration: number | null;
   loading?: boolean;
   label?: string;
-  onSeek: (seconds: number) => void;
+  readOnly?: boolean;
+  onSeek?: (seconds: number) => void;
 };
 
 const KEY_STEP = 5;
@@ -22,7 +23,7 @@ const clamp = (v: number) => Math.min(1, Math.max(0, v));
 /**
  * Pointer-captured custom slider. Dragging past the left edge clamps to 0.
  */
-function SeekBar({ position, duration, loading, label = 'Seek', onSeek }: Props) {
+function SeekBar({ position, duration, loading, label = 'Seek', readOnly, onSeek }: Props) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [drag, setDrag] = useState<number | null>(null);
   const [hover, setHover] = useState<number | null>(null);
@@ -74,8 +75,26 @@ function SeekBar({ position, duration, loading, label = 'Seek', onSeek }: Props)
   const cls = classNames('SeekBar', {
     'SeekBar--disabled': !enabled,
     'SeekBar--loading': loading && !enabled,
-    'SeekBar--dragging': drag !== null
+    'SeekBar--dragging': drag !== null,
+    'SeekBar--readonly': readOnly
   });
+
+  if (readOnly) {
+    return (
+      <div
+        aria-label={label}
+        aria-valuemax={enabled ? Math.round(duration) : 0}
+        aria-valuemin={0}
+        aria-valuenow={Math.round(ratio * (duration ?? 0))}
+        className={cls}
+        role="progressbar"
+      >
+        <div className="SeekBar__track">
+          <div className="SeekBar__fill" style={{ width: `${ratio * 100}%` }} />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div

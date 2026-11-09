@@ -81,6 +81,19 @@
     cursor: default;
   }
 
+  &--readonly {
+    height: auto;
+    padding: 0;
+    margin: 0;
+    cursor: inherit;
+    pointer-events: none;
+  }
+
+  // Smooths the coarse timeupdate/progress ticks; skipped for the draggable bar so it tracks the pointer.
+  &--readonly &__fill {
+    transition: width 0.25s linear;
+  }
+
   &--disabled &__thumb {
     opacity: 0;
   }

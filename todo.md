@@ -2,8 +2,6 @@
 
 dock player - click on title navigates 
 
-small progress bar in inine player to highlight title
-
 # complex questions
 
 - how to handle audio variations?
