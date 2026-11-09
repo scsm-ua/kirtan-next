@@ -1,6 +1,11 @@
-# player
+# Todo
 
-dock player - click on title navigates 
+- sonbgooks legacy songbooks section
+- en songbook link to https://scsmath.com/KirtanGuide/
+- import Manas Krishna recordings
+- contents (non song page) - SEO
+- another build and app js approach
+- ro songbook images
 
 # complex questions
 
