@@ -12,6 +12,7 @@ const SINGER_PRIORITIES = {
   'dev-goswami': 1,
   nabadwip: 2,
   maharaj: 3,
+  manasa: 4,
 };
 
 function sortSingers(singers) {
