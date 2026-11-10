@@ -15,11 +15,13 @@ const SINGER_PRIORITIES = {
   manasa: 4,
 };
 
+const DEFAULT_SINGER_PRIORITY = Math.max(...Object.values(SINGER_PRIORITIES)) + 1;
+
 function sortSingers(singers) {
   const getPriority = (singer) => {
     const id = getSingerId(singer).toLowerCase();
     const match = Object.entries(SINGER_PRIORITIES).find(([term]) => id.includes(term));
-    return match ? match[1] : 4;
+    return match ? match[1] : DEFAULT_SINGER_PRIORITY;
   };
 
   return [...singers].sort((a, b) => {
