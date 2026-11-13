@@ -6,8 +6,8 @@ import { getAudioSingerPageMeta } from '@/other/metadata/getAudioPageMeta';
 import { getSingerParamList, getSingers, getSingerTracks } from '@/lib/audio';
 import { getBooksMap } from '@/lib/books';
 import Layout from '@/components/common/Layout/Layout';
-import LdJson from '@/other/metadata/LdJson';
-import { getAudioSingerPage } from '@/other/paths';
+import { ANALYTICS_PAGE_TYPE } from '@/other/analytics';
+import LdJsonAudio from '@/other/metadata/LdJsonAudio';
 
 import type { SingerPageProps } from '@/types/book';
 
@@ -27,8 +27,14 @@ async function AudioSingerPage({ params }: SingerPageProps) {
 
   if (!selected) notFound();
 
+  const tracks = getSingerTracks(bookId, singerId);
+
   return (
-    <Layout bookId={bookId}>
+    <Layout
+      bookId={bookId}
+      itemId={singerId}
+      pageType={ANALYTICS_PAGE_TYPE.AUDIO_SINGER}
+    >
       <div className="Main__container AudioPage">
         <div className="IndexPage__title">
           <BookDescription bookDescription={book} />
@@ -39,11 +45,16 @@ async function AudioSingerPage({ params }: SingerPageProps) {
             bookId={bookId}
             selected={selected}
             singers={singers}
-            tracks={getSingerTracks(bookId, singerId)}
+            tracks={tracks}
           />
         </div>
 
-        <LdJson bookId={bookId} pageKey="AUDIO_PAGE" page={getAudioSingerPage(singerId)} />
+        <LdJsonAudio
+          bookId={bookId}
+          bookTitle={book.title_full_short || book.title}
+          selected={selected}
+          tracks={tracks}
+        />
       </div>
     </Layout>
   );

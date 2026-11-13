@@ -6,25 +6,37 @@ import './PlayerWidget.scss';
 import PlayToggle from '@/components/player/PlayToggle';
 import SeekBar from '@/components/player/SeekBar';
 import { usePlayer } from '@/other/player/usePlayer';
-import type { TPlayerSource } from '@/types/player';
+import type { TPlayerSource, TPlayerTrackInfo } from '@/types/player';
 
 type Props = {
   source: TPlayerSource;
   title?: string;
   /** Shown only in the dock, after the title (e.g. the song title). */
   subtitle?: string;
+  /** Also render the subtitle after the title in the row, in grey. */
+  showSubtitleInline?: boolean;
   className?: string;
+  trackInfo?: TPlayerTrackInfo;
 };
 
 /**/
-function PlayerWidget({ source, title, subtitle, className }: Props) {
+function PlayerWidget({
+  source,
+  title,
+  subtitle,
+  showSubtitleInline,
+  className,
+  trackInfo
+}: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const { controller, snapshot, isActive } = usePlayer(source, title, ref, subtitle);
+  const { controller, snapshot, isActive } = usePlayer(source, title, ref, subtitle, trackInfo);
   const { status, position, duration } = snapshot;
+  const hasTwoRows = Boolean(title && showSubtitleInline && subtitle);
   const cls = classNames(
     'PlayerWidget',
     `PlayerWidget--${status}`,
     isActive && 'PlayerWidget--active',
+    hasTwoRows && 'PlayerWidget--twoRows',
     className
   );
 
@@ -39,7 +51,14 @@ function PlayerWidget({ source, title, subtitle, className }: Props) {
         status={status}
       />
 
-      {title && <p className="PlayerWidget__title">{title}</p>}
+      {hasTwoRows ? (
+        <div className="PlayerWidget__text">
+          <p className="PlayerWidget__title">{title}</p>
+          <p className="PlayerWidget__subtitle">{subtitle}</p>
+        </div>
+      ) : (
+        title && <p className="PlayerWidget__title">{title}</p>
+      )}
 
       {isActive && (
         <SeekBar
