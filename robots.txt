@@ -1,5 +1,7 @@
 User-Agent: *
 Allow: /
 Disallow: /*/search/
+Disallow: /data/
+Disallow: /shell/
 
 Sitemap: https://kirtan.site/sitemap.xml
