@@ -45,7 +45,8 @@ describe('feedback worker', () => {
     expect(fetchMock).toHaveBeenCalledTimes(2);
     expect(JSON.parse(String(fetchMock.mock.calls[0][1].body))).toEqual({
       chat_id: '123',
-      text: 'Name: Name\nEmail: name@example.com\nMessage: Hello there\nhref: https://kirtan.site/'
+      text: '*Name:* Name\n*Email:* name@example\\.com\n*Message:* Hello there\n*href:* https://kirtan\\.site/',
+      parse_mode: 'MarkdownV2'
     });
     expect((fetchMock.mock.calls[1][1].body as FormData).get('chat_id')).toBe('123');
   });
