@@ -38,7 +38,7 @@ function FormInner({ onFinish, translations: t }: Props) {
 
   const onFile = (file: File | null) => {
     setFile(file);
-    file || setError(FIELDS.IMAGE, null);
+    if (!file) setError(FIELDS.IMAGE, null);
   };
 
   const onSubmit = async (data: TSubmitFormData) => {

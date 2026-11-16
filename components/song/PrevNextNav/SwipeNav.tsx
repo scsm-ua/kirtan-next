@@ -1,6 +1,6 @@
 'use client';
 import './SwipeNav.scss';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import { navigate } from '@/other/router/navigate';
 
@@ -91,7 +91,10 @@ export function SwipeNav({ prevNext }: Props) {
   const stateRef = useRef<SwipeState>(INITIAL);
   const prevNextRef = useRef(prevNext);
   const didVibrate = useRef(false);
-  prevNextRef.current = prevNext;
+
+  useLayoutEffect(() => {
+    prevNextRef.current = prevNext;
+  }, [prevNext]);
 
   const update = (next: SwipeState) => {
     stateRef.current = next;
