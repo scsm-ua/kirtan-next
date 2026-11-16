@@ -1,5 +1,6 @@
 const MAX_IMAGE_SIZE = 2 * 1024 * 1024;
 const MAX_REQUEST_SIZE = MAX_IMAGE_SIZE + 32 * 1024;
+const escapeMarkdown = value => value.replace(/([_\*\[\]()~`>#+\-=|{}.!\\])/g, '\\$1');
 
 const worker = {
 	async fetch(request, env) {
@@ -71,16 +72,16 @@ const worker = {
 		}
 
 		const lines = [];
-		if (name) lines.push(`Name: ${name}`);
-		if (email) lines.push(`Email: ${email}`);
-		lines.push(`Message: ${message}`, `href: ${href}`);
+		if (name) lines.push(`*Name:* ${escapeMarkdown(name)}`);
+		if (email) lines.push(`*Email:* ${escapeMarkdown(email)}`);
+		lines.push(`*Message:* ${escapeMarkdown(message)}`, `*href:* ${escapeMarkdown(href)}`);
 
 		try {
 			const base = `https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}`;
 			const textResponse = await fetch(`${base}/sendMessage`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, text: lines.join('\n') })
+				body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, text: lines.join('\n'), parse_mode: 'MarkdownV2' })
 			});
 			if (!textResponse.ok || !(await textResponse.json()).ok) return reply('Delivery failed', 502);
 

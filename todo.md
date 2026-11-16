@@ -16,6 +16,8 @@
 - keyboard next prev navigation - could be faster without animation
 - allow scroll down with dock player - to show footer
 
+- refactor routes to simpler way
+
 - review: AppRoot__progress
 - sw.js offline response make nicer
 - review Offline page: page.tsx is an empty app page
@@ -23,6 +25,7 @@
 - offline - book images not cached
 - offline - white page, not loaded when network is back
 - offline - forward from noncached to cached not working
+- offline - (navigator as TNavigator).connection?.saveData) - save only for images precache, which is not implemented  yet
 
 ### GA possible issue
 
@@ -42,13 +45,14 @@ The fix I'd suggest is to create a fresh hidden SoundCloud iframe for each track
 
 - client search (as data not big)
 
-- tests for all functionality
-  - readme: how to launch tests
+- review tests findings
 
 - sonbgooks legacy songbooks section
 - en songbook link to https://scsmath.com/KirtanGuide/
 - another build and app js approach
 - do songbook images in resources
+
+- review: todo-songbook-info.md
 
 # complex questions
 

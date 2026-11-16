@@ -1,6 +1,5 @@
 name: Test
 on:
-    push:
     pull_request:
 
 concurrency:
@@ -8,7 +7,8 @@ concurrency:
     cancel-in-progress: true
 
 env:
-    TZ: UTC
+  TZ: UTC
+  NEXT_TELEMETRY_DISABLED: '1'
 
 jobs:
     # L1–L5 and the static checks (.github/plans/plan-tests.md, D6).
