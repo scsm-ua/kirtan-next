@@ -76,6 +76,12 @@ describe('feedback worker', () => {
     expect((await worker.fetch(request(form), env)).status).toBe(400);
 
     form.set('image', new File([new Uint8Array(2 * 1024 * 1024 + 32 * 1024)], 'huge.png', { type: 'image/png' }));
-    expect((await worker.fetch(request(form), env)).status).toBe(413);
+    const hugeRequest = request(form);
+    const bufferedRequest = new Request(hugeRequest.url, {
+      method: hugeRequest.method,
+      headers: hugeRequest.headers,
+      body: await hugeRequest.arrayBuffer()
+    });
+    expect((await worker.fetch(bufferedRequest, env)).status).toBe(413);
   });
 });
