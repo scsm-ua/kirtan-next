@@ -23,7 +23,7 @@ function ContentItem({ bookId, item }: Props) {
 
   const _pages = Array.isArray(page) ? page.join(', ') : page;
   
-  let href = getSongPathWithPage(bookId, item);
+  const href = getSongPathWithPage(bookId, item);
   
   return (
     <li className="ContentItem">

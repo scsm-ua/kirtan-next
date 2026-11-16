@@ -113,6 +113,9 @@ export function SwipeNav({ prevNext }: Props) {
       startY = e.touches[0].clientY;
       lock = null;
       didVibrate.current = false;
+      // The component outlives a swipe navigation: drop the finished gesture.
+      if (stateRef.current !== INITIAL) update(INITIAL);
+      setReleasing(null);
     };
 
     const onMove = (e: TouchEvent) => {
