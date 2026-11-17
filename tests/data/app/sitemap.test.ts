@@ -2,15 +2,14 @@ import { afterAll, describe, expect, it, vi } from 'vitest';
 
 import sitemap from '@/app/sitemap';
 import { getSingers } from '@/lib/audio';
-import { getBookIds, getBooksMap, getItems } from '@/tests/helpers/books';
+import { getBookIds, getItems } from '@/tests/helpers/books';
 
 // As in `next build`: lib/ caches the contents of the books.
 vi.stubEnv('NODE_ENV', 'production');
 afterAll(() => vi.unstubAllEnvs());
 
 const ORIGIN = process.env.NEXT_PUBLIC_ORIGIN;
-const booksMap = getBooksMap();
-const visibleBookIds = getBookIds().filter((bookId) => !booksMap[bookId].hidden);
+const bookIds = getBookIds();
 
 describe('sitemap', async () => {
   const entries = await sitemap();
@@ -29,10 +28,11 @@ describe('sitemap', async () => {
     expect(incomplete.map((entry) => entry.url)).toEqual([]);
   });
 
-  it.each(visibleBookIds)('has the root pages, the audio pages and every item of %s', (bookId) => {
+  it.each(bookIds)('has the root pages, the audio pages and every item of %s', (bookId) => {
     const singers = getSingers(bookId);
     const expected = [
       `/${bookId}/`,
+      `/${bookId}/other/`,
       `/${bookId}/contents/`,
       `/${bookId}/a-z/`,
       `/${bookId}/authors/`,
@@ -44,12 +44,9 @@ describe('sitemap', async () => {
     expect(expected.filter((path) => !paths.has(path))).toEqual([]);
   });
 
-  it('has nothing else: no hidden books, no search, export or analyze pages', () => {
-    const hidden = getBookIds().filter((bookId) => booksMap[bookId].hidden);
+  it('has no search, export or analyze pages', () => {
     const unwanted = [...paths].filter(
-      (path) =>
-        hidden.some((bookId) => path.startsWith(`/${bookId}/`)) ||
-        /^\/[^/]+\/(search|export|analyze)\/$/.test(path)
+      (path) => /^\/[^/]+\/(search|export|analyze)\/$/.test(path)
     );
 
     expect(unwanted).toEqual([]);

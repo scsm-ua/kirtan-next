@@ -3,10 +3,10 @@ import userEvent from '@testing-library/user-event';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 import BookList from '@/components/home/BookList/BookList';
-import { PREFERENCES } from '@/other/constants';
+import { PATH, PREFERENCES } from '@/other/constants';
 import { getBookLangLabel } from '@/other/helpers';
 import { translate } from '@/other/i18n';
-import { getSongbookPagePath, SONGBOOK_PAGE } from '@/other/paths';
+import { getSongbookPagePath, getSongbookPath, SONGBOOK_PAGE } from '@/other/paths';
 import { compareBooks } from '@/scripts/compareHelpers';
 import { findBook } from '@/tests/helpers/cases';
 import { loadPage } from '@/tests/helpers/pageData';
@@ -18,17 +18,35 @@ let current: string;
 
 beforeAll(async () => {
   current = Object.values((await loadPage({ kind: 'book-list', bookId: 'en' }, 'book-list')).data.booksMap)
-    .filter((book) => !book.hidden)
+    .filter((book) => !book.hidden && !book.is_legacy)
     .sort(compareBooks)
     .slice(-1)[0].slug;
   booksMap = (await loadPage({ kind: 'book-list', bookId: current }, 'book-list')).data.booksMap;
 });
 
 function shownBooks(container: HTMLElement): string[] {
-  return [...container.querySelectorAll('.BookCard a')].map((a) => a.getAttribute('href'));
+  return [...container.querySelectorAll('.BookCard:not(.BookCard--other) a')].map((a) => a.getAttribute('href'));
 }
 
 const linkOf = (bookId: string) => getSongbookPagePath(bookId, SONGBOOK_PAGE.A_Z);
+
+function withLegacyBooks(): TBooksMap {
+  const legacyIds = Object.values(booksMap)
+    .filter((book) => !book.hidden && book.slug !== current)
+    .slice(0, 2)
+    .map((book) => book.slug);
+  const hiddenThumbnailId = findBook('hidden');
+
+  return Object.fromEntries(Object.entries(booksMap).map(([id, book]) => [
+    id,
+    {
+      ...book,
+      is_legacy: legacyIds.includes(id) || id === hiddenThumbnailId
+        ? { show_micro_thumbnail_on_main: id === legacyIds[0] || id === hiddenThumbnailId }
+        : false
+    }
+  ]));
+}
 
 describe('BookList', () => {
   it('a real book is hidden', () => {
@@ -40,25 +58,30 @@ describe('BookList', () => {
     const reversed = Object.fromEntries(Object.entries(booksMap).reverse());
     const { container } = render(<BookList bookId={current} booksMap={reversed} />);
     const others = Object.values(booksMap)
-      .filter((book) => book.slug !== current && !book.hidden)
+      .filter((book) => book.slug !== current && !book.hidden && !book.is_legacy)
       .sort(compareBooks)
       .map(({ slug }) => linkOf(slug));
 
     expect(shownBooks(container)).toEqual([linkOf(current), ...others]);
   });
 
-  it('shows hidden books too when the user turned them on', () => {
-    localStorage.setItem('SHOW_HIDDEN_BOOKS', '1');
+  it('does not show hidden books', () => {
     const { container } = render(<BookList bookId={current} booksMap={booksMap} />);
 
-    expect(shownBooks(container)).toContain(linkOf(findBook('hidden')));
-    expect(shownBooks(container)).toHaveLength(Object.keys(booksMap).length);
+    expect(shownBooks(container)).not.toContain(linkOf(findBook('hidden')));
+  });
+
+  it('shows the current hidden book first, without duplicating it', () => {
+    const hidden = findBook('hidden');
+    const { container } = render(<BookList bookId={hidden} booksMap={booksMap} />);
+
+    expect(shownBooks(container)[0]).toBe(linkOf(hidden));
+    expect(shownBooks(container).filter((href) => href === linkOf(hidden))).toHaveLength(1);
   });
 
   it('shows the title, subtitle, language and song count of every book', () => {
-    localStorage.setItem('SHOW_HIDDEN_BOOKS', '1');
     const { container } = render(<BookList bookId={current} booksMap={booksMap} />);
-    const cards = [...container.querySelectorAll('.BookCard')].map((card) => ({
+    const cards = [...container.querySelectorAll('.BookCard:not(.BookCard--other)')].map((card) => ({
       title: card.querySelector('.BookCard__title').textContent,
       subtitle: card.querySelector('.BookCard__subtitle').textContent,
       lang: card.querySelector('.BookCard__lang').textContent,
@@ -66,7 +89,7 @@ describe('BookList', () => {
     }));
 
     expect(cards).toEqual(
-      [booksMap[current], ...Object.values(booksMap).filter(({ slug }) => slug !== current).sort(compareBooks)].map(
+      [booksMap[current], ...Object.values(booksMap).filter(({ slug, is_legacy, hidden }) => slug !== current && !is_legacy && !hidden).sort(compareBooks)].map(
         ({ slug, songsCount, subtitle, title }) => ({
           title,
           subtitle,
@@ -85,5 +108,77 @@ describe('BookList', () => {
     await userEvent.click(link);
 
     expect(linkOf(localStorage.getItem(PREFERENCES.PREFERRED_BOOK_ID))).toBe(link.getAttribute('href'));
+  });
+
+  it('links to other books and lists only legacy books there', () => {
+    const books = withLegacyBooks();
+    const main = render(<BookList bookId={current} booksMap={books} />);
+    const otherLink = main.getByRole('link', { name: translate(current, 'BOOK_LIST_PAGE.OTHER_SONGBOOKS') });
+    expect(otherLink.getAttribute('href')).toBe(getSongbookPagePath(current, SONGBOOK_PAGE.OTHER));
+    expect(otherLink.querySelector('.BookCard__title').textContent).toBe('');
+    expect(otherLink.querySelector('.BookCard__subtitle').textContent).toBe(translate(current, 'BOOK_LIST_PAGE.OTHER_SONGBOOKS'));
+    expect(otherLink.querySelector('.BookCard__otherIcon')).not.toBeNull();
+    expect([...otherLink.querySelectorAll('.BookCard__otherCover')].map((image) => image.getAttribute('src')))
+      .toEqual(Object.values(books).filter((book) => book.is_legacy && !book.hidden && typeof book.is_legacy === 'object' && book.is_legacy.show_micro_thumbnail_on_main).sort(compareBooks)
+        .map(({ slug }) => `${PATH.IMG.COVER}banner-${slug}.jpg`));
+    expect(otherLink.querySelector('.BookCard__otherMore').textContent).toBe('...');
+    main.unmount();
+
+    const other = render(<BookList bookId={current} booksMap={books} other />);
+    expect(shownBooks(other.container)).toEqual(
+      Object.values(books).filter((book) => book.is_legacy && !book.hidden).sort(compareBooks).map(({ slug }) => linkOf(slug))
+    );
+  });
+
+  it('links back to the current book root only on the other page', () => {
+    const main = render(<BookList bookId={current} booksMap={booksMap} />);
+    expect(main.queryByRole('link', { name: translate(current, 'BOOK_LIST_PAGE.BACK') })).toBeNull();
+    main.unmount();
+
+    const other = render(<BookList bookId={current} booksMap={booksMap} other />);
+    expect(other.getByRole('link', { name: translate(current, 'BOOK_LIST_PAGE.BACK') }).getAttribute('href'))
+      .toBe(getSongbookPath(current));
+  });
+
+  it.each(['none', 'hidden only'])('does not link to other books when there are %s', (condition) => {
+    const books = Object.fromEntries(Object.entries(booksMap).map(([id, book]) => [
+      id,
+      { ...book, is_legacy: condition === 'hidden only' && !!book.hidden }
+    ]));
+    const { queryByRole } = render(<BookList bookId={current} booksMap={books} />);
+
+    expect(queryByRole('link', { name: translate(current, 'BOOK_LIST_PAGE.OTHER_SONGBOOKS') })).toBeNull();
+  });
+
+  it('links to other books when the current book is the only visible legacy book', () => {
+    const legacy = Object.values(withLegacyBooks()).find((book) => book.is_legacy && !book.hidden);
+    const books = { [legacy.slug]: legacy };
+    const { getByRole } = render(<BookList bookId={legacy.slug} booksMap={books} />);
+
+    expect(getByRole('link', { name: translate(legacy.slug, 'BOOK_LIST_PAGE.OTHER_SONGBOOKS') })).toBeTruthy();
+  });
+
+  it('shows the current legacy book first only once', () => {
+    const books = withLegacyBooks();
+    const legacy = Object.values(books).find((book) => book.is_legacy && !book.hidden);
+    const { container } = render(<BookList bookId={legacy.slug} booksMap={books} />);
+    expect(shownBooks(container)[0]).toBe(linkOf(legacy.slug));
+    expect(shownBooks(container).filter((href) => href === linkOf(legacy.slug))).toHaveLength(1);
+    expect(shownBooks(container)).not.toContain(linkOf(Object.values(books).find((book) => book.is_legacy && book.slug !== legacy.slug).slug));
+  });
+
+  it('does not show hidden legacy books on the other page', () => {
+    const hiddenLegacy = { ...booksMap['en-pe'], hidden: true };
+    const books = { ...booksMap, 'en-pe': hiddenLegacy };
+    const { container } = render(<BookList bookId="en-pe" booksMap={books} other />);
+    expect(shownBooks(container)).not.toContain(linkOf('en-pe'));
+  });
+
+  it('includes the other tile in arrow-key navigation', async () => {
+    const { getByRole } = render(<BookList bookId={current} booksMap={withLegacyBooks()} />);
+    const tile = getByRole('link', { name: translate(current, 'BOOK_LIST_PAGE.OTHER_SONGBOOKS') });
+    await userEvent.keyboard('{ArrowLeft}');
+    await userEvent.keyboard('{ArrowLeft}');
+    expect(document.activeElement).toBe(tile);
   });
 });

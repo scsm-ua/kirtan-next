@@ -48,10 +48,4 @@ describe('SongBookItem', () => {
     expect(screen.queryByRole('link')).toBeNull();
   });
 
-  it('shows a hidden book to whoever asked to see hidden books', () => {
-    localStorage.setItem('SHOW_HIDDEN_BOOKS', '1');
-    renderItem({ description: hidden });
-
-    expect(screen.getByRole('link')).toBeTruthy();
-  });
 });

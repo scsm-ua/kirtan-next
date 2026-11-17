@@ -1,4 +1,6 @@
-- feedback form with Cloudflare Worker
+# sonbgooks md
+
+remove audio from kdm
 
 # seo
 
@@ -47,9 +49,7 @@ The fix I'd suggest is to create a fresh hidden SoundCloud iframe for each track
 
 - review tests findings
 
-- sonbgooks legacy songbooks section
 - en songbook link to https://scsmath.com/KirtanGuide/
-- another build and app js approach
 - do songbook images in resources
 
 - review: todo-songbook-info.md
