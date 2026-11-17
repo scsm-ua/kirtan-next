@@ -119,10 +119,7 @@ describe.each(getBookIds())('HTML pages of %s', (bookId) => {
       ? `${getBooksMap()[bookId].hidden ? 'noindex' : 'index'}, follow`
       : 'noindex, nofollow';
 
-    checkPages(({ page, robots }) => {
-      const pageExpected = page.kind === 'other' ? 'noindex, follow' : expected;
-      return robots !== pageExpected && `robots "${robots}"`;
-    });
+    checkPages(({ robots }) => robots !== expected && `robots "${robots}"`);
   });
 
   it('have at most one h1, never empty; a song page has the song title in it', () => {

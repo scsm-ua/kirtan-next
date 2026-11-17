@@ -12,9 +12,7 @@ let hidden: TBookDescription;
 beforeAll(async () => {
   const { descriptions } = (await loadSongPage('in-several-books')).data;
   description = descriptions.find((candidate) => !candidate.hidden);
-  hidden = descriptions.find((candidate) => candidate.hidden);
-  // Guard: the song is in a shown and in a hidden book.
-  expect(hidden).toBeTruthy();
+  hidden = { ...description, hidden: true };
 });
 
 const renderItem = (props: Partial<{ description: TBookDescription; isActive: boolean }> = {}) =>

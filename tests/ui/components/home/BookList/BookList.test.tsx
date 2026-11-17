@@ -8,7 +8,6 @@ import { getBookLangLabel } from '@/other/helpers';
 import { translate } from '@/other/i18n';
 import { getSongbookPagePath, getSongbookPath, SONGBOOK_PAGE } from '@/other/paths';
 import { compareBooks } from '@/scripts/compareHelpers';
-import { findBook } from '@/tests/helpers/cases';
 import { loadPage } from '@/tests/helpers/pageData';
 
 import type { TBooksMap } from '@/types/book';
@@ -30,17 +29,28 @@ function shownBooks(container: HTMLElement): string[] {
 
 const linkOf = (bookId: string) => getSongbookPagePath(bookId, SONGBOOK_PAGE.A_Z);
 
+function hiddenBookId(): string {
+  const book = Object.values(booksMap).find(({ slug }) => slug !== current);
+  if (!book) throw new Error('BookList tests require a second book.');
+  return book.slug;
+}
+
+function withHiddenBook(bookId = hiddenBookId()): TBooksMap {
+  return { ...booksMap, [bookId]: { ...booksMap[bookId], hidden: true } };
+}
+
 function withLegacyBooks(): TBooksMap {
   const legacyIds = Object.values(booksMap)
     .filter((book) => !book.hidden && book.slug !== current)
     .slice(0, 2)
     .map((book) => book.slug);
-  const hiddenThumbnailId = findBook('hidden');
+  const hiddenThumbnailId = hiddenBookId();
 
   return Object.fromEntries(Object.entries(booksMap).map(([id, book]) => [
     id,
     {
       ...book,
+      hidden: id === hiddenThumbnailId || book.hidden,
       is_legacy: legacyIds.includes(id) || id === hiddenThumbnailId
         ? { show_micro_thumbnail_on_main: id === legacyIds[0] || id === hiddenThumbnailId }
         : false
@@ -49,10 +59,6 @@ function withLegacyBooks(): TBooksMap {
 }
 
 describe('BookList', () => {
-  it('a real book is hidden', () => {
-    expect(booksMap[findBook('hidden')].hidden).toBe(true);
-  });
-
   it('shows the current book first, then the other visible books in their sort order', () => {
     // Reversed, so the order on screen cannot come from the order of the data.
     const reversed = Object.fromEntries(Object.entries(booksMap).reverse());
@@ -66,14 +72,15 @@ describe('BookList', () => {
   });
 
   it('does not show hidden books', () => {
-    const { container } = render(<BookList bookId={current} booksMap={booksMap} />);
+    const hiddenId = hiddenBookId();
+    const { container } = render(<BookList bookId={current} booksMap={withHiddenBook(hiddenId)} />);
 
-    expect(shownBooks(container)).not.toContain(linkOf(findBook('hidden')));
+    expect(shownBooks(container)).not.toContain(linkOf(hiddenId));
   });
 
   it('shows the current hidden book first, without duplicating it', () => {
-    const hidden = findBook('hidden');
-    const { container } = render(<BookList bookId={hidden} booksMap={booksMap} />);
+    const hidden = hiddenBookId();
+    const { container } = render(<BookList bookId={hidden} booksMap={withHiddenBook(hidden)} />);
 
     expect(shownBooks(container)[0]).toBe(linkOf(hidden));
     expect(shownBooks(container).filter((href) => href === linkOf(hidden))).toHaveLength(1);
