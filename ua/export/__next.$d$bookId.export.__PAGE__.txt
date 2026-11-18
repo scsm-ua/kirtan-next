@@ -3,7 +3,7 @@
 6:I[5727,[],"OutletBoundary"]
 7:"$Sreact.suspense"
 :HL["/_next/static/css/d41aea12ff0698fe.css","style"]
-3:Tc3f92,<h1 class="book-title">Ґаудія Ґітанджалі</h1>
+3:Tc3f91,<h1 class="book-title">Ґаудія Ґітанджалі</h1>
 <p class="nav-links"><a href="#first-lines">↓ Індекс</a></p>
 <section class="toc" id="toc">
 <h1>Зміст</h1>
@@ -5437,7 +5437,7 @@
 <strong>татра̄рпіта̄ ніямітах смаране на ка̄лах</strong><br>
 <strong>ета̄дриші тава крипа̄ бгаґаван мама̄пі</strong><br>
 <strong>дурдайвам īдришям іха̄джані на̄нура̄ґах</strong></p>
-<p class="translation">«О мій Господи, Твоє Святе Імʼя дарує благо кожному. Ти маєш незліченну кількість Імен, таких як Крішна і Ґовінда, через які Ти являєш Себе. У Свої численні Святі Імена Ти милостиво вклав усю Свою духовну силу. Немає ніяких строгих правил, які б обмежували молитву до цих Імен часом та місцем.. Зі Своєї безпричинної милості Ти зійшов у образі божественного звуку, але моє велике нещастя полягає в тому, що я не маю жодної прихильності до Твого Святого Імені».<br>
+<p class="translation">«О мій Господи, Твоє Святе Імʼя дарує благо кожному. Ти маєш незліченну кількість Імен, таких як Крішна і Ґовінда, через які Ти являєш Себе. У Свої численні Святі Імена Ти милостиво вклав усю Свою духовну силу. Немає ніяких строгих правил, які б обмежували молитву до цих Імен часом та місцем. Зі Своєї безпричинної милості Ти зійшов у образі божественного звуку, але моє велике нещастя полягає в тому, що я не маю жодної прихильності до Твого Святого Імені».<br>
 ---<br>
 <i>Пісня Шрīли Бгактівінода Тха̄кура бенгальською за мотивом цього вірша:</i></p>
 </div>
@@ -8988,7 +8988,7 @@
 <p class="first-line" data-translated="0"><a href="#song-yadi-te-hari-pada-saroja-sudha">яді те харі-па̄да-сароджа-судга̄</a></p>
 <p class="first-line" data-translated="0"><a href="#song-yamunambu-krishna-radhikali-keli-mandalam">ямуна̄мбу-кришна-ра̄дгіка̄лі-келі-мандалам<span class="page-num"> — 104</span></a></p>
 </section>
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"body":"$3","fileName":"Songbook-Export-ua","lang":"uk","title":"Ґаудія Ґітанджалі"}],["$L4"],"$L5"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"t1JQczAUbn-COaCxQm7Lm"}
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"body":"$3","fileName":"Songbook-Export-ua","lang":"uk","title":"Ґаудія Ґітанджалі"}],["$L4"],"$L5"]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"jYtA9EWVAEr8wqNJD-E_F"}
 4:["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/d41aea12ff0698fe.css","precedence":"next"}]
 5:["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]
 8:null
