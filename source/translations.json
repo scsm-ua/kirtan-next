@@ -42,7 +42,7 @@
         "DESCRIPTION": "Pieejamo Vaišnavu dziesmu grāmatu saraksts ar tekstiem un tulkojumiem."
       },
       "SONG_COUNT": "dziesmas",
-      "OTHER_SONGBOOKS": "Citas dziesmu grāmatas",
+      "OTHER_SONGBOOKS": "Citas dziesmu grāmatas...",
       "BACK": "Atpakaļ"
     },
     "FOOTER": {
@@ -202,7 +202,7 @@
         "DESCRIPTION": "List of available Vaishnava songbooks with lyrics and translations."
       },
       "SONG_COUNT": "songs",
-      "OTHER_SONGBOOKS": "Other songbooks",
+      "OTHER_SONGBOOKS": "Other songbooks...",
       "BACK": "Back"
     },
     "FOOTER": {
@@ -362,7 +362,7 @@
         "DESCRIPTION": "Lista de los cancioneros Vaishnavas disponibles con letras y traducciones."
       },
       "SONG_COUNT": "canciones",
-      "OTHER_SONGBOOKS": "Otros cancioneros",
+      "OTHER_SONGBOOKS": "Otros cancioneros...",
       "BACK": "Volver"
     },
     "FOOTER": {
@@ -522,7 +522,7 @@
         "DESCRIPTION": "Список доступных вайшнавских песенников с текстами и переводами."
       },
       "SONG_COUNT": "песен",
-      "OTHER_SONGBOOKS": "Другие песенники",
+      "OTHER_SONGBOOKS": "Другие песенники...",
       "BACK": "Назад"
     },
     "FOOTER": {
@@ -695,7 +695,7 @@
         "DESCRIPTION": "Список доступних вайшнавських пісенників із текстами та перекладами."
       },
       "SONG_COUNT": "пісень",
-      "OTHER_SONGBOOKS": "Інші пісенники",
+      "OTHER_SONGBOOKS": "Інші пісенники...",
       "BACK": "Назад"
     },
     "FOOTER": {
@@ -868,7 +868,7 @@
         "DESCRIPTION": "Lista dos cancioneiros vaisnavas disponíveis com letras e traduções."
       },
       "SONG_COUNT": "canções",
-      "OTHER_SONGBOOKS": "Outros cancioneiros",
+      "OTHER_SONGBOOKS": "Outros cancioneiros...",
       "BACK": "Voltar"
     },
     "FOOTER": {

@@ -51,6 +51,7 @@ function BookList({ bookId, booksMap, other = false }: Props) {
             <OtherBooksCard
               bookId={bookId}
               bookIds={otherBookThumbnails.map(({ slug }) => slug)}
+              count={otherBooks.length}
             />
           )}
         </ul>

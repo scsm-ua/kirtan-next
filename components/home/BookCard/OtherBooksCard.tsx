@@ -6,9 +6,10 @@ import { translate } from '@/other/i18n';
 type Props = {
   bookId: string;
   bookIds: string[];
+  count: number;
 };
 
-function OtherBooksCard({ bookId, bookIds }: Props) {
+function OtherBooksCard({ bookId, bookIds, count }: Props) {
   const subtitle = translate(bookId, 'BOOK_LIST_PAGE.OTHER_SONGBOOKS');
 
   return (
@@ -40,6 +41,7 @@ function OtherBooksCard({ bookId, bookIds }: Props) {
               <div className="BookCard__info">
                 <h4 aria-hidden="true" className="BookCard__title BookCard__title--empty" />
                 <div className="ellipsis BookCard__subtitle">{subtitle}</div>
+                <div className="BookCard__count">{count}</div>
               </div>
             </a>
           </div>

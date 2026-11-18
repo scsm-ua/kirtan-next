@@ -39,7 +39,6 @@
   },
   "ru-kdm": {
     "repository": "git+https://github.com/scsm-ua/gaudiya-gitanjali-ru-kd-morning.git#morning-short",
-    "is_legacy": true,
-    "hidden": false
+    "hidden": true
   }
 }

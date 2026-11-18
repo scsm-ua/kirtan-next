@@ -124,6 +124,8 @@ describe('BookList', () => {
     expect(otherLink.getAttribute('href')).toBe(getSongbookPagePath(current, SONGBOOK_PAGE.OTHER));
     expect(otherLink.querySelector('.BookCard__title').textContent).toBe('');
     expect(otherLink.querySelector('.BookCard__subtitle').textContent).toBe(translate(current, 'BOOK_LIST_PAGE.OTHER_SONGBOOKS'));
+    expect(otherLink.querySelector('.BookCard__count').textContent)
+      .toBe(String(Object.values(books).filter((book) => book.is_legacy && !book.hidden).length));
     expect(otherLink.querySelector('.BookCard__otherIcon')).not.toBeNull();
     expect([...otherLink.querySelectorAll('.BookCard__otherCover')].map((image) => image.getAttribute('src')))
       .toEqual(Object.values(books).filter((book) => book.is_legacy && !book.hidden && typeof book.is_legacy === 'object' && book.is_legacy.show_micro_thumbnail_on_main).sort(compareBooks)

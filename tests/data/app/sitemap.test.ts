@@ -2,14 +2,16 @@ import { afterAll, describe, expect, it, vi } from 'vitest';
 
 import sitemap from '@/app/sitemap';
 import { getSingers } from '@/lib/audio';
-import { getBookIds, getItems } from '@/tests/helpers/books';
+import { getSongbookPath } from '@/other/paths';
+import { getBooksMap, getItems } from '@/tests/helpers/books';
 
 // As in `next build`: lib/ caches the contents of the books.
 vi.stubEnv('NODE_ENV', 'production');
 afterAll(() => vi.unstubAllEnvs());
 
 const ORIGIN = process.env.NEXT_PUBLIC_ORIGIN;
-const bookIds = getBookIds();
+const books = Object.entries(getBooksMap());
+const visibleBookIds = books.filter(([, book]) => !book.hidden).map(([bookId]) => bookId);
 
 describe('sitemap', async () => {
   const entries = await sitemap();
@@ -28,7 +30,7 @@ describe('sitemap', async () => {
     expect(incomplete.map((entry) => entry.url)).toEqual([]);
   });
 
-  it.each(bookIds)('has the root pages, the audio pages and every item of %s', (bookId) => {
+  it.each(visibleBookIds)('has the root pages, the audio pages and every item of %s', (bookId) => {
     const singers = getSingers(bookId);
     const expected = [
       `/${bookId}/`,
@@ -42,6 +44,15 @@ describe('sitemap', async () => {
     ];
 
     expect(expected.filter((path) => !paths.has(path))).toEqual([]);
+  });
+
+  it('has no pages from hidden books', () => {
+    const hiddenBookPaths = books
+      .filter(([, book]) => book.hidden)
+      .map(([bookId]) => getSongbookPath(bookId));
+
+    expect([...paths].filter((path) => hiddenBookPaths.some((prefix) => path.startsWith(prefix))))
+      .toEqual([]);
   });
 
   it('has no search, export or analyze pages', () => {

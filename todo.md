@@ -1,6 +1,12 @@
-# sonbgooks md
+# inbox
 
-remove audio from kdm
+- http://localhost:3333/ua/yoga-pithopari-sthita-ashta-sakhi-subeshtita/
+  - Другий кіртан Шрīли Бгактівінода Тха̄кура - Д letter cutted left 1px
+
+- back navigation bug:
+  Verse 1 https://kirtan.site/en/guru-kripa-bale-labhi-sambandha-vijniana/
+  back
+  Verse 11 https://kirtan.site/en/sakala-preyasi-shreshtha-vrishabhanu-suta/
 
 # seo
 
