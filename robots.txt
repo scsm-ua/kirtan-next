@@ -3,5 +3,6 @@ Allow: /
 Disallow: /*/search/
 Disallow: /data/
 Disallow: /shell/
+Disallow: /ru-kdm/
 
 Sitemap: https://kirtan.site/sitemap.xml
