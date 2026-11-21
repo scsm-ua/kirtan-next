@@ -134,6 +134,22 @@ describe('CacheStatusModal', () => {
     expect(stateLine().querySelector('.CacheLed').getAttribute('data-status')).toBe('error');
   });
 
+  it('shows "not saved" and no dot without a service worker', async () => {
+    state = { isAvailable: false, books: { en: CACHED } };
+    await open();
+
+    expect(stateLine().textContent).toBe(translate('en', 'OFFLINE.NOT_SAVED'));
+    expect(stateLine().querySelector('.CacheLed')).toBeNull();
+  });
+
+  it('shows 0 % while saving before the first progress report', async () => {
+    setBook({ bookId: 'en', pages: false, state: 'caching' });
+    await open();
+
+    expect(screen.getByRole('progressbar').getAttribute('aria-valuenow')).toBe('0');
+    expect(rows()).toEqual({});
+  });
+
   it('shows the progress while saving, and asks for the details again when the book is cached', async () => {
     setBook({ bookId: 'en', pages: true, state: 'caching', progress: 0.62 });
     await open();
