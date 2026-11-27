@@ -6,12 +6,15 @@ import {
   readSong
 } from '@/tests/helpers/books';
 
+import { DEFAULT_LANGUAGE } from '@/other/i18n';
+import { ABOUT_PAGE_SLUG } from '@/other/paths';
+
 import type { TBookDescription } from '@/types/book';
 import type { TItem, TSongFile } from '@/tests/helpers/books';
 
 /**
  * Finders: pick a real song or book by feature instead of naming it
- * (.github/plans/plan-tests.md, rules R1 and R2). A finder throws when no
+ * (.github/plans/2026-11-16_plan-tests.md, rules R1 and R2). A finder throws when no
  * real song covers its case, so coverage is never lost silently.
  */
 
@@ -54,6 +57,14 @@ const SONG_CASES = {
   'in-several-books': ({ bookCount }) => bookCount > 1,
   'in-one-book': ({ bookCount }) => bookCount === 1
 } satisfies Record<string, (candidate: TCandidate) => boolean>;
+
+/** The book lists a markdown page with the About slug in its contents. */
+export const hasOwnAbout = (bookId: string) =>
+  getItems(bookId).some((item) => item.id === ABOUT_PAGE_SLUG && item.type === 'page');
+
+/** The book whose About page the header of a book opens: its own, else the default-language one, else `null`. */
+export const getAboutBookId = (bookId: string) =>
+  [bookId, DEFAULT_LANGUAGE].find(hasOwnAbout) ?? null;
 
 const BOOK_CASES = {
   'audio-filter': (book) => !!book.audio?.filter?.by_title?.length,
